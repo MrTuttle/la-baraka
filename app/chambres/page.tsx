@@ -1,6 +1,8 @@
 import prisma from "@/prisma/client";
 import React from "react";
 import { number } from "zod";
+import ReactMarkdown from "react-markdown";
+import { Card } from "@radix-ui/themes";
 
 interface Chambre {
   title: string;
@@ -13,11 +15,11 @@ const chambresPage = async () => {
   return (
     <>
       <div>chambress</div>
-      <div>
+      <Card className="prose" mt="4">
         {chambres.map((chambre) => (
-          <p key={chambre.id}>{chambre.title}</p>
+          <ReactMarkdown key={chambre.id}>{chambre.description}</ReactMarkdown>
         ))}
-      </div>
+      </Card>
     </>
   );
 };
