@@ -1,5 +1,10 @@
-import Image from "next/image";
+// app/issue/page.tsx
 
-export default function Home() {
-  return <div>La Baraka</div>;
-}
+import React from "react";
+import { Button } from "@radix-ui/themes";
+
+const home = () => {
+  return <Button>New Issue</Button>;
+};
+
+export default home;
