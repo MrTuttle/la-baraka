@@ -8,14 +8,14 @@ import "easymde/dist/easymde.min.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-interface IssueForm {
+interface RoomForm {
   title: string;
   description: string;
 }
 
-const NewIssuePage = () => {
+const NewRoomPage = () => {
   const router = useRouter();
-  const { register, control, handleSubmit } = useForm<IssueForm>();
+  const { register, control, handleSubmit } = useForm<RoomForm>();
   // console.log(register("title"));
   // register return props that we should apply to an input field to track changes
 
@@ -23,7 +23,7 @@ const NewIssuePage = () => {
     <form
       className=" max-w-lg space-y-3"
       onSubmit={handleSubmit(async (data) => {
-        console.log("DATA : " + data.title + "dec : " + data.description);
+        // console.log("DATA : " + data.title + "dec : " + data.description);
         axios.post("/api/chambres", data);
         router.push("/chambres");
       })}
@@ -47,9 +47,9 @@ const NewIssuePage = () => {
           <SimpleMDE placeholder="description" {...field} />
         )}
       />
-      <Button>New issue</Button>
+      <Button>Ajouter la chambre</Button>
     </form>
   );
 };
 
-export default NewIssuePage;
+export default NewRoomPage;
