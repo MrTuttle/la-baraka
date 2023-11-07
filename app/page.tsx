@@ -4,8 +4,11 @@
 import React from "react";
 import { Button } from "@radix-ui/themes";
 import { CldImage } from "next-cloudinary";
+import DisplayCld from "./components/DisplayCld";
+import prisma from "@/prisma/client";
 
-const home = () => {
+const home = async () => {
+  // const chambresImage = await prisma.image.findMany();
   return (
     <>
       <Button>New Issue</Button>
@@ -16,6 +19,10 @@ const home = () => {
         sizes="100vw"
         alt="Description of my image"
       />
+      <DisplayCld public_id="s1pqrceeb5yjoxlldsiv" alt="Chambre" />
+      {/* {chambresImage.map((image) => (
+        <DisplayCld key={image.id} public_id={image.publicId} alt={image.alt} />
+      ))}  */}
     </>
   );
 };

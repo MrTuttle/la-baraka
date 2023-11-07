@@ -11,9 +11,18 @@ datasource db {
 }
 
 model Room {
-  id          Int      @id @default(autoincrement())
-  title       String   @db.VarChar(255)
-  description String   @db.Text
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(255)
+  description  String   @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  assignedRoom Image[]
+}
+
+model Image {
+  id               Int    @id @default(autoincrement())
+  publicId         String @db.VarChar(255)
+  alt              String @db.VarChar(255)
+  assignedToRoomId Int?
+  assignedToRoom   Room?  @relation(fields: [assignedToRoomId], references: [id])
 }
