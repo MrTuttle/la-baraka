@@ -25,4 +25,15 @@ model Image {
   alt              String @db.VarChar(255)
   assignedToRoomId Int?
   assignedToRoom   Room?  @relation(fields: [assignedToRoomId], references: [id])
+  assignedToMenuId Int?
+  assignedToMenu   Menu?  @relation(fields: [assignedToMenuId], references: [id])
+}
+
+model Menu {
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(255)
+  description  String   @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  assignedMenu Image[]
 }

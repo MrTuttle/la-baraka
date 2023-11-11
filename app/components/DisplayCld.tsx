@@ -1,3 +1,6 @@
+"use client";
+//app/components/DisplayCld.tsx
+
 import React from "react";
 import { CldImage } from "next-cloudinary";
 
