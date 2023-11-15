@@ -1,4 +1,5 @@
-// app/api/issues/route.tsx
+// app/api/chambres/route.tsx
+
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";

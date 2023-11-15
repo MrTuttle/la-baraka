@@ -1,4 +1,4 @@
-// app/issues/new/page.tsx
+// app/component/MenuForm.tsx
 
 "use client";
 import { Button, TextField } from "@radix-ui/themes";
@@ -8,14 +8,14 @@ import "easymde/dist/easymde.min.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-interface RoomForm {
+interface MenuForm {
   title: string;
   description: string;
 }
 
-const NewRoomPage = () => {
+const NewMenuForm = () => {
   const router = useRouter();
-  const { register, control, handleSubmit } = useForm<RoomForm>();
+  const { register, control, handleSubmit } = useForm<MenuForm>();
   // console.log(register("title"));
   // register return props that we should apply to an input field to track changes
 
@@ -24,8 +24,8 @@ const NewRoomPage = () => {
       className=" max-w-lg space-y-3"
       onSubmit={handleSubmit(async (data) => {
         // console.log("DATA : " + data.title + "dec : " + data.description);
-        axios.post("/api/chambres", data);
-        router.push("/chambres");
+        axios.post("/api/menus", data);
+        router.push("/menus");
       })}
     >
       <TextField.Root>
@@ -33,7 +33,7 @@ const NewRoomPage = () => {
         why we use spread operator, // so we can add those 4 properties as props
         to this component */}
         <TextField.Input
-          placeholder="Title"
+          placeholder="Title menu"
           {...register("title")}
         ></TextField.Input>
       </TextField.Root>
@@ -47,9 +47,9 @@ const NewRoomPage = () => {
           <SimpleMDE placeholder="description" {...field} />
         )}
       />
-      <Button>Ajouter la chambre</Button>
+      <Button>Ajouter le menu</Button>
     </form>
   );
 };
 
-export default NewRoomPage;
+export default NewMenuForm;
