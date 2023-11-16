@@ -40,13 +40,13 @@ const NewRoomPage = () => {
       {/* // simpleMDE doesn't support additional props with spead operator // so we
       need to use a different technique. // we use controller component in
       react-form */}
-      <Controller
+      {/* <Controller
         name="description"
         control={control}
         render={({ field }) => (
           <SimpleMDE placeholder="description" {...field} />
         )}
-      />
+      /> */}
       <Button>Ajouter la chambre</Button>
     </form>
   );
