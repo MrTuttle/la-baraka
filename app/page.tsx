@@ -15,8 +15,9 @@ const home = async () => {
     <>
       <SlidesPerViewAuto />
       <div className="mx-4">
-        {/* <NewMenuForm /> */}
+        <NewMenuForm />
 
+        <Button>New Issue</Button>
         {/* <CldImage
         width="960"
         height="600"

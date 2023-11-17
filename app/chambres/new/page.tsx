@@ -2,7 +2,8 @@
 
 "use client";
 import { Button, TextField } from "@radix-ui/themes";
-import SimpleMDE from "react-simplemde-editor";
+// import SimpleMDE from "react-simplemde-editor";
+import dynamic from "next/dynamic";
 import { useForm, Controller } from "react-hook-form";
 import "easymde/dist/easymde.min.css";
 import axios from "axios";
@@ -12,6 +13,9 @@ interface RoomForm {
   title: string;
   description: string;
 }
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+  ssr: false,
+});
 
 const NewRoomPage = () => {
   const router = useRouter();
@@ -40,13 +44,13 @@ const NewRoomPage = () => {
       {/* // simpleMDE doesn't support additional props with spead operator // so we
       need to use a different technique. // we use controller component in
       react-form */}
-      {/* <Controller
+      <Controller
         name="description"
         control={control}
         render={({ field }) => (
           <SimpleMDE placeholder="description" {...field} />
         )}
-      /> */}
+      />
       <Button>Ajouter la chambre</Button>
     </form>
   );
