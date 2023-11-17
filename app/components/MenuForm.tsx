@@ -13,7 +13,7 @@ interface MenuForm {
   title: string;
   description: string;
 }
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+const SimpleMDE = dynamic(async () => import("react-simplemde-editor"), {
   ssr: false,
 });
 
