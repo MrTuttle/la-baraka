@@ -15,6 +15,7 @@ interface RoomForm {
 }
 const SimpleMDE = dynamic(async () => import("react-simplemde-editor"), {
   ssr: false,
+  loading: () => <p>Loading...</p>,
 });
 
 const NewRoomPage = () => {
