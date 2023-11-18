@@ -4,6 +4,7 @@ import { number } from "zod";
 import ReactMarkdown from "react-markdown";
 import { Card } from "@radix-ui/themes";
 import DisplayCld from "../components/DisplayCld";
+import Link from "next/link";
 
 interface Chambre {
   title: string;
@@ -16,12 +17,14 @@ const chambresPage = async () => {
   // const chambresImage = await prisma.image.findMany();
   return (
     <>
-      <div>chambress</div>
-      <Card className="prose" mt="4">
-        {chambres.map((chambre) => (
-          <ReactMarkdown key={chambre.id}>{chambre.description}</ReactMarkdown>
-        ))}
-      </Card>
+      <div>chambres</div>
+      <Link href={"/chambres/new"}>Nouvelle chambre</Link>
+      {chambres.map((chambre) => (
+        <Card key={chambre.id} className="prose" mt="4">
+          <h3>{chambre.title}</h3>
+          <ReactMarkdown>{chambre.description}</ReactMarkdown>
+        </Card>
+      ))}
       {/* <Card>
         {chambresImage.map((chambreImage) => (
           <DisplayCld
