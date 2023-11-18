@@ -13,16 +13,18 @@ const menusPage = async () => {
   const menus = await prisma.menu.findMany();
   return (
     <>
-      <div>Menus</div>
+      <div className="mx-4">
+        <div>Menus</div>
 
-      {menus.map((menu) => (
-        <Card key={menu.id} className="prose" mt="4">
-          <Text size="6" weight="light" key={menu.id}>
-            {menu.title}
-          </Text>
-          <ReactMarkdown>{menu.description}</ReactMarkdown>
-        </Card>
-      ))}
+        {menus.map((menu) => (
+          <Card key={menu.id} className="prose" mt="4">
+            <Text size="6" weight="light" key={menu.id}>
+              {menu.title}
+            </Text>
+            <ReactMarkdown>{menu.description}</ReactMarkdown>
+          </Card>
+        ))}
+      </div>
     </>
   );
 };

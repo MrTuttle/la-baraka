@@ -14,15 +14,13 @@ const NavBar = () => {
 
   const links = [
     { label: "Menus", href: "/menus" },
-
     { label: "Chambres", href: "/chambres" },
-    { label: "Contact", href: "/contact" },
   ];
   return (
-    <nav className="flex space-x-6 border-b mb-5 px-5 h-14 items-center">
-      <div className="flex flex-column">
+    <nav className="flex space-x-6 border-b mb-5 px-4 h-14 items-center justify-between">
+      <div className="flex flex-row">
         <Link href="/">
-          <p className="mx-4 font-semibold">
+          <p className="font-semibold">
             {" "}
             <span className="inline-flex items-baseline pe-3">
               <SiForestry />

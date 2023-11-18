@@ -20,7 +20,7 @@ const SlidesPerViewAuto = () => {
     <>
       <Swiper
         slidesPerView={"auto"}
-        spaceBetween={10}
+        spaceBetween={-5}
         pagination={{
           clickable: true,
         }}

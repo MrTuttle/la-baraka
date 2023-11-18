@@ -17,23 +17,25 @@ const chambresPage = async () => {
   // const chambresImage = await prisma.image.findMany();
   return (
     <>
-      <div>chambres</div>
-      <Link href={"/chambres/new"}>Nouvelle chambre</Link>
-      {chambres.map((chambre) => (
-        <Card key={chambre.id} className="prose" mt="4">
-          <h3>{chambre.title}</h3>
-          <ReactMarkdown>{chambre.description}</ReactMarkdown>
-        </Card>
-      ))}
-      {/* <Card>
+      <div className="mx-4">
+        <div>chambres</div>
+        <Link href={"/chambres/new"}>Nouvelle chambre</Link>
+        {chambres.map((chambre) => (
+          <Card key={chambre.id} className="prose" mt="4">
+            <h3>{chambre.title}</h3>
+            <ReactMarkdown>{chambre.description}</ReactMarkdown>
+          </Card>
+        ))}
+        {/* <Card>
         {chambresImage.map((chambreImage) => (
           <DisplayCld
-            key={chambreImage.id}
-            public_id={chambreImage.publicId}
-            alt={chambreImage.alt}
+          key={chambreImage.id}
+          public_id={chambreImage.publicId}
+          alt={chambreImage.alt}
           />
-        ))}
-      </Card> */}
+          ))}
+        </Card> */}
+      </div>
     </>
   );
 };
