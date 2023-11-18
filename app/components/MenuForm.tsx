@@ -31,6 +31,7 @@ const NewMenuForm = () => {
         // console.log("DATA : " + data.title + "dec : " + data.description);
         axios.post("/api/menus", data);
         router.push("/menus");
+        router.refresh();
       })}
     >
       <TextField.Root>
