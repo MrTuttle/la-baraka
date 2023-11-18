@@ -26,5 +26,6 @@ const menusPage = async () => {
     </>
   );
 };
+export const revalidate = 0;
 
 export default menusPage;
