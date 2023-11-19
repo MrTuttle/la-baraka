@@ -19,7 +19,7 @@ const menusPage = async () => {
         {menus.map((menu) => (
           <Card key={menu.id} className="prose" mt="4">
             <Text size="6" weight="light" key={menu.id}>
-              {menu.title}
+              {menu.title} - {menu.price}€
             </Text>
             <ReactMarkdown>{menu.description}</ReactMarkdown>
           </Card>
