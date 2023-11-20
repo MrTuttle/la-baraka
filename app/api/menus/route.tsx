@@ -3,14 +3,7 @@
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
-interface Props {
-  params: { price: number };
-}
-
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { price: number } }
-) {
+export async function POST(request: NextRequest) {
   const body = await request.json();
   const newMenu = await prisma.menu.create({
     data: {

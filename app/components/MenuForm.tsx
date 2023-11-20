@@ -30,7 +30,6 @@ const NewMenuForm = () => {
       className=" max-w-lg space-y-3"
       onSubmit={handleSubmit(async (data) => {
         // console.log("DATA : " + data.title + "dec : " + data.description);
-        console.log("DATA : price:" + data.price + "€" + data.title);
 
         axios.post("/api/menus", data);
         router.push("/menus");
@@ -48,7 +47,6 @@ const NewMenuForm = () => {
       </TextField.Root>
       <TextField.Root>
         <TextField.Input
-          type="number"
           placeholder="prix"
           {...register("price", { valueAsNumber: true })}
         ></TextField.Input>

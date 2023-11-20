@@ -32,6 +32,7 @@ const NewRoomPage = () => {
           // console.log("DATA : " + data.title + "dec : " + data.description);
           axios.post("/api/chambres", data);
           router.push("/chambres");
+          router.refresh();
         })}
       >
         <TextField.Root>
