@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 interface MenuForm {
   title: string;
   description: string;
+  price: number;
 }
 const SimpleMDE = dynamic(async () => import("react-simplemde-editor"), {
   ssr: false,
@@ -29,6 +30,8 @@ const NewMenuForm = () => {
       className=" max-w-lg space-y-3"
       onSubmit={handleSubmit(async (data) => {
         // console.log("DATA : " + data.title + "dec : " + data.description);
+        console.log("DATA : price:" + data.price + "€" + data.title);
+
         axios.post("/api/menus", data);
         router.push("/menus");
         router.refresh();
@@ -41,6 +44,13 @@ const NewMenuForm = () => {
         <TextField.Input
           placeholder="Title menu"
           {...register("title")}
+        ></TextField.Input>
+      </TextField.Root>
+      <TextField.Root>
+        <TextField.Input
+          type="number"
+          placeholder="prix"
+          {...register("price", { valueAsNumber: true })}
         ></TextField.Input>
       </TextField.Root>
       {/* // simpleMDE doesn't support additional props with spead operator // so we
