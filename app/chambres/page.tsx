@@ -2,7 +2,7 @@ import prisma from "@/prisma/client";
 import React from "react";
 import { number } from "zod";
 import ReactMarkdown from "react-markdown";
-import { Card } from "@radix-ui/themes";
+import { Button, Card } from "@radix-ui/themes";
 import DisplayCld from "../components/DisplayCld";
 import Link from "next/link";
 
@@ -19,7 +19,9 @@ const chambresPage = async () => {
     <>
       <div className="mx-4">
         <div>chambres</div>
-        <Link href={"/chambres/new"}>Nouvelle chambre</Link>
+        <Link href={"/chambres/new"}>
+          <Button>Créer une nouvelle chambre</Button>
+        </Link>
         {chambres.map((chambre) => (
           <Card key={chambre.id} className="prose" mt="4">
             <h3>{chambre.title}</h3>

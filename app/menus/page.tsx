@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import { Card, Text } from "@radix-ui/themes";
+import { Button, Card, Link, Text } from "@radix-ui/themes";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
@@ -15,6 +15,9 @@ const menusPage = async () => {
     <>
       <div className="mx-4">
         <div>Menus</div>
+        <Link href="menus/new">
+          <Button>Créer un nouveau menu</Button>
+        </Link>
 
         {menus.map((menu) => (
           <Card key={menu.id} className="prose" mt="4">
