@@ -6,8 +6,8 @@ import { Button } from "@radix-ui/themes";
 import { CldImage } from "next-cloudinary";
 import DisplayCld from "./components/DisplayCld";
 import prisma from "@/prisma/client";
-import NewMenuForm from "./components/MenuForm";
 import SlidesPerViewAuto from "./components/swiper/SlidesPerViewAuto";
+import Link from "next/link";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();
@@ -15,9 +15,9 @@ const home = async () => {
     <>
       <SlidesPerViewAuto />
       <div className="mx-4">
-        <NewMenuForm />
-
-        <Button>New Issue</Button>
+        <Link href="/dashboard">
+          <Button>Dashboard</Button>
+        </Link>
         {/* <CldImage
         width="960"
         height="600"
