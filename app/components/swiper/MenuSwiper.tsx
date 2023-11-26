@@ -14,17 +14,48 @@ import "@/app/components/swiper/style.css";
 import { Pagination } from "swiper/modules";
 
 import { CldImage } from "next-cloudinary";
+import { type } from "os";
 
 // interface Menu {
 //   title: string;
 //   description: string;
 //   id: number;
 // }
+type Menu = {
+  id: number;
+  title: string;
+  description: string;
+  price: number | null;
+  // menuPushed: () => void;
+};
+type Menulist = {
+  // count: number;
+  list: Menu[];
+};
+// const menulist = [];
+
 interface Props {
-  menuslist: [];
+  menuslist: [
+    {
+      title: string;
+      id: number;
+      description: string;
+      price: number | null;
+    }
+  ];
 }
-// const MenuSwiper = ({title, description, id}: Menu) => (
-const MenuSwiper = ({ menuslist }: Props) => {
+// const menus: {
+//   id: number;
+//   title: string;
+//   price: number | null;
+//   description: string;
+//   createdAt: Date;
+//   updatedAt: Date;
+// }[];
+
+// const MenuSwiper = (menulist: object[{}: Menu]) => {
+// const MenuSwiper = ({ menuslist }: Props) => {
+const MenuSwiper = ({ list }: Menulist) => {
   return (
     <>
       <Swiper
@@ -37,10 +68,10 @@ const MenuSwiper = ({ menuslist }: Props) => {
         className="mySwiper mb-10"
       >
         <div slot="container-start" className="m-4">
-          Menus{menuslist[2].title}
+          Menus du jour :
         </div>
 
-        {menuslist.map((menu) => (
+        {list.map((menu) => (
           <SwiperSlide key={menu.id}>
             <div className="flex flex-col justify-center p-10 h-full w-full bg-slate-100 rounded-lg border-solid border-1 border-indigo-600">
               <div>
@@ -53,7 +84,6 @@ const MenuSwiper = ({ menuslist }: Props) => {
             </div>
           </SwiperSlide>
         ))}
-        <SwiperSlide>Slide 6</SwiperSlide>
       </Swiper>
     </>
   );

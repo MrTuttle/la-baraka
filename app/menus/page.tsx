@@ -1,27 +1,55 @@
 import prisma from "@/prisma/client";
 import { Button, Card, Link, Text } from "@radix-ui/themes";
-import React from "react";
 import ReactMarkdown from "react-markdown";
 import MenuSwiper from "../components/swiper/MenuSwiper";
 
-interface Menu {
-  title: string;
-  description: string;
-  id: number;
-}
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import "./styles.css";
+import "@/app/components/swiper/style.css";
+
+// import required modules
+import { Pagination } from "swiper/modules";
+
+// interface Props {
+//   title: string;
+//   description: string;
+//   id: number;
+// }
+// interface Props {
+//   menuslist: [
+//     {
+//       title: string;
+//       id: number;
+//       description: string;
+//       price: number | null;
+//     }
+//   ];
+// }
 
 const menusPage = async () => {
   const menus = await prisma.menu.findMany();
-  const menuslist = [{}];
-  const pushMenuList = () => {
-    menus.map((menu) => menuslist.push(menu));
-    console.log("la baraka :");
+  // menus.map((menu) => console.log(`Menu title : ${menu.title}`));
+  //=> liste des menus
+  const menupack = [{}];
 
-    // console.log(menuslist);
+  const pushMenuList = (menuslist: object[]) => {
+    delete menupack[0];
+    menus.map((menu) => menupack.push(menu));
+    console.log("la baraka push :");
+
     // console.log("title :" + menuslist[2].title);
     // Menu d'hiver => yes it's works => should pass as props to swiper component
   };
-  pushMenuList();
+  pushMenuList(menus);
+  console.log(menupack);
+
   return (
     <>
       <div className="mx-4">
@@ -39,7 +67,7 @@ const menusPage = async () => {
           </Card>
         ))}
       </div>
-      <MenuSwiper menuslist={menuslist} />
+      <MenuSwiper list={menus} />
     </>
   );
 };
