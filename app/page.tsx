@@ -9,6 +9,7 @@ import prisma from "@/prisma/client";
 import SlidesPerViewAuto from "./components/swiper/SlidesPerViewAuto";
 import Link from "next/link";
 import MenuSwiper from "./components/swiper/MenuSwiper";
+import CallMenuSwiper from "./components/swiper/CallMenuSwiper";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();
@@ -23,11 +24,18 @@ const home = async () => {
           dolores aliquam. Laborum!
         </p>
       </Section>
-      <Section className="prose m-4">
-        <h2>Au menu aujourd’hui</h2>
+      <Section className="prose">
+        <h2 className="m-4">Au menu aujourd’hui</h2>
+        <CallMenuSwiper />
+        <p className="mx-4">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam,
+          est? Quae vel adipisci provident tempore, nisi, commodi suscipit
+          pariatur perspiciatis beatae modi nam, iste aut possimus consequatur
+          dolores aliquam. Laborum!
+        </p>
       </Section>
       <Section className="prose">
-        <div className="m-4">
+        <div className="mx-4">
           <h2>Les chambres</h2>
           <p>
             5 chambres partir de 12€ la nuit, réservables en ligne ou par

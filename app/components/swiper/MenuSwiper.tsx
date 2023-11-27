@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// import "./styles.css";
+// import swiper "./styles.css";
 import "@/app/components/swiper/style.css";
 
 // import required modules
@@ -15,12 +15,8 @@ import { Pagination } from "swiper/modules";
 
 import { CldImage } from "next-cloudinary";
 import { type } from "os";
+import ReactMarkdown from "react-markdown";
 
-// interface Menu {
-//   title: string;
-//   description: string;
-//   id: number;
-// }
 type Menu = {
   id: number;
   title: string;
@@ -32,18 +28,7 @@ type Menulist = {
   // count: number;
   list: Menu[];
 };
-// const menulist = [];
 
-interface Props {
-  menuslist: [
-    {
-      title: string;
-      id: number;
-      description: string;
-      price: number | null;
-    }
-  ];
-}
 // const menus: {
 //   id: number;
 //   title: string;
@@ -53,8 +38,6 @@ interface Props {
 //   updatedAt: Date;
 // }[];
 
-// const MenuSwiper = (menulist: object[{}: Menu]) => {
-// const MenuSwiper = ({ menuslist }: Props) => {
 const MenuSwiper = ({ list }: Menulist) => {
   return (
     <>
@@ -65,11 +48,11 @@ const MenuSwiper = ({ list }: Menulist) => {
           clickable: true,
         }}
         // modules={[Pagination]}
-        className="mySwiper mb-10"
+        className="mySwiper"
       >
-        <div slot="container-start" className="m-4">
+        {/* <div slot="container-start" className="m-4">
           Menus du jour :
-        </div>
+        </div> */}
 
         {list.map((menu) => (
           <SwiperSlide key={menu.id}>
@@ -80,7 +63,11 @@ const MenuSwiper = ({ list }: Menulist) => {
               <div>
                 <p>{menu.price} €</p>
               </div>
-              <div>{menu.description}</div>
+              <div>
+                <ReactMarkdown className="prose">
+                  {menu.description}
+                </ReactMarkdown>
+              </div>
             </div>
           </SwiperSlide>
         ))}
