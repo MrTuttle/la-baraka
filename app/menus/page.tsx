@@ -1,6 +1,8 @@
 import prisma from "@/prisma/client";
-import { Button, Card, Link, Text } from "@radix-ui/themes";
+import { Box, Button, Card, Link, Text } from "@radix-ui/themes";
 import ReactMarkdown from "react-markdown";
+import EdditMenuButton from "./EditMenuButton";
+
 import MenuSwiper from "../components/swiper/MenuSwiper";
 
 import React, { useRef, useState } from "react";
@@ -50,6 +52,8 @@ const menusPage = async () => {
   pushMenuList(menus);
   console.log(menupack);
 
+  // PATCH
+
   return (
     <>
       <div className="mx-4">
@@ -60,6 +64,9 @@ const menusPage = async () => {
 
         {menus.map((menu) => (
           <Card key={menu.id} className="prose" mt="4">
+            <Box>
+              <EdditMenuButton menuId={menu.id} />
+            </Box>
             <Text size="6" weight="light" key={menu.id}>
               {menu.title} - {menu.price}€
             </Text>

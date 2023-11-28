@@ -11,7 +11,7 @@ interface Props {
 
 const ChambreDetailPage = async ({ params }: Props) => {
   // if not a number in the [id] adress, go to not found page
-  if (typeof params.id !== "number") notFound();
+  // if (typeof params.id !== "number") notFound();
 
   const room = await prisma.room.findUnique({
     where: { id: parseInt(params.id) },
