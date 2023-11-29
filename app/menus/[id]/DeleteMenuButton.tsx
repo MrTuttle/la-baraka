@@ -2,7 +2,7 @@
 "use client";
 
 // import { Pencil2Icon } from "@radix-ui/react-icons";
-import { Button, Flex, AlertDialog } from "@radix-ui/themes";
+import { Button, Flex, AlertDialog, Text } from "@radix-ui/themes";
 import { HiOutlineTrash } from "react-icons/hi2";
 
 import Link from "next/link";
@@ -19,10 +19,14 @@ const DeleteMenuButton = ({ menuId }: { menuId: number }) => {
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button color="red">
-            <HiOutlineTrash />
-            Delete Menu
-          </Button>
+          <Link href="">
+            <Flex gap="1" align="center">
+              <HiOutlineTrash />
+              <Text as="p" size="1">
+                Delete Menu
+              </Text>
+            </Flex>
+          </Link>
         </AlertDialog.Trigger>
         <AlertDialog.Content>
           <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
@@ -37,7 +41,7 @@ const DeleteMenuButton = ({ menuId }: { menuId: number }) => {
               </Button>
             </AlertDialog.Cancel>
             <AlertDialog.Action>
-              <Button
+              <button
                 onClick={async () => {
                   await axios.delete("api/menus/" + menuId);
                   router.push("/menus");
@@ -45,7 +49,7 @@ const DeleteMenuButton = ({ menuId }: { menuId: number }) => {
                 }}
               >
                 Ok
-              </Button>
+              </button>
             </AlertDialog.Action>
           </Flex>
         </AlertDialog.Content>
