@@ -23,10 +23,14 @@ const DeleteRoomButton = ({ roomId }: { roomId: number }) => {
     // </Link>
     <AlertDialog.Root>
       <AlertDialog.Trigger>
-        <Button color="red">
-          <HiOutlineTrash />
-          Delete Menu
-        </Button>
+        <Link href="">
+          <Flex gap="1" align="center">
+            <HiOutlineTrash />
+            <Text as="p" size="1">
+              Delete Menu
+            </Text>
+          </Flex>
+        </Link>
       </AlertDialog.Trigger>
       <AlertDialog.Content>
         <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
