@@ -1,4 +1,4 @@
-// app/menus/api/[id]/route.tsx
+// app/chambres/api/[id]/route.tsx
 
 import { menuSchema } from "@/app/validationSchema";
 import prisma from "@/prisma/client";
@@ -9,7 +9,7 @@ import { NextRequest, NextResponse } from "next/server";
 //   { params }: { params: { id: string } }
 // ) {
 //   const body = await request.json();
-//   const validation = menuSchema.safeParse(body);
+//   const validation = roomSchema.safeParse(body);
 //   if (!validation.success)
 //     return NextResponse.json(validation.error.format(), { status: 400 });
 //   const menu = await prisma.menu.findUnique({
@@ -18,7 +18,7 @@ import { NextRequest, NextResponse } from "next/server";
 //     },
 //   });
 //   if (!menu)
-//     return NextResponse.json({ error: "Invalid menu" }, { status: 404 });
+//     return NextResponse.json({ error: "Invalid room" }, { status: 404 });
 //   const updatedMenu = await prisma.menu.update({
 //     where: { id: menu.id },
 //     data: {
@@ -33,14 +33,14 @@ export async function DELETE(
   resquest: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const menu = await prisma.menu.findUnique({
+  const room = await prisma.room.findUnique({
     where: { id: parseInt(params.id) },
   });
-  if (!menu)
-    return NextResponse.json({ error: "invalid issue" }, { status: 404 });
-  await prisma.menu.delete({
+  if (!room)
+    return NextResponse.json({ error: "invalid room" }, { status: 404 });
+  await prisma.room.delete({
     where: {
-      id: menu.id,
+      id: room.id,
     },
   });
   return NextResponse.json({});

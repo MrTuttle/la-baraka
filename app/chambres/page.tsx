@@ -7,6 +7,7 @@ import DisplayCld from "../components/DisplayCld";
 import Link from "next/link";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
+import DeleteRoomButton from "./[id]/DeleteRoomButton";
 
 interface Chambre {
   title: string;
@@ -15,7 +16,7 @@ interface Chambre {
 }
 
 const chambresPage = async () => {
-  const chambres = await prisma.room.findMany();
+  const rooms = await prisma.room.findMany();
   // const chambresImage = await prisma.image.findMany();
   return (
     <>
@@ -24,11 +25,13 @@ const chambresPage = async () => {
         <Link href={"/chambres/new"}>
           <Button>Créer une nouvelle chambre</Button>
         </Link>
-        {chambres.map((chambre) => (
-          <Card key={chambre.id} className="prose" mt="4">
+        {rooms.map((room) => (
+          <Card key={room.id} className="prose" mt="4">
             <Flex direction="row" justify="between" align="baseline" gap="0">
               <Box>
-                <h3>{chambre.title}</h3>
+                <h3>{room.title}</h3>
+                <p>id: {room.id}</p>
+                <p>{}</p>
               </Box>
               <Flex gap="2" direction="column">
                 <Link href={"/chambres/new"}>
@@ -39,17 +42,18 @@ const chambresPage = async () => {
                     </Text>
                   </Flex>
                 </Link>
-                <Link href="/chambres/new">
+                {/* <Link href="/chambres/new">
                   <Flex gap="1">
                     <HiOutlineTrash />
                     <Text as="p" size="1">
                       Supprimer
                     </Text>
                   </Flex>
-                </Link>
+                </Link> */}
+                <DeleteRoomButton roomId={room.id} />
               </Flex>
             </Flex>
-            <ReactMarkdown>{chambre.description}</ReactMarkdown>
+            <ReactMarkdown>{room.description}</ReactMarkdown>
           </Card>
         ))}
         {/* <Card>

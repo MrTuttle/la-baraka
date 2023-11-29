@@ -1,4 +1,4 @@
-// app/menus/[id]/DeleteIssueButton.tsx
+// app/menus/[id]/DeleteMenuButton.tsx
 "use client";
 
 // import { Pencil2Icon } from "@radix-ui/react-icons";
