@@ -63,5 +63,6 @@ const home = async () => {
     </>
   );
 };
+export const revalidate = 0;
 
 export default home;
