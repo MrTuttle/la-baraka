@@ -27,13 +27,9 @@ const chambresPage = async () => {
         </Link>
         {rooms.map((room) => (
           <Card key={room.id} className="prose" mt="4">
-            <Flex direction="row" justify="between" align="baseline" gap="0">
-              <Box>
-                <h3>{room.title}</h3>
-                <p>id: {room.id}</p>
-                <p>{}</p>
-              </Box>
-              <Flex gap="2" direction="column">
+            <Flex direction="row" align="baseline" gap="0" justify="between">
+              <p>idd: {room.id}</p>
+              <Flex gap="2" direction="row" align="center">
                 <Link href={"/chambres/new"}>
                   <Flex gap="1">
                     <HiOutlinePencilSquare />
@@ -44,16 +40,20 @@ const chambresPage = async () => {
                 </Link>
                 {/* <Link href="/chambres/new">
                   <Flex gap="1">
-                    <HiOutlineTrash />
-                    <Text as="p" size="1">
-                      Supprimer
-                    </Text>
+                  <HiOutlineTrash />
+                  <Text as="p" size="1">
+                  Supprimer
+                  </Text>
                   </Flex>
                 </Link> */}
                 <DeleteRoomButton roomId={room.id} />
               </Flex>
             </Flex>
-            <ReactMarkdown>{room.description}</ReactMarkdown>
+            <Flex direction="column">
+              <h3>{room.title}</h3>
+              <ReactMarkdown>{room.description}</ReactMarkdown>
+              <p>{}</p>
+            </Flex>
           </Card>
         ))}
         {/* <Card>

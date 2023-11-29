@@ -69,8 +69,8 @@ const menusPage = async () => {
               <Text size="1" weight="bold">
                 id : {menu.id}
               </Text>
-              <EdditMenuButton menuId={menu.id} />
               <DeleteMenuButton menuId={menu.id} />
+              <EdditMenuButton menuId={menu.id} />
             </Flex>
             <Text size="6" weight="light" key={menu.id}>
               {menu.title} - {menu.price}€
