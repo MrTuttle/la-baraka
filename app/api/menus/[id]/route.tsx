@@ -28,3 +28,20 @@ export async function PATCH(
   });
   return NextResponse.json(updatedMenu);
 }
+
+export async function DELETE(
+  resquest: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const menu = await prisma.menu.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+  if (!menu)
+    return NextResponse.json({ error: "invalid issue" }, { status: 404 });
+  await prisma.menu.delete({
+    where: {
+      id: menu.id,
+    },
+  });
+  return NextResponse.json({});
+}

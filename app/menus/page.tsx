@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import { Box, Button, Card, Link, Text } from "@radix-ui/themes";
+import { Box, Button, Card, Flex, Link, Text } from "@radix-ui/themes";
 import ReactMarkdown from "react-markdown";
 import EdditMenuButton from "./EditMenuButton";
 
@@ -18,6 +18,7 @@ import "@/app/components/swiper/style.css";
 
 // import required modules
 import { Pagination } from "swiper/modules";
+import DeleteMenuButton from "./[id]/DeleteMenuButton";
 
 // interface Props {
 //   title: string;
@@ -64,9 +65,13 @@ const menusPage = async () => {
 
         {menus.map((menu) => (
           <Card key={menu.id} className="prose" mt="4">
-            <Box>
+            <Flex align="center" justify="between">
+              <Text size="1" weight="bold">
+                id : {menu.id}
+              </Text>
               <EdditMenuButton menuId={menu.id} />
-            </Box>
+              <DeleteMenuButton menuId={menu.id} />
+            </Flex>
             <Text size="6" weight="light" key={menu.id}>
               {menu.title} - {menu.price}€
             </Text>

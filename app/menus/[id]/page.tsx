@@ -3,6 +3,7 @@
 import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import React from "react";
+import DeleteMenuButton from "./DeleteMenuButton";
 
 interface Props {
   params: { id: string };
@@ -24,6 +25,7 @@ const MenuDetailPage = async ({ params }: Props) => {
       <p>title: {menu.title}</p>
       <p>description: {menu.description}</p>
       <p>price: {menu.price}</p>
+      <DeleteMenuButton menuId={menu.id} />
     </div>
   );
 };
