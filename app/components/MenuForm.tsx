@@ -8,6 +8,7 @@ import { useForm, Controller } from "react-hook-form";
 import "easymde/dist/easymde.min.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { Menu } from "@prisma/client";
 
 interface MenuForm {
   title: string;
@@ -19,7 +20,7 @@ const SimpleMDE = dynamic(async () => import("react-simplemde-editor"), {
   loading: () => <p>Loading...</p>,
 });
 
-const NewMenuForm = () => {
+const NewMenuForm = ({ menu }: { menu?: Menu }) => {
   const router = useRouter();
   const { register, control, handleSubmit } = useForm<MenuForm>();
   // console.log(register("title"));

@@ -1,7 +1,13 @@
 // app/menus/components/MenuForm.tsx
 
 "use client";
-import { Button, Callout, Text, TextField } from "@radix-ui/themes";
+import {
+  Button,
+  Callout,
+  Text,
+  TextField,
+  TextFieldRoot,
+} from "@radix-ui/themes";
 import SimpleMDE from "react-simplemde-editor";
 import { useForm, Controller } from "react-hook-form";
 import "easymde/dist/easymde.min.css";
@@ -9,13 +15,20 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createIssueSchema } from "@/app/validationSchema";
+import { menuSchema } from "@/app/validationSchema";
 import z from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 import { Menu } from "@prisma/client";
 
-type MenuFormData = z.infer<typeof createIssueSchema>;
+// type MenuFormData = z.infer<typeof menuSchema>;
+type MenuFormData = z.infer<typeof menuSchema>;
+
+interface MenuForm {
+  title: string;
+  description: string;
+  price: number;
+}
 
 // issue?: -> optional props typed in Issue by prisma, only needed on edit page
 // interface bloc is factorized inline
@@ -23,7 +36,7 @@ type MenuFormData = z.infer<typeof createIssueSchema>;
 //   issue?: Issue;
 // }
 
-const MenuForm = ({ menu }: { menu?: Menu }) => {
+const EditMenuForm = ({ menu }: { menu?: Menu }) => {
   const router = useRouter();
   const {
     register,
@@ -31,7 +44,7 @@ const MenuForm = ({ menu }: { menu?: Menu }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<MenuFormData>({
-    resolver: zodResolver(createIssueSchema),
+    resolver: zodResolver(menuSchema),
   });
   // console.log(register("title"));
   // register return props that we should apply to an input field to track changes
@@ -51,7 +64,7 @@ const MenuForm = ({ menu }: { menu?: Menu }) => {
   });
 
   return (
-    <div className=" max-w-lg ">
+    <div className=" max-w-lg space-y-3 mx-4">
       {error && (
         <Callout.Root color="red" className="mb-3">
           <Callout.Text>{error}</Callout.Text>
@@ -66,6 +79,12 @@ const MenuForm = ({ menu }: { menu?: Menu }) => {
           ></TextField.Input>
         </TextField.Root>
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
+        <TextField.Root>
+          <TextField.Input
+            placeholder="Prix"
+            {...register("price")}
+          ></TextField.Input>
+        </TextField.Root>
         <Controller
           name="description"
           control={control}
@@ -77,12 +96,13 @@ const MenuForm = ({ menu }: { menu?: Menu }) => {
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
         <Button disabled={isSubmitting}>
-          Submit New menu
+          Modifier/ajout le menu
           {isSubmitting && <Spinner />}
         </Button>
       </form>
+      <p>{menu?.price}</p>
     </div>
   );
 };
 
-export default MenuForm;
+export default EditMenuForm;
