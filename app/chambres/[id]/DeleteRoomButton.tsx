@@ -45,7 +45,7 @@ const DeleteRoomButton = ({ roomId }: { roomId: number }) => {
             </Button>
           </AlertDialog.Cancel>
           <AlertDialog.Action>
-            <Button
+            <button
               onClick={async () => {
                 // console.log(`LOG:${roomId} type = ${typeof roomId}`);
                 //=> renvois le number ok
@@ -56,7 +56,7 @@ const DeleteRoomButton = ({ roomId }: { roomId: number }) => {
               }}
             >
               Ok
-            </Button>
+            </button>
           </AlertDialog.Action>
         </Flex>
       </AlertDialog.Content>
