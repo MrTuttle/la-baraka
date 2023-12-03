@@ -13,11 +13,54 @@ interface Chambre {
   title: string;
   description: string;
   id: number;
+  // imageId: ImageRoom[];
+  allIdsTab: string[];
+}
+interface ImageRoom {
+  assignedToRoomId: number;
+  publicId: string;
 }
 
 const chambresPage = async () => {
   const rooms = await prisma.room.findMany();
-  // const chambresImage = await prisma.image.findMany();
+  const chambresImage = await prisma.image.findMany();
+  const getRoomPublicIds = async (roomId: number) => {
+    const getImages = await prisma.image.findMany({
+      where: {
+        assignedToRoomId: roomId,
+      },
+    });
+
+    console.log("roomId");
+    console.log(roomId);
+    console.log("PUBLIC IDS :");
+
+    getImages.map((img) => console.log(img.publicId));
+    const allIdsTab: string[] = [];
+    getImages.map((imag) => allIdsTab.push(imag.publicId));
+    console.log("TAB :");
+    console.log(allIdsTab);
+    // getImages.map((img) => img.publicId);
+  };
+
+  // launch function who get all public ids for a room
+  rooms.map((room) => getRoomPublicIds(room.id));
+
+  console.log("CHAMBRESIMAGE :");
+
+  console.log(
+    chambresImage.map(
+      (image) =>
+        `id: ${image.id} publicId: ${image.publicId} assignedToRoomId: ${image.assignedToRoomId} alt: ${image.alt}`
+    )
+  );
+  console.log("ROOMS :");
+  console.log(
+    rooms.map(
+      (room) => `id: ${room.id} | title: ${room.title} | assignedRoom: `
+    )
+  );
+
   return (
     <>
       <div className="mx-4">
@@ -52,7 +95,10 @@ const chambresPage = async () => {
             <Flex direction="column">
               <h3>{room.title}</h3>
               <ReactMarkdown>{room.description}</ReactMarkdown>
-              <p>{}</p>
+              <p>mon texte{}</p>
+
+              {/* {getRoomPublicIds(room.id)} */}
+              {/* <DisplayCld public_id={} /> */}
             </Flex>
           </Card>
         ))}

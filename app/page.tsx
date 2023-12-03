@@ -10,6 +10,7 @@ import SlidesPerViewAuto from "./components/swiper/SlidesPerViewAuto";
 import Link from "next/link";
 import MenuSwiper from "./components/swiper/MenuSwiper";
 import CallMenuSwiper from "./components/swiper/CallMenuSwiper";
+import UploadWidget from "./components/UploadWidget";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();
@@ -60,6 +61,7 @@ const home = async () => {
           <DisplayCld key={image.id} public_id={image.publicId} alt={image.alt} />
         ))}  */}
       </div>
+      <UploadWidget />
     </>
   );
 };

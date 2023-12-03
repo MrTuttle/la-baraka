@@ -28,6 +28,8 @@ model Image {
   assignedToRoom   Room?  @relation(fields: [assignedToRoomId], references: [id])
   assignedToMenuId Int?
   assignedToMenu   Menu?  @relation(fields: [assignedToMenuId], references: [id])
+
+  @@index([assignedToRoomId])
 }
 
 model Menu {

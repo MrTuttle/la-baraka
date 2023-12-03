@@ -8,6 +8,8 @@ import { useForm, Controller } from "react-hook-form";
 import "easymde/dist/easymde.min.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { CldUploadWidget } from "next-cloudinary";
+import UploadWidget from "@/app/components/UploadWidget";
 
 interface RoomForm {
   title: string;
@@ -54,6 +56,7 @@ const NewRoomPage = () => {
             <SimpleMDE placeholder="description" {...field} />
           )}
         />
+        <UploadWidget />
         <Button>Ajouter la chambre</Button>
       </form>
     </section>

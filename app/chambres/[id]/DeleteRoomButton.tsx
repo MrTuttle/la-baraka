@@ -27,7 +27,7 @@ const DeleteRoomButton = ({ roomId }: { roomId: number }) => {
           <Flex gap="1" align="center">
             <HiOutlineTrash />
             <Text as="p" size="1">
-              Delete Menu
+              Delete Room
             </Text>
           </Flex>
         </Link>
