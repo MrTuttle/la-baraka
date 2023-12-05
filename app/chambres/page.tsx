@@ -10,6 +10,7 @@ import { HiOutlinePencilSquare } from "react-icons/hi2";
 import DeleteRoomButton from "./[id]/DeleteRoomButton";
 import DisplayCldMulti from "../components/DisplayCldMulti";
 import GetCldList from "../components/GetCldList";
+import GetCldIdList from "../components/GetCldIdList";
 
 export interface Room {
   title: string;
@@ -53,6 +54,8 @@ const chambresPage = async () => {
           <Card key={room.id} className="prose" mt="4">
             <Flex direction="row" align="baseline" gap="0" justify="between">
               <p>idd: {room.id}</p>
+              <GetCldIdList idRoom={room.id} />
+
               <Flex gap="2" direction="row" align="center">
                 <Link href={"/chambres/new"}>
                   <Flex gap="1">
