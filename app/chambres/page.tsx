@@ -8,58 +8,39 @@ import Link from "next/link";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import DeleteRoomButton from "./[id]/DeleteRoomButton";
+import DisplayCldMulti from "../components/DisplayCldMulti";
+import GetCldList from "../components/GetCldList";
 
-interface Chambre {
+export interface Room {
   title: string;
   description: string;
   id: number;
   // imageId: ImageRoom[];
-  allIdsTab: string[];
+  // allIdsTab: string[];
 }
-interface ImageRoom {
+export interface ImageRoom {
   assignedToRoomId: number;
   publicId: string;
+  alt: string;
 }
 
 const chambresPage = async () => {
+  const item = 4;
   const rooms = await prisma.room.findMany();
-  const chambresImage = await prisma.image.findMany();
-  const getRoomPublicIds = async (roomId: number) => {
-    const getImages = await prisma.image.findMany({
-      where: {
-        assignedToRoomId: roomId,
+  // console.log("ROOM PAGE :");
+  // console.log(rooms);
+  const images = prisma.image.findMany({
+    where: {
+      assignedToRoom: {
+        id: item,
       },
-    });
-
-    console.log("roomId");
-    console.log(roomId);
-    console.log("PUBLIC IDS :");
-
-    getImages.map((img) => console.log(img.publicId));
-    const allIdsTab: string[] = [];
-    getImages.map((imag) => allIdsTab.push(imag.publicId));
-    console.log("TAB :");
-    console.log(allIdsTab);
-    // getImages.map((img) => img.publicId);
-  };
-
-  // launch function who get all public ids for a room
-  rooms.map((room) => getRoomPublicIds(room.id));
-
-  console.log("CHAMBRESIMAGE :");
-
-  console.log(
-    chambresImage.map(
-      (image) =>
-        `id: ${image.id} publicId: ${image.publicId} assignedToRoomId: ${image.assignedToRoomId} alt: ${image.alt}`
-    )
-  );
-  console.log("ROOMS :");
-  console.log(
-    rooms.map(
-      (room) => `id: ${room.id} | title: ${room.title} | assignedRoom: `
-    )
-  );
+    },
+    select: {
+      publicId: true,
+    },
+  });
+  console.log(" CONTENUS DE images AVEC ITEM = 4 :");
+  console.log(await images);
 
   return (
     <>
@@ -95,7 +76,18 @@ const chambresPage = async () => {
             <Flex direction="column">
               <h3>{room.title}</h3>
               <ReactMarkdown>{room.description}</ReactMarkdown>
+
               <p>mon texte{}</p>
+              {rooms.map((item, index) => (
+                <p key={index}>{item.id}</p>
+              ))}
+
+              {/* <GetCldList imgList={room.id}/> */}
+              {/* <DisplayCldMulti
+                assignedToRoomId={room.id}
+                publicId="kh4tt0exbzev7p3csh32"
+                alt="truc"
+              /> */}
 
               {/* {getRoomPublicIds(room.id)} */}
               {/* <DisplayCld public_id={} /> */}
