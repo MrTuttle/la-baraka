@@ -43,7 +43,7 @@ const DeleteImageButton = ({ imageId }: { imageId: number }) => {
             <AlertDialog.Action>
               <button
                 onClick={async () => {
-                  await axios.delete("api/images/" + imageId);
+                  await axios.delete("/api/images/" + imageId);
                   router.push("/images");
                   router.refresh();
                 }}
