@@ -13,7 +13,7 @@ interface ImageForm {
 
 const NewImagePage = () => {
   const router = useRouter();
-  const { register, control, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   return (
     <>
       <section className="mx-4">
@@ -40,7 +40,7 @@ const NewImagePage = () => {
           <TextField.Root>
             <TextField.Input
               placeholder="assignedToRoomId"
-              {...register("assignedToRoomId")}
+              {...register("assignedToRoomId", { valueAsNumber: true })}
             ></TextField.Input>
           </TextField.Root>
           <Button>Ajouter l’image</Button>
