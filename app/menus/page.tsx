@@ -3,38 +3,7 @@ import { Box, Button, Card, Flex, Link, Text } from "@radix-ui/themes";
 import ReactMarkdown from "react-markdown";
 import EdditMenuButton from "./EditMenuButton";
 
-import MenuSwiper from "../components/swiper/MenuSwiper";
-
-import React, { useRef, useState } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
-// import "./styles.css";
-import "@/app/components/swiper/style.css";
-
-// import required modules
-import { Pagination } from "swiper/modules";
 import DeleteMenuButton from "./[id]/DeleteMenuButton";
-
-// interface Props {
-//   title: string;
-//   description: string;
-//   id: number;
-// }
-// interface Props {
-//   menuslist: [
-//     {
-//       title: string;
-//       id: number;
-//       description: string;
-//       price: number | null;
-//     }
-//   ];
-// }
 
 const menusPage = async () => {
   const menus = await prisma.menu.findMany();
@@ -79,7 +48,6 @@ const menusPage = async () => {
           </Card>
         ))}
       </div>
-      <MenuSwiper list={menus} />
     </>
   );
 };

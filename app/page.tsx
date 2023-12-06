@@ -44,27 +44,13 @@ const home = async () => {
             téléphone
           </p>
         </div>
-        {/* <SlidesPerViewAuto /> */}
         <SlidePerViewGetIds />
       </Section>
       <div className="mx-4">
         <Link href="/dashboard">
           <Button>Dashboard</Button>
         </Link>
-        {/* <CldImage
-        width="960"
-        height="600"
-        src="kh4tt0exbzev7p3csh32"
-        sizes="100vw"
-        alt="Description of my image"
-      /> */}
-        <DisplayCld public_id="s1pqrceeb5yjoxlldsiv" alt="Chambre" />
-
-        {/* {chambresImage.map((image) => (
-          <DisplayCld key={image.id} public_id={image.publicId} alt={image.alt} />
-        ))}  */}
       </div>
-      <UploadWidget />
     </>
   );
 };
