@@ -15,7 +15,10 @@ export async function POST(request: NextRequest) {
   if (!validation.success)
     return NextResponse.json(validation.error.errors, { status: 400 });
   const newRoom = await prisma.room.create({
-    data: { title: body.title, description: body.description },
+    data: {
+      title: body.title,
+      description: body.description,
+    },
   });
   return NextResponse.json(newRoom, { status: 201 });
 }

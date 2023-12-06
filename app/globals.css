@@ -38,6 +38,19 @@ body {
   padding: 0;
 }
 
+/* UTILITY PERSONNAL STYLES */
+/* dev mode : to quickly detect an element */
+.my-border-red {
+  border: red 1px solid;
+}
+/* use for Link who wrap images in swiper js - prevent small images which doesn't fit its container */
+/* "display: contents" tell a children to display as its parent */
+.my-display-contents {
+  display: contents;
+}
+
+/* SWIPER STYLES */
+
 .swiper {
   width: 100%;
   height: 100%;

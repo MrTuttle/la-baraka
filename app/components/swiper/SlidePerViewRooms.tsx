@@ -18,7 +18,9 @@ import { Pagination } from "swiper/modules";
 import { CldImage } from "next-cloudinary";
 
 import { Room, ImageRoom } from "@/app/chambres/page";
-import Link from "next/link";
+// import Link from "next/link";
+import { Link } from "@radix-ui/themes";
+import DisplayCld from "../DisplayCld";
 
 type List = {
   // count: number;
@@ -38,28 +40,25 @@ const SlidePerViewRooms = ({ listImages }: List) => {
         className="mySwiper mb-10"
       >
         <div slot="container-start" className="m-4">
-          Les chambres pas encore clicables
+          Les chambres
         </div>
         {listImages.map((image, index) => (
-          <Link key={index} href={`chambres/${image.assignedToRoomId}`}>
-            <SwiperSlide>
+          <SwiperSlide key={index}>
+            <Link
+              href={`chambres/${image.assignedToRoomId}`}
+              className="my-display-contents"
+            >
               <CldImage
                 src={image.publicId}
                 width={960}
                 height={600}
                 sizes="100vw"
                 alt={image.alt}
-              ></CldImage>
-            </SwiperSlide>
-          </Link>
+              />
+            </Link>
+          </SwiperSlide>
         ))}
       </Swiper>
-      {listImages.map((e, index) => (
-        <Link key={index} href={`chambres/${e.assignedToRoomId}`}>
-          <p>{e.publicId}</p>
-          <p>{e.alt}</p>
-        </Link>
-      ))}
     </>
   );
 };

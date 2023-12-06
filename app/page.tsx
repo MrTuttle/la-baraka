@@ -44,7 +44,7 @@ const home = async () => {
             téléphone
           </p>
         </div>
-        <SlidesPerViewAuto />
+        {/* <SlidesPerViewAuto /> */}
         <SlidePerViewGetIds />
       </Section>
       <div className="mx-4">

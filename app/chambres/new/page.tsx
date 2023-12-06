@@ -46,6 +46,7 @@ const NewRoomPage = () => {
             {...register("title")}
           ></TextField.Input>
         </TextField.Root>
+
         {/* // simpleMDE doesn't support additional props with spead operator // so we
       need to use a different technique. // we use controller component in
     react-form */}
@@ -56,7 +57,8 @@ const NewRoomPage = () => {
             <SimpleMDE placeholder="description" {...field} />
           )}
         />
-        <UploadWidget />
+
+        {/* <UploadWidget /> */}
         <Button>Ajouter la chambre</Button>
       </form>
     </section>

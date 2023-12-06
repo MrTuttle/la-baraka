@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { CldUploadWidget, CldImage } from "next-cloudinary";
+import { Button } from "@radix-ui/themes";
 
 interface CloudinaryResult {
   public_id: string;
@@ -41,11 +42,7 @@ const UploadWidget = () => {
           console.log(result);
         }}
       >
-        {({ open }) => (
-          <button className="btn btn-primary" onClick={() => open()}>
-            Upload
-          </button>
-        )}
+        {({ open }) => <Button onClick={() => open()}>Upload</Button>}
       </CldUploadWidget>
     </>
   );
