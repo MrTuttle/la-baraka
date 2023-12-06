@@ -1,6 +1,8 @@
+import DisplayCld from "@/app/components/DisplayCld";
 import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import React from "react";
+import DeleteImageButton from "./DeleteButtonImage";
 
 interface Props {
   params: { id: string };
@@ -14,11 +16,13 @@ const ImageDetailPage = async ({ params }: Props) => {
   return (
     <>
       <div className="mx-4">
-        <div>ImageDetailPage</div>
+        <h1>ImageDetailPage</h1>
         <p>Id: {image.id}</p>
         <p>Public Id: {image.publicId}</p>
         <p>alt: {image.alt}</p>
-        <p>{image.assignedToRoomId}</p>
+        <p>Assigned room : {image.assignedToRoomId}</p>
+        <DeleteImageButton imageId={image.id} />
+        <DisplayCld public_id={image.publicId} alt={image.alt} />
       </div>
     </>
   );
