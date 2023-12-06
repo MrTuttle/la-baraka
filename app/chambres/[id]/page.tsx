@@ -22,7 +22,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
   return (
     <div className="mx-4">
       <h1>Détail chambre</h1>
-      <GetCldIdList idRoom={room.id} />
+      <GetCldIdList roomId={room.id} />
       <p>Id: {room.id}</p>
       <p>{room.title}</p>
       <p>{room.description}</p>

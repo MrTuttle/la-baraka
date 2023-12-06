@@ -4,14 +4,14 @@ import DisplayCld from "./DisplayCld";
 // import { Room, ImageRoom } from "@/app/chambres/page";
 
 interface Props {
-  idRoom: number;
+  roomId: number;
 }
 
-const GetCldIdList = async ({ idRoom }: Props) => {
+const GetCldIdList = async ({ roomId }: Props) => {
   const imagess = await prisma.image.findMany({
     where: {
       assignedToRoom: {
-        id: idRoom,
+        id: roomId,
       },
     },
     select: {
@@ -19,7 +19,7 @@ const GetCldIdList = async ({ idRoom }: Props) => {
       alt: true,
     },
   });
-  console.log(" CONTENUS DE images AVEC idRoom = 4 :");
+  // console.log(" CONTENUS DE images AVEC idRoom = 4 :");
   // console.log(images);
   // return imagess;
   return (

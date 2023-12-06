@@ -1,3 +1,8 @@
+//app/component/swiper/CallMenuSwiper.tsx
+// THIS "USE SERVER" MODULE
+// IS REQUIRE TO LAUNCH THE "USE CLIENT"
+// COMPONENT MENUSWIPER
+
 import prisma from "@/prisma/client";
 import React from "react";
 

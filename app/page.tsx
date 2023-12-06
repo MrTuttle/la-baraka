@@ -11,6 +11,7 @@ import Link from "next/link";
 import MenuSwiper from "./components/swiper/MenuSwiper";
 import CallMenuSwiper from "./components/swiper/CallMenuSwiper";
 import UploadWidget from "./components/UploadWidget";
+import SlidePerViewGetIds from "./components/swiper/SlidePerViewGetIds";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();
@@ -44,6 +45,7 @@ const home = async () => {
           </p>
         </div>
         <SlidesPerViewAuto />
+        <SlidePerViewGetIds />
       </Section>
       <div className="mx-4">
         <Link href="/dashboard">
@@ -57,6 +59,7 @@ const home = async () => {
         alt="Description of my image"
       /> */}
         <DisplayCld public_id="s1pqrceeb5yjoxlldsiv" alt="Chambre" />
+
         {/* {chambresImage.map((image) => (
           <DisplayCld key={image.id} public_id={image.publicId} alt={image.alt} />
         ))}  */}

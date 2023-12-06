@@ -17,7 +17,7 @@ export interface Room {
   // allIdsTab: string[];
 }
 export interface ImageRoom {
-  assignedToRoomId: number;
+  assignedToRoomId: number | null;
   publicId: string;
   alt: string;
 }
@@ -62,7 +62,7 @@ const chambresPage = async () => {
               </Flex>
             </Flex>
             <Flex direction="column" gap="1">
-              <GetCldIdList idRoom={room.id} />
+              <GetCldIdList roomId={room.id} />
               <h3>{room.title}</h3>
               <ReactMarkdown>{room.description}</ReactMarkdown>
               <Link href={`chambres/${room.id}`}>Détail</Link>
