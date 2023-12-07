@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import DeleteRoomButton from "./DeleteRoomButton";
 import GetCldIdList from "@/app/components/GetCldIdList";
+import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -28,6 +29,10 @@ const ChambreDetailPage = async ({ params }: Props) => {
       <p>{room.description}</p>
       <p>Création : {room.createdAt.toDateString()}</p>
       <p>Modification : {room.updatedAt.toDateString()}</p>
+      <div className="p-10">
+        <BKDayPicker />
+      </div>
+
       <DeleteRoomButton roomId={room.id} />
     </div>
   );
