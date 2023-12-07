@@ -11,11 +11,21 @@ interface ImageForm {
   alt: string;
   assignedToRoomId: number | null;
 }
+interface Rooms {
+  id: number;
+  title: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+interface List {
+  listRooms: Rooms[];
+}
 
-const AssignImgForm = () => {
+const AssignImgForm = ({ listRooms }: List) => {
   const router = useRouter();
   const { register, handleSubmit } = useForm();
-  const list = [14, 18];
+  // const list = [14, 18];
   return (
     <>
       <section className="mx-4">
@@ -51,8 +61,8 @@ const AssignImgForm = () => {
               id="grid-state"
               {...register("assignedToRoomId", { valueAsNumber: true })}
             >
-              {list.map((item, index) => (
-                <option key={index}>{item}</option>
+              {listRooms.map((room, index) => (
+                <option key={index}>{room.id}</option>
               ))}
               {/* <option>New Mexico</option>
               <option>Missouri</option>

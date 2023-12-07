@@ -23,7 +23,7 @@ const DeleteImageButton = ({ imageId }: { imageId: number }) => {
             <Flex gap="1" align="center">
               <HiOutlineTrash />
               <Text as="p" size="1">
-                Delete Image
+                Ne plus associer cette image
               </Text>
             </Flex>
           </Link>
@@ -31,8 +31,7 @@ const DeleteImageButton = ({ imageId }: { imageId: number }) => {
         <AlertDialog.Content>
           <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
           <AlertDialog.Description>
-            Are you sure you want to delete this image. This action cannot be
-            undone.
+            Est tu sur de vouloir enlever cette image de cette chambre ?
           </AlertDialog.Description>
           <Flex mt="4" gap="2">
             <AlertDialog.Cancel>
