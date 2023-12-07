@@ -22,3 +22,9 @@ export async function POST(request: NextRequest) {
   });
   return NextResponse.json(newRoom, { status: 201 });
 }
+
+export async function GET(request: NextRequest) {
+  const users = await prisma.room.findMany({ orderBy: { title: "asc" } });
+  return NextResponse.json(users);
+}
+// => ok in postman : GET http://localhost:3000/api/chambres + empty body
