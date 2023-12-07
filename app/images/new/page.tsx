@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { Button, TextField } from "@radix-ui/themes";
+import prisma from "@/prisma/client";
 
 interface ImageForm {
   publicId: string;
