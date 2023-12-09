@@ -11,7 +11,7 @@ const SlidePerViewGetIds = async () => {
   const images = await prisma.image.findMany({
     where: {
       // activate when we should pass cover to new images
-      // cover: true,
+      cover: true,
     },
     select: {
       publicId: true,
