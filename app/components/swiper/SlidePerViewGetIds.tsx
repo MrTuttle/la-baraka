@@ -9,7 +9,10 @@ import SlidePerViewRooms from "./SlidePerViewRooms";
 
 const SlidePerViewGetIds = async () => {
   const images = await prisma.image.findMany({
-    where: {},
+    where: {
+      // activate when we should pass cover to new images
+      // cover: true,
+    },
     select: {
       publicId: true,
       assignedToRoomId: true,
