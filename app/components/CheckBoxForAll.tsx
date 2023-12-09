@@ -1,14 +1,35 @@
+import { register } from "module";
 import { useState } from "react";
 
-export const CheckboxForAll = () => {
-  const [isChecked, setIsChecked] = useState(false);
+interface Props {
+  defaultState: boolean;
+  // returnState: ()=> void;
+}
+interface Rooms {
+  id: number;
+  title: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+interface List {
+  listRooms: Rooms[];
+}
+
+export const CheckboxForAll = (
+  { defaultState }: Props,
+  { listRooms }: List
+) => {
+  const [isChecked, setIsChecked] = useState(defaultState);
 
   const checkHandler = () => {
     setIsChecked(!isChecked);
     // pass the inverse of (isChecked) with (!isChecked)
     console.log(!isChecked);
-    console.log("hello");
+    // => true or false
+    // console.log("hello");
   };
+  const returnState = checkHandler;
   return (
     <div>
       <input
@@ -25,10 +46,13 @@ export const CheckboxForAll = () => {
   );
 };
 
-function Checker() {
-  console.log("HELO");
+// function Checker({ defaultState, returnState }: Props) {
+//   console.log("HELO");
+//   console.log(returnState);
 
-  return <CheckboxForAll />;
-}
+//   return (
+//     <CheckboxForAll defaultState={defaultState} returnState={returnState} />
+//   );
+// }
 
-export default Checker;
+export default CheckboxForAll;

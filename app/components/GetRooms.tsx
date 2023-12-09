@@ -7,7 +7,7 @@ import AssignImgForm from "./AssignImgForm";
 
 const GetRooms = async () => {
   const rooms = await prisma.room.findMany();
-  console.log(rooms);
+  // console.log(rooms);
 
   return (
     <>

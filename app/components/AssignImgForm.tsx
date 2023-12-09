@@ -4,7 +4,7 @@
 "use client";
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import { Button, Checkbox, Flex, Text, TextField } from "@radix-ui/themes";
 import GetRooms from "./GetRooms";
@@ -28,7 +28,9 @@ interface List {
 
 const AssignImgForm = ({ listRooms }: List) => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm();
+  const onSubmit = (data: Rooms) => console.log(data);
+  // console.log(errors);
   // const checkboxRef = useRef(null);
   // const list = [14, 18];
   return (
@@ -45,41 +47,21 @@ const AssignImgForm = ({ listRooms }: List) => {
             axios.post("/api/images", data);
             router.push("/images");
             router.refresh();
+            console.log(data);
           })}
         >
-          <TextField.Root>
-            <TextField.Input
-              placeholder="publicId"
-              {...register("publicId")}
-            ></TextField.Input>
-          </TextField.Root>
-          <TextField.Root>
-            <TextField.Input
-              placeholder="Alt"
-              {...register("alt")}
-            ></TextField.Input>
-          </TextField.Root>
-          <CheckboxForAll />
+          <input
+            type="text"
+            placeholder="publicId"
+            {...register("publicId", {})}
+          />
+          <input type="text" placeholder="alt" {...register("alt", {})} />
+          <input
+            type="checkbox"
+            placeholder="cover"
+            {...register("cover", {})}
+          />
 
-          <div className="relative">
-            <input
-              placeholder="cover"
-              type="checkbox"
-              id="checkboxForCover"
-              defaultChecked={false}
-              // ref={checkboxRef}
-              {...register("cover")}
-            />
-            <label htmlFor="checkboxForCover" className="px-2">
-              Definir comme image de couverture.
-            </label>
-          </div>
-          {/* <TextField.Root>
-            <TextField.Input
-              placeholder="assignedToRoomId"
-              {...register("assignedToRoomId", { valueAsNumber: true })}
-            ></TextField.Input>
-          </TextField.Root> */}
           <div className="relative">
             <select
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -89,9 +71,6 @@ const AssignImgForm = ({ listRooms }: List) => {
               {listRooms.map((room, index) => (
                 <option key={index}>{room.id}</option>
               ))}
-              {/* <option>New Mexico</option>
-              <option>Missouri</option>
-              <option>Texas</option> */}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
@@ -103,8 +82,9 @@ const AssignImgForm = ({ listRooms }: List) => {
               </svg>
             </div>
           </div>
+          <input type="submit" />
 
-          <Button>Ajouter l’image</Button>
+          {/* <Button>Ajouter l’image</Button> */}
         </form>
       </section>
     </>
