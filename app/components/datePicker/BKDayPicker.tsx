@@ -19,23 +19,23 @@ const BKDayPicker = () => {
     setBooked(day && modifiers.booked);
   };
   // MESSAGE TO GIVE SELECTED RANGE DAYS
-  // let footer = <p>Please pick the first day.</p>;
-  // if (range?.from) {
-  //   if (!range.to) {
-  //     footer = <p>{format(range.from, "PPP")}</p>;
-  //   } else if (range.to) {
-  //     footer = (
-  //       <p>
-  //         {format(range.from, "PPP")}–{format(range.to, "PPP")}
-  //       </p>
-  //     );
-  //   }
-  // }
+  let footer = <p>Please pick the first day.</p>;
+  if (range?.from) {
+    if (!range.to) {
+      footer = <p>{format(range.from, "PPP")}</p>;
+    } else if (range.to) {
+      footer = (
+        <p>
+          {format(range.from, "PPP")}–{format(range.to, "PPP")}
+        </p>
+      );
+    }
+  }
 
   // MESSAGE IF DAY IS ALREADY BOOKED
-  const footer = booked
-    ? "This day is already booked!"
-    : "Try to pick a booked day.";
+  // const footer = booked
+  //   ? "This day is already booked!"
+  //   : "Try to pick a booked day.";
 
   return (
     <DayPicker

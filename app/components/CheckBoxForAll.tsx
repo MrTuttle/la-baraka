@@ -18,9 +18,9 @@ export const CheckboxForAll = () => {
         onChange={checkHandler}
       />
       <label htmlFor="checkbox" className="px-2">
-        I agree to Terms of Service{" "}
+        Definir comme image de couverture
       </label>
-      <p>The checkbox is {isChecked ? "checked" : "unchecked"}</p>
+      <p>Cette checkbox est {isChecked ? "checked" : "unchecked"}</p>
     </div>
   );
 };
@@ -28,11 +28,7 @@ export const CheckboxForAll = () => {
 function Checker() {
   console.log("HELO");
 
-  return (
-    <div className="App">
-      <CheckboxForAll />
-    </div>
-  );
+  return <CheckboxForAll />;
 }
 
 export default Checker;

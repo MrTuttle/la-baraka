@@ -33,8 +33,12 @@ const AssignImgForm = ({ listRooms }: List) => {
   // const list = [14, 18];
   return (
     <>
-      <p>bsntxwux7lk4dustqhff</p>
       <section className="mx-4">
+        <p>
+          <strong>img id de test :</strong>
+        </p>
+        <p>bsntxwux7lk4dustqhff</p>
+        <p>—</p>
         <form
           className="max-w-lg space-y-3"
           onSubmit={handleSubmit(async (data) => {

@@ -27,8 +27,8 @@ const ChambreDetailPage = async ({ params }: Props) => {
       <p>Id: {room.id}</p>
       <p>{room.title}</p>
       <p>{room.description}</p>
-      <p>Création : {room.createdAt.toDateString()}</p>
-      <p>Modification : {room.updatedAt.toDateString()}</p>
+      {/* <p>Création : {room.createdAt.toDateString()}</p>
+      <p>Modification : {room.updatedAt.toDateString()}</p> */}
       <div className="p-10">
         <BKDayPicker />
       </div>
