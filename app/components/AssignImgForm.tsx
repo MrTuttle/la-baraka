@@ -47,15 +47,25 @@ const AssignImgForm = ({ listRooms }: List) => {
             axios.post("/api/images", data);
             router.push("/images");
             router.refresh();
+            console.log("DATAS :");
             console.log(data);
           })}
         >
-          <input
-            type="text"
-            placeholder="publicId"
-            {...register("publicId", {})}
-          />
-          <input type="text" placeholder="alt" {...register("alt", {})} />
+          <TextField.Root>
+            <TextField.Input
+              type="text"
+              placeholder="publicId"
+              {...register("publicId", {})}
+            ></TextField.Input>
+          </TextField.Root>
+          <TextField.Root>
+            <TextField.Input
+              type="text"
+              placeholder="alt"
+              {...register("alt", {})}
+            ></TextField.Input>
+          </TextField.Root>
+
           <input
             type="checkbox"
             placeholder="cover"
@@ -82,9 +92,9 @@ const AssignImgForm = ({ listRooms }: List) => {
               </svg>
             </div>
           </div>
-          <input type="submit" />
+          {/* <input type="submit" /> */}
 
-          {/* <Button>Ajouter l’image</Button> */}
+          <Button>Ajouter l’image</Button>
         </form>
       </section>
     </>
