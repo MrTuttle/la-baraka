@@ -1,10 +1,14 @@
+// app/component/AssignImgForm.tsx
+// this form receives data when he is placed in GetRooms "server component"
+// use this to link images with rooms id
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { Button, TextField } from "@radix-ui/themes";
+import { Button, Checkbox, Flex, Text, TextField } from "@radix-ui/themes";
 import GetRooms from "./GetRooms";
+import { CheckboxForAll } from "./CheckBoxForAll";
 
 interface ImageForm {
   publicId: string;
@@ -25,9 +29,11 @@ interface List {
 const AssignImgForm = ({ listRooms }: List) => {
   const router = useRouter();
   const { register, handleSubmit } = useForm();
+  // const checkboxRef = useRef(null);
   // const list = [14, 18];
   return (
     <>
+      <p>bsntxwux7lk4dustqhff</p>
       <section className="mx-4">
         <form
           className="max-w-lg space-y-3"
@@ -49,6 +55,21 @@ const AssignImgForm = ({ listRooms }: List) => {
               {...register("alt")}
             ></TextField.Input>
           </TextField.Root>
+          <CheckboxForAll />
+
+          <div className="relative">
+            <input
+              placeholder="cover"
+              type="checkbox"
+              id="checkboxForCover"
+              defaultChecked={false}
+              // ref={checkboxRef}
+              {...register("cover")}
+            />
+            <label htmlFor="checkboxForCover" className="px-2">
+              Definir comme image de couverture.
+            </label>
+          </div>
           {/* <TextField.Root>
             <TextField.Input
               placeholder="assignedToRoomId"
@@ -78,6 +99,7 @@ const AssignImgForm = ({ listRooms }: List) => {
               </svg>
             </div>
           </div>
+
           <Button>Ajouter l’image</Button>
         </form>
       </section>

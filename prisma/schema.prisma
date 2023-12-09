@@ -21,13 +21,14 @@ model Room {
 }
 
 model Image {
-  id               Int    @id @default(autoincrement())
-  publicId         String @db.VarChar(255)
-  alt              String @db.VarChar(255)
+  id               Int     @id @default(autoincrement())
+  publicId         String  @db.VarChar(255)
+  alt              String  @db.VarChar(255)
+  cover            Boolean @default(false)
   assignedToRoomId Int?
-  assignedToRoom   Room?  @relation(fields: [assignedToRoomId], references: [id])
+  assignedToRoom   Room?   @relation(fields: [assignedToRoomId], references: [id])
   assignedToMenuId Int?
-  assignedToMenu   Menu?  @relation(fields: [assignedToMenuId], references: [id])
+  assignedToMenu   Menu?   @relation(fields: [assignedToMenuId], references: [id])
 
   @@index([assignedToRoomId])
 }

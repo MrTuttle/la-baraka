@@ -22,12 +22,14 @@ const ImagesListPage = async () => {
                 />
               </Inset>
               <Text as="div" size="2" weight="bold">
-                {image.publicId}
+                public id : {image.publicId}
               </Text>
               <Text as="div" color="gray" size="2">
-                room id :{image.assignedToRoomId}
+                associated room id :{image.assignedToRoomId}
               </Text>
-              <p></p>
+              <Text as="p" color="gray" size="2">
+                Cover : {image.cover.toString()}
+              </Text>
             </a>
           </Card>
         ))}

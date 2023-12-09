@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Image` ADD COLUMN `cover` BOOLEAN NOT NULL DEFAULT false;

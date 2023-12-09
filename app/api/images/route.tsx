@@ -14,3 +14,7 @@ export async function POST(request: NextRequest) {
   });
   return NextResponse.json(newImage, { status: 201 });
 }
+export async function GET(request: NextRequest) {
+  const users = await prisma.image.findMany({ orderBy: { id: "asc" } });
+  return NextResponse.json(users);
+}
