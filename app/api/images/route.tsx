@@ -10,6 +10,7 @@ export async function POST(request: NextRequest) {
       publicId: body.publicId,
       alt: body.alt,
       assignedToRoomId: body.assignedToRoomId,
+      cover: body.cover,
     },
   });
   return NextResponse.json(newImage, { status: 201 });

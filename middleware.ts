@@ -11,6 +11,6 @@ export const config = {
     "/menus/:path*",
     "/chambres/new",
     // "/chambres/:path*",
-    "/images/:path*",
+    // "/images/:path*",
   ],
 };
