@@ -47,8 +47,8 @@ const AssignImgForm = ({ listRooms }: List) => {
             axios.post("/api/images", data);
             router.push("/images");
             router.refresh();
-            console.log("DATAS :");
-            console.log(data);
+            // console.log("DATAS :");
+            // console.log(data);
           })}
         >
           <TextField.Root>

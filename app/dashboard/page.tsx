@@ -26,16 +26,8 @@ const pageDashboard = async () => {
         </Box>
         <Box>
           <h2>Gestion des images</h2>
-          <p>
-            <strong>1 </strong> | Ajouter une image à la bibliothèque cloudinary
-          </p>
 
-          <UploadWidget />
-          <p>
-            <strong>2 </strong> | Ajouter ensuite cette image à la base Baraka
-            et lier l’identifiant d’une chambre :
-          </p>
-          <Link href="/images/new">AJouter l’image à une chambre</Link>
+          <Link href="/images/new">AJouter une image à une chambre</Link>
         </Box>
       </Flex>
     </div>
