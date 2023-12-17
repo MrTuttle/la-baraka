@@ -1,9 +1,11 @@
 import React from "react";
+import ImageList from "../components/ImageList";
 
 const ImagesListPage = async () => {
   return (
     <div className="mx-4">
       <h1>Images List Page</h1>
+      <ImageList />
     </div>
   );
 };
