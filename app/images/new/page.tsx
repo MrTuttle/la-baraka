@@ -16,13 +16,14 @@ import GetRooms from "@/app/components/GetRooms";
 import ImageList from "@/app/components/ImageList";
 import UploadWidget from "@/app/components/UploadWidget";
 
-interface ImageForm {
-  publicId: string;
-  alt: string;
-  assignedToRoomId: number | null;
-}
+// interface ImageForm {
+//   publicId: string;
+//   alt: string;
+//   assignedToRoomId: number | null;
+// }
 
-const NewImagePage = ({ publicId }: ImageForm) => {
+// const NewImagePage = ({ publicId }: ImageForm) => {
+const NewImagePage = () => {
   return (
     <>
       <Flex

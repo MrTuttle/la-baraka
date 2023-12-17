@@ -20,6 +20,19 @@ const BKDayPicker = () => {
   };
   // MESSAGE TO GIVE SELECTED RANGE DAYS
   let footer = <p>Please pick the first day.</p>;
+  const affiche = () => {
+    if (range?.from) {
+      if (!range.to) {
+        footer = <p>{format(range.from, "PPP")}</p>;
+      } else if (range.to) {
+        footer = (
+          <p>
+            {format(range.from, "PPP")}–{format(range.to, "PPP")}
+          </p>
+        );
+      }
+    }
+  };
   if (range?.from) {
     if (!range.to) {
       footer = <p>{format(range.from, "PPP")}</p>;
@@ -31,6 +44,14 @@ const BKDayPicker = () => {
       );
     }
   }
+  console.log("DAY PICKER LOGS:");
+  console.log("booked true / false / undefine : " + booked);
+  console.log("bookedDays: " + bookedDays + "donne les jours booked: true");
+  // console.log(bookedStyle); // donne le style CSS de l'élément booked
+  console.log("dernier jour du range :" + range?.to);
+  console.log("premier jour du range :" + range?.from);
+
+  console.log(range); // le range.to et range.from
 
   // MESSAGE IF DAY IS ALREADY BOOKED
   // const footer = booked
@@ -38,21 +59,31 @@ const BKDayPicker = () => {
   //   : "Try to pick a booked day.";
 
   return (
-    <DayPicker
-      id="test"
-      mode="range" // ability to select a range of days
-      selected={range}
-      onSelect={setRange}
-      footer={footer}
-      locale={fr}
-      fromYear={2023} // limits years
-      toYear={2025}
-      showOutsideDays
-      onDayClick={handleDayClick}
-      modifiers={{ booked: bookedDays }}
-      modifiersStyles={{ booked: bookedStyle }}
-      // captionLayout="dropdown"
-    />
+    <>
+      <DayPicker
+        id="test"
+        mode="range" // ability to select a range of days
+        selected={range}
+        onSelect={setRange}
+        footer={footer}
+        locale={fr}
+        fromYear={2023} // limits years
+        toYear={2025}
+        showOutsideDays
+        onDayClick={handleDayClick}
+        modifiers={{ booked: bookedDays }}
+        modifiersStyles={{ booked: bookedStyle }}
+
+        // captionLayout="dropdown"
+      />
+      <div className="px-4">
+        <p>E T A T :</p>
+        {booked ? "this day is allready booked" : "try to pick a booked day"}
+        <p>SELECTION :</p>
+        {/* <p>Date d’arrivée : {affiche()}</p> */}
+        {/* <p>Date de départ : {range?.to}</p> */}
+      </div>
+    </>
   );
 };
 
