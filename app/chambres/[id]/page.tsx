@@ -6,6 +6,7 @@ import React from "react";
 import DeleteRoomButton from "./DeleteRoomButton";
 import GetCldIdList from "@/app/components/GetCldIdList";
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
+import { Button, Flex } from "@radix-ui/themes";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -21,20 +22,33 @@ const ChambreDetailPage = async ({ params }: Props) => {
   });
   if (!room) notFound();
   return (
-    <div className="mx-4">
+    <Flex direction="column" align="center" className="mx-4">
       <h1>Détail chambre</h1>
-      <GetCldIdList roomId={room.id} />
-      <p>Id: {room.id}</p>
-      <p>{room.title}</p>
-      <p>{room.description}</p>
+      <Flex direction="column">
+        <GetCldIdList roomId={room.id} />
+        <div className="py-4">
+          <p>Id: {room.id}</p>
+          <p>{room.title}</p>
+          <p>{room.description}</p>
+        </div>
+      </Flex>
+
       {/* <p>Création : {room.createdAt.toDateString()}</p>
       <p>Modification : {room.updatedAt.toDateString()}</p> */}
-      <div className="p-10">
+      <Flex direction="column" align="center" className="p-8">
         <BKDayPicker />
-      </div>
+      </Flex>
 
       <DeleteRoomButton roomId={room.id} />
-    </div>
+      <div
+        className="w-full bg-white h-20 border-t-2
+            fixed left-0 bottom-0
+            flex justify-center items-center z-50
+           "
+      >
+        <Button>Reserver</Button>
+      </div>
+    </Flex>
   );
 };
 
