@@ -35,12 +35,7 @@ const AssignImgForm = ({ listRooms }: List) => {
   // const list = [14, 18];
   return (
     <>
-      <section className="mx-4">
-        <p>
-          <strong>img id de test :</strong>
-        </p>
-        <p>bsntxwux7lk4dustqhff</p>
-        <p>—</p>
+      <section className="mx-4 my-4">
         <form
           className="max-w-lg space-y-3"
           onSubmit={handleSubmit(async (data) => {
@@ -54,7 +49,7 @@ const AssignImgForm = ({ listRooms }: List) => {
           <TextField.Root>
             <TextField.Input
               type="text"
-              placeholder="publicId"
+              placeholder="publicId : collez le public id ici"
               {...register("publicId", {})}
             ></TextField.Input>
           </TextField.Root>
@@ -65,14 +60,17 @@ const AssignImgForm = ({ listRooms }: List) => {
               {...register("alt", {})}
             ></TextField.Input>
           </TextField.Root>
-
-          <input
-            type="checkbox"
-            placeholder="cover"
-            {...register("cover", {})}
-          />
+          <Flex align="center">
+            <input
+              type="checkbox"
+              placeholder="cover"
+              {...register("cover", {})}
+            />
+            <label className="pl-2">Image de couverture</label>
+          </Flex>
 
           <div className="relative">
+            <p>Assignez un numéro de chambre a cette image :</p>
             <select
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
@@ -94,7 +92,7 @@ const AssignImgForm = ({ listRooms }: List) => {
           </div>
           {/* <input type="submit" /> */}
 
-          <Button>Ajouter l’image</Button>
+          <Button>Assigner l’image</Button>
         </form>
       </section>
     </>

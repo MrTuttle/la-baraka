@@ -7,9 +7,9 @@ const ImageList = async () => {
 
   return (
     <>
-      <Grid columns="3" gap="3" width="auto">
+      <Grid columns={{ initial: "1", md: "3", xl: "5" }} gap="3" width="auto">
         {images.map((image, index) => (
-          <Card key={index} asChild style={{ maxWidth: 350 }}>
+          <Card key={index} asChild style={{ maxWidth: 400 }}>
             <a href={"/images/" + image.id}>
               <Inset clip="padding-box" side="top" pb="current">
                 <CldImageClient
