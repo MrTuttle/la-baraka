@@ -72,4 +72,6 @@ const NewImagePage = () => {
   );
 };
 
+export const revalidate = 0;
+
 export default NewImagePage;
