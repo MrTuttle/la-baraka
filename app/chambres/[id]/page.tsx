@@ -48,13 +48,16 @@ const ChambreDetailPage = async ({ params }: Props) => {
            "
       >
         <div className="p-4">
-          <p>
-            <strong>{room.id} € </strong>par nuits
-          </p>
+          {room.price && (
+            <p>
+              <strong>{room.price} € </strong>par nuits
+            </p>
+          )}
+
           <p>8-9 jan</p>
         </div>
         <div className="p-4">
-          <button className=" px-24 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
+          <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
             Réserver
           </button>
         </div>

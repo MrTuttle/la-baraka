@@ -13,6 +13,7 @@ export interface Room {
   title: string;
   description: string;
   id: number;
+  price: number;
   // imageId: ImageRoom[];
   // allIdsTab: string[];
 }
@@ -64,6 +65,12 @@ const chambresPage = async () => {
             <Flex direction="column" gap="1">
               <GetCldIdList roomId={room.id} />
               <h3>{room.title}</h3>
+              {room.price && (
+                <p>
+                  <strong>{room.price} € </strong> par nuits
+                </p>
+              )}
+
               <ReactMarkdown>{room.description}</ReactMarkdown>
               <Link href={`chambres/${room.id}`}>Détail</Link>
             </Flex>

@@ -14,6 +14,7 @@ import UploadWidget from "@/app/components/UploadWidget";
 interface RoomForm {
   title: string;
   description: string;
+  price: number;
 }
 const SimpleMDE = dynamic(async () => import("react-simplemde-editor"), {
   ssr: false,
@@ -44,6 +45,12 @@ const NewRoomPage = () => {
           <TextField.Input
             placeholder="Title"
             {...register("title")}
+          ></TextField.Input>
+        </TextField.Root>
+        <TextField.Root>
+          <TextField.Input
+            placeholder="prix"
+            {...register("price", { valueAsNumber: true })}
           ></TextField.Input>
         </TextField.Root>
 

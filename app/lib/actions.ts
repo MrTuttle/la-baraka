@@ -30,4 +30,5 @@ export async function getRooms() {
 
   console.log(rooms);
   console.log(typeof rooms[1].title);
+  return rooms;
 }
