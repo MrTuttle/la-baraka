@@ -25,5 +25,6 @@ const GetRooms = async () => {
   //   ))}
   // </div>
 };
+export const revalidate = 0;
 
 export default GetRooms;

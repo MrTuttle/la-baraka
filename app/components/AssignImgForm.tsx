@@ -98,5 +98,6 @@ const AssignImgForm = ({ listRooms }: List) => {
     </>
   );
 };
+export const revalidate = 0;
 
 export default AssignImgForm;
