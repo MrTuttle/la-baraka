@@ -37,7 +37,7 @@ model Image {
 model Menu {
   id           Int      @id @default(autoincrement())
   title        String   @db.VarChar(255)
-  price        Int?
+  price        Float?
   description  String   @db.Text
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
