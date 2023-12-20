@@ -38,6 +38,14 @@ export async function DELETE(
   });
   if (!room)
     return NextResponse.json({ error: "invalid room" }, { status: 404 });
+  // delete related images first (assignedRoomId is not optionnal in schema)
+  await prisma.image.deleteMany({
+    where: { assignedToRoomId: room.id },
+  });
+  // delete related dates before delete room (assignedRoomId is not optionnal in schema)
+  await prisma.reservation.deleteMany({
+    where: { assignedToRoomId: room.id },
+  });
   await prisma.room.delete({
     where: {
       id: room.id,

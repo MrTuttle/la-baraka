@@ -37,8 +37,8 @@ model Image {
   publicId         String  @db.VarChar(255)
   alt              String  @db.VarChar(255)
   cover            Boolean @default(false)
-  assignedToRoomId Int?
-  assignedToRoom   Room?   @relation(fields: [assignedToRoomId], references: [id])
+  assignedToRoomId Int
+  assignedToRoom   Room    @relation(fields: [assignedToRoomId], references: [id])
   assignedToMenuId Int?
   assignedToMenu   Menu?   @relation(fields: [assignedToMenuId], references: [id])
 
