@@ -52,32 +52,32 @@ const BKDayPicker = ({ bookedDays }: Props) => {
       );
     }
   }
-  console.log("DAY PICKER LOGS:");
-  console.log("booked true / false / undefine : " + booked);
-  console.log(
-    "bookedDays: " +
-      bookedDays +
-      "donne les jours booked: true" +
-      typeof bookedDays
-  );
+  // console.log("DAY PICKER LOGS:");
+  // console.log("booked true / false / undefine : " + booked);
+  // console.log(
+  //   "bookedDays: " +
+  //     bookedDays +
+  //     "donne les jours booked: true" +
+  //     typeof bookedDays
+  // );
   // console.log(bookedStyle); // donne le style CSS de l'élément booked
-  console.log("dernier jour du range :" + range?.to);
-  console.log("premier jour du range :" + range?.from);
-  console.log("typeof range :");
+  // console.log("dernier jour du range :" + range?.to);
+  // console.log("premier jour du range :" + range?.from);
+  // console.log("typeof range :");
 
-  console.log(typeof range?.to); // le range.to et range.from
-  console.log("DATE getDay :");
+  // console.log(typeof range?.to); // le range.to et range.from
+  // console.log("DATE getDay :");
 
-  console.log(bookedDays[0].getDay());
+  // console.log(bookedDays[0].getDay());
   //=> 3 (3ejour, Mercredis)
-  console.log(bookedDays[0].getFullYear());
+  // console.log(bookedDays[0].getFullYear());
   //=> 2023
-  console.log(bookedDays[0].getDate());
+  // console.log(bookedDays[0].getDate());
   //=> 20
-  console.log(bookedDays[0].getMonth());
+  // console.log(bookedDays[0].getMonth());
   //=> 11 (decembbre, ok)
 
-  console.log("NOUVELLE DATE");
+  // console.log("NOUVELLE DATE");
   // bookedDays.push(new Date(2023, 11, 21));
   // console.log(bookedDays[2]);
   // Thu Dec 21 2023 00:00:00 GMT+0100 (heure normale d’Europe centrale)

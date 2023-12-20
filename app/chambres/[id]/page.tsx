@@ -22,7 +22,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
   });
   if (!room) notFound();
 
-  // FIND RESERVATION LOGIC :
+  // FIND RESERVATION LOGIC (for BKDayPicker component) :
   const reservations = await prisma.reservation.findMany({
     where: { assignedToRoomId: room.id },
   });
