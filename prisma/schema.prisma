@@ -28,6 +28,7 @@ model Reservation {
   assignedToRoomId Int
   assignedToRoom   Room     @relation(fields: [assignedToRoomId], references: [id])
 
+  @@unique([assignedToRoomId, date])
   @@index([assignedToRoomId])
 }
 
