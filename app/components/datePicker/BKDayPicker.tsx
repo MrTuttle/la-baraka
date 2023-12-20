@@ -9,10 +9,17 @@ import { useState } from "react";
 import { DateRange, DayPicker, DayClickEventHandler } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-let bookedDays = [new Date(2023, 11, 20), new Date(2023, 11, 23)];
+// type bookedDays = {
+//   bookedDays: Date[];
+// };
+interface Props {
+  bookedDays: Date[];
+}
+
+// let bookedDays = [new Date(2023, 11, 20), new Date(2023, 11, 23)];
 const bookedStyle = { border: "2px solid currentColor" };
 
-const BKDayPicker = () => {
+const BKDayPicker = ({ bookedDays }: Props) => {
   const [range, setRange] = useState<DateRange | undefined>();
   const [booked, setBooked] = useState(false);
 
@@ -71,24 +78,24 @@ const BKDayPicker = () => {
   //=> 11 (decembbre, ok)
 
   console.log("NOUVELLE DATE");
-  bookedDays.push(new Date(2023, 11, 21));
-  console.log(bookedDays[2]);
+  // bookedDays.push(new Date(2023, 11, 21));
+  // console.log(bookedDays[2]);
   // Thu Dec 21 2023 00:00:00 GMT+0100 (heure normale d’Europe centrale)
 
-  console.log(bookedDays[2].toLocaleDateString());
+  // console.log(bookedDays[2].toLocaleDateString());
   //=> 21/12/2023
-  console.log(bookedDays[2].toLocaleTimeString());
+  // console.log(bookedDays[2].toLocaleTimeString());
   //=> 00:00:00
-  console.log(bookedDays[2].toDateString());
+  // console.log(bookedDays[2].toDateString());
   //=> Thu Dec 21 2023
-  const stringOrNot = bookedDays[2].toLocaleDateString();
-  console.log(typeof stringOrNot);
+  // const stringOrNot = bookedDays[2].toLocaleDateString();
+  // console.log(typeof stringOrNot);
   //=> string
-  console.log(typeof bookedDays[0].getMonth());
+  // console.log(typeof bookedDays[0].getMonth());
   //=> number
-  console.log(typeof bookedDays[0]);
+  // console.log(typeof bookedDays[0]);
   //=> object
-  console.log(typeof bookedDays);
+  // console.log(typeof bookedDays);
   //=> object
 
   return (
@@ -98,6 +105,14 @@ const BKDayPicker = () => {
         align="start"
         className=" bg-gray-100 rounded-2xl p-4"
       >
+        <p>
+          {" "}
+          <strong>reservation (props):</strong>
+        </p>
+        {bookedDays.map((day, index) => (
+          <p key={index}>{day.toDateString()}</p>
+        ))}
+
         <DayPicker
           id="test"
           mode="range" // ability to select a range of days

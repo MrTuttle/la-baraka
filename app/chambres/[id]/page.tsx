@@ -16,12 +16,19 @@ interface Props {
 const ChambreDetailPage = async ({ params }: Props) => {
   // if not a number in the [id] adress, go to not found page
   // if (typeof params.id !== "number") notFound();
-  const reservations = await prisma.reservation.findMany();
 
   const room = await prisma.room.findUnique({
     where: { id: parseInt(params.id) },
   });
   if (!room) notFound();
+
+  // FIND RESERVATION LOGIC :
+  const reservations = await prisma.reservation.findMany({
+    where: { assignedToRoomId: room.id },
+  });
+  let bookedDays: Date[] = [];
+  reservations.map((reservation) => bookedDays.push(reservation.date));
+
   return (
     <Flex direction="column" align="center" className="mx-4">
       <h1>Détail chambre</h1>
@@ -32,7 +39,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
           <p>{room.title}</p>
           <p>{room.description}</p>
           <p>
-            <strong>reservation :</strong>
+            <strong>reservation (Bd) :</strong>
           </p>
           {reservations.map((reservation, index) => (
             <p key={index}>
@@ -44,10 +51,12 @@ const ChambreDetailPage = async ({ params }: Props) => {
         </div>
       </Flex>
 
-      {/* <p>Création : {room.createdAt.toDateString()}</p>
-      <p>Modification : {room.updatedAt.toDateString()}</p> */}
       <Flex direction="column" align="center" className="p-8">
-        <BKDayPicker />
+        {/* <BKDayPicker
+          bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
+        /> */}
+
+        <BKDayPicker bookedDays={bookedDays} />
       </Flex>
       <div className="pt-10 pb-32">
         <DeleteRoomButton roomId={room.id} />
