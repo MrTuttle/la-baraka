@@ -12,13 +12,23 @@ datasource db {
 }
 
 model Room {
-  id           Int      @id @default(autoincrement())
-  title        String   @db.VarChar(255)
-  description  String   @db.Text
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  price        Float?
-  assignedRoom Image[]
+  id               Int           @id @default(autoincrement())
+  title            String        @db.VarChar(255)
+  description      String        @db.Text
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  price            Float?
+  assignedRoom     Image[]
+  reservationDates Reservation[]
+}
+
+model Reservation {
+  id               Int      @id @default(autoincrement())
+  date             DateTime @db.Date
+  assignedToRoomId Int
+  assignedToRoom   Room     @relation(fields: [assignedToRoomId], references: [id])
+
+  @@index([assignedToRoomId])
 }
 
 model Image {

@@ -16,6 +16,7 @@ interface Props {
 const ChambreDetailPage = async ({ params }: Props) => {
   // if not a number in the [id] adress, go to not found page
   // if (typeof params.id !== "number") notFound();
+  const reservations = await prisma.reservation.findMany();
 
   const room = await prisma.room.findUnique({
     where: { id: parseInt(params.id) },
@@ -30,6 +31,16 @@ const ChambreDetailPage = async ({ params }: Props) => {
           <p>Id: {room.id}</p>
           <p>{room.title}</p>
           <p>{room.description}</p>
+          <p>
+            <strong>reservation :</strong>
+          </p>
+          {reservations.map((reservation, index) => (
+            <p key={index}>
+              {reservation.assignedToRoomId === room.id &&
+                reservation.date.toDateString()}
+            </p>
+          ))}
+          {/* <p>{room.map((reservation, index)=> <p key={index}>{reservation}</p>)}</p> */}
         </div>
       </Flex>
 

@@ -9,7 +9,7 @@ import { useState } from "react";
 import { DateRange, DayPicker, DayClickEventHandler } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-const bookedDays = [new Date(2023, 11, 20), new Date(2023, 11, 23)];
+let bookedDays = [new Date(2023, 11, 20), new Date(2023, 11, 23)];
 const bookedStyle = { border: "2px solid currentColor" };
 
 const BKDayPicker = () => {
@@ -59,6 +59,37 @@ const BKDayPicker = () => {
   console.log("typeof range :");
 
   console.log(typeof range?.to); // le range.to et range.from
+  console.log("DATE getDay :");
+
+  console.log(bookedDays[0].getDay());
+  //=> 3 (3ejour, Mercredis)
+  console.log(bookedDays[0].getFullYear());
+  //=> 2023
+  console.log(bookedDays[0].getDate());
+  //=> 20
+  console.log(bookedDays[0].getMonth());
+  //=> 11 (decembbre, ok)
+
+  console.log("NOUVELLE DATE");
+  bookedDays.push(new Date(2023, 11, 21));
+  console.log(bookedDays[2]);
+  // Thu Dec 21 2023 00:00:00 GMT+0100 (heure normale d’Europe centrale)
+
+  console.log(bookedDays[2].toLocaleDateString());
+  //=> 21/12/2023
+  console.log(bookedDays[2].toLocaleTimeString());
+  //=> 00:00:00
+  console.log(bookedDays[2].toDateString());
+  //=> Thu Dec 21 2023
+  const stringOrNot = bookedDays[2].toLocaleDateString();
+  console.log(typeof stringOrNot);
+  //=> string
+  console.log(typeof bookedDays[0].getMonth());
+  //=> number
+  console.log(typeof bookedDays[0]);
+  //=> object
+  console.log(typeof bookedDays);
+  //=> object
 
   return (
     <>
