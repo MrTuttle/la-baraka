@@ -42,6 +42,7 @@ const SlidePerViewRooms = ({ listImages }: List) => {
         <div slot="container-start" className="m-4">
           Les chambres
         </div>
+
         {listImages.map((image, index) => (
           <SwiperSlide key={index}>
             <Link
@@ -55,6 +56,10 @@ const SlidePerViewRooms = ({ listImages }: List) => {
                 sizes="100vw"
                 alt={image.alt}
               />
+              <div className=" absolute bottom-10 mt- text-white">
+                <p className="my-0">Chambre Familliale</p>
+                <p className="my-0">Pour 3 personnes</p>
+              </div>
             </Link>
           </SwiperSlide>
         ))}
