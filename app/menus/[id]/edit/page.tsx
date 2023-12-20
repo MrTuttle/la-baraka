@@ -16,6 +16,10 @@ const EditMenuPage = async ({ params }: Props) => {
   const menu = await prisma.menu.findUnique({
     where: { id: parseInt(params.id) },
   });
+  // console.log("PARAMS");
+  // console.log(params);
+  // http://localhost:3000/menus/2/edit
+  // => params = 2 ok
 
   if (!menu) notFound();
 

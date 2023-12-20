@@ -36,7 +36,7 @@ const DeleteRoomButton = ({ roomId }: { roomId: number }) => {
         <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
         <AlertDialog.Description>
           Are you sure you want to delete this room. This action cannot be
-          undone.
+          undone related booking dates and images will be also deleted.
         </AlertDialog.Description>
         <Flex mt="4" gap="2">
           <AlertDialog.Cancel>
