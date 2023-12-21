@@ -18,6 +18,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
   // if (typeof params.id !== "number") notFound();
 
   const room = await prisma.room.findUnique({
+    // where: { id: parseInt(params.id) },
     where: { id: parseInt(params.id) },
   });
   if (!room) notFound();

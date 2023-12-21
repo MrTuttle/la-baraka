@@ -44,7 +44,7 @@ const chambresPage = async () => {
               <p>idd: {room.id}</p>
 
               <Flex gap="2" direction="row" align="center">
-                <Link href={"/chambres/new"}>
+                <Link href={"/chambres/edit/" + room.id}>
                   <Flex gap="1">
                     <HiOutlinePencilSquare />
                     <Text as="p" size="1">

@@ -29,5 +29,6 @@ const MenuDetailPage = async ({ params }: Props) => {
     </div>
   );
 };
+export const dynamic = "force-dynamic";
 
 export default MenuDetailPage;

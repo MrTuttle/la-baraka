@@ -54,8 +54,11 @@ const EditMenuForm = ({ menu }: { menu?: Menu }) => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setSubmitting(true);
-      await axios.post("/api/menus", data);
+      if (menu) await axios.patch("/api/menus/" + menu.id, data);
+      else await axios.post("/api/menus", data);
+      // else await axios.patch("/api/menus/" + menu!.id, data);
       router.push("/menus");
+      router.refresh();
     } catch (error) {
       setSubmitting(false);
       // console.log(error);
@@ -81,8 +84,9 @@ const EditMenuForm = ({ menu }: { menu?: Menu }) => {
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <TextField.Root>
           <TextField.Input
+            defaultValue={menu?.price}
             placeholder="Prix"
-            {...register("price")}
+            {...register("price", { valueAsNumber: true })}
           ></TextField.Input>
         </TextField.Root>
         <Controller
