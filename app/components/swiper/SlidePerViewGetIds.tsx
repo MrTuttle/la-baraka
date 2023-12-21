@@ -18,12 +18,6 @@ const SlidePerViewGetIds = async () => {
       assignedRoom: {
         // all images when cover: true
         where: { cover: true },
-        select: {
-          publicId: true,
-          assignedToRoomId: true,
-          alt: true,
-          cover: true,
-        },
       },
     },
   });
@@ -32,11 +26,6 @@ const SlidePerViewGetIds = async () => {
   const images = await prisma.image.findMany({
     where: {
       cover: true,
-    },
-    select: {
-      publicId: true,
-      assignedToRoomId: true,
-      alt: true,
     },
   });
   console.log(" IMAGES :");
