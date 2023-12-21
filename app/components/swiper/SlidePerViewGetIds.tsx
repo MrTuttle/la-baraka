@@ -6,24 +6,31 @@ import prisma from "@/prisma/client";
 import DisplayCld from "../DisplayCld";
 import Link from "next/link";
 import SlidePerViewRooms from "./SlidePerViewRooms";
+import { Room } from "@/app/lib/definitions";
+import { getRoomsWithImages } from "@/app/lib/actions";
 
 const SlidePerViewGetIds = async () => {
-  // try to get images through rooms
   const rooms = await prisma.room.findMany({
     include: {
-      assignedRoom: true,
+      // assignedRoom: true,
+      // all rooms + get access to related Image via assignedRoom
+      // with rooms.map((item, index) => <p key={index}>{item.publicId}</p>)
+      assignedRoom: {
+        // all images when cover: true
+        where: { cover: true },
+        select: {
+          publicId: true,
+          assignedToRoomId: true,
+          alt: true,
+          cover: true,
+        },
+      },
     },
   });
-  const covers = () => {
-    rooms.map((room) => room.assignedRoom.map((image) => image.publicId));
-  };
-  console.log("COVERS");
-
-  console.log(covers());
+  getRoomsWithImages();
 
   const images = await prisma.image.findMany({
     where: {
-      // activate when we should pass cover to new images
       cover: true,
     },
     select: {
@@ -32,54 +39,20 @@ const SlidePerViewGetIds = async () => {
       alt: true,
     },
   });
-  // console.log(" IMAGES :");
-  // console.log(images);
-  // console.log("ROOMS :");
-  // console.log(rooms);
+  console.log(" IMAGES :");
+  console.log(images);
+  console.log("ROOMS :");
+  console.log(rooms);
   return (
     <>
-      <p>TEXT</p>
-      <p>
+      <p className="mx-4">
         we try to get images through rooms data. It will give us the ability to
         pass in swipper images public id & rooms text in one prisa request
       </p>
-      {rooms.map((room, index) => (
-        <div key={index}>
-          <p>
-            <strong>ROOM TITLE :</strong>
-            {room.title}
-          </p>
-          {room.assignedRoom.map((image) => (
-            <div key={image.id}>
-              <p>
-                <strong>PublicId :</strong>
-                {image.publicId}
-              </p>
-            </div>
-          ))}
-        </div>
-      ))}
-      <p>TEXT</p>
-      <SlidePerViewRooms listImages={images} />;
+      <SlidePerViewRooms listImages={images} listRooms={rooms} />;
+      {/* <SlidePerViewRooms listImages={rooms} />; */}
     </>
   );
 };
 
 export default SlidePerViewGetIds;
-
-////
-// const rooms = await prisma.room.findMany({
-//   include: {
-//     assignedRoom: {
-//       orderBy: {
-//         assignedToRoomId: "asc",
-//       },
-//       select: {
-//         publicId: true,
-//         alt: true,
-//         assignedToRoomId: true,
-//       },
-//       take: 1,
-//     },
-//   },
-// });

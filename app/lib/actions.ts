@@ -32,3 +32,49 @@ export async function getRooms() {
   console.log(typeof rooms[1].title);
   return rooms;
 }
+export async function getCoverImages() {
+  const images = await prisma.image.findMany({
+    where: {
+      cover: true,
+    },
+    select: {
+      publicId: true,
+      assignedToRoomId: true,
+      alt: true,
+    },
+  });
+  console.log("LOG getCoverImage :");
+  console.log(images);
+
+  return images;
+}
+
+export async function getRoomsWithCover() {
+  const rooms = await prisma.room.findMany({
+    include: {
+      // include Image model
+      assignedRoom: {
+        // all images when cover: true
+        where: { cover: true },
+        select: {
+          publicId: true,
+          assignedToRoomId: true,
+          alt: true,
+          cover: true,
+        },
+      },
+    },
+  });
+  return rooms;
+}
+
+export async function getRoomsWithImages() {
+  const rooms = await prisma.room.findMany({
+    include: {
+      assignedRoom: true,
+      // all rooms + get access to related Image via assignedRoom
+      // with rooms.map((item, index) => <p key={index}>{item.publicId}</p>)
+    },
+  });
+  return rooms;
+}

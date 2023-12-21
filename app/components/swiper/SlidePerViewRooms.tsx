@@ -17,20 +17,64 @@ import { Pagination } from "swiper/modules";
 
 import { CldImage } from "next-cloudinary";
 
-import { Room, ImageRoom } from "@/app/chambres/page";
+// import { Room, ImageRoom } from "@/app/chambres/page";
+import { Image, Room } from "@/app/lib/definitions";
 // import Link from "next/link";
 import { Link } from "@radix-ui/themes";
 import DisplayCld from "../DisplayCld";
+import { getRoomsWithCover } from "@/app/lib/actions";
 
 type List = {
   // count: number;
-  listImages: ImageRoom[];
+  listImages: Image[];
+  // listImages: ImageRoom[];
+  listRooms: Room[];
 };
 
-const SlidePerViewRooms = ({ listImages }: List) => {
+const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
   return (
     <>
       <Swiper
+        slidesPerView={"auto"}
+        spaceBetween={-5}
+        pagination={{
+          clickable: true,
+        }}
+        // modules={[Pagination]}
+        className="mySwiper mb-10"
+      >
+        <div slot="container-start" className="m-4">
+          Les rooms
+        </div>
+        {listRooms.map((room) => (
+          <SwiperSlide key={room.id}>
+            <Link href={`chambres/${room.id}`} className="my-display-contents">
+              {room.assignedRoom.map(
+                (image) =>
+                  image.cover && (
+                    <CldImage
+                      key={image.id}
+                      src={image.publicId}
+                      width={960}
+                      height={600}
+                      sizes="100vw"
+                      alt={image.alt}
+                    />
+                  )
+              )}
+              <div className=" absolute bottom-10 mt- text-white">
+                <p className="my-0">{room.title}</p>
+                {room.price && <p className="my-0">{room.price} €</p>}
+                {room.assignedRoom.map((image) =>
+                  image.cover ? "cover ok" : "cover false"
+                )}
+              </div>
+            </Link>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {/* -----------ANCIEN SWIPER ---------------- */}
+      {/* <Swiper
         slidesPerView={"auto"}
         spaceBetween={-5}
         pagination={{
@@ -63,7 +107,7 @@ const SlidePerViewRooms = ({ listImages }: List) => {
             </Link>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </>
   );
 };

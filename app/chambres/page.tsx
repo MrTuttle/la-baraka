@@ -14,6 +14,7 @@ export interface Room {
   description: string;
   id: number;
   price: number;
+
   // imageId: ImageRoom[];
   // allIdsTab: string[];
 }
@@ -21,6 +22,7 @@ export interface ImageRoom {
   assignedToRoomId: number | null;
   publicId: string;
   alt: string;
+  cover: boolean;
 }
 
 const chambresPage = async () => {
