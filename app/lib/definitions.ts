@@ -15,7 +15,7 @@ export type Room = {
   id: number;
   title: string;
   description: string;
-  price?: number | null;
+  price: number;
   assignedRoom: Image[];
   reservationDates?: Reservation[];
 };

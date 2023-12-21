@@ -1,6 +1,6 @@
 // app/chambres/api/[id]/route.tsx
 
-import { roomSchema } from "@/app/validationSchema";
+import { patchRoomSchema } from "@/app/validationSchema";
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -9,7 +9,7 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   const body = await request.json();
-  const validation = roomSchema.safeParse(body);
+  const validation = patchRoomSchema.safeParse(body);
   if (!validation.success)
     return NextResponse.json(validation.error.format(), { status: 400 });
   const room = await prisma.room.findUnique({

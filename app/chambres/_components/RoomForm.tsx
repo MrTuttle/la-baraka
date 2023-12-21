@@ -57,6 +57,13 @@ const RoomForm = ({ room }: { room?: Room }) => {
             {...register("title")}
           />
         </TextField.Root>
+        <TextField.Root>
+          <TextField.Input
+            defaultValue={room?.price}
+            placeholder="Price"
+            {...register("price", { valueAsNumber: true })}
+          />
+        </TextField.Root>
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <Controller
           name="description"

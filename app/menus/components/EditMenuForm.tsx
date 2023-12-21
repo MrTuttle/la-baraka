@@ -84,7 +84,7 @@ const EditMenuForm = ({ menu }: { menu?: Menu }) => {
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <TextField.Root>
           <TextField.Input
-            defaultValue={menu?.price}
+            // defaultValue={menu?.price}
             placeholder="Prix"
             {...register("price", { valueAsNumber: true })}
           ></TextField.Input>

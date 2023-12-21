@@ -5,7 +5,12 @@
 import RoomForm from "../_components/RoomForm";
 
 const NewRoomPage = () => {
-  return <RoomForm />;
+  return (
+    <>
+      <div>NEW</div>
+      {/* <RoomForm /> */}
+    </>
+  );
 };
 
 export default NewRoomPage;
