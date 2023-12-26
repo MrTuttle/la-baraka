@@ -21,7 +21,7 @@ type Menu = {
   id: number;
   title: string;
   description: string;
-  price: number | null;
+  price: number;
   // menuPushed: () => void;
 };
 type Menulist = {
@@ -60,9 +60,12 @@ const MenuSwiper = ({ list }: Menulist) => {
               <div>
                 <p className=" font-semibold">{menu.title}</p>
               </div>
-              <div>
-                <p>{menu.price} €</p>
-              </div>
+              {menu.price > 0 && (
+                <div>
+                  <p>{menu.price} €</p>
+                </div>
+              )}
+
               <div>
                 <ReactMarkdown className="prose">
                   {menu.description}

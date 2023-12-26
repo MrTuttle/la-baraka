@@ -42,7 +42,8 @@ const menusPage = async () => {
               <EdditMenuButton menuId={menu.id} />
             </Flex>
             <Text size="6" weight="light" key={menu.id}>
-              {menu.title} - {menu.price}€
+              {menu.title}
+              {menu.price > 0 && " - " + menu.price + " €"}
             </Text>
             <ReactMarkdown>{menu.description}</ReactMarkdown>
           </Card>

@@ -10,7 +10,7 @@ const EdditMenuButton = ({ menuId }: { menuId: number }) => {
   return (
     <Flex align="center" gap="1">
       <HiOutlinePencilSquare />
-      <Link href={`/menus/${menuId}/edit`}>Edit Menu</Link>
+      <Link href={`/menus/edit/${menuId}`}>Edit Menu</Link>
     </Flex>
   );
 };

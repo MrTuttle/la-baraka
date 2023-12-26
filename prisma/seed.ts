@@ -4,12 +4,50 @@ async function main() {
   const clearReservations = await prisma.reservation.deleteMany({});
   const clearImages = await prisma.image.deleteMany({});
   const clearRooms = await prisma.room.deleteMany({});
+  const clearMenus = await prisma.menu.deleteMany({});
+
+  const menuDuJour = await prisma.menu.upsert({
+    update: {},
+    create: {
+      title: "Menu du jour",
+      description: "Salade Joseph.\n\nEntrecôte maître d’hotel.\n\nCrumble",
+      price: 15.5,
+    },
+    where: { id: 0 },
+  });
+  const menuSalads = await prisma.menu.upsert({
+    update: {},
+    create: {
+      title: "Entrées",
+      description:
+        "Salade Joseph : salade du jardin, noix, huile d'olive.\n\nSalade Cesar.\n\nSalade Périgourdine.\n\nLyonnaise, Niçoise",
+      price: 7,
+    },
+    where: { id: 1 },
+  });
+  const menuPlats = await prisma.menu.upsert({
+    update: {},
+    create: {
+      title: "Plats",
+      description:
+        "Tagliatelles Carbonnara 8.5€.\n\nEntrecôte Maître d'Hôtel 12.9€.\n\nFilet de Perche 12.9€.\n\nAccompagnement aux choix :\n\nLégumes de saison, Gratin Dauphinois, Ratatouille",
+      price: 0,
+    },
+    where: { id: 2 },
+  });
+
   const chambrebleue = await prisma.room.upsert({
     where: { id: 0 },
     update: {},
     create: {
       title: "Chambre Bleue",
-      description: "3 lits, salle de bain",
+      description: `3 lits.
+
+Salle de bain.
+
+Balcon.
+
+Wifi.`,
       price: 50.99,
 
       assignedRoom: {
@@ -38,7 +76,7 @@ async function main() {
     update: {},
     create: {
       title: "Chambre Jaune",
-      description: "3 lits, salle de bain",
+      description: "3 lits.\n\nSalle de bain.\n\nBalcon.\n\nWifi.",
       price: 50,
 
       assignedRoom: {
@@ -68,7 +106,14 @@ async function main() {
     },
   });
   const seeImages = await prisma.image.findMany({});
-  console.log({ chambrebleue, chambrejaune, seeImages });
+  console.log({
+    menuDuJour,
+    menuSalads,
+    menuPlats,
+    chambrebleue,
+    chambrejaune,
+    seeImages,
+  });
   const seeReservations = await prisma.reservation.findMany({});
   console.log("reservations :");
   console.log(seeReservations);
