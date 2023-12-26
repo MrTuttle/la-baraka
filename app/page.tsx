@@ -13,22 +13,22 @@ import CallMenuSwiper from "./components/swiper/CallMenuSwiper";
 import UploadWidget from "./components/UploadWidget";
 import SlidePerViewGetIds from "./components/swiper/SlidePerViewGetIds";
 import CldImageClient from "./components/CldImageClient";
+import { SiForestry } from "react-icons/si";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();
   return (
     <>
       <div className="relative">
-        <div className="prose absolute bottom-10 text-white mx-4">
-          <h1 className="text-white">
-            La Baraka vous accueille au cœur des monts des Cevennes
-          </h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
-            suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
-            consequatur dolores aliquam. Laborum!
-          </p>
+        <div className="prose absolute bottom-64 text-white mx-4 ">
+          <div className="flex gap-4 justify-center text-4xl align-content: baseline">
+            <div className=" flex">
+              <SiForestry />
+            </div>
+            <div>
+              <h1 className="text-white font-extralight text-5xl">La Baraka</h1>
+            </div>
+          </div>
         </div>
         <div>
           <CldImageClient
@@ -40,6 +40,15 @@ const home = async () => {
           />
         </div>
       </div>
+      <Section className="prose mx-8">
+        <h3 className=" font-light text-2xl">
+          La Baraka vous accueille au cœur des monts des Cevennes. Lorem ipsum
+          dolor sit, amet consectetur adipisicing elit. Laboriosam, est? Quae
+          vel adipisci provident tempore, nisi, commodi suscipit pariatur
+          perspiciatis beatae modi nam, iste aut possimus consequatur dolores
+          aliquam. Laborum!
+        </h3>
+      </Section>
 
       <Section className="prose">
         <h2 className="m-4">Au menu aujourd’hui</h2>

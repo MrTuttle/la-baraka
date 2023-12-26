@@ -1,5 +1,8 @@
 // build command on Vercel hosting :
 // prisma generate && prisma migrate deploy && prisma db seed && next build
+// if need a rollback :
+// prisma generate && prisma migrate resolve --rolled-back "20231226134654_menu_price_required" && next build
+
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 async function main() {

@@ -56,9 +56,9 @@ const MenuSwiper = ({ list }: Menulist) => {
 
         {list.map((menu) => (
           <SwiperSlide key={menu.id}>
-            <div className="flex flex-col justify-center p-10 h-full w-full bg-slate-100 rounded-lg border-solid border-1 border-indigo-600">
+            <div className="flex flex-col justify-center p-10 h-full w-full  bg-red-400 [:nth-child(3)]:bg-sky-500 rounded-lg border-solid border-1 border-indigo-600 text-white">
               <div>
-                <p className=" font-semibold">{menu.title}</p>
+                <p className=" font-semibold ">{menu.title}</p>
               </div>
               {menu.price > 0 && (
                 <div>
@@ -67,7 +67,7 @@ const MenuSwiper = ({ list }: Menulist) => {
               )}
 
               <div>
-                <ReactMarkdown className="prose">
+                <ReactMarkdown className="prose text-white">
                   {menu.description}
                 </ReactMarkdown>
               </div>
