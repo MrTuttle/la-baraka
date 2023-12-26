@@ -11,6 +11,7 @@ async function main() {
       title: "Chambre Bleue",
       description: "3 lits, salle de bain",
       price: 50.99,
+
       assignedRoom: {
         create: [
           {
@@ -24,6 +25,11 @@ async function main() {
             cover: false,
           },
         ],
+      },
+      reservationDates: {
+        create: {
+          date: new Date("2023-12-24T00:00"),
+        },
       },
     },
   });
@@ -49,10 +55,23 @@ async function main() {
           },
         ],
       },
+      reservationDates: {
+        create: [
+          {
+            date: new Date("2023-12-24T00:00"),
+          },
+          {
+            date: new Date("2023-12-25T00:00"),
+          },
+        ],
+      },
     },
   });
   const seeImages = await prisma.image.findMany({});
   console.log({ chambrebleue, chambrejaune, seeImages });
+  const seeReservations = await prisma.reservation.findMany({});
+  console.log("reservations :");
+  console.log(seeReservations);
 }
 main()
   .then(async () => {
