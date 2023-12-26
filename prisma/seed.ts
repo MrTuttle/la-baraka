@@ -1,3 +1,5 @@
+// build command on Vercel hosting :
+// prisma generate && prisma migrate deploy && prisma db seed && next build
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 async function main() {

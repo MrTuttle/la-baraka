@@ -18,22 +18,28 @@ const home = async () => {
   // const chambresImage = await prisma.image.findMany();
   return (
     <>
-      <CldImageClient
-        src="r6sztwmaweq1sehluh74"
-        width={600}
-        height={600}
-        alt="baraka"
-        sizes="100vw"
-      />
-      <Section className="prose m-4">
-        <h1>La Baraka vous accueille au cœur des monts des Cevennes</h1>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam,
-          est? Quae vel adipisci provident tempore, nisi, commodi suscipit
-          pariatur perspiciatis beatae modi nam, iste aut possimus consequatur
-          dolores aliquam. Laborum!
-        </p>
-      </Section>
+      <div className="relative">
+        <div className="prose absolute bottom-10 text-white mx-4">
+          <h1 className="text-white">
+            La Baraka vous accueille au cœur des monts des Cevennes
+          </h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
+            suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
+            consequatur dolores aliquam. Laborum!
+          </p>
+        </div>
+        <div>
+          <CldImageClient
+            src="r6sztwmaweq1sehluh74"
+            width={600}
+            height={600}
+            alt="baraka"
+            sizes="100vw"
+          />
+        </div>
+      </div>
 
       <Section className="prose">
         <h2 className="m-4">Au menu aujourd’hui</h2>
