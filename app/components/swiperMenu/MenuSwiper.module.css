@@ -5,9 +5,12 @@
   /* border: 1px blue solid; */
 
 
-  width: 100%;
-  height: 100%;
-  padding: 5%;
+  width: 90%;
+  height: 90%;
+  /* si les cartes sont rognées au swipe, mettre 5% de padding en haut*/
+  /* overflow: hidden au parent pour fixer la page mobile
+  (sinon les cartes du dessous provoquent une largeur parasite )*/
+
 }
 
 .swiper-slide {
@@ -21,7 +24,7 @@
   align-items: center;
   height: 60vh;
   border-radius: 20px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 /* .swiper-slide img {
@@ -36,8 +39,6 @@
 
 .swiper-slide {
   width: 80%;
-  /* border: 1px solid blue; */
-  margin-left: 0.2rem;
     color: #ffffff;
 }
 .swiper-slide:nth-child(1n) {

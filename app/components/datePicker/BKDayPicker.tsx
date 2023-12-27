@@ -103,16 +103,8 @@ const BKDayPicker = ({ bookedDays }: Props) => {
       <Flex
         direction="column"
         align="start"
-        className=" bg-gray-100 rounded-2xl p-4"
+        className=" bg-gray-100 rounded-2xl"
       >
-        <p>
-          {" "}
-          <strong>reservation (props):</strong>
-        </p>
-        {bookedDays.map((day, index) => (
-          <p key={index}>{day.toDateString()}</p>
-        ))}
-
         <DayPicker
           id="test"
           mode="range" // ability to select a range of days
@@ -135,6 +127,14 @@ const BKDayPicker = ({ bookedDays }: Props) => {
           <p>SELECTION :</p>
           {/* <p>Date d’arrivée : {affiche()}</p> */}
           {/* <p>Date de départ : {range?.to}</p> */}
+        </div>
+        <div className="p-4">
+          <p>
+            <strong>reservation (props):</strong>
+          </p>
+          {bookedDays.map((day, index) => (
+            <p key={index}>{day.toDateString()}</p>
+          ))}
         </div>
       </Flex>
     </>

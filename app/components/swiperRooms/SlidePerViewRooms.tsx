@@ -45,9 +45,9 @@ const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
         // modules={[Pagination]}
         className={styles.Swiper}
       >
-        <div slot="container-start" className="m-4">
+        {/* <div slot="container-start" className="m-4">
           Les rooms
-        </div>
+        </div> */}
         {listRooms.map((room) => (
           <SwiperSlide key={room.id} className={styles["swiper-slide"]}>
             <Link

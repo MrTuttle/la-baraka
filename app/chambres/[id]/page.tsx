@@ -51,15 +51,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
           <p>Id: {room.id}</p>
           <p>{room.title}</p>
           <p>{room.description}</p>
-          <p>
-            <strong>reservation (Bd) :</strong>
-          </p>
-          {reservations.map((reservation, index) => (
-            <p key={index}>
-              {reservation.assignedToRoomId === room.id &&
-                reservation.date.toDateString()}
-            </p>
-          ))}
+
           {/* <p>{room.map((reservation, index)=> <p key={index}>{reservation}</p>)}</p> */}
         </div>
       </Flex>
@@ -70,7 +62,17 @@ const ChambreDetailPage = async ({ params }: Props) => {
         /> */}
 
         <BKDayPicker bookedDays={bookedDays} />
+        <p className="pt-4 text-gray-400">
+          <strong>reservation (Bd) : </strong>
+          {reservations.map((reservation, index) => (
+            <span key={index}>
+              {reservation.assignedToRoomId === room.id &&
+                reservation.date.toDateString()}
+            </span>
+          ))}
+        </p>
       </Flex>
+
       <div className="pt-10 pb-32">
         <DeleteRoomButton roomId={room.id} />
       </div>
