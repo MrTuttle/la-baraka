@@ -16,6 +16,8 @@ import { CldImage } from "next-cloudinary";
 import { type } from "os";
 import ReactMarkdown from "react-markdown";
 
+import { SiForestry } from "react-icons/si";
+
 type Menu = {
   id: number;
   title: string;
@@ -58,18 +60,20 @@ const MenuSwiper = ({ list }: Menulist) => {
 
         {list.map((menu) => (
           <SwiperSlide key={menu.id} className={styles["swiper-slide"]}>
-            <div className="flex flex-col justify-center p-10 h-full w-full ">
-              <div>
-                <p className=" font-semibold ">{menu.title}</p>
+            <div className="flex flex-col p-10 h-full w-full justify-center ">
+              <div className="mx-auto text-3xl text-black opacity-40 pb-4">
+                <SiForestry />
               </div>
-              {menu.price > 0 && (
-                <div>
-                  <p>{menu.price} €</p>
-                </div>
-              )}
+              <div className=" font-semibold text-2xl">
+                <p>
+                  {menu.title}
+                  <br />
+                  {menu.price > 0 && <span>{menu.price} €</span>}
+                </p>
+              </div>
 
               <div>
-                <ReactMarkdown className="prose text-white">
+                <ReactMarkdown className="prose text-white text-xl">
                   {menu.description}
                 </ReactMarkdown>
               </div>

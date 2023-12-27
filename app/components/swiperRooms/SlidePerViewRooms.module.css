@@ -33,7 +33,7 @@
 .swiper-slide {
   width: 80%;
   /* border: 1px solid blue; */
-    margin-left: 20px;
+    /* margin-left: 1rem; */
 }
 
 .swiper-slide:nth-child(2n) {

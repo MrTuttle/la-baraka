@@ -50,8 +50,8 @@ const home = async () => {
       </Section>
 
       <Section className="prose">
-        <h2 className="m-4">Au menu aujourd’hui</h2>
-        <div className="pt-20">
+        <h2 className="mx-4 mb-0">Au menu aujourd’hui</h2>
+        <div className="pt-0">
           <CallMenuSwiper />
         </div>
         <p className="mx-4">

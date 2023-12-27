@@ -2,7 +2,7 @@
 .swiper {
   /* width: 240px;
   height: 320px;*/
-  border: 1px blue solid;
+  /* border: 1px blue solid; */
 
 
   width: 100%;
@@ -37,12 +37,12 @@
 .swiper-slide {
   width: 80%;
   /* border: 1px solid blue; */
-  margin-left: 20px;
+  margin-left: 0.2rem;
     color: #ffffff;
 }
 .swiper-slide:nth-child(1n) {
-
-  background-color: rgb(206, 17, 17);
+  background-color: rgb(118, 163, 12);
+  /* background-color: rgb(206, 17, 17); */
 }
 
 .swiper-slide:nth-child(2n) {
@@ -50,7 +50,8 @@
 }
 
 .swiper-slide:nth-child(3n) {
-  background-color: rgb(10, 184, 111);
+  background-color: rgb(211, 122, 7);
+  /* background-color: rgb(10, 184, 111); */
 }
 
 .swiper-slide:nth-child(4n) {

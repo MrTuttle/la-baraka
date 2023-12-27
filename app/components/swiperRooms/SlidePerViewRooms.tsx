@@ -6,7 +6,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-// import "swiper/css";
+import "swiper/css";
 // import "swiper/css/pagination";
 
 // import "./styles.css";
@@ -37,7 +37,8 @@ const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
     <>
       <Swiper
         slidesPerView={"auto"}
-        spaceBetween={-5}
+        centeredSlides={true}
+        spaceBetween={15}
         pagination={{
           clickable: true,
         }}
@@ -48,8 +49,11 @@ const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
           Les rooms
         </div>
         {listRooms.map((room) => (
-          <SwiperSlide key={room.id}>
-            <Link href={`chambres/${room.id}`} className="my-display-contents">
+          <SwiperSlide key={room.id} className={styles["swiper-slide"]}>
+            <Link
+              href={`chambres/${room.id}`}
+              className={"my-display-contents"}
+            >
               {room.assignedRoom.map(
                 (image) =>
                   image.cover && (
