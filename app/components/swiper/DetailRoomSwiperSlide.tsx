@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 import "@/app/components/swiper/DetailRoomSwiperSlide.css";
 
 // import required modules
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, EffectCreative } from "swiper/modules";
 
 import { Image, Room } from "@/app/lib/definitions";
 type List = {
@@ -35,8 +35,18 @@ const DetailRoomSwiperSlide = ({ listImages }: List) => {
         // pagination={{
         //   clickable: true,
         // }}
-        modules={[Pagination]}
-        className=""
+        effect={"creative"}
+        creativeEffect={{
+          prev: {
+            shadow: true,
+            translate: ["-20%", 0, -1],
+          },
+          next: {
+            translate: ["100%", 0, 0],
+          },
+        }}
+        modules={[Pagination, EffectCreative]}
+        className="mySwipper4"
         injectStyles={[]}
       >
         {listImages.map((image) => (
