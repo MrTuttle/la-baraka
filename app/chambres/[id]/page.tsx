@@ -7,6 +7,9 @@ import DeleteRoomButton from "./DeleteRoomButton";
 import GetCldIdList from "@/app/components/GetCldIdList";
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
 import { Box, Button, Flex } from "@radix-ui/themes";
+import SlidePerViewGetIds from "@/app/components/swiper/SlidePerViewGetIds";
+import SlidePerViewRooms from "@/app/components/swiper/SlidePerViewRooms";
+import DetailRoomSwiperSlide from "@/app/components/swiper/DetailRoomSwiperSlide";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -20,8 +23,18 @@ const ChambreDetailPage = async ({ params }: Props) => {
   const room = await prisma.room.findUnique({
     // where: { id: parseInt(params.id) },
     where: { id: parseInt(params.id) },
+    include: {
+      assignedRoom: true,
+    },
   });
   if (!room) notFound();
+
+  const imagesRoom = room.assignedRoom;
+  // console.log("LISTIMAFES :");
+
+  // console.log(room.assignedRoom);
+
+  // => log table of rooms images
 
   // FIND RESERVATION LOGIC (for BKDayPicker component) :
   const reservations = await prisma.reservation.findMany({
@@ -31,10 +44,12 @@ const ChambreDetailPage = async ({ params }: Props) => {
   reservations.map((reservation) => bookedDays.push(reservation.date));
 
   return (
-    <Flex direction="column" align="center" className="mx-4">
+    <Flex direction="column" align="center">
       <h1>Détail chambre</h1>
-      <Flex direction="column">
-        <GetCldIdList roomId={room.id} />
+      <DetailRoomSwiperSlide listImages={imagesRoom} />
+      <Flex direction="column" className="mx-4">
+        {/* <SlidePerViewRooms listRooms={} /> */}
+        {/* <GetCldIdList roomId={room.id} /> */}
         <div className="py-4">
           <p>Id: {room.id}</p>
           <p>{room.title}</p>

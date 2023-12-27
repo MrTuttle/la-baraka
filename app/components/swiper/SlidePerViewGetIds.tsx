@@ -28,10 +28,10 @@ const SlidePerViewGetIds = async () => {
       cover: true,
     },
   });
-  console.log(" IMAGES :");
-  console.log(images);
-  console.log("ROOMS :");
-  console.log(rooms);
+  // console.log(" IMAGES :");
+  // console.log(images);
+  // console.log("ROOMS :");
+  // console.log(rooms);
   return (
     <>
       <p className="mx-4">

@@ -20,7 +20,11 @@ const EditMenuPage = async ({ params }: Props) => {
 
   if (!menu) notFound();
 
-  return <MenuForm menu={menu} />;
+  return (
+    <div className="mx-4">
+      <MenuForm menu={menu} />
+    </div>
+  );
 };
 
 export default EditMenuPage;

@@ -20,7 +20,11 @@ const EditRoomPage = async ({ params }: Props) => {
 
   if (!room) notFound();
 
-  return <RoomForm room={room} />;
+  return (
+    <div className="mx-4">
+      <RoomForm room={room} />
+    </div>
+  );
 };
 
 export default EditRoomPage;
