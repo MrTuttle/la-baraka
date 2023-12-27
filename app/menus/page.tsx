@@ -26,8 +26,7 @@ const menusPage = async () => {
 
   return (
     <>
-      <div className="mx-4">
-        <div>Menus</div>
+      <div className="mx-4 pt-20">
         <Link href="menus/new">
           <Button>Créer un nouveau menu</Button>
         </Link>

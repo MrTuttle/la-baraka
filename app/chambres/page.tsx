@@ -33,8 +33,7 @@ const chambresPage = async () => {
 
   return (
     <>
-      <div className="mx-4">
-        <div>chambres</div>
+      <div className="mx-4 pt-20">
         <Link href={"/chambres/new"}>
           <Button>Créer une nouvelle chambre</Button>
         </Link>

@@ -6,7 +6,7 @@ import React from "react";
 import DeleteRoomButton from "./DeleteRoomButton";
 import GetCldIdList from "@/app/components/GetCldIdList";
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
-import { Box, Button, Flex } from "@radix-ui/themes";
+import { Box, Button, Container, Flex } from "@radix-ui/themes";
 import SlidePerViewGetIds from "@/app/components/swiper/SlidePerViewGetIds";
 import SlidePerViewRooms from "@/app/components/swiper/SlidePerViewRooms";
 import DetailRoomSwiperSlide from "@/app/components/swiper/DetailRoomSwiperSlide";
@@ -45,7 +45,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   return (
     <Flex direction="column" align="center">
-      <h1>Détail chambre</h1>
       <DetailRoomSwiperSlide listImages={imagesRoom} />
       <Flex direction="column" className="mx-4">
         {/* <SlidePerViewRooms listRooms={} /> */}
@@ -79,9 +78,9 @@ const ChambreDetailPage = async ({ params }: Props) => {
       </div>
       <div
         className="w-full bg-white h-20 border-t-2
-            fixed left-0 bottom-0
-            flex justify-between items-center z-50
-           "
+        fixed left-0 bottom-0
+        flex justify-between items-center z-50
+        "
       >
         <div className="p-4">
           {room.price && (

@@ -10,7 +10,7 @@ import UploadWidget from "../components/UploadWidget";
 const pageDashboard = async () => {
   const session = await getServerSession(authOptions);
   return (
-    <div className="prose mx-4">
+    <div className="prose mx-4 pt-10">
       <h1>Dashboard</h1>
       <p>Bonjour {session && <span>{session.user!.name}</span>}</p>
       <Flex gap="5">

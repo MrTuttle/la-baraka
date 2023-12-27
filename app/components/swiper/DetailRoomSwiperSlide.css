@@ -26,7 +26,7 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  /* background: #fff; */
 
   /* Center slide text vertically */
   display: flex;
@@ -60,4 +60,16 @@ body {
 
 .swiper-slide:nth-child(3n) {
   width: 100%;
+}
+/* swiper-container::part(bullet-active) {
+  background-color: red;
+} */
+.swiper-pagination-fraction {
+  mix-blend-mode: difference;
+  color: rgb(255, 255, 255);
+  padding: 0rem 0.5rem;
+  left: 35%;
+  /* background-color: rgb(255, 255,255);
+  width: fit-content;
+  left: 75%; */
 }
