@@ -31,6 +31,7 @@ const DetailRoomSwiperSlide = ({ listImages }: List) => {
         slidesPerView={1}
         spaceBetween={0}
         centeredSlides={true}
+        // loop={true}
         pagination={{ type: "fraction" }}
         // pagination={{
         //   clickable: true,

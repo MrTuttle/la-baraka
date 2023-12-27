@@ -6,11 +6,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css";
+// import "swiper/css/pagination";
 
 // import "./styles.css";
-import "@/app/components/swiper/style.css";
+// import "@/app/components/swiper/style.css";
+import styles from "./SlidePerViewRooms.module.css";
 
 // import required modules
 import { Pagination } from "swiper/modules";
@@ -41,7 +42,7 @@ const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
           clickable: true,
         }}
         // modules={[Pagination]}
-        className="mySwiper mb-10"
+        className={styles.Swiper}
       >
         <div slot="container-start" className="m-4">
           Les rooms

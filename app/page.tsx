@@ -8,10 +8,9 @@ import DisplayCld from "./components/DisplayCld";
 import prisma from "@/prisma/client";
 import SlidesPerViewAuto from "./components/swiper/SlidesPerViewAuto";
 import Link from "next/link";
-import MenuSwiper from "./components/swiper/MenuSwiper";
-import CallMenuSwiper from "./components/swiper/CallMenuSwiper";
+import CallMenuSwiper from "./components/swiperMenu/CallMenuSwiper";
 import UploadWidget from "./components/UploadWidget";
-import SlidePerViewGetIds from "./components/swiper/SlidePerViewGetIds";
+import SlidePerViewGetIds from "./components/swiperRooms/SlidePerViewGetIds";
 import CldImageClient from "./components/CldImageClient";
 import { SiForestry } from "react-icons/si";
 
@@ -52,7 +51,9 @@ const home = async () => {
 
       <Section className="prose">
         <h2 className="m-4">Au menu aujourd’hui</h2>
-        <CallMenuSwiper />
+        <div className="pt-20">
+          <CallMenuSwiper />
+        </div>
         <p className="mx-4">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam,
           est? Quae vel adipisci provident tempore, nisi, commodi suscipit

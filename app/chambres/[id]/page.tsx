@@ -7,8 +7,6 @@ import DeleteRoomButton from "./DeleteRoomButton";
 import GetCldIdList from "@/app/components/GetCldIdList";
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
 import { Box, Button, Container, Flex } from "@radix-ui/themes";
-import SlidePerViewGetIds from "@/app/components/swiper/SlidePerViewGetIds";
-import SlidePerViewRooms from "@/app/components/swiper/SlidePerViewRooms";
 import DetailRoomSwiperSlide from "@/app/components/swiper/DetailRoomSwiperSlide";
 
 interface Props {

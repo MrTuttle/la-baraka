@@ -6,12 +6,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
-// import swiper "./styles.css";
-import "@/app/components/swiper/style.css";
+import "swiper/css/effect-cards";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination, EffectCards } from "swiper/modules";
+import styles from "./MenuSwiper.module.css";
 
 import { CldImage } from "next-cloudinary";
 import { type } from "os";
@@ -42,21 +41,24 @@ const MenuSwiper = ({ list }: Menulist) => {
   return (
     <>
       <Swiper
-        slidesPerView={"auto"}
-        spaceBetween={-5}
-        pagination={{
-          clickable: true,
-        }}
-        // modules={[Pagination]}
-        className="mySwiper"
+        // slidesPerView={"auto"}
+        // spaceBetween={-5}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        effect={"cards"}
+        grabCursor={true}
+        modules={[EffectCards, Pagination]}
+        // modules={[]}
+        className={styles.swiper}
       >
         {/* <div slot="container-start" className="m-4">
           Menus du jour :
         </div> */}
 
         {list.map((menu) => (
-          <SwiperSlide key={menu.id}>
-            <div className="flex flex-col justify-center p-10 h-full w-full  bg-red-400 [:nth-child(3)]:bg-sky-500 rounded-lg border-solid border-1 border-indigo-600 text-white">
+          <SwiperSlide key={menu.id} className={styles["swiper-slide"]}>
+            <div className="flex flex-col justify-center p-10 h-full w-full ">
               <div>
                 <p className=" font-semibold ">{menu.title}</p>
               </div>
