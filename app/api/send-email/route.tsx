@@ -9,9 +9,9 @@ export async function POST() {
   await resend.emails.send({
     from: "onboarding@resend.dev",
     to: "florent.vincerot@me.com",
-    subject: "Hello World",
-    html: "<p>Congrats on sending your <strong>first email</strong>!</p>",
-    react: <ConfirmationMail name="john Doe" />,
+    subject: "Demande de réservation",
+    // html: "<p>Congrats on sending your <strong>Third email</strong>!</p>",
+    react: <ConfirmationMail name="Flo" />,
   });
   return NextResponse.json({});
 }
