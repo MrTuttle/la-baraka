@@ -17,6 +17,12 @@ import { type } from "os";
 import ReactMarkdown from "react-markdown";
 
 import { SiForestry } from "react-icons/si";
+import { GrRestaurant } from "react-icons/gr";
+import { LuSalad } from "react-icons/lu";
+import { TbSalad } from "react-icons/tb";
+import { RiRestaurant2Line } from "react-icons/ri";
+
+import { RiCake3Line } from "react-icons/ri";
 
 type Menu = {
   id: number;
@@ -60,11 +66,11 @@ const MenuSwiper = ({ list }: Menulist) => {
 
         {list.map((menu) => (
           <SwiperSlide key={menu.id} className={styles["swiper-slide"]}>
-            <div className="flex flex-col p-10 h-full w-full justify-center ">
-              <div className="mx-auto text-3xl text-black opacity-40 pb-4">
-                <SiForestry />
+            <div className="flex flex-col p-10 h-full w-full justify-center items-center ">
+              <div className="mx-auto text-4xl text-black opacity-40 pb-4">
+                <GrRestaurant />
               </div>
-              <div className=" font-semibold text-2xl">
+              <div className=" font-semibold text-2xl leading-none">
                 <p>
                   {menu.title}
                   <br />

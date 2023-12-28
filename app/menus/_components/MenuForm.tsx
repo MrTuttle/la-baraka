@@ -13,6 +13,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
+import SelectIcon from "./SelectIcon";
 
 type MenuFormData = z.infer<typeof menuSchema>;
 
@@ -79,6 +80,7 @@ const MenuForm = ({ menu }: { menu?: Menu }) => {
           {isSubmitting && <Spinner />}
         </Button>
       </form>
+      <SelectIcon />
     </div>
   );
 };
