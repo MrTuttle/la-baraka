@@ -13,26 +13,30 @@ import UploadWidget from "./components/UploadWidget";
 import SlidePerViewGetIds from "./components/swiperRooms/SlidePerViewGetIds";
 import CldImageClient from "./components/CldImageClient";
 import { SiForestry } from "react-icons/si";
+import Background from "./components/Background";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();
   return (
     <>
-      <div className="relative h-screen my-border-grey">
-        <div className="prose absolute bottom-64 text-white my-border-grey h-2/3 w-2/4 right-1/4">
-          <div className="flex flex-col gap-4 items-center text-4xl">
+      <div className="relative h-screen my-border-grey flex flex-col items-center">
+        <Background />
+        <div className="prose relative text-white my-border-grey h-56 w-56 mt-60">
+          <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
             <SiForestry />
             <h1 className="text-white font-extralight text-5xl">La Baraka</h1>
           </div>
         </div>
-        <div className="h-screen my-border-red">
-          <CldImageClient
+        <div className="h-screen">
+          <SiForestry />
+          <h1 className="text-white font-extralight text-5xl">La Baraka</h1>
+          {/* <CldImageClient
             src="r6sztwmaweq1sehluh74"
             width={900}
             height={900}
             alt="baraka"
             sizes="100vh"
-          />
+          /> */}
         </div>
       </div>
       <Section className="prose px-8 my-border-grey h-screen flex flex-col items-center">
