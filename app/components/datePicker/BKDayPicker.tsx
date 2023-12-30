@@ -132,9 +132,9 @@ const BKDayPicker = ({ bookedDays }: Props) => {
           <p>
             <strong>reservation (props):</strong>
           </p>
-          {bookedDays.map((day, index) => (
+          {/* {bookedDays.map((day, index) => (
             <p key={index}>{day.toDateString()}</p>
-          ))}
+          ))} */}
         </div>
       </Flex>
     </>

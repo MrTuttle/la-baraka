@@ -8,10 +8,13 @@ import GetCldIdList from "@/app/components/GetCldIdList";
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
 import { Box, Button, Container, Flex } from "@radix-ui/themes";
 import DetailRoomSwiperSlide from "@/app/components/swiper/DetailRoomSwiperSlide";
+import SendBookingButton from "./SendBookingButton";
+import ConfirmationDemandForm from "../_components/ConfirmationDemandForm";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
   params: { id: string };
+  // bookedDayz: Date[];
 }
 
 const ChambreDetailPage = async ({ params }: Props) => {
@@ -23,36 +26,46 @@ const ChambreDetailPage = async ({ params }: Props) => {
     where: { id: parseInt(params.id) },
     include: {
       assignedRoom: true,
+      reservationDates: true,
     },
   });
   if (!room) notFound();
+  console.log("ROOM.RESERVATIONDATES");
+  console.log(room.reservationDates.map((date) => date.date));
+  console.log("assigned room : ", room.assignedRoom);
+  console.log("reservationDates : ", room.reservationDates);
 
+  // For the swiper
   const imagesRoom = room.assignedRoom;
   // console.log("LISTIMAFES :");
 
   // console.log(room.assignedRoom);
-
   // => log table of rooms images
 
-  // FIND RESERVATION LOGIC (for BKDayPicker component) :
-  const reservations = await prisma.reservation.findMany({
-    where: { assignedToRoomId: room.id },
-  });
+  // FIND RESERVATION PROPS LOGIC (for BKDayPicker component) :
+  // work but theres two prisma requests (on Room & Reservation), I would try to have only one
+  // const reservations = await prisma.reservation.findMany({
+  //   where: { assignedToRoomId: room.id },
+  // });
+  // this bookedDays pass in BKDayPicker to display reserved days
+  // let bookedDays: Date[] = [];
+  // reservations.map((reservation) => bookedDays.push(reservation.date));
+  // console.log("BOOKEDAYS", bookedDays);
+  // => BOOKEDAYS [ 2023-12-23T00:00:00.000Z ]
+
+  // SAME LOGIC
   let bookedDays: Date[] = [];
-  reservations.map((reservation) => bookedDays.push(reservation.date));
+  room.reservationDates.map((reservation) => bookedDays.push(reservation.date));
+  console.log("BOOKEDDAYS: ", bookedDays);
 
   return (
     <Flex direction="column" align="center">
       <DetailRoomSwiperSlide listImages={imagesRoom} />
       <Flex direction="column" className="mx-4">
-        {/* <SlidePerViewRooms listRooms={} /> */}
-        {/* <GetCldIdList roomId={room.id} /> */}
         <div className="py-4">
           <p>Id: {room.id}</p>
           <p>{room.title}</p>
           <p>{room.description}</p>
-
-          {/* <p>{room.map((reservation, index)=> <p key={index}>{reservation}</p>)}</p> */}
         </div>
       </Flex>
 
@@ -62,19 +75,41 @@ const ChambreDetailPage = async ({ params }: Props) => {
         /> */}
 
         <BKDayPicker bookedDays={bookedDays} />
-        <p className="pt-4 text-gray-400">
-          <strong>reservation (Bd) : </strong>
-          {reservations.map((reservation, index) => (
-            <span key={index}>
-              {reservation.assignedToRoomId === room.id &&
-                reservation.date.toDateString()}
-            </span>
-          ))}
-        </p>
       </Flex>
 
       <div className="pt-10 pb-32">
         <DeleteRoomButton roomId={room.id} />
+      </div>
+      <div className="pt-10 pb-32">
+        <p className="pt-4 text-gray-400">
+          <strong>
+            reservation (Bd) : <br />
+          </strong>
+          {room.reservationDates.map((day, index) => (
+            <span key={index}>
+              {day.date.toDateString()}
+              <br />
+            </span>
+          ))}
+        </p>
+        <p>
+          <strong>
+            bookedDay : <br />
+          </strong>
+          {bookedDays.map((day, index) => (
+            <span key={index}>
+              {day.toDateString()}
+              <br />
+            </span>
+          ))}
+        </p>
+
+        <ConfirmationDemandForm
+          title={room.title}
+          roomId={room.id}
+          bookedDays={bookedDays}
+        />
+        {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
       </div>
       <div
         className="w-full bg-white h-20 border-t-2

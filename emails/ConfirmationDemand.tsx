@@ -14,11 +14,12 @@ import {
 interface Props {
   title: string;
   roomId: number;
+  bookedDays: Date[];
 }
 // { roomId }: { roomId: number }
 // { name }: { name: string }
 
-const ConfirmationMail = ({ title, roomId }: Props) => {
+const ConfirmationDemand = ({ title, roomId, bookedDays }: Props) => {
   return (
     <html>
       <Preview>Reservation à La Baraka </Preview>
@@ -31,6 +32,9 @@ const ConfirmationMail = ({ title, roomId }: Props) => {
               Demandent que tu les rapelles pour confirmer la reservation de la
               chambre {title} ’’ Id: {roomId} ’’
             </Text>
+            {/* {bookedDays.map((bookedDay, index) => (
+              <Text key={index}>Le {bookedDay.toDateString()}</Text>
+            ))} */}
             <Link href="http://www.apple.com">www.apple.com</Link>
           </Container>
         </Body>
@@ -39,4 +43,4 @@ const ConfirmationMail = ({ title, roomId }: Props) => {
   );
 };
 
-export default ConfirmationMail;
+export default ConfirmationDemand;
