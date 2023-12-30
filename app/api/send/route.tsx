@@ -13,7 +13,7 @@ export async function GET() {
       subject: "Demande de réservation",
       html: "<p>Hello from Next Js</p>",
       // react: <ConfirmationMail title={room.title} roomId={room.id} />,
-      react: <ConfirmationDemand />,
+      // react: <ConfirmationDemand />,
     });
     return NextResponse.json({ data });
   } catch (error) {

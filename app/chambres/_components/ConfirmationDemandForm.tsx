@@ -30,9 +30,9 @@ export default async function ConfirmationDemandForm({
       // react: <ConfirmationMail title={room.title} roomId={room.id} />,
       react: (
         <ConfirmationDemand
-          title={bookedDaysToEmail}
+          title={title}
           roomId={roomId}
-          // bookedDaysToEmail={title}
+          reservation={bookedDaysToEmail}
         />
       ),
     });
