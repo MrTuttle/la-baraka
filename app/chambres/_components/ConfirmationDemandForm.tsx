@@ -2,13 +2,13 @@
 import { Resend } from "resend";
 import ConfirmationDemand from "@/emails/ConfirmationMail";
 
-interface BookedDay {
-  bookedDay: Date;
-}
+// interface BookedDay {
+//   bookedDay: Date;
+// }
 interface Props {
   title: string;
   roomId: number;
-  bookedDays: Date[];
+  bookedDaysToEmail: string;
   // bookedDays: BookedDay[];
   // data: FormData;
 }
@@ -16,7 +16,7 @@ interface Props {
 export default async function ConfirmationDemandForm({
   title,
   roomId,
-  bookedDays,
+  bookedDaysToEmail,
 }: Props) {
   async function send() {
     "use server";
@@ -30,15 +30,15 @@ export default async function ConfirmationDemandForm({
       // react: <ConfirmationMail title={room.title} roomId={room.id} />,
       react: (
         <ConfirmationDemand
-          title={title}
+          title={bookedDaysToEmail}
           roomId={roomId}
-          bookedDays={bookedDays}
+          // bookedDaysToEmail={title}
         />
       ),
     });
 
     console.log("datas", data);
-    console.log(title, roomId, bookedDays);
+    console.log(title, roomId, bookedDaysToEmail);
   }
   return (
     <form action={send}>
@@ -48,6 +48,9 @@ export default async function ConfirmationDemandForm({
       >
         Send Email
       </button>
+      <p>{title}</p>
+      <p>{roomId}</p>
+      <p>{bookedDaysToEmail}</p>
     </form>
   );
 }

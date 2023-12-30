@@ -37,26 +37,31 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   // For the swiper
   const imagesRoom = room.assignedRoom;
-  // console.log("LISTIMAFES :");
 
-  // console.log(room.assignedRoom);
-  // => log table of rooms images
-
-  // FIND RESERVATION PROPS LOGIC (for BKDayPicker component) :
-  // work but theres two prisma requests (on Room & Reservation), I would try to have only one
-  // const reservations = await prisma.reservation.findMany({
-  //   where: { assignedToRoomId: room.id },
-  // });
-  // this bookedDays pass in BKDayPicker to display reserved days
-  // let bookedDays: Date[] = [];
-  // reservations.map((reservation) => bookedDays.push(reservation.date));
-  // console.log("BOOKEDAYS", bookedDays);
-  // => BOOKEDAYS [ 2023-12-23T00:00:00.000Z ]
-
-  // SAME LOGIC
+  // logic to pass bookedDays to datePicker
   let bookedDays: Date[] = [];
   room.reservationDates.map((reservation) => bookedDays.push(reservation.date));
   console.log("BOOKEDDAYS: ", bookedDays);
+
+  // logic to stringify dates for react email
+  const bookedDaysStringify = () => {
+    let daysInString: string;
+    daysInString = "";
+    console.log("daysInString:", daysInString);
+    console.log("bookedDays:", bookedDays);
+    const list = bookedDays.map((day) => day.toDateString());
+    console.log("list:", list);
+    daysInString = list.toString();
+    console.log("dayInString:", daysInString);
+
+    const spacer = list.map((item) => " " + item);
+
+    return daysInString;
+  };
+  // bookedDaysStringify();
+  const bookedDaysToEmail: string = bookedDaysStringify();
+  console.log("to email :", bookedDaysToEmail);
+  const josephine = "Josephine";
 
   return (
     <Flex direction="column" align="center">
@@ -107,7 +112,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
         <ConfirmationDemandForm
           title={room.title}
           roomId={room.id}
-          bookedDays={bookedDays}
+          bookedDaysToEmail={bookedDaysToEmail}
         />
         {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
       </div>
