@@ -30,38 +30,33 @@ const ChambreDetailPage = async ({ params }: Props) => {
     },
   });
   if (!room) notFound();
-  console.log("ROOM.RESERVATIONDATES");
-  console.log(room.reservationDates.map((date) => date.date));
-  console.log("assigned room : ", room.assignedRoom);
-  console.log("reservationDates : ", room.reservationDates);
+  // console.log("ROOM.RESERVATIONDATES");
+  // console.log(room.reservationDates.map((date) => date.date));
+  // console.log("assigned room : ", room.assignedRoom);
+  // console.log("reservationDates : ", room.reservationDates);
 
-  // For the swiper
+  // FOR THE SWIPER IMAGE (rooms with assignedRomm, cover or not)
   const imagesRoom = room.assignedRoom;
 
   // logic to pass bookedDays to datePicker
   let bookedDays: Date[] = [];
   room.reservationDates.map((reservation) => bookedDays.push(reservation.date));
-  console.log("BOOKEDDAYS: ", bookedDays);
+  // console.log("BOOKEDDAYS: ", bookedDays);
 
   // logic to stringify dates for react email
   const bookedDaysStringify = () => {
-    let daysInString: string;
-    daysInString = "";
-    console.log("daysInString:", daysInString);
+    // let daysInString: string;
     console.log("bookedDays:", bookedDays);
     const list = bookedDays.map((day) => day.toDateString());
     console.log("list:", list);
-    daysInString = list.toString();
+    let daysInString: string = list.join(" | ");
     console.log("dayInString:", daysInString);
-
-    const spacer = list.map((item) => " " + item);
 
     return daysInString;
   };
   // bookedDaysStringify();
   const bookedDaysToEmail: string = bookedDaysStringify();
   console.log("to email :", bookedDaysToEmail);
-  const josephine = "Josephine";
 
   return (
     <Flex direction="column" align="center">

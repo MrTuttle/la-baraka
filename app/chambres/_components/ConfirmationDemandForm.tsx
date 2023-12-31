@@ -1,6 +1,6 @@
 //app/chambres/_components/ConfirmationDemandForm.tsx
 import { Resend } from "resend";
-import ConfirmationDemand from "@/emails/ConfirmationMail";
+import ConfirmationDemand from "@/emails/ConfirmationDemand";
 
 // interface BookedDay {
 //   bookedDay: Date;
@@ -25,20 +25,29 @@ export default async function ConfirmationDemandForm({
     const { data } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "florent.vincerot@me.com", // replace with email argument
-      subject: "Demande de réservation",
+      subject: "Demande de réservation pour la Baraka (test)",
       html: "<p>Hello from Next Js</p>",
       // react: <ConfirmationMail title={room.title} roomId={room.id} />,
       react: (
         <ConfirmationDemand
-          title={bookedDaysToEmail}
+          title={title}
           roomId={roomId}
-          // bookedDaysToEmail={title}
+          reservation={bookedDaysToEmail}
         />
       ),
     });
 
-    console.log("datas", data);
-    console.log(title, roomId, bookedDaysToEmail);
+    console.log("datas (no datas = no mail):", data);
+    console.log("datas with the same code id doesn't send twice (cache)");
+    console.log(
+      "just type something new in subject: or other options to get a different id"
+    );
+    console.log(
+      "ConfirmationDemandForm Props",
+      title,
+      roomId,
+      bookedDaysToEmail
+    );
   }
   return (
     <form action={send}>

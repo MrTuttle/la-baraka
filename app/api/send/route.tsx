@@ -2,7 +2,7 @@
 
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import ConfirmationDemand from "@/emails/ConfirmationMail";
+import ConfirmationDemand from "@/emails/ConfirmationDemand";
 
 export async function GET() {
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -10,10 +10,10 @@ export async function GET() {
     const { data } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "florent.vincerot@me.com", // replace with email argument
-      subject: "Demande de réservation",
+      subject: "Demande de réservation(route)",
       html: "<p>Hello from Next Js</p>",
       // react: <ConfirmationMail title={room.title} roomId={room.id} />,
-      react: <ConfirmationDemand />,
+      // react: <ConfirmationDemand />,
     });
     return NextResponse.json({ data });
   } catch (error) {

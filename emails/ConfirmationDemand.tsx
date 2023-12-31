@@ -14,12 +14,12 @@ import {
 interface Props {
   title: string;
   roomId: number;
-  bookedDaysToEmail: string;
+  reservation: string;
 }
 // { roomId }: { roomId: number }
 // { name }: { name: string }
 
-const ConfirmationDemand = ({ title, roomId, bookedDaysToEmail }: Props) => {
+const ConfirmationDemand = ({ title, roomId, reservation }: Props) => {
   return (
     <html>
       <Preview>Reservation à La Baraka </Preview>
@@ -30,7 +30,8 @@ const ConfirmationDemand = ({ title, roomId, bookedDaysToEmail }: Props) => {
             Monsieur et Madame
             <Text>
               Demandent que tu les rapelles pour confirmer la reservation de la
-              chambre {title} ’’ Id: {roomId} ’’{bookedDaysToEmail}
+              chambre {title} ’’ Id: {roomId} ’ <br />
+              Au dates suivantes :<br />’{reservation}
             </Text>
             {/* {bookedDays.map((bookedDay, index) => (
               <Text key={index}>Le {bookedDay.toDateString()}</Text>
