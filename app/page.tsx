@@ -41,7 +41,7 @@ const home = async () => {
       </div>
       <Section className="prose px-8 my-border-grey h-screen flex flex-col items-center">
         <h3 className=" font-light text-2xl self-center">
-          La Baraka vous accueille au cœur des monts des Cevennes. Lorem ipsum
+          La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
           dolor sit, amet consectetur adipisicing elit. Laboriosam, est? Quae
           vel adipisci provident tempore, nisi, commodi suscipit pariatur
           perspiciatis beatae modi nam, iste aut possimus consequatur dolores

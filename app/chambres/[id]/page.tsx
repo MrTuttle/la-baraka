@@ -109,7 +109,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
           roomId={room.id}
           bookedDaysToEmail={bookedDaysToEmail}
         />
-        {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
       </div>
       <div
         className="w-full bg-white h-20 border-t-2
@@ -127,9 +126,10 @@ const ChambreDetailPage = async ({ params }: Props) => {
           <p>8-9 jan</p>
         </div>
         <div className="p-4">
-          <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
+          {/* <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
             Réserver
-          </button>
+          </button> */}
+          <SendBookingButton title={room.title} roomId={room.id} />
         </div>
       </div>
     </Flex>

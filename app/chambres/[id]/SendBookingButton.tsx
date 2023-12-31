@@ -32,10 +32,12 @@ const SendBookingButton = ({ title, roomId }: Props) => {
       <AlertDialog.Trigger>
         <Link href="">
           <Flex gap="1" align="center">
-            <HiOutlineTrash />
-            <Text as="p" size="1">
+            <button className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
               Reserver
-            </Text>
+            </button>
+            {/* <Text as="p" size="1">
+              Reserver (send booking button)
+            </Text> */}
           </Flex>
         </Link>
       </AlertDialog.Trigger>

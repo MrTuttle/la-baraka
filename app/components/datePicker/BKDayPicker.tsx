@@ -28,28 +28,21 @@ const BKDayPicker = ({ bookedDays }: Props) => {
   };
   // MESSAGE TO GIVE SELECTED RANGE DAYS
   let footer = <p>Please pick the first day.</p>;
-  const affiche = () => {
-    if (range?.from) {
-      if (!range.to) {
-        footer = <p>{format(range.from, "PPP")}</p>;
-      } else if (range.to) {
-        footer = (
-          <p>
-            {format(range.from, "PPP")}–{format(range.to, "PPP")}
-          </p>
-        );
-      }
-    }
-  };
+  const affiche = () => {};
   if (range?.from) {
     if (!range.to) {
       footer = <p>{format(range.from, "PPP")}</p>;
+      // FIRST DAY CLICKED = RANGE.FROM
+      console.log("first day clicked:", range.from);
+      console.log("booked:", booked);
     } else if (range.to) {
       footer = (
         <p>
           {format(range.from, "PPP")}–{format(range.to, "PPP")}
         </p>
       );
+      // SECOND DAY CLICKED = RANGE.TO
+      console.log("second day clicked:", range.to);
     }
   }
   // console.log("DAY PICKER LOGS:");
@@ -130,11 +123,13 @@ const BKDayPicker = ({ bookedDays }: Props) => {
         </div>
         <div className="p-4">
           <p>
-            <strong>reservation (props):</strong>
+            <strong>reservation (props in bkDaypicker):</strong>
+            <br />
+            the get request is in page parent
           </p>
-          {/* {bookedDays.map((day, index) => (
+          {bookedDays.map((day, index) => (
             <p key={index}>{day.toDateString()}</p>
-          ))} */}
+          ))}
         </div>
       </Flex>
     </>
