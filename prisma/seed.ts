@@ -10,6 +10,17 @@ async function main() {
   const clearImages = await prisma.image.deleteMany({});
   const clearRooms = await prisma.room.deleteMany({});
   const clearMenus = await prisma.menu.deleteMany({});
+  const clearUserRooms = await prisma.userRoom.deleteMany({});
+
+  const userRoomJack = await prisma.userRoom.upsert({
+    update: {},
+    create: {
+      firstName: "Jack",
+      name: "Russel",
+      phone: "(+33) 00 00 00 00 00",
+    },
+    where: { id: 0 },
+  });
 
   const menuDuJour = await prisma.menu.upsert({
     update: {},
@@ -48,11 +59,11 @@ async function main() {
       title: "Chambre Bleue",
       description: `3 lits.
 
-Salle de bain.
+  Salle de bain.
 
-Balcon.
+  Balcon.
 
-Wifi.`,
+  Wifi.`,
       price: 50.99,
 
       assignedRoom: {
@@ -72,6 +83,7 @@ Wifi.`,
       reservationDates: {
         create: {
           date: new Date("2023-12-24T00:00"),
+          assignedToUserRoomId: 0,
         },
       },
     },
@@ -102,9 +114,11 @@ Wifi.`,
         create: [
           {
             date: new Date("2023-12-24T00:00"),
+            assignedToUserRoomId: 1,
           },
           {
             date: new Date("2023-12-25T00:00"),
+            assignedToUserRoomId: 1,
           },
         ],
       },
@@ -112,6 +126,7 @@ Wifi.`,
   });
   const seeImages = await prisma.image.findMany({});
   console.log({
+    userRoomJack,
     menuDuJour,
     menuSalads,
     menuPlats,

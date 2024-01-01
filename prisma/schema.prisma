@@ -22,14 +22,35 @@ model Room {
   reservationDates Reservation[]
 }
 
-model Reservation {
-  id               Int      @id @default(autoincrement())
-  date             DateTime @db.Date
-  assignedToRoomId Int
-  assignedToRoom   Room     @relation(fields: [assignedToRoomId], references: [id])
+model UserRoom {
+  id               Int           @id @default(autoincrement())
+  firstName        String?
+  name             String?
+  email            String?       @unique
+  phone            String
+  emailVerified    DateTime?
+  reservationDates Reservation[]
 
-  @@unique([assignedToRoomId, date])
-  @@index([assignedToRoomId])
+  @@index([id])
+}
+
+model Reservation {
+  id                   Int      @id @default(autoincrement())
+  date                 DateTime @db.Date
+  status               Status   @default(VACANT)
+  assignedToRoomId     Int
+  assignedToUserRoomId Int
+  assignedToRoom       Room     @relation(fields: [assignedToRoomId], references: [id])
+  assignedToUserRoom   UserRoom @relation(fields: [assignedToUserRoomId], references: [id])
+
+  @@unique([assignedToRoomId, date, assignedToUserRoomId])
+  @@index([assignedToUserRoomId])
+}
+
+enum Status {
+  OCCUPIED
+  VACANT
+  IN_PROGRESS
 }
 
 model Image {
