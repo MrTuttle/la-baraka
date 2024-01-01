@@ -14,6 +14,7 @@ import SlidePerViewGetIds from "./components/swiperRooms/SlidePerViewGetIds";
 import CldImageClient from "./components/CldImageClient";
 import { SiForestry } from "react-icons/si";
 import Background from "./components/Background";
+import DialogRoomRequest from "./components/DialogRoomRequest/DialogRoomRequest";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();

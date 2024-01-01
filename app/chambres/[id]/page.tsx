@@ -10,6 +10,7 @@ import { Box, Button, Container, Flex } from "@radix-ui/themes";
 import DetailRoomSwiperSlide from "@/app/components/swiper/DetailRoomSwiperSlide";
 import SendBookingButton from "./SendBookingButton";
 import ConfirmationDemandForm from "../_components/ConfirmationDemandForm";
+import DialogRoomRequest from "@/app/components/DialogRoomRequest/DialogRoomRequest";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -61,6 +62,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
   return (
     <Flex direction="column" align="center">
       <DetailRoomSwiperSlide listImages={imagesRoom} />
+      <DialogRoomRequest />
       <Flex direction="column" className="mx-4">
         <div className="py-4">
           <p>Id: {room.id}</p>
