@@ -11,16 +11,7 @@ async function main() {
   const clearRooms = await prisma.room.deleteMany({});
   const clearMenus = await prisma.menu.deleteMany({});
   const clearUserRooms = await prisma.userRoom.deleteMany({});
-
-  const userRoomJack = await prisma.userRoom.upsert({
-    update: {},
-    create: {
-      firstName: "Jack",
-      name: "Russel",
-      phone: "(+33) 00 00 00 00 00",
-    },
-    where: { id: 0 },
-  });
+  ////////////////////
 
   const menuDuJour = await prisma.menu.upsert({
     update: {},
@@ -53,10 +44,10 @@ async function main() {
   });
 
   const chambrebleue = await prisma.room.upsert({
-    where: { id: 0 },
+    where: { id: 1 },
     update: {},
     create: {
-      title: "Chambre Bleue",
+      title: "Chambre Blu",
       description: `3 lits.
 
   Salle de bain.
@@ -80,16 +71,52 @@ async function main() {
           },
         ],
       },
+      // reservationDates: {
+      //   create: {
+      //     date: new Date("2023-12-24T00:00"),
+      //     assignedToUserRoomId: 0,
+      //   },
+      // },
+    },
+  });
+  const userRoomJack = await prisma.userRoom.upsert({
+    update: {},
+    create: {
+      firstName: "Jacky",
+      name: "Russel",
+      phone: "(+33) 00 00 00 00 00",
       reservationDates: {
         create: {
           date: new Date("2023-12-24T00:00"),
-          assignedToUserRoomId: 0,
+          assignedToRoomId: 1,
         },
       },
     },
+    where: { id: 1 },
+  });
+  const userRoomBob = await prisma.userRoom.upsert({
+    update: {},
+    create: {
+      firstName: "Boby",
+      name: "Babouch",
+      phone: "(+33) 00 00 00 00 00",
+      reservationDates: {
+        create: [
+          {
+            date: new Date("2023-12-24T00:00"),
+            assignedToRoomId: 2,
+          },
+          {
+            date: new Date("2024-12-25T00:00"),
+            assignedToRoomId: 2,
+          },
+        ],
+      },
+    },
+    where: { id: 2 },
   });
   const chambrejaune = await prisma.room.upsert({
-    where: { id: 1 },
+    where: { id: 2 },
     update: {},
     create: {
       title: "Chambre Jaune",
@@ -110,18 +137,18 @@ async function main() {
           },
         ],
       },
-      reservationDates: {
-        create: [
-          {
-            date: new Date("2023-12-24T00:00"),
-            assignedToUserRoomId: 1,
-          },
-          {
-            date: new Date("2023-12-25T00:00"),
-            assignedToUserRoomId: 1,
-          },
-        ],
-      },
+      // reservationDates: {
+      //   create: [
+      //     {
+      //       date: new Date("2023-12-24T00:00"),
+      //       assignedToUserRoomId: 2,
+      //     },
+      //     {
+      //       date: new Date("2023-12-25T00:00"),
+      //       assignedToUserRoomId: 2,
+      //     },
+      //   ],
+      // },
     },
   });
   const seeImages = await prisma.image.findMany({});
@@ -137,6 +164,7 @@ async function main() {
   const seeReservations = await prisma.reservation.findMany({});
   console.log("reservations :");
   console.log(seeReservations);
+  ////////////////////
 }
 main()
   .then(async () => {

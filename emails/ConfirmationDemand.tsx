@@ -1,4 +1,4 @@
-// emails/ConfirmationMail.tsx
+// emails/ConfirmationDemand.tsx
 
 import React, { CSSProperties } from "react";
 import {
