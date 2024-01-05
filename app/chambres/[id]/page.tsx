@@ -1,5 +1,4 @@
 // app/issues/[id]/page.tsx
-
 import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -10,7 +9,13 @@ import { Box, Button, Container, Flex } from "@radix-ui/themes";
 import DetailRoomSwiperSlide from "@/app/components/swiper/DetailRoomSwiperSlide";
 import SendBookingButton from "./SendBookingButton";
 import ConfirmationDemandForm from "../_components/ConfirmationDemandForm";
-import DialogRoomRequest from "@/app/components/DialogRoomRequest/DialogRoomRequest";
+// import DialogRoomRequest from "@/app/components/DialogRoomRequest/DialogRoomRequest";
+
+import dynamic from "next/dynamic";
+import RoomFormSkeleton from "@/app/chambres/_components/RoomFormSkeleton";
+import SendUserRoomTestButton from "./SendUserRoomTestButton";
+import SendUserRoomTestClassical from "./SendUserRoomTestClassical";
+import UserRoomForm from "./UserRoomForm";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -59,10 +64,18 @@ const ChambreDetailPage = async ({ params }: Props) => {
   const bookedDaysToEmail: string = bookedDaysStringify();
   console.log("to email :", bookedDaysToEmail);
 
+  // access to UserRoom
+  const DialogRoomRequest = dynamic(
+    () => import("@/app/components/DialogRoomRequest/DialogRoomRequest"),
+    {
+      ssr: false,
+      loading: () => <RoomFormSkeleton />,
+    }
+  );
+
   return (
     <Flex direction="column" align="center">
       <DetailRoomSwiperSlide listImages={imagesRoom} />
-      <DialogRoomRequest />
       <Flex direction="column" className="mx-4">
         <div className="py-4">
           <p>Id: {room.id}</p>
@@ -131,7 +144,12 @@ const ChambreDetailPage = async ({ params }: Props) => {
           {/* <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
             Réserver
           </button> */}
-          <SendBookingButton title={room.title} roomId={room.id} />
+          <UserRoomForm
+            title={room.title}
+            roomId={room.id}
+            bookedDaysToEmail={bookedDaysToEmail}
+          />
+          {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
         </div>
       </div>
     </Flex>

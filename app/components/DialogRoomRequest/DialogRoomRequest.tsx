@@ -8,102 +8,63 @@ import { HiMiniXMark } from "react-icons/hi2";
 import "./styles.css";
 import axios from "axios";
 
-import ErrorMessage from "@/app/components/ErrorMessage";
-import Spinner from "@/app/components/Spinner";
-import { roomSchema } from "@/app/validationSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Room } from "@prisma/client";
-import { Button, Callout, TextField } from "@radix-ui/themes";
-import "easymde/dist/easymde.min.css";
+// import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import SimpleMDE from "react-simplemde-editor";
-import { z } from "zod";
+import UserRoomForm from "@/app/chambres/[id]/UserRoomForm";
+import { MouseEvent } from "react";
 
-type RoomFormData = z.infer<typeof roomSchema>;
+type UserRoom = {
+  name: string;
+  firstName: string;
+  phone: string;
+  email: string;
+};
+interface Props {
+  title: string;
+  roomId: number;
+  bookedDaysToEmail: string;
 
-const DialogRoomRequest = ({ room }: { room?: Room }) => {
+  onSubmit: (formData: FormData) => void;
+  // onClick: (event: React.MouseEvent) => void;
+}
+
+// const DialogRoomRequest = ({ guest }: { guest?: UserRoom }) => {
+const DialogRoomRequest = ({
+  title,
+  roomId,
+  bookedDaysToEmail,
+  onSubmit,
+}: // onClick,
+Props) => {
   const name = "Fischer";
   const firstName = "Bobby";
+  const handleClick = (event: React.MouseEvent) => {
+    console.log("CLICK");
+    console.log("currentTarget : ", event.currentTarget);
+    console.log("type :", event.type);
+    console.log("target :", event.target);
+  };
 
-  const router = useRouter();
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<RoomFormData>({
-    resolver: zodResolver(roomSchema),
-  });
-  const [error, setError] = useState("");
-  const [isSubmitting, setSubmitting] = useState(false);
+  // const router = useRouter();
 
-  const onSubmit = handleSubmit(async (data) => {
-    try {
-      setSubmitting(true);
-      if (room) await axios.patch("/api/chambres/" + room.id, data);
-      else await axios.post("/api/chambres", data);
-      router.push("/chambres");
-      router.refresh();
-    } catch (error) {
-      setSubmitting(false);
-      setError("An unexpected error occurred.");
-    }
-  });
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <button className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
-          Dialog
+          Reserver 2
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
         <Dialog.Content className="DialogContent">
-          <Dialog.Title className="DialogTitle">Edit profile</Dialog.Title>
+          <Dialog.Title className="DialogTitle">
+            {title} - Reserver la chambre n°{roomId}
+          </Dialog.Title>
           <Dialog.Description className="DialogDescription">
-            Make changes to your profile here. Click save when you’re done.
+            Nous vous rapellons sous 24 heures pour confirmer votre réservation.
+            Remplissez l'email si vous préférez être contacté par ce moyen.
           </Dialog.Description>
-          {/* DEBUT */}
-          <div className="max-w-xl">
-            {error && (
-              <Callout.Root color="red" className="mb-5">
-                <Callout.Text>{error}</Callout.Text>
-              </Callout.Root>
-            )}
-            <form className="space-y-3" onSubmit={onSubmit}>
-              <TextField.Root>
-                <TextField.Input
-                  defaultValue={room?.title}
-                  placeholder="Title"
-                  {...register("title")}
-                />
-              </TextField.Root>
-              <TextField.Root>
-                <TextField.Input
-                  defaultValue={room?.price}
-                  placeholder="Price"
-                  {...register("price", { valueAsNumber: true })}
-                />
-              </TextField.Root>
-              <ErrorMessage>{errors.title?.message}</ErrorMessage>
-              <Controller
-                name="description"
-                control={control}
-                defaultValue={room?.description}
-                render={({ field }) => (
-                  <SimpleMDE placeholder="Description" {...field} />
-                )}
-              />
-              <ErrorMessage>{errors.description?.message}</ErrorMessage>
-              <Button disabled={isSubmitting}>
-                {room ? "Update room" : "Submit New room"}{" "}
-                {isSubmitting && <Spinner />}
-              </Button>
-            </form>
-          </div>
-          {/* FIN */}
+
           {/* <fieldset className="Fieldset">
             <label className="Label" htmlFor="name">
               First Name
@@ -123,6 +84,72 @@ const DialogRoomRequest = ({ room }: { room?: Room }) => {
             <input className="Input" id="username" defaultValue="06 01 02 03" />
           </fieldset> */}
 
+          {/* BEGIN */}
+          <form action={onSubmit}>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                prénom
+              </label>
+
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              ></input>
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                nom
+              </label>
+
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              ></input>
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                tél.
+              </label>
+
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+              ></input>
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                email :
+              </label>
+
+              <input
+                type="text"
+                id="email"
+                name="email"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              ></input>
+            </div>
+
+            {/* <Dialog.Close> */}
+            <div>
+              <button
+                type="submit"
+                className="my-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onClick={handleClick}
+              >
+                bouton
+              </button>
+            </div>
+            {/* </Dialog.Close> */}
+          </form>
+          {/* STOP */}
+
           {/* <div
             style={{
               display: "flex",
@@ -135,7 +162,9 @@ const DialogRoomRequest = ({ room }: { room?: Room }) => {
                 className="Button green"
                 onClick={async () => {
                   console.log("BOUTON CLICK");
-                  await axios.post("../api/userRooms");
+                  await axios.post("../../api/userRooms");
+                  router.push("/userRooms");
+                  router.refresh();
                 }}
               >
                 Save changes
