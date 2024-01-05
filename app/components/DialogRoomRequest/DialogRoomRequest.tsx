@@ -51,7 +51,7 @@ Props) => {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <button className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
-          Reserver 2
+          Reserver 3
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
