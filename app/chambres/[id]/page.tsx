@@ -13,8 +13,6 @@ import ConfirmationDemandForm from "../_components/ConfirmationDemandForm";
 
 import dynamic from "next/dynamic";
 import RoomFormSkeleton from "@/app/chambres/_components/RoomFormSkeleton";
-import SendUserRoomTestButton from "./SendUserRoomTestButton";
-import SendUserRoomTestClassical from "./SendUserRoomTestClassical";
 import UserRoomForm from "./UserRoomForm";
 
 interface Props {

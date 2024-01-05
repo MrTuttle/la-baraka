@@ -62,7 +62,7 @@ Props) => {
           </Dialog.Title>
           <Dialog.Description className="DialogDescription">
             Nous vous rapellons sous 24 heures pour confirmer votre réservation.
-            Remplissez l'email si vous préférez être contacté par ce moyen.
+            Remplissez l’email si vous préférez être contacté par ce moyen.
           </Dialog.Description>
 
           {/* <fieldset className="Fieldset">

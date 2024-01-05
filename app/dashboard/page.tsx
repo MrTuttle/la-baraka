@@ -25,6 +25,9 @@ const pageDashboard = async () => {
           <Link href="/menus/new">Nouveau menu</Link>
         </Box>
         <Box>
+          <Link href="/guests">Valider une reservation</Link>
+        </Box>
+        <Box>
           <h2>Gestion des images</h2>
 
           <Link href="/images/new">AJouter une image à une chambre</Link>
