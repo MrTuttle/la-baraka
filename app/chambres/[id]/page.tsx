@@ -14,6 +14,7 @@ import ConfirmationDemandForm from "../_components/ConfirmationDemandForm";
 import dynamic from "next/dynamic";
 import RoomFormSkeleton from "@/app/chambres/_components/RoomFormSkeleton";
 import UserRoomForm from "./UserRoomForm";
+import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomRequest2";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -71,6 +72,14 @@ const ChambreDetailPage = async ({ params }: Props) => {
     }
   );
 
+  // get days from BKPicker . Pas de props du client vers le serveur
+  // const handleStartDay = (startDay: Date) => {
+  //   console.log("START DAY : ", startDay);
+  // };
+  // const handleEndDay = (endDay: Date) => {
+  //   console.log("END DAY : ", endDay);
+  // };
+
   return (
     <Flex direction="column" align="center">
       <DetailRoomSwiperSlide listImages={imagesRoom} />
@@ -87,7 +96,11 @@ const ChambreDetailPage = async ({ params }: Props) => {
           bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
         /> */}
 
-        <BKDayPicker bookedDays={bookedDays} />
+        <BKDayPicker
+          bookedDays={bookedDays}
+          // onStartDay={handleStartDay}
+          // onEndDay={handleEndDay}
+        />
       </Flex>
 
       <div className="pt-10 pb-32">
@@ -143,6 +156,13 @@ const ChambreDetailPage = async ({ params }: Props) => {
             Réserver
           </button> */}
           <UserRoomForm
+            title={room.title}
+            roomId={room.id}
+            bookedDaysToEmail={bookedDaysToEmail}
+          />
+          <DialogRoomRequest2
+            // onSubmit={addUserRoom}
+            // onClick={sendEmail}
             title={room.title}
             roomId={room.id}
             bookedDaysToEmail={bookedDaysToEmail}

@@ -4,14 +4,9 @@
 import * as Dialog from "@radix-ui/react-dialog";
 // import { Cross2Icon } from "@radix-ui/react-icons";
 import { HiMiniXMark } from "react-icons/hi2";
+import { postGuest } from "@/app/actions/MarkBooked";
 
 import "./styles.css";
-import axios from "axios";
-
-// import "easymde/dist/easymde.min.css";
-import { useRouter } from "next/navigation";
-import UserRoomForm from "@/app/chambres/[id]/UserRoomForm";
-import { MouseEvent } from "react";
 
 type UserRoom = {
   name: string;
@@ -24,16 +19,15 @@ interface Props {
   roomId: number;
   bookedDaysToEmail: string;
 
-  onSubmit: (formData: FormData) => void;
+  // onSubmit: (formData: FormData) => void;
   // onClick: (event: React.MouseEvent) => void;
 }
 
 // const DialogRoomRequest = ({ guest }: { guest?: UserRoom }) => {
-const DialogRoomRequest = ({
+const DialogRoomRequest2 = ({
   title,
   roomId,
   bookedDaysToEmail,
-  onSubmit,
 }: // onClick,
 Props) => {
   const name = "Fischer";
@@ -59,7 +53,7 @@ Props) => {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <button className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
-          Reserver 3
+          Reserver 4
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -73,27 +67,7 @@ Props) => {
             Remplissez l’email si vous préférez être contacté par ce moyen.
           </Dialog.Description>
 
-          {/* <fieldset className="Fieldset">
-            <label className="Label" htmlFor="name">
-              First Name
-            </label>
-            <input className="Input" id="name" defaultValue={name} />
-          </fieldset>
-          <fieldset className="Fieldset">
-            <label className="Label" htmlFor="name">
-              Name
-            </label>
-            <input className="Input" id="name" defaultValue={name} />
-          </fieldset>
-          <fieldset className="Fieldset">
-            <label className="Label" htmlFor="phone">
-              Tél.
-            </label>
-            <input className="Input" id="username" defaultValue="06 01 02 03" />
-          </fieldset> */}
-
-          {/* BEGIN */}
-          <form action={onSubmit}>
+          <form action={postGuest}>
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 prénom
@@ -158,27 +132,6 @@ Props) => {
           </form>
           {/* STOP */}
 
-          {/* <div
-            style={{
-              display: "flex",
-              marginTop: 25,
-              justifyContent: "flex-end",
-            }}
-          >
-            <Dialog.Close asChild>
-              <button
-                className="Button green"
-                onClick={async () => {
-                  console.log("BOUTON CLICK");
-                  await axios.post("../../api/userRooms");
-                  router.push("/userRooms");
-                  router.refresh();
-                }}
-              >
-                Save changes
-              </button>
-            </Dialog.Close>
-          </div> */}
           <Dialog.Close asChild>
             <button className="IconButton" aria-label="Close">
               {/* <Cross2Icon /> */}
@@ -191,4 +144,4 @@ Props) => {
   );
 };
 
-export default DialogRoomRequest;
+export default DialogRoomRequest2;
