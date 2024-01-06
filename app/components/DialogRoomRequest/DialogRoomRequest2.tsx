@@ -1,9 +1,12 @@
 "use client";
 //app/components/DialogRoomRequest/DialogRoomRequest.tsx
 
+import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 // import { Cross2Icon } from "@radix-ui/react-icons";
 import { HiMiniXMark } from "react-icons/hi2";
+
+// server actions
 import { postGuest } from "@/app/actions/MarkBooked";
 
 import "./styles.css";
@@ -22,6 +25,8 @@ interface Props {
   // onSubmit: (formData: FormData) => void;
   // onClick: (event: React.MouseEvent) => void;
 }
+
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 // const DialogRoomRequest = ({ guest }: { guest?: UserRoom }) => {
 const DialogRoomRequest2 = ({
@@ -50,12 +55,13 @@ Props) => {
   // const handleEndDay = (endDay: Date) => {
   //   console.log("END DAY : ", endDay);
   // };
+  const [open, setOpen] = React.useState(false);
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
-          Reserver 4
+          Reserver
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -69,10 +75,16 @@ Props) => {
             Remplissez l’email si vous préférez être contacté par ce moyen.
           </Dialog.Description>
 
-          <form action={postGuest}>
+          <form
+            action={postGuest}
+            // onSubmit={(event) => {
+            //   wait().then(() => setOpen(false));
+            //   event.preventDefault();
+            // }}
+          >
             <div className="flex pb-4 gap-10 justify-between">
               <div>
-                <label className="block mb-1 text-sm font-medium text-gray-500 dark:text-white">
+                <label className="block mb-1 text-sm font-medium text-gray-500">
                   Dates
                 </label>
 
@@ -85,7 +97,7 @@ Props) => {
                 ></input>
               </div>
               <div>
-                <label className="block mb-1 text-sm font-medium text-gray-500 dark:text-white">
+                <label className="block mb-1 text-sm font-medium text-gray-500">
                   Chambre
                 </label>
 
@@ -98,7 +110,7 @@ Props) => {
                 ></input>
               </div>
               <div>
-                <label className="block mb-1 text-sm font-medium text-gray-500 dark:text-white">
+                <label className="block mb-1 text-sm font-medium text-gray-500">
                   N°
                 </label>
 
@@ -114,7 +126,7 @@ Props) => {
             </div>
 
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 prénom
               </label>
 
@@ -126,7 +138,7 @@ Props) => {
               ></input>
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 nom
               </label>
 
@@ -138,7 +150,7 @@ Props) => {
               ></input>
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 tél.
               </label>
 
@@ -151,7 +163,7 @@ Props) => {
               ></input>
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 email :
               </label>
 

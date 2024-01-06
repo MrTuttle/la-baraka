@@ -155,11 +155,11 @@ const ChambreDetailPage = async ({ params }: Props) => {
           {/* <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
             Réserver
           </button> */}
-          <UserRoomForm
+          {/* <UserRoomForm
             title={room.title}
             roomId={room.id}
             bookedDaysToEmail={bookedDaysToEmail}
-          />
+          /> */}
           <DialogRoomRequest2
             // onSubmit={addUserRoom}
             // onClick={sendEmail}
