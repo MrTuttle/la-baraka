@@ -46,7 +46,8 @@ const ChambreDetailPage = async ({ params }: Props) => {
   // logic to pass bookedDays to datePicker
   let bookedDays: Date[] = [];
   room.reservationDates.map((reservation) => bookedDays.push(reservation.date));
-  // console.log("BOOKEDDAYS: ", bookedDays);
+  console.log("BOOKEDDAYS: ", bookedDays);
+  console.log("BOOKEDDAYS 1", bookedDays[0]);
 
   // logic to stringify dates for react email
   const bookedDaysStringify = () => {
@@ -79,6 +80,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
   // const handleEndDay = (endDay: Date) => {
   //   console.log("END DAY : ", endDay);
   // };
+  console.log("bookedDays :", bookedDays[0], typeof bookedDays[0]);
 
   return (
     <Flex direction="column" align="center">
@@ -166,6 +168,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
             title={room.title}
             roomId={room.id}
             bookedDaysToEmail={bookedDaysToEmail}
+            bookedDayStart={bookedDays[0]}
           />
           {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
         </div>

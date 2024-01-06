@@ -19,19 +19,19 @@ interface PostGuestProps {
   title: string;
   roomId: number;
   bookedDaysToEmail: string;
+  startDateToDb: Date;
   formData: FormData;
 }
-export async function postGuest(
-  formData: FormData
-  // { roomId, bookedDaysToEmail }: PostGuestProps
-) {
+export async function postGuest(bookedDayStart: Date, formData: FormData) {
   const phone = formData.get("phone");
   const firstName = formData.get("firstName");
   const name = formData.get("name");
   const email = formData.get("email");
   const title = formData.get("title");
   const roomId = formData.get("roomId");
+
   const bookedDaysToEmail = formData.get("bookedDaysToEmail");
+
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   await prisma.userRoom.create({
@@ -40,6 +40,12 @@ export async function postGuest(
       name: name as string,
       phone: phone as string,
       email: email as string,
+      reservationDates: {
+        create: {
+          assignedToRoomId: 1, // why can't i put roomId ?
+          date: bookedDayStart,
+        },
+      },
     },
   });
   revalidatePath("/");

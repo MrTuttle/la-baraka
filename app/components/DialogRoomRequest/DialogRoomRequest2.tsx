@@ -21,6 +21,7 @@ interface Props {
   title: string;
   roomId: number;
   bookedDaysToEmail: string;
+  bookedDayStart: Date;
 
   // onSubmit: (formData: FormData) => void;
   // onClick: (event: React.MouseEvent) => void;
@@ -33,6 +34,7 @@ const DialogRoomRequest2 = ({
   title,
   roomId,
   bookedDaysToEmail,
+  bookedDayStart,
 }: // onClick,
 Props) => {
   const name = "Fischer";
@@ -44,7 +46,17 @@ Props) => {
     console.log("target :", event.target);
   };
 
-  console.log("booked days action", bookedDaysToEmail);
+  console.log("booked days action (date to string):", bookedDaysToEmail);
+  console.log("booked day start (date)", bookedDayStart);
+
+  // if (bookedDaysToEmail) {
+  // }
+  // let startDateToDb = new Date(bookedDaysToEmail);
+
+  // console.log("startDateToDb :", startDateToDb, typeof startDateToDb);
+  // console.log("startDateToDb Type : ", typeof startDateToDb);
+
+  const addDates = postGuest.bind(null, bookedDayStart);
 
   // const router = useRouter();
 
@@ -76,13 +88,24 @@ Props) => {
           </Dialog.Description>
 
           <form
-            action={postGuest}
+            action={addDates}
             // onSubmit={(event) => {
             //   wait().then(() => setOpen(false));
             //   event.preventDefault();
             // }}
           >
             <div className="flex pb-4 gap-10 justify-between">
+              <div>
+                <label className="block mb-1 text-sm font-medium text-gray-500">
+                  Date d’arrivée
+                </label>
+                <input
+                  type="Date"
+                  id="bookedDayStart"
+                  name="bookedDayStart"
+                  // value={bookedDayStart}
+                />
+              </div>
               <div>
                 <label className="block mb-1 text-sm font-medium text-gray-500">
                   Dates
