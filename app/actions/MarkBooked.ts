@@ -15,16 +15,23 @@ export async function MarkBooked() {
 }
 
 ///
-interface Props {
+interface PostGuestProps {
   title: string;
   roomId: number;
   bookedDaysToEmail: string;
+  formData: FormData;
 }
-export async function postGuest(formData: FormData) {
+export async function postGuest(
+  formData: FormData
+  // { roomId, bookedDaysToEmail }: PostGuestProps
+) {
   const phone = formData.get("phone");
   const firstName = formData.get("firstName");
   const name = formData.get("name");
   const email = formData.get("email");
+  const title = formData.get("title");
+  const roomId = formData.get("roomId");
+  const bookedDaysToEmail = formData.get("bookedDaysToEmail");
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   await prisma.userRoom.create({
@@ -43,7 +50,7 @@ export async function postGuest(formData: FormData) {
       to: "florent.vincerot@me.com", // replace with email argument
       subject: `${firstName} Demande une réservation pour la Baraka (test)"`,
       html: `<p>${firstName} ${name}</p><p>Voudrait que tu rapelle au ${phone}</p>
-        <p>Pour confirmer la location de la chambre.</p><p> Aux dates suivantes : </p>`,
+        <p>Pour confirmer la location de la chambre ${title} ${roomId}.</p><p> Aux dates suivantes : ${bookedDaysToEmail}</p>`,
     });
   }
   console.log("GUEST POSTED");
@@ -55,7 +62,7 @@ export default async function UserRoomForm({
   title,
   roomId,
   bookedDaysToEmail,
-}: Props) {
+}: PostGuestProps) {
   const sendEmail = async function send(formData: FormData) {
     const phone = formData.get("phone");
     const firstName = formData.get("firstName");
