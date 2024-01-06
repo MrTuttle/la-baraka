@@ -25,6 +25,7 @@ export async function postGuest(formData: FormData) {
   const firstName = formData.get("firstName");
   const name = formData.get("name");
   const email = formData.get("email");
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   await prisma.userRoom.create({
     data: {
@@ -35,6 +36,16 @@ export async function postGuest(formData: FormData) {
     },
   });
   revalidatePath("/");
+
+  if (phone) {
+    const { data } = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "florent.vincerot@me.com", // replace with email argument
+      subject: `${firstName} Demande une réservation pour la Baraka (test)"`,
+      html: `<p>${firstName} ${name}</p><p>Voudrait que tu rapelle au ${phone}</p>
+        <p>Pour confirmer la location de la chambre.</p><p> Aux dates suivantes : </p>`,
+    });
+  }
   console.log("GUEST POSTED");
 
   //  sendEmail(formData);
