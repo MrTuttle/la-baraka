@@ -70,45 +70,49 @@ Props) => {
           </Dialog.Description>
 
           <form action={postGuest}>
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                chambre
-              </label>
+            <div className="flex pb-4 gap-10 justify-between">
+              <div>
+                <label className="block mb-1 text-sm font-medium text-gray-500 dark:text-white">
+                  Dates
+                </label>
 
-              <input
-                type="text"
-                id="title"
-                name="title"
-                defaultValue={title}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              ></input>
-            </div>
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                N°
-              </label>
+                <input
+                  type="text"
+                  id="bookedDaysToEmail"
+                  name="bookedDaysToEmail"
+                  value={bookedDaysToEmail}
+                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
+                ></input>
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium text-gray-500 dark:text-white">
+                  Chambre
+                </label>
 
-              <input
-                type="number"
-                id="roomId"
-                name="roomId"
-                defaultValue={roomId}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              ></input>
-            </div>
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                N°
-              </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={title}
+                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
+                ></input>
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium text-gray-500 dark:text-white">
+                  N°
+                </label>
 
-              <input
-                type="text"
-                id="bookedDaysToEmail"
-                name="bookedDaysToEmail"
-                defaultValue={bookedDaysToEmail}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              ></input>
+                <input
+                  type="number"
+                  id="roomId"
+                  name="roomId"
+                  value={roomId}
+                  // defaultValue={roomId}
+                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
+                ></input>
+              </div>
             </div>
+
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 prénom
