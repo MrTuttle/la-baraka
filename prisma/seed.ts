@@ -92,7 +92,8 @@ async function main() {
       phone: "(+33) 00 00 00 00 00",
       reservationDates: {
         create: {
-          date: new Date("2023-12-24T00:00"),
+          checkIn: new Date("2023-12-24T00:00"),
+          checkOut: new Date("2023-12-25T00:00"),
           assignedToRoomId: 1,
         },
       },
@@ -106,16 +107,27 @@ async function main() {
       name: "Babouch",
       phone: "(+33) 00 00 00 00 00",
       reservationDates: {
-        create: [
-          {
-            date: new Date("2023-12-24T00:00"),
-            assignedToRoomId: 2,
-          },
-          {
-            date: new Date("2024-12-25T00:00"),
-            assignedToRoomId: 2,
-          },
-        ],
+        create: {
+          checkIn: new Date("2024-01-01T00:00"),
+          checkOut: new Date("2024-01-02T00:00"),
+          assignedToRoomId: 2,
+        },
+      },
+    },
+  });
+  const userRoomHelen = await prisma.userRoom.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      firstName: "Helen",
+      name: "Ulle",
+      phone: "(+33) 10 20 30 40 50",
+      reservationDates: {
+        create: {
+          checkIn: new Date("2024-02-01T00:00"),
+          checkOut: new Date("2024-02-02T00:00"),
+          assignedToRoomId: 2,
+        },
       },
     },
   });
