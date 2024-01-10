@@ -6,7 +6,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 // import { Cross2Icon } from "@radix-ui/react-icons";
 import { HiMiniXMark } from "react-icons/hi2";
 
-// server actions
+// server actions from MarkBooked
 import { postGuest } from "@/app/actions/MarkBooked";
 
 import "./styles.css";
@@ -21,7 +21,9 @@ interface Props {
   title: string;
   roomId: number;
   bookedDaysToEmail: string;
-  bookedDayStart: Date;
+  // bookedDayStart: Date;
+  checkIn: Date;
+  checkOut: Date;
 
   // onSubmit: (formData: FormData) => void;
   // onClick: (event: React.MouseEvent) => void;
@@ -34,7 +36,8 @@ const DialogRoomRequest2 = ({
   title,
   roomId,
   bookedDaysToEmail,
-  bookedDayStart,
+  checkIn,
+  checkOut,
 }: // onClick,
 Props) => {
   const name = "Fischer";
@@ -47,7 +50,8 @@ Props) => {
   };
 
   console.log("booked days action (date to string):", bookedDaysToEmail);
-  console.log("booked day start (date)", bookedDayStart);
+  // console.log("booked day start (date)", bookedDayStart);
+  console.log("booked day start (date)", checkIn);
 
   // if (bookedDaysToEmail) {
   // }
@@ -56,7 +60,7 @@ Props) => {
   // console.log("startDateToDb :", startDateToDb, typeof startDateToDb);
   // console.log("startDateToDb Type : ", typeof startDateToDb);
 
-  const addDates = postGuest.bind(null, bookedDayStart);
+  const addDates = postGuest.bind(null, checkIn, checkOut);
 
   // const router = useRouter();
 

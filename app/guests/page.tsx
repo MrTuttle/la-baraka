@@ -39,7 +39,8 @@ const pageGuests = async () => {
               <Text key={booking.id} size="1" weight="bold">
                 <p>booking id : {booking.id}</p>
                 <p>booking room : {booking.assignedToRoomId}</p>
-                <p>booking date : {booking.date.toLocaleDateString()}</p>
+                <p>Check in : {booking.checkIn.toLocaleDateString()}</p>
+                <p>Check out : {booking.checkOut.toLocaleDateString()}</p>
                 <p>{booking.status}</p>
                 {/* <button onClick={async () => {}}>Supprimer</button> */}
                 {/* <DeleteGuest guest={guest.id} /> */}
