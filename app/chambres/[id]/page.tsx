@@ -14,6 +14,8 @@ import ConfirmationDemandForm from "../_components/ConfirmationDemandForm";
 import dynamic from "next/dynamic";
 import RoomFormSkeleton from "@/app/chambres/_components/RoomFormSkeleton";
 import UserRoomForm from "./UserRoomForm";
+import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomRequest2";
+import { getDate } from "date-fns";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -35,17 +37,55 @@ const ChambreDetailPage = async ({ params }: Props) => {
   });
   if (!room) notFound();
   // console.log("ROOM.RESERVATIONDATES");
-  // console.log(room.reservationDates.map((date) => date.date));
+  // console.log(room.reservationDates.map((date) => date.checkIn));
   // console.log("assigned room : ", room.assignedRoom);
   // console.log("reservationDates : ", room.reservationDates);
 
   // FOR THE SWIPER IMAGE (rooms with assignedRomm, cover or not)
+  //=> in this param room, get assignedRoom value
   const imagesRoom = room.assignedRoom;
 
-  // logic to pass bookedDays to datePicker
+  // let checkouts = room.reservationDates.map((checkout) => checkout.checkOut);
+  // console.log("CHECKOUTs", checkouts);
+
+  // let checkoutsId = room.reservationDates.map((checkout) => checkout.id);
+  // console.log("CHECKOUTsIDS", checkoutsId);
+
+  // logic to pass range of booked dates to datePicker
+
+  const bookedDaysRange: Date[] = [];
+
+  const checksIds = room.reservationDates.map((check) => {
+    let id = check.id;
+    let checkIn = check.checkIn;
+    let checkOut = check.checkOut;
+    // console.log("GROUP CHECK :", id, checkIn, checkOut);
+
+    const getDatesInRange = (startDate: Date, endDate: Date) => {
+      const date = new Date(startDate.getTime());
+      // const dates = [];
+      while (date < endDate) {
+        bookedDaysRange.push(new Date(date));
+        date.setDate(date.getDate() + 1);
+      }
+      return bookedDaysRange;
+    };
+    // console.log(
+    //   `DATES IN RANGE FOR RESERVATION ID ${id}: `,
+    //   getDatesInRange(checkIn, checkOut)
+    // );
+    getDatesInRange(checkIn, checkOut);
+  });
+  // console.log("checkids ---- : ", checksIds);
+  // console.log("CONST BOOKEDDAYSRANGE", bookedDaysRange);
+
+  // DialogRoomRequest2
   let bookedDays: Date[] = [];
-  room.reservationDates.map((reservation) => bookedDays.push(reservation.date));
-  // console.log("BOOKEDDAYS: ", bookedDays);
+  room.reservationDates.map((reservation) =>
+    bookedDays.push(reservation.checkIn)
+  );
+  console.log("BOOKEDDAYS: ", bookedDays);
+  console.log("BOOKEDDAYS 1", bookedDays[0]);
 
   // logic to stringify dates for react email
   const bookedDaysStringify = () => {
@@ -71,6 +111,15 @@ const ChambreDetailPage = async ({ params }: Props) => {
     }
   );
 
+  // get days from BKPicker . Pas de props du client vers le serveur
+  // const handleStartDay = (startDay: Date) => {
+  //   console.log("START DAY : ", startDay);
+  // };
+  // const handleEndDay = (endDay: Date) => {
+  //   console.log("END DAY : ", endDay);
+  // };
+  // console.log("bookedDays :", bookedDays[0], typeof bookedDays[0]);
+
   return (
     <Flex direction="column" align="center">
       <DetailRoomSwiperSlide listImages={imagesRoom} />
@@ -87,7 +136,12 @@ const ChambreDetailPage = async ({ params }: Props) => {
           bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
         /> */}
 
-        <BKDayPicker bookedDays={bookedDays} />
+        <BKDayPicker
+          bookedDays={bookedDaysRange}
+          bookedDaysRange={bookedDays}
+          // onStartDay={handleStartDay}
+          // onEndDay={handleEndDay}
+        />
       </Flex>
 
       <div className="pt-10 pb-32">
@@ -100,7 +154,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
           </strong>
           {room.reservationDates.map((day, index) => (
             <span key={index}>
-              {day.date.toDateString()}
+              {day.checkIn.toDateString()}
               <br />
             </span>
           ))}
@@ -142,10 +196,18 @@ const ChambreDetailPage = async ({ params }: Props) => {
           {/* <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
             Réserver
           </button> */}
-          <UserRoomForm
+          {/* <UserRoomForm
             title={room.title}
             roomId={room.id}
             bookedDaysToEmail={bookedDaysToEmail}
+          /> */}
+          <DialogRoomRequest2
+            // onSubmit={addUserRoom}
+            // onClick={sendEmail}
+            title={room.title}
+            roomId={room.id}
+            bookedDaysToEmail={bookedDaysToEmail}
+            bookedDayStart={bookedDays[0]}
           />
           {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
         </div>

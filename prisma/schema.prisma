@@ -36,16 +36,17 @@ model UserRoom {
 
 model Reservation {
   id                   Int      @id @default(autoincrement())
-  date                 DateTime @db.Date
+  checkIn              DateTime @db.Date
+  checkOut             DateTime @db.Date
   status               Status   @default(VACANT)
   assignedToRoomId     Int
-  assignedToRoom       Room     @relation(fields: [assignedToRoomId], references: [id])
   assignedToUserRoomId Int
+  assignedToRoom       Room     @relation(fields: [assignedToRoomId], references: [id])
   assignedToUserRoom   UserRoom @relation(fields: [assignedToUserRoomId], references: [id])
   // Room                 Room?    @relation(fields: [roomId], references: [id])
   // roomId               Int?
 
-  @@unique([assignedToRoomId, date, assignedToUserRoomId])
+  @@unique([assignedToRoomId, checkIn])
   @@index([assignedToUserRoomId])
 }
 

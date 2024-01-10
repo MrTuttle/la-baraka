@@ -14,12 +14,16 @@ import "react-day-picker/dist/style.css";
 // };
 interface Props {
   bookedDays: Date[];
+  bookedDaysRange: Date[];
+  // peut pas passer ça dans un server component :
+  // onStartDay: (startDay: Date) => void;
+  // onEndDay: (endDay: Date) => void;
 }
 
 // let bookedDays = [new Date(2023, 11, 20), new Date(2023, 11, 23)];
 const bookedStyle = { border: "2px solid currentColor" };
 
-const BKDayPicker = ({ bookedDays }: Props) => {
+const BKDayPicker = ({ bookedDays, bookedDaysRange }: Props) => {
   const [range, setRange] = useState<DateRange | undefined>();
   const [booked, setBooked] = useState(false);
 
@@ -34,6 +38,7 @@ const BKDayPicker = ({ bookedDays }: Props) => {
       footer = <p>{format(range.from, "PPP")}</p>;
       // FIRST DAY CLICKED = RANGE.FROM
       console.log("first day clicked:", range.from);
+      // onStartDay(range.from);
       console.log("booked:", booked);
     } else if (range.to) {
       footer = (
@@ -43,8 +48,12 @@ const BKDayPicker = ({ bookedDays }: Props) => {
       );
       // SECOND DAY CLICKED = RANGE.TO
       console.log("second day clicked:", range.to);
+      // onEndDay(range.to);
     }
   }
+  console.log("BOOKED DAYS FOR BKPICKER");
+  console.log(bookedDays);
+
   // console.log("DAY PICKER LOGS:");
   // console.log("booked true / false / undefine : " + booked);
   // console.log(
@@ -123,7 +132,7 @@ const BKDayPicker = ({ bookedDays }: Props) => {
         </div>
         <div className="p-4">
           <p>
-            <strong>reservation (props in bkDaypicker):</strong>
+            <strong>reservation (props in BKDaypicker):</strong>
             <br />
             the get request is in page parent
           </p>

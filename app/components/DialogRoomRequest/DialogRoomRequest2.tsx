@@ -1,17 +1,15 @@
 "use client";
 //app/components/DialogRoomRequest/DialogRoomRequest.tsx
 
+import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 // import { Cross2Icon } from "@radix-ui/react-icons";
 import { HiMiniXMark } from "react-icons/hi2";
 
-import "./styles.css";
-import axios from "axios";
+// server actions
+import { postGuest } from "@/app/actions/MarkBooked";
 
-// import "easymde/dist/easymde.min.css";
-import { useRouter } from "next/navigation";
-import UserRoomForm from "@/app/chambres/[id]/UserRoomForm";
-import { MouseEvent } from "react";
+import "./styles.css";
 
 type UserRoom = {
   name: string;
@@ -23,17 +21,20 @@ interface Props {
   title: string;
   roomId: number;
   bookedDaysToEmail: string;
+  bookedDayStart: Date;
 
-  onSubmit: (formData: FormData) => void;
+  // onSubmit: (formData: FormData) => void;
   // onClick: (event: React.MouseEvent) => void;
 }
 
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
+
 // const DialogRoomRequest = ({ guest }: { guest?: UserRoom }) => {
-const DialogRoomRequest = ({
+const DialogRoomRequest2 = ({
   title,
   roomId,
   bookedDaysToEmail,
-  onSubmit,
+  bookedDayStart,
 }: // onClick,
 Props) => {
   const name = "Fischer";
@@ -45,6 +46,18 @@ Props) => {
     console.log("target :", event.target);
   };
 
+  console.log("booked days action (date to string):", bookedDaysToEmail);
+  console.log("booked day start (date)", bookedDayStart);
+
+  // if (bookedDaysToEmail) {
+  // }
+  // let startDateToDb = new Date(bookedDaysToEmail);
+
+  // console.log("startDateToDb :", startDateToDb, typeof startDateToDb);
+  // console.log("startDateToDb Type : ", typeof startDateToDb);
+
+  const addDates = postGuest.bind(null, bookedDayStart);
+
   // const router = useRouter();
 
   // get days from BKPicker . Pas de props du client vers le serveur
@@ -54,12 +67,13 @@ Props) => {
   // const handleEndDay = (endDay: Date) => {
   //   console.log("END DAY : ", endDay);
   // };
+  const [open, setOpen] = React.useState(false);
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
-          Reserver 3
+          Reserver
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -73,29 +87,69 @@ Props) => {
             Remplissez l’email si vous préférez être contacté par ce moyen.
           </Dialog.Description>
 
-          {/* <fieldset className="Fieldset">
-            <label className="Label" htmlFor="name">
-              First Name
-            </label>
-            <input className="Input" id="name" defaultValue={name} />
-          </fieldset>
-          <fieldset className="Fieldset">
-            <label className="Label" htmlFor="name">
-              Name
-            </label>
-            <input className="Input" id="name" defaultValue={name} />
-          </fieldset>
-          <fieldset className="Fieldset">
-            <label className="Label" htmlFor="phone">
-              Tél.
-            </label>
-            <input className="Input" id="username" defaultValue="06 01 02 03" />
-          </fieldset> */}
+          <form
+            action={addDates}
+            // onSubmit={(event) => {
+            //   wait().then(() => setOpen(false));
+            //   event.preventDefault();
+            // }}
+          >
+            <div className="flex pb-4 gap-10 justify-between">
+              <div>
+                <label className="block mb-1 text-sm font-medium text-gray-500">
+                  Date d’arrivée
+                </label>
+                <input
+                  type="Date"
+                  id="bookedDayStart"
+                  name="bookedDayStart"
+                  // value={bookedDayStart}
+                />
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium text-gray-500">
+                  Dates
+                </label>
 
-          {/* BEGIN */}
-          <form action={onSubmit}>
+                <input
+                  type="text"
+                  id="bookedDaysToEmail"
+                  name="bookedDaysToEmail"
+                  value={bookedDaysToEmail}
+                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
+                ></input>
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium text-gray-500">
+                  Chambre
+                </label>
+
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={title}
+                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
+                ></input>
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium text-gray-500">
+                  N°
+                </label>
+
+                <input
+                  type="number"
+                  id="roomId"
+                  name="roomId"
+                  value={roomId}
+                  // defaultValue={roomId}
+                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
+                ></input>
+              </div>
+            </div>
+
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 prénom
               </label>
 
@@ -107,7 +161,7 @@ Props) => {
               ></input>
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 nom
               </label>
 
@@ -119,7 +173,7 @@ Props) => {
               ></input>
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 tél.
               </label>
 
@@ -132,7 +186,7 @@ Props) => {
               ></input>
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
                 email :
               </label>
 
@@ -158,27 +212,6 @@ Props) => {
           </form>
           {/* STOP */}
 
-          {/* <div
-            style={{
-              display: "flex",
-              marginTop: 25,
-              justifyContent: "flex-end",
-            }}
-          >
-            <Dialog.Close asChild>
-              <button
-                className="Button green"
-                onClick={async () => {
-                  console.log("BOUTON CLICK");
-                  await axios.post("../../api/userRooms");
-                  router.push("/userRooms");
-                  router.refresh();
-                }}
-              >
-                Save changes
-              </button>
-            </Dialog.Close>
-          </div> */}
           <Dialog.Close asChild>
             <button className="IconButton" aria-label="Close">
               {/* <Cross2Icon /> */}
@@ -191,4 +224,4 @@ Props) => {
   );
 };
 
-export default DialogRoomRequest;
+export default DialogRoomRequest2;
