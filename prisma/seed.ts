@@ -108,8 +108,8 @@ async function main() {
       phone: "(+33) 00 00 00 00 00",
       reservationDates: {
         create: {
-          checkIn: new Date("2024-01-01T00:00"),
-          checkOut: new Date("2024-01-02T00:00"),
+          checkIn: new Date("2024-01-10T00:00"),
+          checkOut: new Date("2024-01-13T00:00"),
           assignedToRoomId: 2,
         },
       },
@@ -171,6 +171,7 @@ async function main() {
   console.log({
     userRoomJack,
     userRoomBob,
+    userRoomHelen,
     menuDuJour,
     menuSalads,
     menuPlats,

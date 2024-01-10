@@ -14,6 +14,7 @@ import "react-day-picker/dist/style.css";
 // };
 interface Props {
   bookedDays: Date[];
+  bookedDaysRange: Date[];
   // peut pas passer ça dans un server component :
   // onStartDay: (startDay: Date) => void;
   // onEndDay: (endDay: Date) => void;
@@ -22,7 +23,7 @@ interface Props {
 // let bookedDays = [new Date(2023, 11, 20), new Date(2023, 11, 23)];
 const bookedStyle = { border: "2px solid currentColor" };
 
-const BKDayPicker = ({ bookedDays }: Props) => {
+const BKDayPicker = ({ bookedDays, bookedDaysRange }: Props) => {
   const [range, setRange] = useState<DateRange | undefined>();
   const [booked, setBooked] = useState(false);
 
@@ -50,6 +51,9 @@ const BKDayPicker = ({ bookedDays }: Props) => {
       // onEndDay(range.to);
     }
   }
+  console.log("BOOKED DAYS FOR BKPICKER");
+  console.log(bookedDays);
+
   // console.log("DAY PICKER LOGS:");
   // console.log("booked true / false / undefine : " + booked);
   // console.log(
