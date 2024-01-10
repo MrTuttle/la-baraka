@@ -1,11 +1,13 @@
 // build command on Vercel hosting :
 // prisma generate && prisma migrate deploy && prisma db seed && next build
 // if need a rollback :
-// prisma generate && prisma migrate resolve --rolled-back "20231226134654_menu_price_required" && next build
+// prisma generate && prisma migrate resolve --rolled-back "20240109204344_reservation_constraints" && next build
 // DELETE ALL + IDS RESETS (DEV MODE)
 // prisma migrate reset
 // (PROD MODE)
 // prisma generate && prisma migrate reset --force && prisma migrate deploy && prisma db seed && next build
+// NORMAL COMMAND IN PROD MOD
+// prisma generate && prisma migrate deploy && prisma db seed && next build
 
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();

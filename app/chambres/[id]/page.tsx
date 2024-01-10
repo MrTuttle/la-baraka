@@ -81,11 +81,22 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   // DialogRoomRequest2
   let bookedDays: Date[] = [];
-  room.reservationDates.map((reservation) =>
-    bookedDays.push(reservation.checkIn)
-  );
+  let checkIn: Date = new Date();
+  let checkOut: Date = new Date();
+  const assignCheckIn = () => {
+    room.reservationDates.map((reservation) => {
+      bookedDays.push(reservation.checkIn);
+      checkIn = reservation.checkIn;
+      checkOut = reservation.checkOut;
+      console.log("checkin :", checkIn);
+      return checkIn;
+    });
+  };
+  // assignCheckIn();
+
   console.log("BOOKEDDAYS: ", bookedDays);
   console.log("BOOKEDDAYS 1", bookedDays[0]);
+  console.log("CHECKIN", checkIn);
 
   // logic to stringify dates for react email
   const bookedDaysStringify = () => {
@@ -202,13 +213,13 @@ const ChambreDetailPage = async ({ params }: Props) => {
             bookedDaysToEmail={bookedDaysToEmail}
           /> */}
           <DialogRoomRequest2
-            // onSubmit={addUserRoom}
-            // onClick={sendEmail}
+            checkIn={checkIn}
+            checkOut={checkOut}
+            bookedDaysToEmail={bookedDaysToEmail}
             title={room.title}
             roomId={room.id}
-            bookedDaysToEmail={bookedDaysToEmail}
-            bookedDayStart={bookedDays[0]}
           />
+
           {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
         </div>
       </div>

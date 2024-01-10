@@ -7,7 +7,8 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const newDate = await prisma.reservation.create({
     data: {
-      date: body.date,
+      checkIn: body.checkIn,
+      checkOut: body.checkOut,
       assignedToRoomId: body.assignedToRoomId,
       assignedToUserRoomId: body.assignedToUserRoomId,
     },

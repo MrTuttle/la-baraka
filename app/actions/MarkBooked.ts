@@ -22,7 +22,11 @@ interface PostGuestProps {
   startDateToDb: Date;
   formData: FormData;
 }
-export async function postGuest(bookedDayStart: Date, formData: FormData) {
+export async function postGuest(
+  checkIn: Date,
+  checkOut: Date,
+  formData: FormData
+) {
   const phone = formData.get("phone");
   const firstName = formData.get("firstName");
   const name = formData.get("name");
@@ -42,8 +46,12 @@ export async function postGuest(bookedDayStart: Date, formData: FormData) {
       email: email as string,
       reservationDates: {
         create: {
-          assignedToRoomId: 1, // why can't i put roomId ?
-          date: bookedDayStart,
+          checkIn: checkIn,
+          checkOut: checkOut,
+          assignedToRoomId: 1,
+
+          // date: bookedDayStart,
+          // checkIn: bookedDayStart as Date,
         },
       },
     },
