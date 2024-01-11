@@ -40,7 +40,7 @@ const home = async () => {
           /> */}
         </div>
       </div>
-      <Section className="prose px-8 my-border-grey h-screen flex flex-col items-center">
+      <Section className="prose px-8 my-border-grey h-screen flex flex-col items-center w-3/4 mx-auto">
         <h3 className=" font-light text-2xl self-center">
           La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
           dolor sit, amet consectetur adipisicing elit. Laboriosam, est? Quae
@@ -50,13 +50,14 @@ const home = async () => {
         </h3>
       </Section>
 
-      <section className="prose my-border-grey min-h-screen py-10">
+      <section className="prose my-border-grey min-h-screen py-10 mx-auto">
         <h2 className="px-4 font-normal text-4xl">
           Au menu
           <br />
           aujourd’hui
         </h2>
-        <div className=" pl-0 pr-4 overflow-hidden">
+        {/* <div className=" pl-0 pr-4 overflow-hidden"> */}
+        <div className=" pl-0 pr-4 sm:overflow-hidden md:overflow-visible">
           <CallMenuSwiper />
         </div>
         <p className="mx-4 font-light text-2xl">
@@ -66,7 +67,7 @@ const home = async () => {
           dolores aliquam. Laborum!
         </p>
       </section>
-      <Section className="prose my-border-grey min-h-screen">
+      <Section className="prose my-border-grey min-h-screen mx-auto">
         <div className="mx-4">
           <h1 className=" font-normal text-4xl">
             Cinq chambres <br />

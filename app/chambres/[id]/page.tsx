@@ -132,7 +132,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
   // console.log("bookedDays :", bookedDays[0], typeof bookedDays[0]);
 
   return (
-    <Flex direction="column" align="center">
+    <Flex direction="column" align="center" className="mx-auto">
       <DetailRoomSwiperSlide listImages={imagesRoom} />
       <Flex direction="column" className="mx-4">
         <div className="py-4">

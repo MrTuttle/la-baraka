@@ -2,7 +2,7 @@ import prisma from "@/prisma/client";
 import React from "react";
 import { number } from "zod";
 import ReactMarkdown from "react-markdown";
-import { Box, Button, Card, Flex, Text } from "@radix-ui/themes";
+import { Box, Button, Card, Container, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
@@ -33,10 +33,12 @@ const chambresPage = async () => {
 
   return (
     <>
-      <div className="mx-4 pt-20">
-        <Link href={"/chambres/new"}>
-          <Button>Créer une nouvelle chambre</Button>
-        </Link>
+      <Flex direction="column" align="center" className="mx-4 pt-20">
+        <Card className=" w-full py-8">
+          <Link href={"/chambres/new"} className="mx-auto">
+            <Button>Créer une nouvelle chambre</Button>
+          </Link>
+        </Card>
         {rooms.map((room) => (
           <Card key={room.id} className="prose" mt="4">
             <Flex direction="row" align="baseline" gap="0" justify="between">
@@ -77,7 +79,7 @@ const chambresPage = async () => {
             </Flex>
           </Card>
         ))}
-      </div>
+      </Flex>
     </>
   );
 };
