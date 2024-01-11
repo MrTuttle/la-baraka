@@ -38,7 +38,7 @@ const SlidePerViewGetIds = async () => {
         we try to get images through rooms data. It will give us the ability to
         pass in swipper images public id & rooms text in one prisa request
       </p> */}
-      <SlidePerViewRooms listImages={images} listRooms={rooms} />;
+      <SlidePerViewRooms listImages={images} listRooms={rooms} />
       {/* <SlidePerViewRooms listImages={rooms} />; */}
     </>
   );

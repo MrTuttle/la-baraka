@@ -33,6 +33,9 @@ type List = {
 };
 
 const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
+  // console.log("LIST ROOMS :", listRooms);
+  // console.log("LIST IMAGES :", listImages);
+
   return (
     <>
       <Swiper

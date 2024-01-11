@@ -1,4 +1,4 @@
-// app/api/menus/routes.tsx
+// app/api/images/routes.tsx
 
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
