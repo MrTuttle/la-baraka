@@ -80,7 +80,7 @@ const home = async () => {
         </div>
         <SlidePerViewGetIds />
       </Section>
-      <div className="mx-4">
+      <div className="flex justify-center py-32">
         <Link href="/dashboard">
           <Button>Dashboard</Button>
         </Link>
