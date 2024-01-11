@@ -3,6 +3,7 @@
 import prisma from "@/prisma/client";
 import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
+import { notFound } from "next/navigation";
 
 /// test
 export async function MarkBooked() {
@@ -13,6 +14,21 @@ export async function MarkBooked() {
     console.log("END DAY : ", endDay);
   };
 }
+///------------///
+// find a room with its reservations dates with param
+// after ChambreDetailPage should be turn to client component
+// and we should handle dates for DPickey
+export async function getRoomWithParam(params: { id: string }) {
+  const room = await prisma.room.findUnique({
+    where: { id: parseInt(params.id) },
+    include: {
+      assignedRoom: true,
+      reservationDates: true,
+    },
+  });
+  if (!room) notFound();
+  return room;
+}
 
 ///
 interface PostGuestProps {
@@ -22,6 +38,7 @@ interface PostGuestProps {
   startDateToDb: Date;
   formData: FormData;
 }
+
 export async function postGuest(
   checkIn: Date,
   checkOut: Date,

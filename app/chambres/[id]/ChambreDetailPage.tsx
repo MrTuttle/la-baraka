@@ -1,34 +1,19 @@
-// app/issues/[id]/page.tsx
 import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import React from "react";
 import DeleteRoomButton from "./DeleteRoomButton";
-import GetCldIdList from "@/app/components/GetCldIdList";
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
-import { Box, Button, Container, Flex } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import DetailRoomSwiperSlide from "@/app/components/swiper/DetailRoomSwiperSlide";
-import SendBookingButton from "./SendBookingButton";
 import ConfirmationDemandForm from "../_components/ConfirmationDemandForm";
-// import DialogRoomRequest from "@/app/components/DialogRoomRequest/DialogRoomRequest";
-
 import dynamic from "next/dynamic";
 import RoomFormSkeleton from "@/app/chambres/_components/RoomFormSkeleton";
-import UserRoomForm from "./UserRoomForm";
 import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomRequest2";
-import { getDate } from "date-fns";
-import { getRoomWithParam } from "@/app/actions/MarkBooked";
-import { ChambresClients } from "./ChambresClients";
+import { Props } from "./page";
 
-interface Props {
-  // params id: typed in string, 'cause url are always string
-  params: { id: string };
-  // bookedDayz: Date[];
-}
-
-const ChambreDetailPage = async ({ params }: Props) => {
+export const ChambreDetailPage = async ({ params }: Props) => {
   // if not a number in the [id] adress, go to not found page
   // if (typeof params.id !== "number") notFound();
-
   // const room = () => {
   //   "use server";
   //   const getRoom = async () => {
@@ -36,9 +21,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
   //     return await getRoomWithParam(params);
   //   };
   //   return getRoom: Promise<T>
-
   // };
-
   // START router function to get room, replace by server action --- //
   const room = await prisma.room.findUnique({
     // where: { id: parseInt(params.id) },
@@ -51,12 +34,10 @@ const ChambreDetailPage = async ({ params }: Props) => {
   if (!room) notFound();
 
   // END router function to get room, replace by server action --- //
-
   // console.log("ROOM.RESERVATIONDATES");
   // console.log(room.reservationDates.map((date) => date.checkIn));
   // console.log("assigned room : ", room.assignedRoom);
   // console.log("reservationDates : ", room.reservationDates);
-
   // ------------------------------------ //
   // FOR THE SWIPER IMAGE (rooms with assignedRoom, cover or not)
   //=> in this param room, get assignedRoom value to pass all images refs to swiper
@@ -64,13 +45,10 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   // let checkouts = room.reservationDates.map((checkout) => checkout.checkOut);
   // console.log("CHECKOUTs", checkouts);
-
   // let checkoutsId = room.reservationDates.map((checkout) => checkout.id);
   // console.log("CHECKOUTsIDS", checkoutsId);
-
   // ------------------------------------ //
   // logic to pass range of booked dates to datePicker
-
   const bookedDaysRange: Date[] = [];
 
   const checksIds = room.reservationDates.map((check) => {
@@ -78,7 +56,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
     let checkIn = check.checkIn;
     let checkOut = check.checkOut;
     // console.log("GROUP CHECK :", id, checkIn, checkOut);
-
     const getDatesInRange = (startDate: Date, endDate: Date) => {
       const date = new Date(startDate.getTime());
       // const dates = [];
@@ -96,7 +73,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
   });
   // console.log("checkids ---- : ", checksIds);
   // console.log("CONST BOOKEDDAYSRANGE", bookedDaysRange);
-
   // ----------------------------------------- //
   // DialogRoomRequest2
   let bookedDays: Date[] = [];
@@ -112,7 +88,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
     });
   };
   // assignCheckIn();
-
   console.log("BOOKEDDAYS: ", bookedDays);
   console.log("BOOKEDDAYS 1", bookedDays[0]);
   console.log("CHECKIN", checkIn);
@@ -149,7 +124,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
   //   console.log("END DAY : ", endDay);
   // };
   // console.log("bookedDays :", bookedDays[0], typeof bookedDays[0]);
-
   return (
     <Flex direction="column" align="center" className="mx-auto">
       <DetailRoomSwiperSlide listImages={imagesRoom} />
@@ -163,14 +137,12 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
       <Flex direction="column" align="center" className="p-8">
         {/* <BKDayPicker
-          bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
-        /> */}
+              bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
+            /> */}
 
         <BKDayPicker
           bookedDays={bookedDaysRange}
           bookedDaysRange={bookedDays}
-          // onStartDay={handleStartDay}
-          // onEndDay={handleEndDay}
         />
       </Flex>
 
@@ -224,13 +196,13 @@ const ChambreDetailPage = async ({ params }: Props) => {
         </div>
         <div className="p-4">
           {/* <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
-            Réserver
-          </button> */}
+              Réserver
+            </button> */}
           {/* <UserRoomForm
-            title={room.title}
-            roomId={room.id}
-            bookedDaysToEmail={bookedDaysToEmail}
-          /> */}
+              title={room.title}
+              roomId={room.id}
+              bookedDaysToEmail={bookedDaysToEmail}
+            /> */}
           <DialogRoomRequest2
             checkIn={checkIn}
             checkOut={checkOut}
@@ -245,5 +217,3 @@ const ChambreDetailPage = async ({ params }: Props) => {
     </Flex>
   );
 };
-
-export default ChambreDetailPage;
