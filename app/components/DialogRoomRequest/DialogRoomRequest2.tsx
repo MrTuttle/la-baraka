@@ -111,13 +111,13 @@ Props) => {
                   Dates
                 </label>
 
-                <input
+                {/* <input
                   type="text"
                   id="bookedDaysToEmail"
                   name="bookedDaysToEmail"
-                  value={bookedDaysToEmail}
+                  defaultValue={bookedDaysToEmail}
                   className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
-                ></input>
+                ></input> */}
               </div>
               <div>
                 <label className="block mb-1 text-sm font-medium text-gray-500">

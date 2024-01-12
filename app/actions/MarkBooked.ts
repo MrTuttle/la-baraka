@@ -42,9 +42,23 @@ export async function postGuest(
   roomId ? roomId : roomIdInt;
   console.log("ROOMID OK ? :", roomId);
 
+  console.log("CHECKIN SERV ACTION ? :", checkIn);
+
   const bookedDaysToEmail = formData.get("bookedDaysToEmail");
 
   const resend = new Resend(process.env.RESEND_API_KEY);
+
+  if (phone) {
+    const { data } = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "florent.vincerot@me.com", // replace with email argument
+      subject: `${firstName} Demande une réservation pour la Baraka (test)"`,
+      html: `<p>${firstName} ${name}</p><p>Voudrait que tu rapelle au ${phone}</p>
+        <p>Pour confirmer la location de la chambre ${title} ${roomId}.</p><p> Aux dates suivantes :</p>
+        <p> du <strong> ${checkIn.toDateString()}</strong> au <strong>${checkOut.toDateString()}</strong>
+        `,
+    });
+  }
 
   await prisma.userRoom.create({
     data: {
@@ -67,18 +81,7 @@ export async function postGuest(
   });
   revalidatePath("/");
 
-  if (phone) {
-    const { data } = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "florent.vincerot@me.com", // replace with email argument
-      subject: `${firstName} Demande une réservation pour la Baraka (test)"`,
-      html: `<p>${firstName} ${name}</p><p>Voudrait que tu rapelle au ${phone}</p>
-        <p>Pour confirmer la location de la chambre ${title} ${roomId}.</p><p> Aux dates suivantes : ${bookedDaysToEmail}</p>`,
-    });
-  }
   console.log("GUEST POSTED");
-
-  //  sendEmail(formData);
 }
 
 export default async function UserRoomForm({

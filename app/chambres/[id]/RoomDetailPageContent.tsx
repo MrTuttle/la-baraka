@@ -37,6 +37,8 @@ const RoomDetailPageContent = ({
   const handleEndDay = (endDay: Date) => {
     setCheckOutFromBK(endDay);
   };
+  let bookedDaysMail: Date[] = [];
+  bookedDaysMail.push;
 
   return (
     <>
@@ -44,8 +46,20 @@ const RoomDetailPageContent = ({
       <p>
         <strong>display dates click</strong>
       </p>
-      <p>{checkInFromBK.toDateString()}</p>
-      <p>{checkOutFromBK.toDateString()}</p>
+      <p>
+        <strong>checkInFromBK : </strong>
+        {checkInFromBK.toDateString()}
+      </p>
+      <p>
+        <strong>checkOutFromBK : </strong>
+        {checkOutFromBK.toDateString()}
+      </p>
+      <p>
+        <strong>bookedDays :</strong>
+      </p>
+      {bookedDays.map((e, index) => (
+        <p key={index}>{e.toDateString()}</p>
+      ))}
 
       <p>
         <strong>var bookedDaysRange</strong> - by user

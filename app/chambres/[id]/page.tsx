@@ -93,7 +93,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
       return checkIn;
     });
   };
-  assignCheckIn();
+  // assignCheckIn();
 
   console.log("BOOKEDDAYS: ", bookedDays);
   console.log("BOOKEDDAYS 1", bookedDays[0]);
@@ -181,11 +181,11 @@ const ChambreDetailPage = async ({ params }: Props) => {
           ))}
         </p>
 
-        <ConfirmationDemandForm
+        {/* <ConfirmationDemandForm
           title={room.title}
           roomId={room.id}
           bookedDaysToEmail={bookedDaysToEmail}
-        />
+        /> */}
       </div>
       <div
         className="w-full bg-white h-20 border-t-2
