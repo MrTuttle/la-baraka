@@ -16,19 +16,25 @@ interface Props {
   bookedDays: Date[];
   bookedDaysRange: Date[];
   // peut pas passer ça dans un server component :
-  // onStartDay: (startDay: Date) => void;
-  // onEndDay: (endDay: Date) => void;
+  onStartDay: (startDay: Date) => void;
+  onEndDay: (endDay: Date) => void;
 }
 
 // let bookedDays = [new Date(2023, 11, 20), new Date(2023, 11, 23)];
 const bookedStyle = { border: "2px solid currentColor" };
 
-const BKDayPicker = ({ bookedDays, bookedDaysRange }: Props) => {
+const BKDayPicker = ({
+  bookedDays,
+  bookedDaysRange,
+  onStartDay,
+  onEndDay,
+}: Props) => {
   const [range, setRange] = useState<DateRange | undefined>();
   const [booked, setBooked] = useState(false);
 
   const handleDayClick: DayClickEventHandler = (day, modifiers) => {
     setBooked(day && modifiers.booked);
+    console.log("HANDLEDAY CLICK", range);
   };
   // MESSAGE TO GIVE SELECTED RANGE DAYS
   let footer = <p>Please pick the first day.</p>;
@@ -38,8 +44,9 @@ const BKDayPicker = ({ bookedDays, bookedDaysRange }: Props) => {
       footer = <p>{format(range.from, "PPP")}</p>;
       // FIRST DAY CLICKED = RANGE.FROM
       console.log("first day clicked:", range.from);
-      // onStartDay(range.from);
+      onStartDay(range.from);
       console.log("booked:", booked);
+      console.log("START DAY VALUE :", onStartDay);
     } else if (range.to) {
       footer = (
         <p>
@@ -48,7 +55,7 @@ const BKDayPicker = ({ bookedDays, bookedDaysRange }: Props) => {
       );
       // SECOND DAY CLICKED = RANGE.TO
       console.log("second day clicked:", range.to);
-      // onEndDay(range.to);
+      onEndDay(range.to);
     }
   }
   console.log("BOOKED DAYS FOR BKPICKER");

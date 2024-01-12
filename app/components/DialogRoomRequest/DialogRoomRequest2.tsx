@@ -64,13 +64,6 @@ Props) => {
 
   // const router = useRouter();
 
-  // get days from BKPicker . Pas de props du client vers le serveur
-  // const handleStartDay = (startDay: Date) => {
-  //   console.log("START DAY : ", startDay);
-  // };
-  // const handleEndDay = (endDay: Date) => {
-  //   console.log("END DAY : ", endDay);
-  // };
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -89,6 +82,7 @@ Props) => {
           <Dialog.Description className="DialogDescription">
             Nous vous rapellons sous 24 heures pour confirmer votre réservation.
             Remplissez l’email si vous préférez être contacté par ce moyen.
+            dates : {checkIn.toDateString()} - {checkOut.toDateString()}
           </Dialog.Description>
 
           <form
@@ -100,14 +94,16 @@ Props) => {
           >
             <div className="flex pb-4 gap-10 justify-between">
               <div>
-                <label className="block mb-1 text-sm font-medium text-gray-500">
-                  Date d’arrivée
+                <label className="mb-1 text-sm font-medium text-gray-500 ">
+                  Date d’arrivée {checkIn.toDateString()}
                 </label>
                 <input
                   type="Date"
                   id="bookedDayStart"
                   name="bookedDayStart"
-                  // value={bookedDayStart}
+                  // value={checkIn.toDateString()}
+                  defaultValue={checkIn.toDateString()}
+                  // hidden
                 />
               </div>
               <div>

@@ -123,15 +123,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
     }
   );
 
-  // get days from BKPicker . Pas de props du client vers le serveur
-  // const handleStartDay = (startDay: Date) => {
-  //   console.log("START DAY : ", startDay);
-  // };
-  // const handleEndDay = (endDay: Date) => {
-  //   console.log("END DAY : ", endDay);
-  // };
-  // console.log("bookedDays :", bookedDays[0], typeof bookedDays[0]);
-
   return (
     <Flex direction="column" align="center" className="mx-auto">
       <RoomDetailPageContent
@@ -157,12 +148,10 @@ const ChambreDetailPage = async ({ params }: Props) => {
           bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
         /> */}
 
-        <BKDayPicker
+        {/* <BKDayPicker
           bookedDays={bookedDaysRange}
           bookedDaysRange={bookedDays}
-          // onStartDay={handleStartDay}
-          // onEndDay={handleEndDay}
-        />
+        /> */}
       </Flex>
 
       <div className="pt-10 pb-32">

@@ -1,7 +1,8 @@
 "use client";
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
-import React from "react";
+import React, { useState } from "react";
 import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomRequest2";
+import { DateRange } from "react-day-picker";
 
 interface BKDayProps {
   bookedDaysRange: Date[];
@@ -25,29 +26,52 @@ const RoomDetailPageContent = ({
 }: BKDayProps) => {
   console.log("wwwwww", bookedDaysRange);
 
+  // HOOK LOGIC TO GET DATES FROM BKPICKER CLICK
+  // get checkInFromBK day clicked from BKPicker
+  const [checkInFromBK, setCheckInFromBK] = useState<Date>(new Date(""));
+  const handleStartDay = (startDay: Date) => {
+    setCheckInFromBK(startDay);
+  };
+
+  const [checkOutFromBK, setCheckOutFromBK] = useState<Date>(new Date(""));
+  const handleEndDay = (endDay: Date) => {
+    setCheckOutFromBK(endDay);
+  };
+
   return (
     <>
       <div>RoomDetailPageContent</div>
-      <p>var booked days in rannge</p>
+      <p>
+        <strong>display dates click</strong>
+      </p>
+      <p>{checkInFromBK.toDateString()}</p>
+      <p>{checkOutFromBK.toDateString()}</p>
+
+      <p>
+        <strong>var bookedDaysRange</strong> - by user
+      </p>
       {bookedDaysRange.map((e, index) => (
         <div key={index}>{e.toDateString()}</div>
       ))}
-      <p>var booked days</p>
+      <p>
+        <strong>var bookedDays</strong> - by room
+      </p>
       {bookedDays.map((e, index) => (
         <div key={index}>{e.toDateString()}</div>
       ))}
-      <BKDayPicker bookedDays={bookedDaysRange} bookedDaysRange={bookedDays} />
-      {roomId ? (
-        <DialogRoomRequest2
-          checkIn={checkIn}
-          checkOut={checkOut}
-          bookedDaysToEmail={bookedDaysToEmail}
-          title={title}
-          roomId={roomId}
-        />
-      ) : (
-        <p>NO ROOM ID !!!</p>
-      )}
+      <BKDayPicker
+        bookedDays={bookedDays}
+        bookedDaysRange={bookedDaysRange}
+        onStartDay={handleStartDay}
+        onEndDay={handleEndDay}
+      />
+      <DialogRoomRequest2
+        checkIn={checkInFromBK}
+        checkOut={checkOutFromBK}
+        bookedDaysToEmail={bookedDaysToEmail}
+        title={title}
+        roomId={roomId}
+      />
 
       <ul>
         <li>
