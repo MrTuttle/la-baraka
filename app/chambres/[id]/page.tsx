@@ -137,6 +137,11 @@ const ChambreDetailPage = async ({ params }: Props) => {
       <RoomDetailPageContent
         bookedDays={bookedDaysRange}
         bookedDaysRange={bookedDays}
+        checkIn={checkIn}
+        checkOut={checkOut}
+        bookedDaysToEmail={bookedDaysToEmail}
+        title={room.title}
+        roomId={room.id}
       />
       <DetailRoomSwiperSlide listImages={imagesRoom} />
       <Flex direction="column" className="mx-4">
@@ -217,13 +222,13 @@ const ChambreDetailPage = async ({ params }: Props) => {
             roomId={room.id}
             bookedDaysToEmail={bookedDaysToEmail}
           /> */}
-          <DialogRoomRequest2
+          {/* <DialogRoomRequest2
             checkIn={checkIn}
             checkOut={checkOut}
             bookedDaysToEmail={bookedDaysToEmail}
             title={room.title}
             roomId={room.id}
-          />
+          /> */}
 
           {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
         </div>

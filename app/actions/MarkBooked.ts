@@ -25,6 +25,7 @@ interface PostGuestProps {
 export async function postGuest(
   checkIn: Date,
   checkOut: Date,
+  // roomId: number,
   formData: FormData
 ) {
   const phone = formData.get("phone");
@@ -33,6 +34,13 @@ export async function postGuest(
   const email = formData.get("email");
   const title = formData.get("title");
   const roomId = formData.get("roomId");
+  // const rId = parseInt(phone);
+
+  // tricky thing to force passing roomId in assignedRoomId
+  // if no roomId force to pass 0 as number;
+  let roomIdInt = 0;
+  roomId ? roomId : roomIdInt;
+  console.log("ROOMID OK ? :", roomId);
 
   const bookedDaysToEmail = formData.get("bookedDaysToEmail");
 
@@ -48,7 +56,8 @@ export async function postGuest(
         create: {
           checkIn: checkIn,
           checkOut: checkOut,
-          assignedToRoomId: 1,
+          assignedToRoomId: roomIdInt,
+          // assignedToRoomId: roomId as number,
 
           // date: bookedDayStart,
           // checkIn: bookedDayStart as Date,

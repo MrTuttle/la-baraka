@@ -146,6 +146,7 @@ Props) => {
                   id="roomId"
                   name="roomId"
                   value={roomId}
+                  required
                   // defaultValue={roomId}
                   className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
                 ></input>
