@@ -16,6 +16,7 @@ import RoomFormSkeleton from "@/app/chambres/_components/RoomFormSkeleton";
 import UserRoomForm from "./UserRoomForm";
 import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomRequest2";
 import { getDate } from "date-fns";
+import RoomDetailPageContent from "./RoomDetailPageContent";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -92,7 +93,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
       return checkIn;
     });
   };
-  // assignCheckIn();
+  assignCheckIn();
 
   console.log("BOOKEDDAYS: ", bookedDays);
   console.log("BOOKEDDAYS 1", bookedDays[0]);
@@ -133,6 +134,10 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   return (
     <Flex direction="column" align="center" className="mx-auto">
+      <RoomDetailPageContent
+        bookedDays={bookedDaysRange}
+        bookedDaysRange={bookedDays}
+      />
       <DetailRoomSwiperSlide listImages={imagesRoom} />
       <Flex direction="column" className="mx-4">
         <div className="py-4">
