@@ -5,7 +5,7 @@ import getUserRooms from "../actions/GetUserRooms";
 import DeleteUserRoom from "../actions/DeleteUserRoom";
 import { UserRoom } from "@prisma/client";
 import prisma from "@/prisma/client";
-import { Button, Card, Flex, Text } from "@radix-ui/themes";
+import { Badge, Button, Card, Flex, Text } from "@radix-ui/themes";
 import DeleteGuest from "./DeleteGuest";
 
 // interface Props {
@@ -30,18 +30,46 @@ const pageGuests = async () => {
     <div>
       <h1>Guest List</h1>
       {guests.map((guest, index) => (
-        <Card key={guest.id} className="p-3">
-          <Flex direction="row" gap="9" justify="between">
-            <Text size="1" weight="bold">
-              {guest.firstName} {guest.name} - {guest.id}
+        <Card key={guest.id} className="p-3" size="4">
+          <Flex direction="row" gap="4" justify="start" wrap="wrap">
+            <Text size="1" className=" sm:w-full lg:w-4/12">
+              <span className=" font-bold">{guest.id}</span> | {guest.firstName}{" "}
+              {guest.name}
             </Text>
             {guest.reservationDates.map((booking) => (
-              <Text key={booking.id} size="1" weight="bold">
-                <p>booking id : {booking.id}</p>
-                <p>booking room : {booking.assignedToRoomId}</p>
-                <p>Check in : {booking.checkIn.toLocaleDateString()}</p>
-                <p>Check out : {booking.checkOut.toLocaleDateString()}</p>
-                <p>{booking.status}</p>
+              <Text key={booking.id} size="1">
+                <p>booking.id</p>
+
+                {booking.assignedToRoomId === 0 ? (
+                  <p className=" text-red-600">No room assigned</p>
+                ) : (
+                  <p>booking id : {booking.id}</p>
+                )}
+                <p>
+                  Check in :{" "}
+                  <strong>
+                    {booking.checkIn.toLocaleDateString("fr-FR", {
+                      dateStyle: "full",
+                    })}
+                  </strong>
+                </p>
+                <p>
+                  Check out :{" "}
+                  <strong>
+                    {booking.checkOut.toLocaleDateString("fr-FR", {
+                      dateStyle: "full",
+                    })}
+                  </strong>
+                </p>
+                <Badge
+                  variant="solid"
+                  radius="full"
+                  color="blue"
+                  className="mt-4"
+                >
+                  {booking.status}
+                </Badge>
+
                 {/* <button onClick={async () => {}}>Supprimer</button> */}
                 {/* <DeleteGuest guest={guest.id} /> */}
               </Text>
