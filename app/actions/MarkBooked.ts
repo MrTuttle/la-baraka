@@ -34,6 +34,7 @@ export async function postGuest(
   const email = formData.get("email");
   const title = formData.get("title");
   const roomId = formData.get("roomId");
+
   // const rId = parseInt(phone);
 
   // tricky thing to force passing roomId in assignedRoomId
@@ -43,7 +44,7 @@ export async function postGuest(
 
   roomId ? (roomIdInt = parseInt(roomIdStr)) : (roomIdInt = 0);
 
-  // ---- LOGS TO TEST ROOMID finish as a number
+  // ---- LOGS TO TEST ROOMID finish as a number & never undefined
 
   // console.log(`ROOMID OK ? : ${roomId},
   // roomId Type : ${typeof roomId},

@@ -33,15 +33,12 @@ const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 // const DialogRoomRequest = ({ guest }: { guest?: UserRoom }) => {
 const DialogRoomRequest2 = ({
-  title,
   roomId,
   bookedDaysToEmail,
   checkIn,
   checkOut,
 }: // onClick,
 Props) => {
-  const name = "Fischer";
-  const firstName = "Bobby";
   const handleClick = (event: React.MouseEvent) => {
     console.log("CLICK");
     console.log("currentTarget : ", event.currentTarget);
@@ -61,6 +58,7 @@ Props) => {
   // console.log("startDateToDb Type : ", typeof startDateToDb);
 
   const addDates = postGuest.bind(null, checkIn, checkOut);
+  console.log("ADDDATES", addDates);
 
   // const router = useRouter();
 
@@ -94,16 +92,12 @@ Props) => {
           >
             <div className="flex pb-4 gap-10 justify-between">
               <div>
-                {/* <label className="mb-1 text-sm font-medium text-gray-500 ">
-                  CheckIn {checkIn.toLocaleDateString("short")}
-                </label> */}
                 <input
-                  type="Date"
-                  id="bookedDayStart"
-                  name="bookedDayStart"
+                  type="number"
+                  id="roomId"
+                  name="roomId"
                   // value={checkIn.toDateString()}
-                  defaultValue={checkIn.toDateString()}
-                  hidden
+                  defaultValue={roomId}
                 />
               </div>
             </div>
