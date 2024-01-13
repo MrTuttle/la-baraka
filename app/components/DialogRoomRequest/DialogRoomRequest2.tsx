@@ -77,7 +77,7 @@ Props) => {
         <Dialog.Overlay className="DialogOverlay" />
         <Dialog.Content className="DialogContent">
           <Dialog.Title className="DialogTitle">
-            {title} - Reserver la chambre n°{roomId}
+            Reserver la chambre n°{roomId}
           </Dialog.Title>
           <Dialog.Description className="DialogDescription">
             Nous vous rapellons sous 24 heures pour confirmer votre réservation.
@@ -94,58 +94,17 @@ Props) => {
           >
             <div className="flex pb-4 gap-10 justify-between">
               <div>
-                <label className="mb-1 text-sm font-medium text-gray-500 ">
-                  Date d’arrivée {checkIn.toDateString()}
-                </label>
+                {/* <label className="mb-1 text-sm font-medium text-gray-500 ">
+                  CheckIn {checkIn.toLocaleDateString("short")}
+                </label> */}
                 <input
                   type="Date"
                   id="bookedDayStart"
                   name="bookedDayStart"
                   // value={checkIn.toDateString()}
                   defaultValue={checkIn.toDateString()}
-                  // hidden
+                  hidden
                 />
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium text-gray-500">
-                  Dates
-                </label>
-
-                {/* <input
-                  type="text"
-                  id="bookedDaysToEmail"
-                  name="bookedDaysToEmail"
-                  defaultValue={bookedDaysToEmail}
-                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
-                ></input> */}
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium text-gray-500">
-                  Chambre
-                </label>
-
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={title}
-                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
-                ></input>
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium text-gray-500">
-                  N°
-                </label>
-
-                <input
-                  type="number"
-                  id="roomId"
-                  name="roomId"
-                  value={roomId}
-                  required
-                  // defaultValue={roomId}
-                  className=" select-none pb-2.5 border-gray-300 text-gray-500 text-sm rounded-lg block w-full"
-                ></input>
               </div>
             </div>
 
