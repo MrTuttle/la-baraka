@@ -54,12 +54,6 @@ const RoomDetailPageContent = ({
         <strong>checkOutFromBK : </strong>
         {checkOutFromBK.toDateString()}
       </p>
-      <p>
-        <strong>bookedDays :</strong>
-      </p>
-      {bookedDays.map((e, index) => (
-        <p key={index}>{e.toDateString()}</p>
-      ))}
 
       <p>
         <strong>var bookedDaysRange</strong> - by user
