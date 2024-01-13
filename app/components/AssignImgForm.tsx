@@ -2,13 +2,14 @@
 // this form receives data when he is placed in GetRooms "server component"
 // use this to link images with rooms id
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import { Button, Checkbox, Flex, Text, TextField } from "@radix-ui/themes";
 import GetRooms from "./GetRooms";
 import { CheckboxForAll } from "./CheckBoxForAll";
+import UploadWidget from "./UploadWidget";
 
 interface ImageForm {
   publicId: string;
@@ -33,9 +34,19 @@ const AssignImgForm = ({ listRooms }: List) => {
   // console.log(errors);
   // const checkboxRef = useRef(null);
   // const list = [14, 18];
+  const [getPublicId, setGetPublicId] = useState("");
+  const handleOnSuccess = (publicId: string) => {
+    console.log("PUBLIC ID HANDLE", publicId);
+    setGetPublicId(publicId);
+  };
+
   return (
     <>
       <section className="mx-4 my-4">
+        <UploadWidget onSuccess={handleOnSuccess} public_id="" />
+      </section>
+      <section className="mx-4 my-4">
+        <p>{getPublicId}</p>
         <form
           className="max-w-lg space-y-3"
           onSubmit={handleSubmit(async (data) => {
@@ -49,7 +60,8 @@ const AssignImgForm = ({ listRooms }: List) => {
           <TextField.Root>
             <TextField.Input
               type="text"
-              placeholder="publicId : collez le public id ici"
+              placeholder="public id a coller ici"
+              defaultValue={getPublicId.toString()}
               {...register("publicId", {})}
             ></TextField.Input>
           </TextField.Root>

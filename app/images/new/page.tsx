@@ -24,6 +24,9 @@ import UploadWidget from "@/app/components/UploadWidget";
 
 // const NewImagePage = ({ publicId }: ImageForm) => {
 const NewImagePage = () => {
+  const handleOnSuccess = (publicId: string) => {
+    console.log("ITEM", publicId);
+  };
   return (
     <>
       <Flex
@@ -43,7 +46,6 @@ const NewImagePage = () => {
                 {" "}
                 Ajouter une image à la photothèque
               </Text>
-              <UploadWidget />
             </Flex>
           </Card>
           <Card>

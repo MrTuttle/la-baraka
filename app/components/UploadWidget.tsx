@@ -8,11 +8,14 @@ import { Text } from "@radix-ui/themes";
 
 interface CloudinaryResult {
   public_id: string;
-  // onSuccess: (public_id: string) => void;
+  onSuccess: (publicId: string) => void;
 }
 
-const UploadWidget = () => {
+const UploadWidget = ({ onSuccess }: CloudinaryResult) => {
   const [publicId, setPublicId] = useState("");
+  console.log(`PUBLIC ID STATE : ${publicId} - type : ${typeof publicId}`);
+  // => PUBLIC ID STATE : uwsdjkl74rtyn1jv4y53 - type : string
+  onSuccess(publicId);
 
   return (
     <>
@@ -35,7 +38,6 @@ const UploadWidget = () => {
           const info = result.info as CloudinaryResult;
           console.log("aaaa");
           setPublicId(info.public_id);
-          //onSuccess(`${info.public_id}`);
           // Postimages(info.public_id);
           console.log("CLD WIDGET PUBLI ID");
           console.log(info.public_id);

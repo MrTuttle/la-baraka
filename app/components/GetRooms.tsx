@@ -1,6 +1,5 @@
 // app/components/GetRooms.tsx
 // "use server" component which gives data to "client component" AssignImgForm
-
 import prisma from "@/prisma/client";
 import React from "react";
 import AssignImgForm from "./AssignImgForm";
