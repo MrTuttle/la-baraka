@@ -38,12 +38,10 @@ const pageGuests = async () => {
             </Text>
             {guest.reservationDates.map((booking) => (
               <Text key={booking.id} size="1">
-                <p>booking.id</p>
-
                 {booking.assignedToRoomId === 0 ? (
                   <p className=" text-red-600">No room assigned</p>
                 ) : (
-                  <p>booking id : {booking.id}</p>
+                  <p>room Id : {booking.assignedToRoomId}</p>
                 )}
                 <p>
                   Check in :{" "}
@@ -61,10 +59,11 @@ const pageGuests = async () => {
                     })}
                   </strong>
                 </p>
+                {/* {booking.status.valueOf()} */}
                 <Badge
                   variant="solid"
                   radius="full"
-                  color="blue"
+                  color={booking.status === "VACANT" ? "blue" : "orange"}
                   className="mt-4"
                 >
                   {booking.status}
