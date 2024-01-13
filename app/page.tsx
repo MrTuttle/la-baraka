@@ -40,7 +40,7 @@ const home = async () => {
           /> */}
         </div>
       </div>
-      <Section className="prose px-8 my-border-grey h-screen flex flex-col items-center w-3/4 mx-auto">
+      <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto">
         <h3 className=" font-light text-2xl self-center">
           La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
           dolor sit, amet consectetur adipisicing elit. Laboriosam, est? Quae
