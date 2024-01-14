@@ -59,7 +59,6 @@ export async function postGuest(
   const bookedDaysToEmail = formData.get("bookedDaysToEmail");
 
   const resend = new Resend(process.env.RESEND_API_KEY);
-  console.log("ROOMID OK ? :", roomId);
 
   if (phone) {
     const { data } = await resend.emails.send({

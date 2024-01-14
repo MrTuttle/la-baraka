@@ -97,6 +97,7 @@ async function main() {
           checkIn: new Date("2023-12-24T00:00"),
           checkOut: new Date("2023-12-25T00:00"),
           assignedToRoomId: 1,
+          status: "OCCUPIED",
         },
       },
     },

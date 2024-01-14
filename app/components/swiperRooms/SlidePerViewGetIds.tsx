@@ -28,6 +28,12 @@ const SlidePerViewGetIds = async () => {
       cover: true,
     },
   });
+  // const lastCoverImage = images.findLast((e) => e.cover === true);
+  // const coverImage = await prisma.image.findFirst({
+  //   where: {
+  //     cover: true,
+  //   },
+  // });
   // console.log(" IMAGES :");
   // console.log(images);
   // console.log("ROOMS :");

@@ -4,7 +4,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import axios from "axios";
 import { Button, Checkbox, Flex, Text, TextField } from "@radix-ui/themes";
 import GetRooms from "./GetRooms";
@@ -30,6 +30,7 @@ interface List {
 const AssignImgForm = ({ listRooms }: List) => {
   const router = useRouter();
   const { register, handleSubmit, formState } = useForm();
+  const [data, setData] = useState("");
   const onSubmit = (data: Rooms) => console.log(data);
   // console.log(errors);
   // const checkboxRef = useRef(null);
