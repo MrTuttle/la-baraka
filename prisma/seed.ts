@@ -50,7 +50,7 @@ async function main() {
   });
 
   const chambrebleue = await prisma.room.upsert({
-    where: { id: 1 },
+    where: { id: 3 },
     update: {},
     create: {
       title: "Chambre Blu",
@@ -96,7 +96,7 @@ async function main() {
         create: {
           checkIn: new Date("2023-12-24T00:00"),
           checkOut: new Date("2023-12-25T00:00"),
-          assignedToRoomId: 1,
+          assignedToRoomId: 3,
           status: "OCCUPIED",
         },
       },
@@ -113,7 +113,7 @@ async function main() {
         create: {
           checkIn: new Date("2024-01-10T00:00"),
           checkOut: new Date("2024-01-13T00:00"),
-          assignedToRoomId: 2,
+          assignedToRoomId: 4,
         },
       },
     },
@@ -129,13 +129,13 @@ async function main() {
         create: {
           checkIn: new Date("2024-02-01T00:00"),
           checkOut: new Date("2024-02-02T00:00"),
-          assignedToRoomId: 2,
+          assignedToRoomId: 4,
         },
       },
     },
   });
   const chambrejaune = await prisma.room.upsert({
-    where: { id: 2 },
+    where: { id: 4 },
     update: {},
     create: {
       title: "Chambre Jaune",

@@ -4,7 +4,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import { Button, Checkbox, Flex, Text, TextField } from "@radix-ui/themes";
 import GetRooms from "./GetRooms";
@@ -30,8 +30,7 @@ interface List {
 const AssignImgForm = ({ listRooms }: List) => {
   const router = useRouter();
   const { register, handleSubmit, formState } = useForm();
-  const [data, setData] = useState("");
-  const onSubmit = (data: Rooms) => console.log(data);
+  // const onSubmit = (data: Rooms) => console.log(data);
   // console.log(errors);
   // const checkboxRef = useRef(null);
   // const list = [14, 18];
@@ -41,6 +40,14 @@ const AssignImgForm = ({ listRooms }: List) => {
     setGetPublicId(publicId);
   };
 
+  const onSubmit = handleSubmit(async (data) => {
+    axios.post("/api/images", data);
+    router.push("/images");
+    router.refresh();
+    // console.log("DATAS :");
+    // console.log(data);
+  });
+
   return (
     <>
       <section className="mx-4 my-4">
@@ -48,16 +55,7 @@ const AssignImgForm = ({ listRooms }: List) => {
       </section>
       <section className="mx-4 my-4">
         <p>{getPublicId}</p>
-        <form
-          className="max-w-lg space-y-3"
-          onSubmit={handleSubmit(async (data) => {
-            axios.post("/api/images", data);
-            router.push("/images");
-            router.refresh();
-            // console.log("DATAS :");
-            // console.log(data);
-          })}
-        >
+        <form className="max-w-lg space-y-3" onSubmit={onSubmit}>
           <TextField.Root>
             <TextField.Input
               type="text"
