@@ -77,7 +77,8 @@ const AssignImgForm = (
       setGetPublicId(publicId);
     };
     // END
-    // STATIC PUBLICID VALUE FOR TESTS
+
+    // STATIC PUBLICID VALUE FOR TESTS - to replace DYNAMIC PUBLICID VALUE FROM UPLOADWIDGET
     // const getPublicId: string = "cawdvxo81d8uulerrsrf";
     // END (instead uncomment DYNAMIC PUBLICID for prod)
     //------------------------------------//
@@ -127,6 +128,9 @@ const AssignImgForm = (
                 {...register("alt")}
               ></TextField.Input>
             </TextField.Root>
+            {/* <Flex>
+              <CheckboxForAll defaultState={false}></CheckboxForAll>
+            </Flex> */}
             <Flex align="center">
               <input
                 type="checkbox"

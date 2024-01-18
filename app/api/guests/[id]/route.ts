@@ -18,7 +18,7 @@ export async function PATCH(
     },
   });
   if (!guest)
-    return NextResponse.json({ error: "Invalid room" }, { status: 404 });
+    return NextResponse.json({ error: "Invalid guest" }, { status: 404 });
   const updatedUserRoom = await prisma.userRoom.update({
     where: { id: guest.id },
     data: {

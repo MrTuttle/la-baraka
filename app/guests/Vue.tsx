@@ -1,64 +1,28 @@
-// "use client";
-
 import React from "react";
-import getUserRooms from "../actions/GetUserRooms";
-import DeleteUserRoom from "../actions/DeleteUserRoom";
-import { UserRoom } from "@prisma/client";
-import prisma from "@/prisma/client";
-import { Badge, Button, Card, Flex, Section, Text } from "@radix-ui/themes";
-import { HiOutlinePencilSquare } from "react-icons/hi2";
-import Link from "next/link";
-
-import DeleteGuest from "./DeleteGuestButton";
 import DeleteGuestButton from "./DeleteGuestButton";
-import Vue from "./Vue";
+import { Badge, Button, Card, Flex, Section, Text } from "@radix-ui/themes";
+import { UserRoom, Reservation } from "@prisma/client";
 
-// interface Props {
-//   onClick: (item: number) => void;
-// }
+interface Guests {
+  guests: UserRoom[];
+}
 
-// SERVER
-const pageGuests = async () => {
-  const guests = await prisma.userRoom.findMany({
-    include: {
-      reservationDates: true,
-    },
-  });
 
-  // SERVER END
-
-  // SERVER ACTION IMPORTED FROM MarkBooked
-  // const guests: [] = () => guestListBoard();
-
-  // DeleteUserRoom(11);
-  // const handleClick = (item: number) => {
-  //   DeleteUserRoom(item);
-  // };
-
+const Vue = ({ guests, reservationDates }: Guests) => {
   return (
     <>
-      {/* <Vue guests={guests} /> */}
+      <div>Vue</div>;
       <Section className="mt-0 pt-0">
-        <div className="flex flex-col gap-3 mx-4">
+        <div className="flex flex-col gap-3">
           <h1 className="mx-4">hard guests</h1>
           {guests.map((guest, index) => (
-            <Card key={guest.id} className="pb-3" size="4">
-              <Flex gap="4" direction="row" wrap="wrap" className="mb-6">
-                <DeleteGuestButton guestId={guest.id} />
-                <Link href={"/guests/edit/" + guest.id}>
-                  <Flex gap="1">
-                    <HiOutlinePencilSquare />
-                    <Text as="p" size="1">
-                      Modifier
-                    </Text>
-                  </Flex>
-                </Link>
-              </Flex>
+            <Card key={guest.id} className="mx-4 p-3" size="4">
               <Flex direction="row" gap="4" justify="start" wrap="wrap">
                 <Text size="1" className=" sm:w-full lg:w-4/12">
                   <span className=" font-bold">{guest.id}</span> |{" "}
                   {guest.firstName} {guest.name}
                 </Text>
+                {guests.map((e, index)=> e.)}
                 {guest.reservationDates.map((booking) => (
                   <Text key={booking.id} size="1">
                     {booking.assignedToRoomId === 0 ? (
@@ -91,6 +55,8 @@ const pageGuests = async () => {
                     >
                       {booking.status}
                     </Badge>
+                    <DeleteGuestButton guestId={guest.id} />
+                    <p>{typeof guest.id}</p>
 
                     {/* <button onClick={async () => {}}>Supprimer</button> */}
                     {/* <DeleteGuest guest={guest.id} /> */}
@@ -105,4 +71,4 @@ const pageGuests = async () => {
   );
 };
 
-export default pageGuests;
+export default Vue;
