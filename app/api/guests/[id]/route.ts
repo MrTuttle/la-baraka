@@ -16,6 +16,9 @@ export async function PATCH(
     where: {
       id: parseInt(params.id),
     },
+    include: {
+      reservationDates: true,
+    },
   });
   if (!guest)
     return NextResponse.json({ error: "Invalid guest" }, { status: 404 });
@@ -26,6 +29,19 @@ export async function PATCH(
       name: body.name,
       email: body.email,
       phone: body.phone,
+      reservationDates: {
+        // update: {
+        // },
+        create: {
+          assignedToRoomId: body.assignedToRoomId,
+          checkIn: body.checkIn,
+          checkOut: body.checkOut,
+          status: body.status,
+        },
+      },
+    },
+    include: {
+      reservationDates: true,
     },
   });
   return NextResponse.json(updatedUserRoom);

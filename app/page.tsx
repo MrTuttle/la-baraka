@@ -15,6 +15,7 @@ import CldImageClient from "./components/CldImageClient";
 import { SiForestry } from "react-icons/si";
 import Background from "./components/Background";
 import DialogRoomRequest from "./components/DialogRoomRequest/DialogRoomRequest";
+import SectionFramer from "./components/SectionFramer";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();
@@ -41,13 +42,7 @@ const home = async () => {
         </div>
       </div>
       <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto">
-        <h3 className=" font-light text-2xl self-center">
-          La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
-          dolor sit, amet consectetur adipisicing elit. Laboriosam, est? Quae
-          vel adipisci provident tempore, nisi, commodi suscipit pariatur
-          perspiciatis beatae modi nam, iste aut possimus consequatur dolores
-          aliquam. Laborum!
-        </h3>
+        <SectionFramer />
       </Section>
 
       <section className="prose my-border-grey min-h-screen py-10 mx-auto">

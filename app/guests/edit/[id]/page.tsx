@@ -16,9 +16,13 @@ interface Props {
 const EditGuestPage = async ({ params }: Props) => {
   const guest = await prisma.userRoom.findUnique({
     where: { id: parseInt(params.id) },
+    include: {
+      reservationDates: true,
+    },
   });
 
   if (!guest) notFound();
+  console.log(` GUEST.RESERVATION DATDE :${guest.reservationDates}`);
 
   return (
     <div className="mx-4">

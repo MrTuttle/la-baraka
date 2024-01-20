@@ -11,7 +11,7 @@ import Link from "next/link";
 
 import DeleteGuest from "./DeleteGuestButton";
 import DeleteGuestButton from "./DeleteGuestButton";
-import Vue from "./Vue";
+// import Vue from "./Vue";
 
 // interface Props {
 //   onClick: (item: number) => void;

@@ -125,6 +125,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   return (
     <Flex direction="column" align="center" className="mx-auto">
+      <DetailRoomSwiperSlide listImages={imagesRoom} />
       <RoomDetailPageContent
         bookedDays={bookedDaysRange}
         bookedDaysRange={bookedDays}
@@ -134,14 +135,14 @@ const ChambreDetailPage = async ({ params }: Props) => {
         title={room.title}
         roomId={room.id}
       />
-      <DetailRoomSwiperSlide listImages={imagesRoom} />
-      <Flex direction="column" className="mx-4">
+
+      {/* <Flex direction="column" className="mx-4">
         <div className="py-4">
           <p>Id: {room.id}</p>
           <p>{room.title}</p>
           <p>{room.description}</p>
         </div>
-      </Flex>
+      </Flex> */}
 
       <Flex direction="column" align="center" className="p-8">
         {/* <BKDayPicker
