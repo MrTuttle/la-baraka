@@ -23,12 +23,13 @@ const SplitTypeFramer = ({ children }: Props) => {
     gsap.from(splitTypeInstance.chars, {
       scrollTrigger: {
         trigger: ref.current,
+        // pin: true,
         start: "top 80%",
-        end: "top 20%",
+        end: "top 10%",
         scrub: true, // if true = use scroll, not time for animation
         markers: false,
       },
-      opacity: 0.2, // from 0.2
+      opacity: 0, // from 0.2
       stagger: 0.5, // decay animation for multiple instance
     });
 

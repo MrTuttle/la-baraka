@@ -17,11 +17,10 @@ const NavBar = () => {
     { label: "Chambres", href: "/chambres" },
   ];
   return (
-    <nav className="flex space-x-6 border-b px-4 h-14 items-center justify-between">
+    <nav className="flex space-x-6 border-b px-4 h-14 items-center justify-between bg-white">
       <div className="flex flex-row">
         <Link href="/">
           <p className="font-semibold">
-            {" "}
             <span className="inline-flex items-baseline pe-3">
               <SiForestry />
             </span>

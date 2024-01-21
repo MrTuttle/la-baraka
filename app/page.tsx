@@ -24,7 +24,7 @@ const home = async () => {
 
   return (
     <>
-      <div className="relative h-screen my-border-grey flex flex-col items-center">
+      <div className="fixed h-screen my-border-grey flex flex-col items-center top-0 -z-50 my-border-red w-screen">
         <Background />
         <div className="prose relative text-white my-border-grey h-56 w-56 mt-60">
           <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
@@ -44,9 +44,9 @@ const home = async () => {
           /> */}
         </div>
       </div>
-      <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto">
+      <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto mt-[100vh] bg-gray-100 align-middle">
         <SplitTypeFramer>
-          <h3 className=" font-light text-2xl self-center leading-10">
+          <h3 className=" font-light text-2xl self-center leading-10 mx-3">
             La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
             dolor sit, amet consectetur <strong>adipisicing</strong> elit.
             Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
@@ -56,7 +56,7 @@ const home = async () => {
         </SplitTypeFramer>
       </Section>
 
-      <section className="prose my-border-grey min-h-screen py-10 mx-auto">
+      <section className="prose min-h-screen py-10 mx-auto bg-white">
         <SplitTypeFramer>
           <h2 className="px-4 font-normal text-4xl">
             Au menu
@@ -70,16 +70,16 @@ const home = async () => {
             <CallMenuSwiper />
           </SectionFramer>
         </div>
-        <SplitTypeFramer>
+        <SectionFramer>
           <p className="mx-4 font-light text-2xl">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
             suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
             consequatur dolores aliquam. Laborum!
           </p>
-        </SplitTypeFramer>
+        </SectionFramer>
       </section>
-      <Section className="prose my-border-grey min-h-screen mx-auto">
+      <Section className="prose my-border-grey min-h-screen mx-auto bg-white">
         <div className="mx-4">
           <SplitTypeFramer>
             <h1 className=" font-normal text-4xl">
@@ -87,12 +87,12 @@ const home = async () => {
               d’hôtes côté rivière
             </h1>
           </SplitTypeFramer>
-          <SplitTypeFramer>
+          <SectionFramer>
             <p className="font-light text-2xl">
               La chambres partir de 50€ la nuit, réservables en ligne ou par
               téléphone
             </p>
-          </SplitTypeFramer>
+          </SectionFramer>
         </div>
         <SectionFramer>
           <SlidePerViewGetIds />
