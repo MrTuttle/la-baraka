@@ -16,9 +16,12 @@ import { SiForestry } from "react-icons/si";
 import Background from "./components/Background";
 import DialogRoomRequest from "./components/DialogRoomRequest/DialogRoomRequest";
 import SectionFramer from "./components/SectionFramer";
+import SplitTypeFramer from "./components/SplitTypeFramer";
+import SplitType from "split-type";
 
 const home = async () => {
   // const chambresImage = await prisma.image.findMany();
+
   return (
     <>
       <div className="relative h-screen my-border-grey flex flex-col items-center">
@@ -42,38 +45,58 @@ const home = async () => {
         </div>
       </div>
       <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto">
-        <SectionFramer />
+        <SplitTypeFramer>
+          <h3 className=" font-light text-2xl self-center leading-10">
+            La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
+            dolor sit, amet consectetur <strong>adipisicing</strong> elit.
+            Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
+            suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
+            consequatur dolores aliquam. Laborum!
+          </h3>
+        </SplitTypeFramer>
       </Section>
 
       <section className="prose my-border-grey min-h-screen py-10 mx-auto">
-        <h2 className="px-4 font-normal text-4xl">
-          Au menu
-          <br />
-          aujourd’hui
-        </h2>
+        <SplitTypeFramer>
+          <h2 className="px-4 font-normal text-4xl">
+            Au menu
+            <br />
+            aujourd’hui
+          </h2>
+        </SplitTypeFramer>
         {/* <div className=" pl-0 pr-4 overflow-hidden"> */}
         <div className=" pl-0 pr-4 sm:overflow-hidden md:overflow-visible">
-          <CallMenuSwiper />
+          <SectionFramer>
+            <CallMenuSwiper />
+          </SectionFramer>
         </div>
-        <p className="mx-4 font-light text-2xl">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam,
-          est? Quae vel adipisci provident tempore, nisi, commodi suscipit
-          pariatur perspiciatis beatae modi nam, iste aut possimus consequatur
-          dolores aliquam. Laborum!
-        </p>
+        <SplitTypeFramer>
+          <p className="mx-4 font-light text-2xl">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
+            suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
+            consequatur dolores aliquam. Laborum!
+          </p>
+        </SplitTypeFramer>
       </section>
       <Section className="prose my-border-grey min-h-screen mx-auto">
         <div className="mx-4">
-          <h1 className=" font-normal text-4xl">
-            Cinq chambres <br />
-            d’hôtes côté rivière
-          </h1>
-          <p className="font-light text-2xl">
-            La chambres partir de 50€ la nuit, réservables en ligne ou par
-            téléphone
-          </p>
+          <SplitTypeFramer>
+            <h1 className=" font-normal text-4xl">
+              Cinq chambres <br />
+              d’hôtes côté rivière
+            </h1>
+          </SplitTypeFramer>
+          <SplitTypeFramer>
+            <p className="font-light text-2xl">
+              La chambres partir de 50€ la nuit, réservables en ligne ou par
+              téléphone
+            </p>
+          </SplitTypeFramer>
         </div>
-        <SlidePerViewGetIds />
+        <SectionFramer>
+          <SlidePerViewGetIds />
+        </SectionFramer>
       </Section>
       <div className="flex justify-center py-32">
         <Link href="/dashboard">
