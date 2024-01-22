@@ -18,80 +18,88 @@ import DialogRoomRequest from "./components/DialogRoomRequest/DialogRoomRequest"
 import SectionFramer from "./components/SectionFramer";
 import SplitTypeFramer from "./components/SplitTypeFramer";
 import SplitType from "split-type";
+import HeroScrollEffect from "./components/HeroScrollEffect";
 
-const home = async () => {
+const home = () => {
   // const chambresImage = await prisma.image.findMany();
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const contentHolderHeight = document.querySelector(".content-holder");
+  //   const imgHolderHeight = window.innerHeight;
+  //   const additionalScrollHeight = window.innerHeight;
+  //   const totalBodyHeight =
+  //     contentHolderHeight + imgHolderHeight + additionalScrollHeight;
+  //   document.body.style.height = `${totalBodyHeight} px`;
+  // });
 
   return (
     <>
-      <div className="fixed h-screen flex flex-col items-center top-0 -z-50 w-screen">
-        <Background />
-        {/* <div className="prose relative text-white my-border-grey h-56 w-56 mt-60"> */}
-        <div className="prose fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-white h-56 w-56 border-[1px] border-white">
-          <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
-            <SiForestry />
-            <h1 className="text-white font-extralight text-5xl">La Baraka</h1>
-          </div>
-        </div>
-      </div>
-      <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto mt-[100vh] bg-gray-100 align-middle">
-        <SplitTypeFramer>
-          <h3 className=" font-light text-2xl self-center leading-10 mx-3">
-            La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
-            dolor sit, amet consectetur <strong>adipisicing</strong> elit.
-            Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
-            suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
-            consequatur dolores aliquam. Laborum!
-          </h3>
-        </SplitTypeFramer>
-      </Section>
+      {/* <div className="fixed h-screen w-full flex flex-col items-center top-0 -z-50 my-border-red"> */}
+      {/* <div className="h-screen w-full top-0 my-border-red"> */}
+      <HeroScrollEffect />
+      <div>
+        <div className="content-holder">
+          <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto mt-[100vh] bg-gray-100 align-middle">
+            <SplitTypeFramer>
+              <h3 className=" font-light text-2xl self-center leading-10 mx-3">
+                La Baraka vous accueille au cœur du massif des Cevennes. Lorem
+                ipsum dolor sit, amet consectetur <strong>adipisicing</strong>{" "}
+                elit. Laboriosam, est? Quae vel adipisci provident tempore,
+                nisi, commodi suscipit pariatur perspiciatis beatae modi nam,
+                iste aut possimus consequatur dolores aliquam. Laborum!
+              </h3>
+            </SplitTypeFramer>
+          </Section>
 
-      <section className="prose min-h-screen py-10 mx-auto bg-white">
-        <SplitTypeFramer>
-          <h2 className="px-4 font-normal text-4xl">
-            Au menu
-            <br />
-            aujourd’hui
-          </h2>
-        </SplitTypeFramer>
-        {/* <div className=" pl-0 pr-4 overflow-hidden"> */}
-        <div className=" pl-0 pr-4 sm:overflow-hidden md:overflow-visible">
-          {/* <SectionFramer>
+          <section className="prose min-h-screen py-10 mx-auto bg-white">
+            {/* <SplitTypeFramer>
+              <h2 className="px-4 font-normal text-4xl">
+                Au menu
+                <br />
+                aujourd’hui
+              </h2>
+            </SplitTypeFramer> */}
+            {/* <div className=" pl-0 pr-4 overflow-hidden"> */}
+            <div className=" pl-0 pr-4 sm:overflow-hidden md:overflow-visible">
+              {/* <SectionFramer>
             <CallMenuSwiper />
           </SectionFramer> */}
+            </div>
+            {/* <SectionFramer>
+              <p className="mx-4 font-light text-2xl">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Laboriosam, est? Quae vel adipisci provident tempore, nisi,
+                commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
+                possimus consequatur dolores aliquam. Laborum!
+              </p>
+            </SectionFramer> */}
+          </section>
+
+          <Section className="prose my-border-grey min-h-screen mx-auto bg-white">
+            <div className="mx-4">
+              {/* <SplitTypeFramer>
+                <h1 className=" font-normal text-4xl">
+                  Cinq chambres <br />
+                  d’hôtes côté rivière
+                </h1>
+              </SplitTypeFramer> */}
+              {/* <SectionFramer>
+                <p className="font-light text-2xl">
+                  La chambres partir de 50€ la nuit, réservables en ligne ou par
+                  téléphone
+                </p>
+              </SectionFramer> */}
+            </div>
+            {/* <SectionFramer>
+              <SlidePerViewGetIds />
+            </SectionFramer> */}
+          </Section>
         </div>
-        <SectionFramer>
-          <p className="mx-4 font-light text-2xl">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
-            suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
-            consequatur dolores aliquam. Laborum!
-          </p>
-        </SectionFramer>
-      </section>
-      <Section className="prose my-border-grey min-h-screen mx-auto bg-white">
-        <div className="mx-4">
-          <SplitTypeFramer>
-            <h1 className=" font-normal text-4xl">
-              Cinq chambres <br />
-              d’hôtes côté rivière
-            </h1>
-          </SplitTypeFramer>
-          <SectionFramer>
-            <p className="font-light text-2xl">
-              La chambres partir de 50€ la nuit, réservables en ligne ou par
-              téléphone
-            </p>
-          </SectionFramer>
+
+        <div className="flex justify-center py-32">
+          <Link href="/dashboard">
+            <Button>Dashboard</Button>
+          </Link>
         </div>
-        {/* <SectionFramer>
-          <SlidePerViewGetIds />
-        </SectionFramer> */}
-      </Section>
-      <div className="flex justify-center py-32">
-        <Link href="/dashboard">
-          <Button>Dashboard</Button>
-        </Link>
       </div>
     </>
   );
