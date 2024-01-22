@@ -24,24 +24,14 @@ const home = async () => {
 
   return (
     <>
-      <div className="fixed h-screen my-border-grey flex flex-col items-center top-0 -z-50 my-border-red w-screen">
+      <div className="fixed h-screen flex flex-col items-center top-0 -z-50 w-screen">
         <Background />
-        <div className="prose relative text-white my-border-grey h-56 w-56 mt-60">
+        {/* <div className="prose relative text-white my-border-grey h-56 w-56 mt-60"> */}
+        <div className="prose fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-white h-56 w-56 border-[1px] border-white">
           <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
             <SiForestry />
             <h1 className="text-white font-extralight text-5xl">La Baraka</h1>
           </div>
-        </div>
-        <div className="h-screen">
-          <SiForestry />
-          <h1 className="text-white font-extralight text-5xl">La Baraka</h1>
-          {/* <CldImageClient
-            src="r6sztwmaweq1sehluh74"
-            width={900}
-            height={900}
-            alt="baraka"
-            sizes="100vh"
-          /> */}
         </div>
       </div>
       <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto mt-[100vh] bg-gray-100 align-middle">
@@ -66,9 +56,9 @@ const home = async () => {
         </SplitTypeFramer>
         {/* <div className=" pl-0 pr-4 overflow-hidden"> */}
         <div className=" pl-0 pr-4 sm:overflow-hidden md:overflow-visible">
-          <SectionFramer>
+          {/* <SectionFramer>
             <CallMenuSwiper />
-          </SectionFramer>
+          </SectionFramer> */}
         </div>
         <SectionFramer>
           <p className="mx-4 font-light text-2xl">
@@ -94,9 +84,9 @@ const home = async () => {
             </p>
           </SectionFramer>
         </div>
-        <SectionFramer>
+        {/* <SectionFramer>
           <SlidePerViewGetIds />
-        </SectionFramer>
+        </SectionFramer> */}
       </Section>
       <div className="flex justify-center py-32">
         <Link href="/dashboard">
