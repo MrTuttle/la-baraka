@@ -56,7 +56,6 @@ body {
 .mask-clip {
   clip-path: polygon(37.5% 20%, 62.5% 20%, 62.5% 80%, 37.5% 80%);
   /* transform: rotate(30deg); */
-  scale: 0.1;
 }
 .mask-clip img {
   position: relative;
