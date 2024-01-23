@@ -47,60 +47,63 @@ const HeroScrollEffect = () => {
   // );
   //----------- trigger on multi elements -----//
 
-  useGSAP(() => {
-    const descaleDisolveOnScrool = logoRef.current;
-    const bgRefcontainerMoveOnScrool = bgRefContainer.current;
-    const lgRefcontainerMoveOnScrool = logoRefContainer.current;
-    console.log("bgImage", descaleDisolveOnScrool);
+  useGSAP(
+    () => {
+      const descaleDisolveOnScrool = logoRef.current;
+      const bgRefcontainerMoveOnScrool = bgRefContainer.current;
+      const lgRefcontainerMoveOnScrool = logoRefContainer.current;
+      console.log("bgImage", descaleDisolveOnScrool);
 
-    gsap.to([bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool], {
-      onEnter: () => {
-        gsap.set([bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool], {
-          height: "100vh",
-        });
-      },
-      scrollTrigger: {
-        trigger: [bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool],
-        start: "top top",
-        end: "bottom 15%",
-        scrub: true,
-        markers: true,
-      },
-      height: "10vh",
-      ease: "expo.out",
-    });
-
-    // descale & disolve on scroll -> hero logo
-    gsap.to(descaleDisolveOnScrool, {
-      scale: 1.1,
-      opacity: 0,
-      ease: "expo.out",
-      scrollTrigger: {
-        trigger: descaleDisolveOnScrool,
-        start: "top 35%",
-        end: "bottom 25%",
-        scrub: true,
-
-        // markers: true,
-        onEnter: () => {
-          // set imediate properties
-          // gsap.set(trigerredItem, { position: "fixed" });
-          // launch a tween
-          // gsap.to(trigerredItem, { y: -40 });
+      gsap.to([bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool], {
+        // onEnter: () => {
+        //   gsap.set([bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool], {
+        //     height: "100vh",
+        //   });
+        // },
+        scrollTrigger: {
+          trigger: [bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool],
+          start: "-0.1% top",
+          end: "center 25%",
+          scrub: true,
+          // markers: true,
         },
-        onLeave: () => {
-          // gsap.set(trigerredItem, { rotate: 90 });
+        height: "30vh",
+        // ease: "expo.out",
+      });
+
+      // descale & disolve on scroll -> hero logo
+      gsap.to(descaleDisolveOnScrool, {
+        scale: 1.1,
+        opacity: 0,
+        // ease: "expo.out",
+        scrollTrigger: {
+          trigger: descaleDisolveOnScrool,
+          start: "top 20%",
+          end: "bottom 40%",
+          scrub: true,
+
+          markers: true,
+          onEnter: () => {
+            // set imediate properties
+            // gsap.set(trigerredItem, { position: "fixed" });
+            // launch a tween
+            // gsap.to(trigerredItem, { y: -40 });
+          },
+          onLeave: () => {
+            // gsap.set(trigerredItem, { rotate: 90 });
+          },
         },
-      },
-    });
-    gsap.from(logoRef.current, {
-      duration: 3,
-      autoAlpha: 0.1,
-      // delay: 3,
-      ease: "back.out(1.7)",
-      y: 10,
-    });
-  });
+      });
+      gsap.from(logoRef.current, {
+        duration: 3,
+        autoAlpha: 0.1,
+        // delay: 3,
+        ease: "back.out(1.7)",
+        y: 10,
+      });
+    },
+    { dependencies: [logoRef, logoRefContainer, bgRef, bgRefContainer] }
+  );
 
   // useGSAP(() => {
   //   gsap.from(logoRef.current, {
@@ -200,16 +203,17 @@ const HeroScrollEffect = () => {
       <div>
         <div
           ref={logoRefContainer}
-          className="z-[2] my-border-red absolute left-[50%] -translate-x-2/4 top-0 w-[600px] h-[900px]"
+          // aply this to saw size of the centered container my-border-red
+          className="z-[2] absolute left-[50%] -translate-x-2/4 top-0 w-[380px] h-screen"
         >
           <div
             ref={logoRef}
-            className="relative prose h-56 w-56 top-80 left-[25%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 text-gray-400  border-[1px] border-gray-400"
+            className="relative border-white prose  text-white h-56 w-56 top-80 left-[25%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
           >
             <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
               <SiForestry />
 
-              <h1 className=" text-gray-400 font-extralight text-5xl">
+              <h1 className=" text-white font-extralight text-5xl">
                 La Baraka
               </h1>
             </div>
@@ -219,7 +223,7 @@ const HeroScrollEffect = () => {
         <div>
           <div
             ref={bgRefContainer}
-            className="my-border-green box App-header relative top-0 w-full h-[75%]"
+            className="box App-header relative top-0 w-full h-screen"
           >
             {/* <Background ref={bgRef} /> */}
             <Image
@@ -227,26 +231,15 @@ const HeroScrollEffect = () => {
               alt="Terrasse"
               src={terrasse}
               placeholder="blur"
-              quality={100}
+              quality={75}
               fill
-              sizes="110vw"
+              sizes="100vw"
               style={{ objectFit: "cover" }}
               // style={{ height: "150px" }}
               className="box"
             />
           </div>
         </div>
-        <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto mt-[100vh] bg-gray-100 align-middle">
-          {/* <SplitTypeFramer> */}
-          <h3 className=" font-light text-2xl self-center leading-10 mx-3">
-            La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
-            dolor sit, amet consectetur <strong>adipisicing</strong> elit.
-            Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
-            suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
-            consequatur dolores aliquam. Laborum!
-          </h3>
-          {/* </SplitTypeFramer> */}
-        </Section>
       </div>
     </>
   );

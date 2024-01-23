@@ -38,6 +38,17 @@ const home = () => {
       <HeroScrollEffect />
       <div>
         <div className="content-holder">
+          <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto bg-gray-100 align-middle">
+            {/* <SplitTypeFramer> */}
+            <h3 className=" font-light text-2xl self-center leading-10 mx-3">
+              La Baraka vous accueille au cœur du massif des Cevennes. Lorem
+              ipsum dolor sit, amet consectetur <strong>adipisicing</strong>{" "}
+              elit. Laboriosam, est? Quae vel adipisci provident tempore, nisi,
+              commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
+              possimus consequatur dolores aliquam. Laborum!
+            </h3>
+            {/* </SplitTypeFramer> */}
+          </Section>
           <section className="prose min-h-screen py-10 mx-auto bg-white">
             <SectionFramer>
               <h2 className="px-4 font-normal text-4xl">
@@ -61,7 +72,6 @@ const home = () => {
               </p>
             </SectionFramer>
           </section>
-
           <Section className="prose my-border-grey min-h-screen mx-auto bg-white">
             <div className="mx-4">
               <SectionFramer>
@@ -77,9 +87,9 @@ const home = () => {
                 </p>
               </SectionFramer>
             </div>
-            {/* <SectionFramer>
+            <SectionFramer>
               <SlidePerViewGetIds />
-            </SectionFramer> */}
+            </SectionFramer>
           </Section>
         </div>
 
