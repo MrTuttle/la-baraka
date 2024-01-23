@@ -223,7 +223,7 @@ const HeroScrollEffect = () => {
         <div>
           <div
             ref={bgRefContainer}
-            className="box App-header relative top-0 w-full h-screen"
+            className="box App-header relative w-full h-[130vh]"
           >
             {/* <Background ref={bgRef} /> */}
             <Image
