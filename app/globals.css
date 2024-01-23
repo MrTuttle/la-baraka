@@ -46,6 +46,10 @@ body {
 .my-border-grey {
   border: rgb(202, 202, 202) 1px solid;
 }
+.my-border-green {
+    border: rgb(0, 255, 10) 1px solid;
+
+}
 /* use for Link who wrap images in swiper js - prevent small images which doesn't fit its container */
 /* "display: contents" tell a children to display as its parent */
 .my-display-contents {

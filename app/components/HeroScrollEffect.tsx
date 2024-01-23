@@ -8,11 +8,14 @@ import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
 import Background from "./Background";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Section } from "@radix-ui/themes";
+import SplitTypeFramer from "./SplitTypeFramer";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroScrollEffect = () => {
   const logoRef = useRef(null);
+  const logoRefContainer = useRef(null);
   const bgRef = useRef(null);
   const bgRefContainer = useRef(null);
 
@@ -46,27 +49,32 @@ const HeroScrollEffect = () => {
 
   useGSAP(() => {
     const descaleDisolveOnScrool = logoRef.current;
-    const containerMoveOnScrool = bgRefContainer.current;
+    const bgRefcontainerMoveOnScrool = bgRefContainer.current;
+    const lgRefcontainerMoveOnScrool = logoRefContainer.current;
     console.log("bgImage", descaleDisolveOnScrool);
 
-    gsap.to(containerMoveOnScrool, {
+    gsap.to([bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool], {
       onEnter: () => {
-        gsap.set(containerMoveOnScrool, { height: "100vh" });
+        gsap.set([bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool], {
+          height: "100vh",
+        });
       },
       scrollTrigger: {
-        trigger: containerMoveOnScrool,
+        trigger: [bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool],
         start: "top top",
         end: "bottom 15%",
         scrub: true,
         markers: true,
       },
       height: "10vh",
+      ease: "expo.out",
     });
 
     // descale & disolve on scroll -> hero logo
     gsap.to(descaleDisolveOnScrool, {
       scale: 1.1,
       opacity: 0,
+      ease: "expo.out",
       scrollTrigger: {
         trigger: descaleDisolveOnScrool,
         start: "top 35%",
@@ -85,7 +93,7 @@ const HeroScrollEffect = () => {
         },
       },
     });
-    gsap.from(bgRef.current, {
+    gsap.from(logoRef.current, {
       duration: 3,
       autoAlpha: 0.1,
       // delay: 3,
@@ -191,22 +199,27 @@ const HeroScrollEffect = () => {
     <>
       <div>
         <div
-          ref={logoRef}
-          className="box prose fixed h-56 w-56 top-80 left-[16%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 text-gray-400  border-[1px] border-gray-400  z-[2]"
+          ref={logoRefContainer}
+          className="z-[2] my-border-red absolute left-[50%] -translate-x-2/4 top-0 w-[600px] h-[900px]"
         >
-          <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
-            <SiForestry />
+          <div
+            ref={logoRef}
+            className="relative prose h-56 w-56 top-80 left-[25%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 text-gray-400  border-[1px] border-gray-400"
+          >
+            <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
+              <SiForestry />
 
-            <h1 className=" text-gray-400 font-extralight text-5xl">
-              La Baraka
-            </h1>
+              <h1 className=" text-gray-400 font-extralight text-5xl">
+                La Baraka
+              </h1>
+            </div>
           </div>
+          {/* </div> */}
         </div>
-        {/* </div> */}
         <div>
           <div
             ref={bgRefContainer}
-            className="box App-header relative top-0 w-full h-[75%] my-border-red"
+            className="my-border-green box App-header relative top-0 w-full h-[75%]"
           >
             {/* <Background ref={bgRef} /> */}
             <Image
@@ -223,6 +236,17 @@ const HeroScrollEffect = () => {
             />
           </div>
         </div>
+        <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto mt-[100vh] bg-gray-100 align-middle">
+          {/* <SplitTypeFramer> */}
+          <h3 className=" font-light text-2xl self-center leading-10 mx-3">
+            La Baraka vous accueille au cœur du massif des Cevennes. Lorem ipsum
+            dolor sit, amet consectetur <strong>adipisicing</strong> elit.
+            Laboriosam, est? Quae vel adipisci provident tempore, nisi, commodi
+            suscipit pariatur perspiciatis beatae modi nam, iste aut possimus
+            consequatur dolores aliquam. Laborum!
+          </h3>
+          {/* </SplitTypeFramer> */}
+        </Section>
       </div>
     </>
   );

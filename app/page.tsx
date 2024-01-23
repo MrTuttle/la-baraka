@@ -38,56 +38,44 @@ const home = () => {
       <HeroScrollEffect />
       <div>
         <div className="content-holder">
-          <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto mt-[100vh] bg-gray-100 align-middle">
-            <SplitTypeFramer>
-              <h3 className=" font-light text-2xl self-center leading-10 mx-3">
-                La Baraka vous accueille au cœur du massif des Cevennes. Lorem
-                ipsum dolor sit, amet consectetur <strong>adipisicing</strong>{" "}
-                elit. Laboriosam, est? Quae vel adipisci provident tempore,
-                nisi, commodi suscipit pariatur perspiciatis beatae modi nam,
-                iste aut possimus consequatur dolores aliquam. Laborum!
-              </h3>
-            </SplitTypeFramer>
-          </Section>
-
           <section className="prose min-h-screen py-10 mx-auto bg-white">
-            {/* <SplitTypeFramer>
+            <SectionFramer>
               <h2 className="px-4 font-normal text-4xl">
                 Au menu
                 <br />
                 aujourd’hui
               </h2>
-            </SplitTypeFramer> */}
+            </SectionFramer>
             {/* <div className=" pl-0 pr-4 overflow-hidden"> */}
             <div className=" pl-0 pr-4 sm:overflow-hidden md:overflow-visible">
               {/* <SectionFramer>
-            <CallMenuSwiper />
-          </SectionFramer> */}
+                <CallMenuSwiper />
+              </SectionFramer> */}
             </div>
-            {/* <SectionFramer>
+            <SectionFramer>
               <p className="mx-4 font-light text-2xl">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Laboriosam, est? Quae vel adipisci provident tempore, nisi,
                 commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
                 possimus consequatur dolores aliquam. Laborum!
               </p>
-            </SectionFramer> */}
+            </SectionFramer>
           </section>
 
           <Section className="prose my-border-grey min-h-screen mx-auto bg-white">
             <div className="mx-4">
-              {/* <SplitTypeFramer>
+              <SectionFramer>
                 <h1 className=" font-normal text-4xl">
                   Cinq chambres <br />
                   d’hôtes côté rivière
                 </h1>
-              </SplitTypeFramer> */}
-              {/* <SectionFramer>
+              </SectionFramer>
+              <SectionFramer>
                 <p className="font-light text-2xl">
                   La chambres partir de 50€ la nuit, réservables en ligne ou par
                   téléphone
                 </p>
-              </SectionFramer> */}
+              </SectionFramer>
             </div>
             {/* <SectionFramer>
               <SlidePerViewGetIds />
