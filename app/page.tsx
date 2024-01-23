@@ -40,7 +40,7 @@ const home = () => {
         <div className="content-holder">
           <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto bg-gray-100 align-middle">
             {/* <SplitTypeFramer> */}
-            <h3 className=" font-light text-2xl self-center leading-10 mx-3">
+            <h3 className=" font-light text-2xl md:text-[2.5rem] self-center leading-[3rem] md:leading-[4rem] mx-3">
               La Baraka vous accueille au cœur du massif des Cevennes. Lorem
               ipsum dolor sit, amet consectetur <strong>adipisicing</strong>{" "}
               elit. Laboriosam, est? Quae vel adipisci provident tempore, nisi,
@@ -58,10 +58,10 @@ const home = () => {
               </h2>
             </SectionFramer>
             {/* <div className=" pl-0 pr-4 overflow-hidden"> */}
-            <div className=" pl-0 pr-4 sm:overflow-hidden md:overflow-visible">
-              {/* <SectionFramer>
+            <div className="pl-0 pr-4 overflow-hidden md:overflow-visible">
+              <SectionFramer>
                 <CallMenuSwiper />
-              </SectionFramer> */}
+              </SectionFramer>
             </div>
             <SectionFramer>
               <p className="mx-4 font-light text-2xl">
