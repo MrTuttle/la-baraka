@@ -51,7 +51,7 @@ const home = () => {
           </Section>
           <section className="prose min-h-screen py-10 mx-auto bg-white">
             <SectionFramer>
-              <h2 className="px-4 font-normal text-4xl">
+              <h2 className="px-8 font-normal text-5xl">
                 Au menu
                 <br />
                 aujourd’hui
@@ -64,7 +64,7 @@ const home = () => {
               </SectionFramer>
             </div>
             <SectionFramer>
-              <p className="mx-4 font-light text-2xl">
+              <p className="px-8 font-light text-2xl">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Laboriosam, est? Quae vel adipisci provident tempore, nisi,
                 commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
@@ -72,25 +72,25 @@ const home = () => {
               </p>
             </SectionFramer>
           </section>
-          <Section className="prose my-border-grey min-h-screen mx-auto bg-white">
-            <div className="mx-4">
-              <SectionFramer>
-                <h1 className=" font-normal text-4xl">
-                  Cinq chambres <br />
-                  d’hôtes côté rivière
-                </h1>
-              </SectionFramer>
-              <SectionFramer>
-                <p className="font-light text-2xl">
-                  La chambres partir de 50€ la nuit, réservables en ligne ou par
-                  téléphone
-                </p>
-              </SectionFramer>
-            </div>
+          <Section className="px-8 overflow-visible prose mx-auto bg-white">
+            <SectionFramer>
+              <h1 className="font-normal text-5xl">
+                Cinq chambres <br />
+                d’hôtes côté rivière
+              </h1>
+            </SectionFramer>
+            <SectionFramer>
+              <p className="font-light text-2xl">
+                La chambres partir de 50€ la nuit, réservables en ligne ou par
+                téléphone
+              </p>
+            </SectionFramer>
+          </Section>
+          <div className="overflow-hidden md:overflow-visible">
             <SectionFramer>
               <SlidePerViewGetIds />
             </SectionFramer>
-          </Section>
+          </div>
         </div>
 
         <div className="flex justify-center py-32">
