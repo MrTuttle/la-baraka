@@ -78,11 +78,11 @@ const HeroScrollEffect = () => {
         // ease: "expo.out",
         scrollTrigger: {
           trigger: descaleDisolveOnScrool,
-          start: "top 20%",
-          end: "bottom 40%",
+          start: "top top",
+          end: "200% 30%",
           scrub: true,
 
-          markers: true,
+          // markers: true,
           onEnter: () => {
             // set imediate properties
             // gsap.set(trigerredItem, { position: "fixed" });
@@ -208,7 +208,7 @@ const HeroScrollEffect = () => {
         >
           <div
             ref={logoRef}
-            className="relative border-white prose  text-white h-56 w-56 top-80 left-[25%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
+            className="relative border-white prose  text-white h-56 w-56 top-[10rem] left-[25%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
           >
             <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
               <SiForestry />
