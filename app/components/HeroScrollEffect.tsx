@@ -4,6 +4,9 @@ import { SiForestry } from "react-icons/si";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
+import paysage from "@/public/tourism/Cevennes-Denis-Carrascosa.jpg";
+import paysagestock from "@/public/tourism/AdobeStock_67672065-1920x960-crop-1670422244.jpeg";
+import autre from "@/public/tourism/valleeFranaise-chemin-Stevenson.jpg";
 
 import Background from "./Background";
 import { gsap } from "gsap";
@@ -210,13 +213,16 @@ const HeroScrollEffect = () => {
             ref={logoRef}
             className="relative border-white prose  text-white h-56 w-56 top-[10rem] left-[25%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
           >
-            <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5">
+            <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1]">
               <SiForestry />
 
               <h1 className=" text-white font-extralight text-5xl">
                 La Baraka
               </h1>
             </div>
+            <p className=" tracking-widest text-center text-xs pt-0 -mt-8 w-[100%]">
+              CHAMBRES D’HÔTES <br /> - RESTAURANT -
+            </p>
           </div>
           {/* </div> */}
         </div>
@@ -228,8 +234,8 @@ const HeroScrollEffect = () => {
             {/* <Background ref={bgRef} /> */}
             <Image
               ref={bgRef}
-              alt="Terrasse"
-              src={terrasse}
+              alt="Paysage Cevenol"
+              src={autre}
               placeholder="blur"
               quality={75}
               fill
