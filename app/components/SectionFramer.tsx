@@ -17,7 +17,7 @@ const SectionFramer = ({ children }: Props) => {
         // animate={{ opacity: 100, y: 0 }}
         // transition={{ duration: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ type: "spring", delay: 1, duration: 3 }}
+        transition={{ type: "spring", delay: 0, duration: 3 }}
       >
         {children}
       </motion.div>

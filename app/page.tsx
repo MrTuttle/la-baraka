@@ -38,7 +38,7 @@ const home = () => {
       <HeroScrollEffect />
       <div>
         <div className="content-holder">
-          <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto bg-gray-100 align-middle">
+          <Section className="prose px-8 h-screen flex flex-col items-center w-full mx-auto my-auto bg-white align-middle">
             {/* <SplitTypeFramer> */}
             <h3 className=" font-light text-2xl md:text-[2.5rem] self-center leading-[3rem] md:leading-[4rem] mx-3">
               La Baraka vous accueille au cœur du massif des Cevennes. Lorem
@@ -49,7 +49,7 @@ const home = () => {
             </h3>
             {/* </SplitTypeFramer> */}
           </Section>
-          <section className="prose min-h-screen py-10 mx-auto bg-white">
+          <section className="prose min-h-screen py-10 mx-auto bg-gray-100">
             <SectionFramer>
               <h2 className="px-8 font-normal text-5xl">
                 Au menu

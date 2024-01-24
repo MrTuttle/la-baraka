@@ -67,7 +67,7 @@ const HeroScrollEffect = () => {
           scrub: true,
           // markers: true,
         },
-        height: "30vh",
+        height: "75vh",
         // ease: "expo.out",
       });
 
