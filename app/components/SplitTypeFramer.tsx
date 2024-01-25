@@ -27,7 +27,7 @@ const SplitTypeFramer = ({ children }: Props) => {
         start: "-110% 80%",
         end: "-110% 10%",
         scrub: true, // if true = use scroll, not time for animation
-        markers: true,
+        markers: false,
       },
       opacity: 0, // from 0.2
       stagger: 0.5, // decay animation for multiple instance

@@ -70,7 +70,7 @@ const HeroScrollEffect = () => {
           scrub: true,
           // markers: true,
         },
-        height: "75vh",
+        height: "75svh",
         // ease: "expo.out",
       });
 
@@ -229,7 +229,7 @@ const HeroScrollEffect = () => {
         <div>
           <div
             ref={bgRefContainer}
-            className="box App-header relative w-full h-[130vh]"
+            className="box App-header relative w-full h-[130vh] lg:h-[100svh]"
           >
             {/* <Background ref={bgRef} /> */}
             <Image
