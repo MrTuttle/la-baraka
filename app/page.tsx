@@ -16,6 +16,7 @@ import { SiForestry } from "react-icons/si";
 import Background from "./components/Background";
 import DialogRoomRequest from "./components/DialogRoomRequest/DialogRoomRequest";
 import SectionFramer from "./components/SectionFramer";
+import SectionFramerRight from "./components/SectionFramerRight";
 import SplitTypeFramer from "./components/SplitTypeFramer";
 import SplitType from "split-type";
 import HeroScrollEffect from "./components/HeroScrollEffect";
@@ -78,9 +79,9 @@ const home = () => {
             </SectionFramer>
             {/* <div className=" pl-0 pr-4 overflow-hidden"> */}
             <div className="pl-0 pr-4 overflow-hidden md:overflow-visible">
-              <SectionFramer>
+              <SectionFramerRight>
                 <CallMenuSwiper />
-              </SectionFramer>
+              </SectionFramerRight>
             </div>
             <SectionFramer>
               <p className="px-8 font-light text-2xl">
@@ -106,9 +107,9 @@ const home = () => {
             </SectionFramer>
           </Section>
           <div className="overflow-hidden md:overflow-visible">
-            <SectionFramer>
+            <SectionFramerRight>
               <SlidePerViewGetIds />
-            </SectionFramer>
+            </SectionFramerRight>
           </div>
         </div>
 

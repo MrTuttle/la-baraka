@@ -7,12 +7,12 @@ interface Props {
   children: ReactNode;
 }
 
-const SectionFramer = ({ children }: Props) => {
+const SectionFramerRight = ({ children }: Props) => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: 75 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: 75 }}
+        whileInView={{ opacity: 1, x: 0 }}
         // viewport={{ once: true }}
         // animate={{ opacity: 100, y: 0 }}
         // transition={{ duration: 1 }}
@@ -25,4 +25,4 @@ const SectionFramer = ({ children }: Props) => {
   );
 };
 
-export default SectionFramer;
+export default SectionFramerRight;

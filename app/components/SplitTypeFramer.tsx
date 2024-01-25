@@ -24,10 +24,10 @@ const SplitTypeFramer = ({ children }: Props) => {
       scrollTrigger: {
         trigger: ref.current,
         // pin: true,
-        start: "top 80%",
-        end: "top 10%",
+        start: "-110% 80%",
+        end: "-110% 10%",
         scrub: true, // if true = use scroll, not time for animation
-        markers: false,
+        markers: true,
       },
       opacity: 0, // from 0.2
       stagger: 0.5, // decay animation for multiple instance
