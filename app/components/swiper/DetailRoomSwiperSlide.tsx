@@ -51,7 +51,7 @@ const DetailRoomSwiperSlide = ({ listImages }: List) => {
         injectStyles={[]}
       >
         {listImages.map((image) => (
-          <SwiperSlide key={image.id}>
+          <SwiperSlide key={image.id} style={{ height: "35svh" }}>
             <CldImage
               src={image.publicId}
               width={960}

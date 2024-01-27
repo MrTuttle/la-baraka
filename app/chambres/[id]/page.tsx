@@ -124,9 +124,16 @@ const ChambreDetailPage = async ({ params }: Props) => {
   );
 
   return (
-    <Flex direction="column" align="center" className="mx-auto">
+    <Flex direction="column" gap="8" align="center" className="mx-auto">
       <DetailRoomSwiperSlide listImages={imagesRoom} />
-      <RoomDetailPageContent
+      <div className="prose">
+        <p>Chambre n°{room.id}</p>
+        <h1>{room.title}</h1>
+        <p>{room.description}</p>
+      </div>
+
+      {/* -------- ACTIVATE CALENDAR COMPONENT -------- */}
+      {/* <RoomDetailPageContent
         bookedDays={bookedDaysRange}
         bookedDaysRange={bookedDays}
         checkIn={checkIn}
@@ -134,7 +141,8 @@ const ChambreDetailPage = async ({ params }: Props) => {
         bookedDaysToEmail={bookedDaysToEmail}
         title={room.title}
         roomId={room.id}
-      />
+      /> */}
+      {/* -------- CALENDAR COMPONENT -------- */}
 
       {/* <Flex direction="column" className="mx-4">
         <div className="py-4">
@@ -155,7 +163,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
         /> */}
       </Flex>
 
-      <div className="pt-10 pb-32">
+      {/* <div className="pt-10 pb-32">
         <DeleteRoomButton roomId={room.id} />
       </div>
       <div className="pt-10 pb-32">
@@ -182,12 +190,10 @@ const ChambreDetailPage = async ({ params }: Props) => {
           ))}
         </p>
 
-        {/* <ConfirmationDemandForm
-          title={room.title}
-          roomId={room.id}
-          bookedDaysToEmail={bookedDaysToEmail}
-        /> */}
-      </div>
+
+      </div> */}
+
+      {/* ----------FOOTER----------- */}
       <div
         className="w-full bg-white h-20 border-t-2
         fixed left-0 bottom-0
