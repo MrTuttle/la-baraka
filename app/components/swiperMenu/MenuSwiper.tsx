@@ -68,21 +68,18 @@ const MenuSwiper = ({ list }: Menulist) => {
         {list.map((menu) => (
           <SwiperSlide key={menu.id} className={styles["swiper-slide"]}>
             <div className="flex flex-col p-10 h-full w-full justify-center items-center ">
-              <p className=" text-sm text-black mb-20 opacity-40">
-                <strong>Mis a jour le :</strong>
-                <br />
-                {menu.updatedAt.toLocaleDateString("fr-FR", {
-                  dateStyle: "full",
-                })}
-              </p>
               <div className="mx-auto text-4xl text-black opacity-40 pb-4">
                 <GrRestaurant />
               </div>
-              <div className=" font-semibold text-2xl leading-none">
+              <div className=" font-semibold text-2xl leading-tight pb-4">
                 <p>
                   {menu.title}
                   <br />
-                  {menu.price > 0 && <span>{menu.price} €</span>}
+                  {menu.price > 0 && (
+                    <span className=" font-normal opacity-50">
+                      - {menu.price} € -
+                    </span>
+                  )}
                 </p>
               </div>
 
@@ -91,6 +88,15 @@ const MenuSwiper = ({ list }: Menulist) => {
                   {menu.description}
                 </ReactMarkdown>
               </div>
+              <p className=" text-sm text-black mt-8 opacity-40">
+                Mis a jour le :
+                <br />
+                <strong>
+                  {menu.updatedAt.toLocaleDateString("fr-FR", {
+                    dateStyle: "full",
+                  })}
+                </strong>
+              </p>
             </div>
           </SwiperSlide>
         ))}
