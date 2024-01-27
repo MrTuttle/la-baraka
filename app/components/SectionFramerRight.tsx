@@ -14,7 +14,6 @@ const SectionFramerRight = ({ children }: Props) => {
         initial={{ opacity: 0, x: 75 }}
         whileInView={{ opacity: 1, x: 0 }}
         // viewport={{ once: true }}
-        // viewport={{ margin: "-200px" }}
         // animate={{ opacity: 100, y: 0 }}
         // transition={{ duration: 1 }}
         exit={{ opacity: 0 }}

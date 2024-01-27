@@ -5,11 +5,21 @@
   /* border: 1px blue solid; */
 
 
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   /* si les cartes sont rognées au swipe, mettre 5% de padding en haut*/
   /* overflow: hidden au parent pour fixer la page mobile
   (sinon les cartes du dessous provoquent une largeur parasite )*/
+
+}
+@media only screen and (min-width : 1224px) {
+
+  .swiper {
+    width: 150%;
+    /* border: 1px solid green; */
+    /* border: 1px solid blue; */
+    /* margin-left: 1rem; */
+  }
 
 }
 
@@ -22,10 +32,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* define height of the cards */
   height: 65vh;
   border-radius: 20px;
   overflow: hidden;
 }
+
 
 /* .swiper-slide img {
   display: block;
@@ -38,8 +50,8 @@
 } */
 
 .swiper-slide {
-  width: 80%;
     color: #ffffff;
+        /* border: 1px red solid; */
 }
 .swiper-slide:nth-child(1n) {
   background-color: rgb(118, 163, 12);

@@ -2,7 +2,7 @@
 // app/issue/page.tsx
 
 import React, { useRef, useState } from "react";
-import { Button, Section } from "@radix-ui/themes";
+import { Button, Container, Section } from "@radix-ui/themes";
 import { CldImage } from "next-cloudinary";
 import DisplayCld from "./components/DisplayCld";
 import prisma from "@/prisma/client";
@@ -43,10 +43,10 @@ const home = () => {
       <HeroScrollEffect />
       <div>
         <div className="content-holder">
-          <Section className=" my-border-red px-11 lg:px-0 lg:mt-[8rem] min-h-screen flex flex-col w-full lg:w-8/12 mx-auto bg-white align-middle">
+          <Section className="px-11 lg:px-0 lg:mt-[8rem] min-h-screen flex flex-col w-full lg:w-8/12 mx-auto bg-white align-middle">
             <div className="">
               <SplitTypeFramer>
-                <h3 className="prose font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
+                <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
                   La Baraka vous accueille au cœur du massif des Cévennes. Lorem
                   ipsum dolor sit, amet consectetur <strong>adipisicing</strong>{" "}
                   elit. Laboriosam, est? Quae vel adipisci provident tempore,
@@ -70,23 +70,29 @@ const home = () => {
               </SectionFramer>
             </div>
           </Section>
-          <Section className=" my-border-red flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-white align-middle">
-            <div className="titre">
-              <SectionFramer>
-                <h3 className="prose px-11 lg:px-0 font-normal text-5xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
-                  Au menu <br /> aujourd’hui
-                </h3>
-              </SectionFramer>
-            </div>
-            <div className="my-border-red flex flex-col items-end lg:flex-row-reverse">
+        </div>
+        <Container className="bg-gray-100">
+          <Section className="flex flex-col px-8 lg:px-0 lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
+            <SectionFramer>
+              <h1 className="font-normal text-5xl">
+                Au menu <br />
+                Aujourd’hui
+              </h1>
+            </SectionFramer>
+            {/* <SectionFramer>
+              <h1 className="px-11 lg:px-0 font-normal text-5xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
+              Au menu <br /> aujourd’hui
+              </h1>
+            </SectionFramer> */}
+            <div className="flex flex-col items-center lg:flex-row-reverse">
               {/* responsive settings for swipper */}
-              <div className="my-border-green my-11 w-full  md:w-3/6 pl-0 pr-4 overflow-hidden md:overflow-visible">
+              <div className="my-11 w-full  md:w-3/6 pl-0 pr-4 overflow-hidden md:overflow-visible">
                 <SectionFramerRight>
-                  <CallMenuSwiper />
+                  <CallMenuSwiper />w
                 </SectionFramerRight>
               </div>
               <SectionFramer>
-                <p className="bloc lg:w-[75%] px-8 lg:px-0 self-end font-light text-2xl align-text-bottom">
+                <p className="bloc lg:w-[75%] font-light text-2xl">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Laboriosam, est? Quae vel adipisci provident tempore, nisi,
                   commodi suscipit pariatur perspiciatis beatae modi nam, iste
@@ -95,67 +101,31 @@ const home = () => {
               </SectionFramer>
             </div>
           </Section>
-
-          {/* <section className=" my-border-green prose px-11 lg:px-0 lg:mt-[8rem] min-h-screen flex flex-col w-full lg:w-8/12 mx-auto bg-gray-100 align-middle">
-
-            <SectionFramer>
-              <h2 className="px-8 font-normal text-5xl">
-                Au menu
-                <br />
-                aujourd’hui
-              </h2>
-            </SectionFramer>
-            <div className="pl-0 pr-4 overflow-hidden md:overflow-visible">
-              <SectionFramerRight>
-                <CallMenuSwiper />
-              </SectionFramerRight>
-            </div>
-            <SectionFramer>
-              <p className="px-8 font-light text-2xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Laboriosam, est? Quae vel adipisci provident tempore, nisi,
-                commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
-                possimus consequatur dolores aliquam. Laborum!
-              </p>
-            </SectionFramer>
-          </section> */}
-          <Section className="px-8 overflow-visible prose mx-auto bg-white">
+        </Container>
+        <Container className="">
+          <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
+            {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
               <h1 className="font-normal text-5xl">
                 Cinq chambres <br />
                 d’hôtes côté rivière
               </h1>
             </SectionFramer>
+
             <SectionFramer>
               <p className="font-light text-2xl">
                 La chambres partir de 50€ la nuit, réservables en ligne ou par
                 téléphone
               </p>
             </SectionFramer>
+            {/* </div> */}
           </Section>
-          <div className="overflow-hidden md:overflow-visible">
-            <SectionFramerRight>
-              <SlidePerViewGetIds />
-            </SectionFramerRight>
-          </div>
-        </div>
+        </Container>
 
-        <Section className="overflow-hidden md:overflow-visible my-border-red px-11 lg:px-0 lg:mt-[8rem] min-h-screen flex flex-col gap-12 w-full lg:w-8/12 mx-auto bg-white align-middle ">
-          <SectionFramer>
-            <h1 className="font-normal text-5xl">
-              Cinq chambres <br />
-              d’hôtes côté rivière
-            </h1>
-          </SectionFramer>
-          <SectionFramer>
-            <p className="font-light text-2xl">
-              La chambres partir de 50€ la nuit, réservables en ligne ou par
-              téléphone
-            </p>
-          </SectionFramer>
-        </Section>
-        <div className=" my-border-green">
-          <SlidePerViewGetIds />
+        <div className="overflow-hidden md:overflow-visible">
+          <SectionFramerRight>
+            <SlidePerViewGetIds />
+          </SectionFramerRight>
         </div>
 
         <div className="flex justify-center py-32">

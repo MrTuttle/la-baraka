@@ -53,7 +53,12 @@ const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
           Les rooms
         </div> */}
         {listRooms.map((room) => (
-          <SwiperSlide key={room.id} className={styles["swiper-slide"]}>
+          <SwiperSlide
+            key={room.id}
+            className={styles["swiper-slide"]}
+            // dont use style={} - use SlidePerViewRooms.module.css
+            // style={{ maxWidth: "55svw", maxHeight: "55svh" }}
+          >
             <Link
               href={`chambres/${room.id}`}
               className={"my-display-contents"}
