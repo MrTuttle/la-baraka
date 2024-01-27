@@ -29,6 +29,7 @@ type Menu = {
   title: string;
   description: string;
   price: number;
+  updatedAt: Date;
   // menuPushed: () => void;
 };
 type Menulist = {
@@ -67,6 +68,13 @@ const MenuSwiper = ({ list }: Menulist) => {
         {list.map((menu) => (
           <SwiperSlide key={menu.id} className={styles["swiper-slide"]}>
             <div className="flex flex-col p-10 h-full w-full justify-center items-center ">
+              <p className=" text-sm text-black mb-20 opacity-40">
+                <strong>Mis a jour le :</strong>
+                <br />
+                {menu.updatedAt.toLocaleDateString("fr-FR", {
+                  dateStyle: "full",
+                })}
+              </p>
               <div className="mx-auto text-4xl text-black opacity-40 pb-4">
                 <GrRestaurant />
               </div>
