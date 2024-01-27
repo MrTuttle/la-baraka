@@ -128,11 +128,23 @@ const home = () => {
             <SlidePerViewGetIds />
           </SectionFramerRight>
         </div>
-
-        <div className="flex justify-center py-32">
-          <Link href="/dashboard">
-            <Button>Dashboard</Button>
-          </Link>
+        <div className="mt-80 bg-slate-100">
+          <div className="flex justify-center py-32">
+            <Link href="/dashboard">
+              <Button>Dashboard</Button>
+            </Link>
+          </div>
+          <div className=" opacity-30">
+            <ul className="flex flex-row-reverse gap-8 p-11">
+              <li>La Baraka 2024</li>
+              <li>
+                <Link href="/mentions">Mentions légales</Link>
+              </li>
+              <li>
+                <Link href="/cgv">CGV</Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>
