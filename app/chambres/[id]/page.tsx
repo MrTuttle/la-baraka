@@ -17,6 +17,7 @@ import UserRoomForm from "./UserRoomForm";
 import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomRequest2";
 import { getDate } from "date-fns";
 import RoomDetailPageContent from "./RoomDetailPageContent";
+import ReactMarkdown from "react-markdown";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -124,112 +125,80 @@ const ChambreDetailPage = async ({ params }: Props) => {
   );
 
   return (
-    <Flex direction="column" gap="8" align="center" className="mx-auto">
-      <DetailRoomSwiperSlide listImages={imagesRoom} />
-      <div className="prose">
-        <p>Chambre n°{room.id}</p>
-        <h1>{room.title}</h1>
-        <p>{room.description}</p>
+    <>
+      <div className="mb-11 w-full lg:w-4/6 mx-auto lg:mt-11">
+        <DetailRoomSwiperSlide listImages={imagesRoom} />
       </div>
+      <Flex direction="column" gap="8" align="center" className="mx-auto">
+        <div className="prose">
+          <p>Chambre n°{room.id}</p>
+          <h1>{room.title}</h1>
+          <ReactMarkdown>{room.description}</ReactMarkdown>
+        </div>
 
-      {/* -------- ACTIVATE CALENDAR COMPONENT -------- */}
-      {/* <RoomDetailPageContent
-        bookedDays={bookedDaysRange}
-        bookedDaysRange={bookedDays}
-        checkIn={checkIn}
-        checkOut={checkOut}
-        bookedDaysToEmail={bookedDaysToEmail}
-        title={room.title}
-        roomId={room.id}
-      /> */}
-      {/* -------- CALENDAR COMPONENT -------- */}
+        {/* -------- ACTIVATE CALENDAR COMPONENT -------- */}
+        <RoomDetailPageContent
+          bookedDays={bookedDaysRange}
+          bookedDaysRange={bookedDays}
+          checkIn={checkIn}
+          checkOut={checkOut}
+          bookedDaysToEmail={bookedDaysToEmail}
+          title={room.title}
+          roomId={room.id}
+          roomPrice={room.price}
+        />
+        {/* -------- CALENDAR COMPONENT -------- */}
 
-      {/* <Flex direction="column" className="mx-4">
+        {/* <Flex direction="column" className="mx-4">
         <div className="py-4">
-          <p>Id: {room.id}</p>
-          <p>{room.title}</p>
-          <p>{room.description}</p>
+        <p>Id: {room.id}</p>
+        <p>{room.title}</p>
+        <p>{room.description}</p>
         </div>
       </Flex> */}
 
-      <Flex direction="column" align="center" className="p-8">
-        {/* <BKDayPicker
+        <Flex direction="column" align="center" className="p-8">
+          {/* <BKDayPicker
           bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
         /> */}
 
-        {/* <BKDayPicker
+          {/* <BKDayPicker
           bookedDays={bookedDaysRange}
           bookedDaysRange={bookedDays}
         /> */}
-      </Flex>
+        </Flex>
 
-      {/* <div className="pt-10 pb-32">
+        {/* <div className="pt-10 pb-32">
         <DeleteRoomButton roomId={room.id} />
-      </div>
-      <div className="pt-10 pb-32">
+        </div>
+        <div className="pt-10 pb-32">
         <p className="pt-4 text-gray-400">
-          <strong>
-            reservation (Bd) : <br />
-          </strong>
-          {room.reservationDates.map((day, index) => (
-            <span key={index}>
-              {day.checkIn.toDateString()}
-              <br />
-            </span>
+        <strong>
+        reservation (Bd) : <br />
+        </strong>
+        {room.reservationDates.map((day, index) => (
+          <span key={index}>
+          {day.checkIn.toDateString()}
+          <br />
+          </span>
           ))}
-        </p>
-        <p>
+          </p>
+          <p>
           <strong>
-            bookedDay : <br />
+          bookedDay : <br />
           </strong>
           {bookedDays.map((day, index) => (
             <span key={index}>
-              {day.toDateString()}
-              <br />
+            {day.toDateString()}
+            <br />
             </span>
-          ))}
-        </p>
-
-
-      </div> */}
-
-      {/* ----------FOOTER----------- */}
-      <div
-        className="w-full bg-white h-20 border-t-2
-        fixed left-0 bottom-0
-        flex justify-between items-center z-50
-        "
-      >
-        <div className="p-4">
-          {room.price && (
-            <p>
-              <strong>{room.price} € </strong>par nuits
+            ))}
             </p>
-          )}
 
-          <p>8-9 jan</p>
-        </div>
-        <div className="p-4">
-          {/* <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
-            Réserver
-          </button> */}
-          {/* <UserRoomForm
-            title={room.title}
-            roomId={room.id}
-            bookedDaysToEmail={bookedDaysToEmail}
-          /> */}
-          {/* <DialogRoomRequest2
-            checkIn={checkIn}
-            checkOut={checkOut}
-            bookedDaysToEmail={bookedDaysToEmail}
-            title={room.title}
-            roomId={room.id}
-          /> */}
 
-          {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
-        </div>
-      </div>
-    </Flex>
+          </div> */}
+      </Flex>
+    </>
   );
 };
 
