@@ -155,9 +155,7 @@ const home = () => {
           </SectionFramer>
         </Section>
         <div className=" my-border-green">
-          <SectionFramerRight>
-            <SlidePerViewGetIds />
-          </SectionFramerRight>
+          <SlidePerViewGetIds />
         </div>
 
         <div className="flex justify-center py-32">
