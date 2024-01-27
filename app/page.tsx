@@ -71,10 +71,11 @@ const home = () => {
             </div>
           </Section>
         </div>
-        <Container className="bg-gray-100">
-          <Section className="flex flex-col px-8 lg:px-0 lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
+
+        <Container className="bg-gray-100 overflow-hidden md:overflow-visible">
+          <Section className="flex flex-col  lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
             <SectionFramer>
-              <h1 className="font-normal text-5xl">
+              <h1 className="font-normal text-5xl px-8 lg:px-0">
                 Au menu <br />
                 Aujourd’hui
               </h1>
@@ -84,15 +85,15 @@ const home = () => {
               Au menu <br /> aujourd’hui
               </h1>
             </SectionFramer> */}
-            <div className="flex flex-col items-center lg:flex-row-reverse">
+            <div className="flex flex-col items-center lg:flex-row-reverse ">
               {/* responsive settings for swipper */}
               <div className="my-11 w-full  md:w-3/6 pl-0 pr-4 overflow-hidden md:overflow-visible">
                 <SectionFramerRight>
-                  <CallMenuSwiper />w
+                  <CallMenuSwiper />
                 </SectionFramerRight>
               </div>
               <SectionFramer>
-                <p className="bloc lg:w-[75%] font-light text-2xl">
+                <p className="bloc lg:w-[75%] font-light text-2xl px-8 lg:px-0">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Laboriosam, est? Quae vel adipisci provident tempore, nisi,
                   commodi suscipit pariatur perspiciatis beatae modi nam, iste

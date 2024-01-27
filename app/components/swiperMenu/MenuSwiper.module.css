@@ -5,8 +5,8 @@
   /* border: 1px blue solid; */
 
 
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   /* si les cartes sont rognées au swipe, mettre 5% de padding en haut*/
   /* overflow: hidden au parent pour fixer la page mobile
   (sinon les cartes du dessous provoquent une largeur parasite )*/
