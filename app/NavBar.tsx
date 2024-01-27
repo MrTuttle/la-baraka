@@ -29,14 +29,10 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="border-b px-5 py-3">
+    <nav className="border-b mb-5 px-5 py-3">
       <Container>
         <Flex justify="between">
-          <Flex
-            align="center"
-            gap="3"
-            className="fixed z-[4000]  text-white mix-blend-difference"
-          >
+          <Flex align="center" gap="3">
             <Link href="/">
               <p className="font-semibold">
                 <span className="inline-flex items-baseline pe-3">
@@ -46,8 +42,8 @@ const NavBar = () => {
               </p>
             </Link>
             {/* <NavLinks /> */}
-            <AuthStatus />
           </Flex>
+          <AuthStatus />
         </Flex>
       </Container>
     </nav>
