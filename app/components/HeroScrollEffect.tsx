@@ -207,7 +207,7 @@ const HeroScrollEffect = () => {
         <div
           ref={logoRefContainer}
           // aply this to saw size of the centered container my-border-red
-          className="z-[2] absolute left-[50%] -translate-x-2/4 top-0 w-[380px] h-screen"
+          className="z-[2] absolute left-[50%] -translate-x-2/4 top-200 w-[380px] h-screen"
         >
           <div
             ref={logoRef}
