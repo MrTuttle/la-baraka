@@ -18,6 +18,7 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+import { Spinner } from "./components";
 
 const NavBar = () => {
   const currentPath = usePathname();
@@ -106,15 +107,15 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <Spinner />;
 
   if (status === "unauthenticated")
     return (
-      <DropdownMenu.Item>
-        <Link className="nav-link" href="/api/auth/signin">
-          Login
-        </Link>
-      </DropdownMenu.Item>
+      // <DropdownMenu.Item>
+      <Link className="nav-link" href="/api/auth/signin">
+        Login
+      </Link>
+      // </DropdownMenu.Item>
     );
 
   // <Link href="/api/auth/signout">Log out</Link>;
