@@ -30,17 +30,41 @@ const RoomDetailPageContent = ({
 
   // HOOK LOGIC TO GET DATES FROM BKPICKER CLICK
   // get checkInFromBK day clicked from BKPicker
-  const [checkInFromBK, setCheckInFromBK] = useState<Date>(new Date(""));
+  const [checkInFromBK, setCheckInFromBK] = useState<Date>(new Date());
   const handleStartDay = (startDay: Date) => {
     setCheckInFromBK(startDay);
   };
 
-  const [checkOutFromBK, setCheckOutFromBK] = useState<Date>(new Date(""));
+  const [checkOutFromBK, setCheckOutFromBK] = useState<Date>(new Date());
   const handleEndDay = (endDay: Date) => {
     setCheckOutFromBK(endDay);
   };
   let bookedDaysMail: Date[] = [];
   bookedDaysMail.push;
+
+  const month = [
+    "Jan",
+    "Fev",
+    "Mar",
+    "Avr",
+    "Mai",
+    "Jun",
+    "Jui",
+    "Aou",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  // const showMiniRange = (checkInFromBK: Date, checkOuFromBK: Date) => {
+  //   let checkInDay = 1;
+  //   let checkInMonth = checkInFromBK.getMonth();
+  //   let checkOutDay = checkOutFromBK.getDate();
+  //   let checkOutMonth = checkOutFromBK.getMonth();
+  //   checkInFromBK ? (checkInDay = checkInFromBK.getMonth()) : (checkInDay = 0);
+
+  //   return `${checkInDay} - ${checkOutDay}`;
+  // };
 
   return (
     <>
@@ -122,7 +146,19 @@ const RoomDetailPageContent = ({
             </p>
           )}
 
-          <p>8-9 jan</p>
+          <p>
+            {checkInFromBK.getTime() > Date.now()
+              ? `${checkInFromBK.getDate().toString()} `
+              : "  "}
+            {checkOutFromBK.getTime() > Date.now()
+              ? ` - ${checkOutFromBK.getDate().toString()}
+                `
+              : "  "}
+            {checkInFromBK.getTime() > Date.now()
+              ? `${month[checkInFromBK.getMonth()]}`
+              : "  "}
+          </p>
+          {/* <p>{showMiniRange(checkInFromBK, checkOutFromBK)}</p> */}
         </div>
         <div className="p-4">
           <DialogRoomRequest2
