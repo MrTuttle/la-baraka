@@ -126,10 +126,15 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   return (
     <>
-      <div className="mb-11 w-full lg:w-4/6 mx-auto lg:mt-11">
+      <div className="mb-11 w-full lg:w-4/6 mx-auto lg:mt-11 bg-white">
         <DetailRoomSwiperSlide listImages={imagesRoom} />
       </div>
-      <Flex direction="column" gap="8" align="center" className="mx-auto">
+      <Flex
+        direction="column"
+        gap="8"
+        align="center"
+        className="mx-auto bg-white"
+      >
         <div className="prose">
           <p>Chambre n°{room.id}</p>
           <h1>{room.title}</h1>

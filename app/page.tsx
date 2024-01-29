@@ -117,7 +117,7 @@ const home = () => {
             </div>
           </Section>
         </Container>
-        <Container className="">
+        <Container className="bg-white">
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
@@ -149,7 +149,7 @@ const home = () => {
           </Section>
         </Container>
 
-        <div className="overflow-hidden md:overflow-visible">
+        <div className="overflow-hidden md:overflow-visible bg-white">
           <SectionFramerRight>
             <SlidePerViewGetIds />
           </SectionFramerRight>

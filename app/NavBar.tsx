@@ -30,24 +30,11 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="border-b px-5 py-3 z-[1]">
-      <Container>
-        <Flex justify="between">
-          <Flex align="center" gap="3">
-            <Link href="/">
-              <p className="font-semibold">
-                <span className="inline-flex items-baseline pe-3">
-                  <SiForestry />
-                </span>
-                La Baraka
-              </p>
-            </Link>
-            {/* <NavLinks /> */}
-          </Flex>
-          <AuthStatus />
-        </Flex>
-      </Container>
-    </nav>
+    <>
+      {/* <nav className="fixed w-full px-5 py-3 z-[10] border-b border-white"> */}
+      <AuthStatus />
+      {/* </nav> */}
+    </>
     // <nav className="flex space-x-6 border-b px-4 h-14 items-center justify-between bg-white">
     //   <div className="flex flex-row">
     //     <Link href="/">
@@ -111,50 +98,81 @@ const AuthStatus = () => {
 
   if (status === "unauthenticated")
     return (
-      // <DropdownMenu.Item>
-      <Link className="nav-link" href="/api/auth/signin">
-        Login
-      </Link>
-      // </DropdownMenu.Item>
+      // <Link className="nav-link" href="/api/auth/signin">
+      //   Login
+      // </Link>
+      <nav className="fixed w-full px-5 py-3 z-[10] border-white mix-blend-difference">
+        <Container className="mix-blend-difference">
+          <Flex justify="between">
+            <Flex align="center" gap="3">
+              <Link href="/">
+                <p className="font-semibold text-white">
+                  <span className="inline-flex items-baseline pe-3">
+                    <SiForestry />
+                  </span>
+                  La Baraka
+                </p>
+              </Link>
+              {/* <NavLinks /> */}
+            </Flex>
+          </Flex>
+        </Container>
+      </nav>
     );
 
   // <Link href="/api/auth/signout">Log out</Link>;
   return (
     <>
-      <Box>
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger>
-            <Avatar
-              src={session!.user!.image!}
-              fallback="?"
-              size="2"
-              radius="full"
-              className="cursor-pointer"
-              referrerPolicy="no-referrer"
-            />
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Label>
-              <Text size="2">{session!.user!.email}</Text>
-            </DropdownMenu.Label>
-            <DropdownMenu.Item>
-              <Link href="/api/auth/signout">Log out</Link>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item>
-              <Link href="/">Home</Link>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item>
-              <Link href="/dashboard">dashboard</Link>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item>
-              <Link href="/menus">Menus</Link>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item>
-              <Link href="/chambres">Rooms</Link>
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Root>
-      </Box>
+      <nav className="fixed w-full z-[10]">
+        <Container className="bg-white px-5 py-3 ">
+          <Flex justify="between">
+            <Flex align="center" gap="3">
+              <Link href="/">
+                <p className="font-semibold">
+                  <span className="inline-flex items-baseline pe-3">
+                    <SiForestry />
+                  </span>
+                  La Baraka
+                </p>
+              </Link>
+            </Flex>
+            <Box>
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                  <Avatar
+                    src={session!.user!.image!}
+                    fallback="?"
+                    size="2"
+                    radius="full"
+                    className="cursor-pointer"
+                    referrerPolicy="no-referrer"
+                  />
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content>
+                  <DropdownMenu.Label>
+                    <Text size="2">{session!.user!.email}</Text>
+                  </DropdownMenu.Label>
+                  <DropdownMenu.Item>
+                    <Link href="/api/auth/signout">Log out</Link>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item>
+                    <Link href="/">Home</Link>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item>
+                    <Link href="/dashboard">dashboard</Link>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item>
+                    <Link href="/menus">Menus</Link>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item>
+                    <Link href="/chambres">Rooms</Link>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
+            </Box>
+          </Flex>
+        </Container>
+      </nav>
     </>
   );
 };
