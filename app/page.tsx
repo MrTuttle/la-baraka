@@ -92,14 +92,26 @@ const home = () => {
                   <CallMenuSwiper />
                 </SectionFramerRight>
               </div>
-              <SectionFramer>
-                <p className="bloc lg:w-[75%] font-light text-2xl px-8 lg:px-0">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Laboriosam, est? Quae vel adipisci provident tempore, nisi,
-                  commodi suscipit pariatur perspiciatis beatae modi nam, iste
-                  aut possimus consequatur dolores aliquam. Laborum!
-                </p>
-              </SectionFramer>
+              <div>
+                <SectionFramerRight>
+                  <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
+                </SectionFramerRight>
+                <SectionFramer>
+                  <p className="bloc lg:w-[75%] text-center sm:text-start font-light text-2xl px-8 lg:px-0">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Laboriosam, est? Quae vel adipisci provident tempore, nisi,
+                    commodi suscipit pariatur perspiciatis beatae modi nam, iste
+                    aut possimus consequatur dolores aliquam. Laborum!
+                  </p>
+                  <button className=" text-center mt-11 mx-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
+                    Reserver une table
+                  </button>
+                </SectionFramer>
+
+                <SectionFramerRight>
+                  <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
+                </SectionFramerRight>
+              </div>
             </div>
           </Section>
         </Container>
@@ -112,13 +124,20 @@ const home = () => {
                 d’hôtes côté rivière
               </h1>
             </SectionFramer>
+            <SectionFramerRight>
+              <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
+            </SectionFramerRight>
 
             <SectionFramer>
               <p className="font-light text-2xl">
                 La chambres partir de 50€ la nuit, réservables en ligne ou par
-                téléphone
+                téléphone, la haute saison débute à partir du 0/0 jusqu’au 0/0
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               </p>
             </SectionFramer>
+            <SectionFramerRight>
+              <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
+            </SectionFramerRight>
             {/* </div> */}
           </Section>
         </Container>
