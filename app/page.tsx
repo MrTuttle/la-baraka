@@ -43,7 +43,7 @@ const home = () => {
       {/* <div className="fixed h-screen w-full flex flex-col items-center top-0 -z-50 my-border-red"> */}
       {/* <div className="h-screen w-full top-0 my-border-red"> */}
       <HeroScrollEffect />
-      <div>
+      <div className=" overflow-hidden">
         <div className="content-holder">
           <Section className="px-11 lg:px-0 lg:mt-[8rem] min-h-screen flex flex-col w-full lg:w-8/12 mx-auto bg-white align-middle">
             <div className="">
@@ -74,7 +74,7 @@ const home = () => {
           </Section>
         </div>
 
-        <Container className="bg-gray-100 overflow-hidden md:overflow-visible">
+        <Container className="bg-gray-100">
           <Section className="flex flex-col  lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
             <SectionFramer>
               <h1 className="font-normal text-5xl px-8 lg:px-0">
@@ -88,8 +88,7 @@ const home = () => {
               </h1>
             </SectionFramer> */}
             <div className="flex mx-8 flex-col items-center lg:flex-row-reverse ">
-              {/* responsive settings for swipper */}
-              <div className="my-11 w-full  md:w-3/6 pl-0 pr-4 overflow-hidden md:overflow-visible">
+              <div className="my-11 w-full  md:w-3/6 pl-0 pr-4">
                 <SectionFramerRight>
                   <CallMenuSwiper />
                 </SectionFramerRight>
@@ -110,12 +109,10 @@ const home = () => {
                 <SectionFramerRight>
                   <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
                 </SectionFramerRight>
-                <div className="flex align-baseline gap-2 mx-auto w-2/3 text-center mt-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
+                <button className="flex align-baseline gap-2 mx-auto sm:mx-0 text-center mt-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
                   <MdLocalPhone />
-                  <a className="" href="tel:+33767009693">
-                    Reserver une table
-                  </a>
-                </div>
+                  <a href="tel:+33767009693">Reserver une table</a>
+                </button>
               </div>
             </div>
           </Section>
@@ -129,9 +126,12 @@ const home = () => {
                 d’hôtes côté rivière
               </h1>
             </SectionFramer>
-            <SectionFramerRight>
-              <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
-            </SectionFramerRight>
+            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            <div className=" overflow-hidden">
+              <SectionFramerRight>
+                <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
+              </SectionFramerRight>
+            </div>
 
             <SectionFramer>
               <p className="font-light text-2xl">
@@ -140,10 +140,12 @@ const home = () => {
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               </p>
             </SectionFramer>
-            <SectionFramerRight>
-              <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
-            </SectionFramerRight>
-            {/* </div> */}
+            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            <div className=" overflow-hidden">
+              <SectionFramerRight>
+                <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
+              </SectionFramerRight>
+            </div>
           </Section>
         </Container>
 
