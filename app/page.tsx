@@ -13,6 +13,8 @@ import UploadWidget from "./components/UploadWidget";
 import SlidePerViewGetIds from "./components/swiperRooms/SlidePerViewGetIds";
 import CldImageClient from "./components/CldImageClient";
 import { SiForestry } from "react-icons/si";
+import { MdLocalPhone } from "react-icons/md";
+
 import Background from "./components/Background";
 import DialogRoomRequest from "./components/DialogRoomRequest/DialogRoomRequest";
 import SectionFramer from "./components/SectionFramer";
@@ -85,7 +87,7 @@ const home = () => {
               Au menu <br /> aujourd’hui
               </h1>
             </SectionFramer> */}
-            <div className="flex flex-col items-center lg:flex-row-reverse ">
+            <div className="flex mx-8 flex-col items-center lg:flex-row-reverse ">
               {/* responsive settings for swipper */}
               <div className="my-11 w-full  md:w-3/6 pl-0 pr-4 overflow-hidden md:overflow-visible">
                 <SectionFramerRight>
@@ -103,14 +105,17 @@ const home = () => {
                     commodi suscipit pariatur perspiciatis beatae modi nam, iste
                     aut possimus consequatur dolores aliquam. Laborum!
                   </p>
-                  <button className=" text-center mt-11 mx-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
-                    Reserver une table
-                  </button>
                 </SectionFramer>
 
                 <SectionFramerRight>
                   <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
                 </SectionFramerRight>
+                <div className="flex align-baseline gap-2 mx-auto w-2/3 text-center mt-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
+                  <MdLocalPhone />
+                  <a className="" href="tel:+33767009693">
+                    Reserver une table
+                  </a>
+                </div>
               </div>
             </div>
           </Section>
