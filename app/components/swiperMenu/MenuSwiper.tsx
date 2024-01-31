@@ -64,7 +64,6 @@ const MenuSwiper = ({ list }: Menulist) => {
         {/* <div slot="container-start" className="m-4">
           Menus du jour :
         </div> */}
-
         {list.map((menu) => (
           <SwiperSlide key={menu.id} className={styles["swiper-slide"]}>
             <div className="flex flex-col p-10 h-full w-full justify-center items-center ">
@@ -100,6 +99,12 @@ const MenuSwiper = ({ list }: Menulist) => {
             </div>
           </SwiperSlide>
         ))}
+        <div
+          slot="container-end"
+          className="text-center text-5xl text-gray-400"
+        >
+          ...
+        </div>
       </Swiper>
     </>
   );

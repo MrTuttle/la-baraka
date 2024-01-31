@@ -27,6 +27,8 @@ import Image from "next/image";
 import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
 import backgroundImage from "@/public/tourism/ste-croix-vf-02.jpg";
 import ParallaxImageParent from "./components/ParallaxImageParent";
+import AroundContent from "./components/AroundContent";
+import { ImageProps, StaticImageData } from "next/image";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -38,6 +40,13 @@ const home = () => {
   //     contentHolderHeight + imgHolderHeight + additionalScrollHeight;
   //   document.body.style.height = `${totalBodyHeight} px`;
   // });
+
+  const ListImages = [
+    "ye50xj9r4krxpqcgxjdc",
+    "icp3nrbvn1qo2bt3unop",
+    "zmer0cxrb7t8nbtsvn7e",
+    "z8tv410lo0qpmauisovj",
+  ];
 
   return (
     <>
@@ -169,6 +178,53 @@ const home = () => {
             <SlidePerViewGetIds />
           </SectionFramerRight>
         </div>
+        <Container className="bg-white">
+          <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
+            {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
+            <SectionFramer>
+              <h1 className="font-normal text-5xl">
+                Envie
+                <br />
+                de nature
+                <br />
+                sauvage ?
+              </h1>
+            </SectionFramer>
+            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            <div className=" overflow-hidden">
+              <SectionFramerRight>
+                <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
+              </SectionFramerRight>
+            </div>
+
+            <SectionFramer>
+              <p className="font-light text-2xl">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Laboriosam, est? Quae vel adipisci provident tempore, nisi,
+                commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
+                possimus consequatur dolores aliquam. Laborum!
+              </p>
+            </SectionFramer>
+            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            <div className=" overflow-hidden">
+              <SectionFramerRight>
+                <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
+              </SectionFramerRight>
+            </div>
+            <AroundContent srcs={ListImages} />
+          </Section>
+        </Container>
+        {/* <AroundContent url="kep8qasiqk4crnl18ii3" /> */}
+        {/* <div className="my-border-green h-[25svh] relative overflow-hidden">
+          <Image
+            src={terrasse}
+            alt={"alt"}
+            width={960}
+            height={600}
+            className="absolute w-full left-0 top-[-50%] object-center object-scale-down"
+          />
+        </div> */}
+
         <div className="mt-80 bg-slate-100">
           <div className="flex justify-center py-32">
             <Link href="/dashboard">
