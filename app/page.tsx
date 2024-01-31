@@ -26,6 +26,7 @@ import HeroScrollEffect from "./components/HeroScrollEffect";
 import Image from "next/image";
 import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
 import backgroundImage from "@/public/tourism/ste-croix-vf-02.jpg";
+import ParallaxImageParent from "./components/ParallaxImageParent";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -117,6 +118,15 @@ const home = () => {
             </div>
           </Section>
         </Container>
+        {/* <ParallaxImageParent
+          imageUrl="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FIMG_6198.19a1d179.jpg&amp;w=3840&amp;q=75
+"
+        /> */}
+        <ParallaxImageParent
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/cawdvxo81d8uulerrsrf?_a=BAVAExAO0
+"
+        />
+
         <Container className="bg-white">
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
