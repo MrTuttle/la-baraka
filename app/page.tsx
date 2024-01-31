@@ -46,7 +46,7 @@ const home = () => {
       <HeroScrollEffect />
       <div className=" overflow-hidden">
         <div className="content-holder">
-          <Section className="px-11 lg:px-0 lg:mt-[8rem] min-h-screen flex flex-col w-full lg:w-8/12 mx-auto bg-white align-middle">
+          <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto bg-white align-middle">
             <div className="">
               <SplitTypeFramer>
                 <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
@@ -58,7 +58,7 @@ const home = () => {
                 </h3>
               </SplitTypeFramer>
             </div>
-            <div className="mt-11">
+            {/* <div className="mt-11">
               <SectionFramer>
                 <Image
                   src={backgroundImage}
@@ -71,10 +71,14 @@ const home = () => {
                   // priority // boolean, set priority to images above the fold
                 />
               </SectionFramer>
-            </div>
+            </div> */}
           </Section>
         </div>
+        <ParallaxImageParent
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q4akqqcgqdtuth6qflan?_a=BAVAExAO0
 
+"
+        />
         <Container className="bg-gray-100">
           <Section className="flex flex-col  lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
             <SectionFramer>
@@ -110,10 +114,12 @@ const home = () => {
                 <SectionFramerRight>
                   <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
                 </SectionFramerRight>
-                <button className="flex align-baseline gap-2 mx-auto sm:mx-0 text-center mt-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
-                  <MdLocalPhone />
-                  <a href="tel:+33767009693">Reserver une table</a>
-                </button>
+                <SectionFramer>
+                  <button className="flex align-baseline gap-2 mx-auto sm:mx-0 text-center mt-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
+                    <MdLocalPhone />
+                    <a href="tel:+33767009693">Reserver une table</a>
+                  </button>
+                </SectionFramer>
               </div>
             </div>
           </Section>
@@ -158,7 +164,6 @@ const home = () => {
             </div>
           </Section>
         </Container>
-
         <div className="overflow-hidden md:overflow-visible bg-white">
           <SectionFramerRight>
             <SlidePerViewGetIds />

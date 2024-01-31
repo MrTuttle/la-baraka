@@ -34,7 +34,6 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({ imageUrl }) => {
 
   return (
     <>
-      <p>Parallax image</p>
       <div
         className="parallax-container"
         ref={containerRef}

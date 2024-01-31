@@ -9,7 +9,6 @@ interface ParallaxImageProps {
 const ParallaxImageParent: React.FC<ParallaxImageProps> = ({ imageUrl }) => {
   return (
     <>
-      <div>ParallaxImageParent</div>
       <ParallaxImage imageUrl={imageUrl} />
     </>
   );
