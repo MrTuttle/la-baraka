@@ -55,7 +55,9 @@ const RoomDetailPageContent = ({
     "Oct",
     "Nov",
     "Dec",
+    " ",
   ];
+  let monthToShow = month[12];
   // const showMiniRange = (checkInFromBK: Date, checkOuFromBK: Date) => {
   //   let checkInDay = 1;
   //   let checkInMonth = checkInFromBK.getMonth();
@@ -156,7 +158,8 @@ const RoomDetailPageContent = ({
               : "  "}
             {checkInFromBK.getTime() > Date.now()
               ? `${month[checkInFromBK.getMonth()]}`
-              : "  "}
+              : "  "}{" "}
+            {` — ${monthToShow}`}
           </p>
           {/* <p>{showMiniRange(checkInFromBK, checkOutFromBK)}</p> */}
         </div>
