@@ -6,7 +6,9 @@ import Image from "next/image";
 import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
 import paysage from "@/public/tourism/Cevennes-Denis-Carrascosa.jpg";
 import paysagestock from "@/public/tourism/AdobeStock_67672065-1920x960-crop-1670422244.jpeg";
-import autre from "@/public/tourism/IMG_6198.jpg";
+// import autre from "@/public/tourism/IMG_6198.jpg";
+import autre from "@/public/tourism/IMG_6183.jpg";
+// import autre from "@/public/tourism/IMG_6171.jpg";
 
 import Background from "./Background";
 import { gsap } from "gsap";

@@ -47,7 +47,7 @@ const AroundContent = ({ srcs }: ImageProps) => {
         injectStyles={[]}
       >
         {srcs.map((image, index) => (
-          <SwiperSlide key={image} style={{ height: "25svh" }}>
+          <SwiperSlide key={image} style={{ height: "45svh" }}>
             <CldImage
               src={image}
               width={960}
