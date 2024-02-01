@@ -58,6 +58,12 @@ const AroundContent = ({ srcs }: ImageProps) => {
             />
           </SwiperSlide>
         ))}
+        <div
+          slot="container-end"
+          className="text-center text-5xl text-gray-400"
+        >
+          ...
+        </div>
       </Swiper>
     </>
   );
