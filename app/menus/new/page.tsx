@@ -9,13 +9,7 @@ const MenuForm = dynamic(() => import("@/app/menus/_components/MenuForm"), {
 });
 
 const NewMenuPage = () => {
-  return (
-    <div className="mx-4">
-      <h1>Nouveau Menu</h1>
-      {/* <NewMenuForm /> */}
-      <MenuForm />
-    </div>
-  );
+  return <MenuForm />;
 };
 
 export default NewMenuPage;

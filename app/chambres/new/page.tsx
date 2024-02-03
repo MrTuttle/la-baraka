@@ -11,11 +11,7 @@ const RoomForm = dynamic(() => import("@/app/chambres/_components/RoomForm"), {
 });
 
 const NewRoomPage = () => {
-  return (
-    <div className="mx-4">
-      <RoomForm />
-    </div>
-  );
+  return <RoomForm />;
 };
 
 export default NewRoomPage;

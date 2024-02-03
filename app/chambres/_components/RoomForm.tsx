@@ -43,7 +43,7 @@ const RoomForm = ({ room }: { room?: Room }) => {
   });
 
   return (
-    <div className="max-w-xl">
+    <div className="max-w-xl px-4 py-40 md:w-3/4 mx-auto">
       {error && (
         <Callout.Root color="red" className="mb-5">
           <Callout.Text>{error}</Callout.Text>
