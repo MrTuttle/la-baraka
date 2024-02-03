@@ -40,9 +40,9 @@ export async function PATCH(
         },
       },
     },
-    include: {
-      reservationDates: true,
-    },
+    // include: {
+    //   reservationDates: true,
+    // },
   });
   return NextResponse.json(updatedUserRoom);
 }

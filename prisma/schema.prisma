@@ -46,7 +46,7 @@ model Reservation {
   // Room                 Room?    @relation(fields: [roomId], references: [id])
   // roomId               Int?
 
-  @@unique([assignedToRoomId, checkIn])
+  @@unique([assignedToRoomId])
   @@index([assignedToUserRoomId])
 }
 

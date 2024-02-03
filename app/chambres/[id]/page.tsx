@@ -53,9 +53,11 @@ const ChambreDetailPage = async ({ params }: Props) => {
   // let checkoutsId = room.reservationDates.map((checkout) => checkout.id);
   // console.log("CHECKOUTsIDS", checkoutsId);
 
-  // logic to pass range of booked dates to datePicker
+  // logic to pass db range of booked dates to datePicker
 
   const bookedDaysRange: Date[] = [];
+
+  console.log("xxxxxxxx page.tsx xxxxxxxxxx");
 
   const checksIds = room.reservationDates.map((check) => {
     let id = check.id;
@@ -66,16 +68,20 @@ const ChambreDetailPage = async ({ params }: Props) => {
     const getDatesInRange = (startDate: Date, endDate: Date) => {
       const date = new Date(startDate.getTime());
       // const dates = [];
+      console.log(`page.tsx DATE getTime: ${date} `);
+
       while (date < endDate) {
         bookedDaysRange.push(new Date(date));
         date.setDate(date.getDate() + 1);
       }
+      console.log(`page.tsx DATE setDate (+1 ): ${date} `);
+      console.log(`page.tsx DATE bokkedDaysRange: ${bookedDaysRange} `);
       return bookedDaysRange;
     };
-    // console.log(
-    //   `DATES IN RANGE FOR RESERVATION ID ${id}: `,
-    //   getDatesInRange(checkIn, checkOut)
-    // );
+    console.log(
+      `DATES IN RANGE FOR RESERVATION ID ${id}: `,
+      getDatesInRange(checkIn, checkOut)
+    );
     getDatesInRange(checkIn, checkOut);
   });
   // console.log("checkids ---- : ", checksIds);

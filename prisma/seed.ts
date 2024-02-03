@@ -54,13 +54,13 @@ async function main() {
     update: {},
     create: {
       title: "Chambre Blu",
-      description: `3 lits.
-
-  Salle de bain.
-
-  Balcon.
-
-  Wifi.`,
+      description: `Chambre de 14 m² (1er étage)
+ 1 lit 140x190 1 lit simple Entrée commune Linge de lit Lit bébé sur demande Plateau de courtoisie Armoire / penderie Bouilloire
+Salle de bains partagée
+ Douche Lavabo Linge de toilette
+WC partagé sur le palier séparé de la salle de bains
+Extérieur
+ Vue sur la rue Terrasse partagée`,
       price: 50.99,
 
       assignedRoom: {

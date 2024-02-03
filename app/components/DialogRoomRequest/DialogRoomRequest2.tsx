@@ -1,7 +1,7 @@
 "use client";
 //app/components/DialogRoomRequest/DialogRoomRequest.tsx
 
-import React from "react";
+import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 // import { Cross2Icon } from "@radix-ui/react-icons";
 import { HiMiniXMark } from "react-icons/hi2";
@@ -39,11 +39,14 @@ const DialogRoomRequest2 = ({
   checkOut,
 }: // onClick,
 Props) => {
+  const [checkInFromPage, setCheckInFromPage] = useState<Date>(checkIn);
   const handleClick = (event: React.MouseEvent) => {
     console.log("CLICK");
     console.log("currentTarget : ", event.currentTarget);
     console.log("type :", event.type);
     console.log("target :", event.target);
+    console.log("STATE DATE ON CLICK :", checkIn);
+    console.log("STATE DATE ON CLICK :", checkInFromPage);
   };
 
   console.log("booked days action (date to string):", bookedDaysToEmail);
@@ -58,7 +61,11 @@ Props) => {
   // console.log("startDateToDb Type : ", typeof startDateToDb);
 
   const addDates = postGuest.bind(null, checkIn, checkOut);
-  console.log("ADDDATES", addDates);
+  console.log("ADDDATES", addDates.toString());
+  console.log(
+    `checkIn in formdata before to postGuest (state not updated!) ${checkIn} - ${checkOut}`,
+    addDates
+  );
 
   // const router = useRouter();
 
@@ -66,6 +73,8 @@ Props) => {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
+      {/* <p>Texte checkout: {checkOut.toDateString()}</p>
+      <p>Texte checkin: {checkIn.toDateString()}</p> */}
       <Dialog.Trigger asChild>
         <button className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
           Reserver
@@ -100,6 +109,18 @@ Props) => {
                   defaultValue={roomId}
                 />
               </div>
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900">
+                {checkIn.toDateString()}
+              </label>
+
+              <input
+                type="date"
+                id={"checkIn"}
+                name="CheckIn"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              ></input>
             </div>
 
             <div>

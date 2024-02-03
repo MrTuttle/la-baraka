@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { useState } from "react";
 import { DateRange, DayPicker, DayClickEventHandler } from "react-day-picker";
+
 import "react-day-picker/dist/style.css";
 
 // type bookedDays = {

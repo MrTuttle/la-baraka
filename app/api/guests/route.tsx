@@ -13,6 +13,14 @@ export async function POST(request: NextRequest) {
       name: body.name,
       email: body.email,
       phone: body.phone,
+      reservationDates: {
+        create: {
+          checkIn: body.checkIn,
+          checkOut: body.checkOut,
+          assignedToRoomId: body.assignedToRoomId,
+          status: "IN_PROGRESS",
+        },
+      },
     },
     // include: {
     //   reservationDates: true

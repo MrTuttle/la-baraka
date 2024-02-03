@@ -28,12 +28,23 @@ export const userRoomSchema = z.object({
     .nullable(),
   phone: z.string().min(10, "phone is required"),
   email: z.string().min(10, "email is required").optional(),
+  reservationDates: z.object({
+    assignedToRoomId: z.number(),
+    checkIn: z.date(),
+    checkOut: z.date(),
+    status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
+  }),
 });
 export const patchUserRoomSchema = z.object({
-  firstName: z.string().min(1, "title is required.").max(255),
-  name: z.string().min(1, "description is required"),
-  phone: z.string().min(10, "phone is required"),
-  email: z.string().min(10, "email is required"),
+  firstName: z.string().optional(),
+  name: z.string().optional(),
+  phone: z.string().optional(),
+  email: z.string().optional(),
+  reservationDates: z.object({
+    checkIn: z
+      .date()
+      .min(new Date("2024-01-01"), { message: "already passed" }),
+  }),
 });
 export const patchRoomSchema = z.object({
   title: z.string().min(1, "Title is required.").max(255).optional(),

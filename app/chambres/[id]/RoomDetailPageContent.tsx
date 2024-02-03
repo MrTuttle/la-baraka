@@ -26,22 +26,31 @@ const RoomDetailPageContent = ({
   roomId,
   roomPrice,
 }: BKDayProps) => {
-  console.log("wwwwww", bookedDaysRange);
+  console.log("x x x x x RoomDetailPageContent x x x x x");
+  console.log(`from page.tsx :, roomId = ${roomId}`);
+  console.log(`from page.tsx :, roomPrice = ${roomPrice}`);
+
+  console.log(`from page.tsx :, bookedDaysRange = ${bookedDaysRange}`);
+  console.log(`from page.tsx :, bookedDays = ${bookedDays}`);
+  console.log(`from page.tsx :, checkIn = ${checkIn}`);
+  console.log(`from page.tsx :, checkOut = ${checkOut}`);
+  console.log(`from page.tsx :, bookedDaysToEmail = ${bookedDaysToEmail}`);
 
   // HOOK LOGIC TO GET DATES FROM BKPICKER CLICK
-  // get checkInFromBK day clicked from BKPicker
+  // get checkInFromBK day clicked from BKPicker & set it
   const [checkInFromBK, setCheckInFromBK] = useState<Date>(new Date());
   const handleStartDay = (startDay: Date) => {
     setCheckInFromBK(startDay);
   };
-
+  // get checkOutFromBK day clicked from BKPicker & set it
   const [checkOutFromBK, setCheckOutFromBK] = useState<Date>(new Date());
   const handleEndDay = (endDay: Date) => {
     setCheckOutFromBK(endDay);
   };
+  // construction of the DialogRoomRequest2 props for react email
   let bookedDaysMail: Date[] = [];
   bookedDaysMail.push;
-
+  // const to display months in the footer widget
   const month = [
     "Jan",
     "Fev",
@@ -78,34 +87,30 @@ const RoomDetailPageContent = ({
       />
       {/* ----------Room detail page content query from BK :--------- */}
 
-      <div>
+      <div className="px-11">
         <ul>
-          <p>RoomDetailPageContent query with BKpicker</p>
+          <p className=" uppercase">
+            RoomDetailPageContent <br />
+            query with BKpicker
+          </p>
           <li>
-            <strong>display dates click</strong>
+            <strong>dates clicked from hooked from BK :</strong>
           </li>
           <li>
-            <strong>checkInFromBK hook startDay from bk : </strong>
-            {checkInFromBK.toDateString()}
+            <strong>
+              checkInFromBK : <br />
+            </strong>
+            {checkInFromBK.toLocaleDateString("fr-FR", { dateStyle: "full" })}
           </li>
 
           <li>
-            <strong>checkOutFromBK : </strong>
-            {checkOutFromBK.toDateString()}
+            <strong>
+              checkOutFromBK : <br />
+            </strong>
+            {checkOutFromBK.toLocaleDateString("fr-FR", {
+              dateStyle: "medium",
+            })}
           </li>
-
-          <li>
-            <strong>var bookedDaysRange</strong> - by user
-          </li>
-          {bookedDaysRange.map((e, index) => (
-            <div key={index}>{e.toDateString()}</div>
-          ))}
-          <li>
-            <strong>var bookedDays</strong> - by room
-          </li>
-          {bookedDays.map((e, index) => (
-            <div key={index}>{e.toDateString()}</div>
-          ))}
         </ul>
       </div>
       {/* --------- Room detail page content query : -------- */}
@@ -113,23 +118,37 @@ const RoomDetailPageContent = ({
         <ul>
           <p>Room detail page content query</p>
           <li>
-            <strong>checkIn :</strong>
+            <strong>bookedDaysRange :</strong> - by user (to BK)
+          </li>
+          {bookedDaysRange.map((e, index) => (
+            <p key={index}>{e.toDateString()}</p>
+          ))}
+          <li>
+            <strong>bookedDays</strong> - by room db (to BK)
+          </li>
+          {bookedDays.map((e, index) => (
+            <div key={index}>
+              {e.toLocaleDateString("fr-FR", { dateStyle: "short" })}
+            </div>
+          ))}
+          <li>
+            <strong>checkIn (to Diag2):</strong>
             {checkIn.toDateString()}
           </li>
           <li>
-            <strong>checkOut :</strong>
+            <strong>checkOut (to Diag2):</strong>
             {checkOut.toDateString()}
           </li>
           <li>
-            <strong>bookedDaysToEmail :</strong>
+            <strong>bookedDaysToEmail (to Diag2):</strong>
             {bookedDaysToEmail}
           </li>
           <li>
-            <strong>title :</strong>
+            <strong>title (to Diag2):</strong>
             {title}
           </li>
           <li>
-            <strong>roomId :</strong>
+            <strong>roomId (to Diag2):</strong>
             {roomId}
           </li>
         </ul>

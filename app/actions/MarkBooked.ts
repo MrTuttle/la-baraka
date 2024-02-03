@@ -34,6 +34,9 @@ export async function postGuest(
   const email = formData.get("email");
   const title = formData.get("title");
   const roomId = formData.get("roomId");
+  const checkInData = formData.get("");
+
+  console.log(`track checkIn ${checkIn} - checkOut ${checkOut}`);
 
   // const rId = parseInt(phone);
 
@@ -54,8 +57,7 @@ export async function postGuest(
   // roomIdStr Type : ${typeof roomIdStr},
   // `);
 
-  console.log("CHECKIN SERV ACTION ? :", checkIn);
-
+  console.log(`CHECKIN SERV ACTION ? : ${checkIn} -1 day why ? `);
   const bookedDaysToEmail = formData.get("bookedDaysToEmail");
 
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -95,6 +97,7 @@ export async function postGuest(
           checkIn: checkIn,
           checkOut: checkOut,
           assignedToRoomId: roomIdInt,
+          status: "IN_PROGRESS",
           // assignedToRoomId: roomId as number,
 
           // date: bookedDayStart,
@@ -105,7 +108,12 @@ export async function postGuest(
   });
   revalidatePath("/");
 
-  console.log("GUEST POSTED");
+  console.log(
+    `GUEST CREATED (postGuest function) ${firstName}, ${name}, ${phone}, ${email}`
+  );
+  console.log(
+    `DATES CREATED (postguestFunction) du ${checkIn} au ${checkOut} chambre ${roomIdInt}`
+  );
 }
 
 export default async function UserRoomForm({

@@ -59,11 +59,10 @@ const home = () => {
             <div className="">
               <SplitTypeFramer>
                 <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
-                  La Baraka vous accueille au cœur du massif des Cévennes. Lorem
-                  ipsum dolor sit, amet consectetur <strong>adipisicing</strong>{" "}
-                  elit. Laboriosam, est? Quae vel adipisci provident tempore,
-                  nisi, commodi suscipit pariatur perspiciatis beatae modi nam,
-                  iste aut possimus consequatur dolores aliquam. Laborum!
+                  La Baraka vous accueille au cœur du village de
+                  Sainte-Croix-Vallée-Française avec ses cinq chambres d’hôtes,
+                  son bar et son restaurant. Baignade à deux pas dans le Gardon
+                  et accès direct au parc national des Cévennes.
                 </h3>
               </SplitTypeFramer>
             </div>
@@ -126,7 +125,7 @@ const home = () => {
                 <SectionFramer>
                   <button className="flex align-baseline gap-2 mx-auto sm:mx-0 text-center mt-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
                     <MdLocalPhone />
-                    <a href="tel:+33767009693">Reserver une table</a>
+                    <a href="tel:+33749605068">Reserver une table</a>
                   </button>
                 </SectionFramer>
               </div>
