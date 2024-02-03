@@ -18,16 +18,17 @@ const SplitTypeFramer = ({ children }: Props) => {
   useEffect(() => {
     // Initialise SplitType on the heading element
     const splitTypeInstance = new SplitType(ref.current!, {
-      types: "chars",
+      types: "words",
     });
-    gsap.from(splitTypeInstance.chars, {
+    gsap.from(splitTypeInstance.words, {
       scrollTrigger: {
         trigger: ref.current,
         // pin: true,
-        start: "-110% 80%",
-        end: "-110% 10%",
+        // ideal ratio mobile -90% 80%, -150% 30%
+        start: "-80% 80%",
+        end: "-60% 20%",
         scrub: true, // if true = use scroll, not time for animation
-        markers: false,
+        markers: true,
       },
       opacity: 0, // from 0.2
       stagger: 0.5, // decay animation for multiple instance
