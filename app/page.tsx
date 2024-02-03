@@ -223,6 +223,38 @@ const home = () => {
             className="absolute w-full left-0 top-[-50%] object-center object-scale-down"
           />
         </div> */}
+        <Container className="bg-white">
+          <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
+            {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
+            <SectionFramer>
+              <h1 className="font-normal text-5xl">
+                Les
+                <br />
+                Barakesqueries
+              </h1>
+            </SectionFramer>
+            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            <div className=" overflow-hidden">
+              <SectionFramerRight>
+                <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
+              </SectionFramerRight>
+            </div>
+
+            <SplitTypeFramer>
+              <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
+                La Baraka aime accueillir dans ses murs toutes sortes
+                d’initiatives locales. Expos, Concerts, soirées à thème. Voici
+                quelques évènements :
+              </h3>
+            </SplitTypeFramer>
+            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            <div className=" overflow-hidden">
+              <SectionFramerRight>
+                <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
+              </SectionFramerRight>
+            </div>
+          </Section>
+        </Container>
 
         <div className="mt-80 bg-slate-100">
           <div className="flex justify-center py-32">
