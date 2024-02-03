@@ -38,6 +38,7 @@ import backgroundImage from "@/public/tourism/ste-croix-vf-02.jpg";
 import ParallaxImageParent from "./components/ParallaxImageParent";
 import AroundContent from "./components/AroundContent";
 import { ImageProps, StaticImageData } from "next/image";
+import SwiperEvent from "./components/swiper/SwiperEvent";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -249,13 +250,13 @@ const home = () => {
               </SectionFramerRight>
             </div>
 
-            <SplitTypeFramer>
+            <SectionFramer>
               <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
                 La Baraka aime accueillir dans ses murs toutes sortes
                 d’initiatives locales. Expos, Concerts, soirées à thème. Voici
                 quelques évènements :
               </h3>
-            </SplitTypeFramer>
+            </SectionFramer>
             {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
             <div className=" overflow-hidden">
               <SectionFramerRight>
@@ -362,6 +363,9 @@ const home = () => {
             </div>
           </Section>
         </Container>
+        <div className="h-[500px] my-border-green">
+          <SwiperEvent />
+        </div>
 
         <div className="mt-80 bg-slate-100">
           <div className="flex justify-center py-32">
