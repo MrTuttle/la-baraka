@@ -17,7 +17,14 @@ const SectionFramerRight = ({ children }: Props) => {
         // animate={{ opacity: 100, y: 0 }}
         // transition={{ duration: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ type: "spring", delay: 0.1, duration: 1 }}
+        transition={{
+          type: "spring",
+          damping: 5, // default 10, perpetual damping 0
+          // mass: 8, // default 1
+          // delay: 0.25,
+          duration: 0.25,
+        }}
+        // transition : if damping: 0 = perpetual damping, 10 = default, 50, very slow
       >
         {children}
       </motion.div>
