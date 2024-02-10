@@ -2,8 +2,9 @@
 import { Flex } from "@radix-ui/themes";
 // REACT DAY PICKER
 // https://react-day-picker.js.org/basics/modifiers
+// "PPP", format date -> https://date-fns.org/docs/format
 
-import { format } from "date-fns";
+import { format, isToday } from "date-fns";
 import { fr } from "date-fns/locale";
 import { useState } from "react";
 import { DateRange, DayPicker, DayClickEventHandler } from "react-day-picker";
@@ -32,6 +33,16 @@ const BKDayPicker = ({
 }: Props) => {
   const [range, setRange] = useState<DateRange | undefined>();
   const [booked, setBooked] = useState(false);
+  const defaultMonth = new Date(); // if empty (), set current date, (2024, 0) to january 2024
+  // const disabledDays = new Date(2024, 1, 20);
+  const disabledDays = [
+    ...bookedDays,
+    new Date(2024, 2, 10),
+    new Date(2024, 2, 12),
+    new Date(2024, 2, 20),
+    { from: new Date(2024, 3, 18), to: new Date(2024, 3, 29) },
+    { from: new Date(2024, 0, 1), to: new Date() },
+  ];
 
   const handleDayClick: DayClickEventHandler = (day, modifiers) => {
     setBooked(day && modifiers.booked);
@@ -42,7 +53,7 @@ const BKDayPicker = ({
   const affiche = () => {};
   if (range?.from) {
     if (!range.to) {
-      footer = <p>{format(range.from, "PPP")}</p>;
+      footer = <p>{format(range.from, "PP")}</p>;
       // FIRST DAY CLICKED = RANGE.FROM
       console.log("first day clicked:", range.from);
       onStartDay(range.from);
@@ -51,7 +62,7 @@ const BKDayPicker = ({
     } else if (range.to) {
       footer = (
         <p>
-          {format(range.from, "PPP")}–{format(range.to, "PPP")}
+          {format(range.from, "PP")}–{format(range.to, "PP")}
         </p>
       );
       // SECOND DAY CLICKED = RANGE.TO
@@ -121,14 +132,17 @@ const BKDayPicker = ({
           selected={range}
           onSelect={setRange}
           footer={footer}
-          locale={fr}
-          fromYear={2023} // limits years
+          locale={fr} // french calendar
+          // fromYear={2024} // limits years
           toYear={2025}
+          defaultMonth={defaultMonth} // or new Date(), or new Date(2024, 4)
+          fromMonth={defaultMonth}
+          // toDate={new Date(2025, 12)}
           showOutsideDays
+          disabled={disabledDays}
           onDayClick={handleDayClick}
-          modifiers={{ booked: bookedDays }}
-          modifiersStyles={{ booked: bookedStyle }}
-
+          // modifiers={{ booked: bookedDays }}
+          // modifiersStyles={{ booked: bookedStyle }}
           // captionLayout="dropdown"
         />
         <div className="px-4">
@@ -145,7 +159,9 @@ const BKDayPicker = ({
             the get request is in page parent
           </p>
           {bookedDays.map((day, index) => (
-            <p key={index}>{day.toDateString()}</p>
+            <p key={index}>
+              {day.toLocaleDateString("fr-FR", { dateStyle: "full" })}
+            </p>
           ))}
         </div>
       </Flex>

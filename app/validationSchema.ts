@@ -12,6 +12,11 @@ export const roomSchema = z.object({
   description: z.string().min(1, "description is required"),
   price: z.number().min(1, "price is required.").max(200),
 });
+export const eventSchema = z.object({
+  title: z.string().min(1, "title is required.").max(255),
+  description: z.string().min(1, "description is required"),
+  price: z.number().min(1, "price is required.").max(200),
+});
 export const imageSchema = z.object({
   publicId: z.string().min(1, "no publicId for rsc image"),
   alt: z.string().min(5, "Give a short description image for accessibility"),

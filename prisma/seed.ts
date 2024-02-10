@@ -84,64 +84,66 @@ Extérieur
       // },
     },
   });
-  const userRoomJack = await prisma.userRoom.upsert({
-    where: { id: 1 },
-    update: {},
-    create: {
-      firstName: "Jacky",
-      name: "Russel",
-      phone: "(+33) 00 00 00 00 00",
-      reservationDates: {
-        create: {
-          assignedToRoomId: 3,
-          checkIn: new Date("2023-12-24T00:00"),
-          checkOut: new Date("2023-12-25T00:00"),
-          status: "OCCUPIED",
-        },
-      },
-    },
-    include: {
-      reservationDates: true,
-    },
-  });
-  const userRoomBob = await prisma.userRoom.upsert({
-    where: { id: 2 },
-    update: {},
-    create: {
-      firstName: "Boby",
-      name: "Babouch",
-      phone: "(+33) 00 00 00 00 00",
-      reservationDates: {
-        create: {
-          assignedToRoomId: 4,
-          checkIn: new Date("2024-01-10T00:00"),
-          checkOut: new Date("2024-01-13T00:00"),
-        },
-      },
-    },
-    include: {
-      reservationDates: true,
-    },
-  });
-  const userRoomHelen = await prisma.userRoom.upsert({
-    where: { id: 2 },
-    update: {},
-    create: {
-      firstName: "Helen",
-      name: "Ulle",
-      phone: "(+33) 10 20 30 40 50",
-      reservationDates: {
-        create: {
-          assignedToRoomId: 4,
-          checkIn: new Date("2024-02-01T00:00"),
-          checkOut: new Date("2024-02-02T00:00"),
-        },
-      },
-    },
-    include: {
-      reservationDates: true,
-    },
-  });
+
+  //// USERS ROOM
+  // const userRoomJack = await prisma.userRoom.upsert({
+  //   where: { id: 1 },
+  //   update: {},
+  //   create: {
+  //     firstName: "Jacky",
+  //     name: "Russel",
+  //     phone: "(+33) 00 00 00 00 00",
+  //     reservationDates: {
+  //       create: {
+  //         assignedToRoomId: 3,
+  //         checkIn: new Date("2024-02-20T00:00"),
+  //         checkOut: new Date("2024-02-22T00:00"),
+  //         status: "OCCUPIED",
+  //       },
+  //     },
+  //   },
+  //   include: {
+  //     reservationDates: true,
+  //   },
+  // });
+  // const userRoomBob = await prisma.userRoom.upsert({
+  //   where: { id: 2 },
+  //   update: {},
+  //   create: {
+  //     firstName: "Boby",
+  //     name: "Babouch",
+  //     phone: "(+33) 00 00 00 00 00",
+  //     reservationDates: {
+  //       create: {
+  //         assignedToRoomId: 4,
+  //         checkIn: new Date("2024-01-10T00:00"),
+  //         checkOut: new Date("2024-01-13T00:00"),
+  //       },
+  //     },
+  //   },
+  //   include: {
+  //     reservationDates: true,
+  //   },
+  // });
+  // const userRoomHelen = await prisma.userRoom.upsert({
+  //   where: { id: 2 },
+  //   update: {},
+  //   create: {
+  //     firstName: "Helen",
+  //     name: "Ulle",
+  //     phone: "(+33) 10 20 30 40 50",
+  //     reservationDates: {
+  //       create: {
+  //         assignedToRoomId: 4,
+  //         checkIn: new Date("2024-02-01T00:00"),
+  //         checkOut: new Date("2024-02-02T00:00"),
+  //       },
+  //     },
+  //   },
+  //   include: {
+  //     reservationDates: true,
+  //   },
+  // });
   const chambrejaune = await prisma.room.upsert({
     where: { id: 4 },
     update: {},
@@ -180,9 +182,9 @@ Extérieur
   });
   const seeImages = await prisma.image.findMany({});
   console.log({
-    userRoomJack,
-    userRoomBob,
-    userRoomHelen,
+    //  userRoomJack,
+    //   userRoomBob,
+    //   userRoomHelen,
     menuDuJour,
     menuSalads,
     menuPlats,
