@@ -1,6 +1,6 @@
 // app/menus/api/[id]/route.tsx
 
-import { reservationSchema } from "@/app/validationSchema";
+import { patchReservationSchema } from "@/app/validationSchema";
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -9,7 +9,7 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   const body = await request.json();
-  const validation = reservationSchema.safeParse(body);
+  const validation = patchReservationSchema.safeParse(body);
   if (!validation.success)
     return NextResponse.json(validation.error.format(), { status: 400 });
   const reservation = await prisma.reservation.findUnique({

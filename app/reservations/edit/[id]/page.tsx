@@ -28,7 +28,7 @@ const EditReservationPage = async ({ params }: Props) => {
     <div className="mx-4 pt-20">
       <h1>EDIT RESA</h1>
       {/* <ResaForm resa={resa} /> */}
-      <ResaFormm />
+      <ResaFormm resa={resa} />
     </div>
   );
 };

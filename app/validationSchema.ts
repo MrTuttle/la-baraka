@@ -75,9 +75,9 @@ export const patchReservationSchema = z.object({
     .min(1, "User is required.")
     .max(65535)
     .optional(),
-  checkIn: z.date(),
+  checkIn: z.date().optional(),
   checkOut: z.date().optional(),
-  status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
+  status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]).optional(),
 });
 
 // EXEMPLES //
