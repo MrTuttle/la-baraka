@@ -36,7 +36,9 @@ export async function postGuest(
   const roomId = formData.get("roomId");
   const checkInData = formData.get("");
 
-  console.log(`track checkIn ${checkIn} - checkOut ${checkOut}`);
+  console.log(
+    `MarkBooked postGuest : track checkIn ${checkIn} - checkOut ${checkOut}`
+  );
 
   // const rId = parseInt(phone);
 
@@ -57,7 +59,9 @@ export async function postGuest(
   // roomIdStr Type : ${typeof roomIdStr},
   // `);
 
-  console.log(`CHECKIN SERV ACTION ? : ${checkIn} -1 day why ? `);
+  console.log(
+    `MarkBooked postGuest : CHECKIN SERV ACTION ? : ${checkIn} -1 day why ? `
+  );
   const bookedDaysToEmail = formData.get("bookedDaysToEmail");
 
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -75,7 +79,7 @@ export async function postGuest(
     });
   }
   console.log("launch userRoom.create ?");
-  console.log(`
+  console.log(`MarkBooked postGuest :
   firstName : ${firstName} - ${typeof firstName},
   name : ${name} - ${typeof name},
   phone : ${phone} - ${typeof phone},
@@ -92,27 +96,31 @@ export async function postGuest(
       name: name as string,
       phone: phone as string,
       email: email as string,
-      reservationDates: {
-        create: {
-          checkIn: checkIn,
-          checkOut: checkOut,
-          assignedToRoomId: roomIdInt,
-          status: "IN_PROGRESS",
-          // assignedToRoomId: roomId as number,
-
-          // date: bookedDayStart,
-          // checkIn: bookedDayStart as Date,
-        },
-      },
+      // reservationDates: {
+      //   create: {
+      //     checkIn: checkIn,
+      //     checkOut: checkOut,
+      //     assignedToRoomId: roomIdInt,
+      //     status: "IN_PROGRESS",
+      //   },
+      // },
+    },
+  });
+  await prisma.reservation.create({
+    data: {
+      assignedToRoomId: roomIdInt,
+      assignedToUserRoomId: 1,
+      checkIn: checkIn,
+      checkOut: checkOut,
     },
   });
   revalidatePath("/");
 
   console.log(
-    `GUEST CREATED (postGuest function) ${firstName}, ${name}, ${phone}, ${email}`
+    `MarkBooked postGuest : GUEST CREATED (postGuest function) ${firstName}, ${name}, ${phone}, ${email}`
   );
   console.log(
-    `DATES CREATED (postguestFunction) du ${checkIn} au ${checkOut} chambre ${roomIdInt}`
+    `MarkBooked postGuest : DATES CREATED (postguestFunction) du ${checkIn} au ${checkOut} chambre ${roomIdInt}`
   );
 }
 
@@ -153,7 +161,7 @@ export default async function UserRoomForm({
       },
     });
     revalidatePath("/");
-    console.log("SENDEMAIL LAUNCHED");
+    console.log("MarkBooked postGuest : SENDEMAIL LAUNCHED");
 
     sendEmail(formData);
   };

@@ -11,6 +11,7 @@ export async function POST(request: NextRequest) {
       checkOut: body.checkOut,
       assignedToRoomId: body.assignedToRoomId,
       assignedToUserRoomId: body.assignedToUserRoomId,
+      status: body.status,
     },
   });
   return NextResponse.json(newDate, { status: 201 });

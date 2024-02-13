@@ -37,11 +37,11 @@ const BKDayPicker = ({
   // const disabledDays = new Date(2024, 1, 20);
   const disabledDays = [
     ...bookedDays,
-    new Date(2024, 2, 10),
-    new Date(2024, 2, 12),
-    new Date(2024, 2, 20),
-    { from: new Date(2024, 3, 18), to: new Date(2024, 3, 29) },
-    { from: new Date(2024, 0, 1), to: new Date() },
+    // new Date(2024, 2, 10),
+    // new Date(2024, 2, 12),
+    // new Date(2024, 2, 20),
+    // { from: new Date(2024, 3, 18), to: new Date(2024, 3, 29) },
+    { from: new Date(2024, 0, 1), to: new Date() }, // for past days unselectables
   ];
 
   const handleDayClick: DayClickEventHandler = (day, modifiers) => {

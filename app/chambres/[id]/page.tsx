@@ -38,10 +38,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
     },
   });
   if (!room) notFound();
-  // console.log("ROOM.RESERVATIONDATES");
-  // console.log(room.reservationDates.map((date) => date.checkIn));
-  // console.log("assigned room : ", room.assignedRoom);
-  // console.log("reservationDates : ", room.reservationDates);
 
   // FOR THE SWIPER IMAGE (rooms with assignedRomm, cover or not)
   //=> in this param room, get assignedRoom value
@@ -58,12 +54,17 @@ const ChambreDetailPage = async ({ params }: Props) => {
   const bookedDaysRange: Date[] = [];
 
   console.log("xxxxxxxx page.tsx xxxxxxxxxx");
+  console.log(
+    `PRISMA SOURCE date : ${room.reservationDates.map((date) =>
+      date.checkIn.toLocaleDateString("fr-FR")
+    )}`
+  );
 
   const checksIds = room.reservationDates.map((check) => {
     let id = check.id;
     let checkIn = check.checkIn;
     let checkOut = check.checkOut;
-    // console.log("GROUP CHECK :", id, checkIn, checkOut);
+    console.log("page.tsx GROUP CHECK :", id, checkIn, checkOut);
 
     const getDatesInRange = (startDate: Date, endDate: Date) => {
       const date = new Date(startDate.getTime());

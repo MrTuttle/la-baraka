@@ -39,13 +39,19 @@ const RoomDetailPageContent = ({
   // HOOK LOGIC TO GET DATES FROM BKPICKER CLICK
   // get checkInFromBK day clicked from BKPicker & set it
   const [checkInFromBK, setCheckInFromBK] = useState<Date>(new Date());
+
   const handleStartDay = (startDay: Date) => {
-    setCheckInFromBK(startDay);
+    let newStartDate = new Date();
+    newStartDate = startDay;
+    setCheckInFromBK(newStartDate);
+    console.log(`CHECKINFROMBK UPDATED : ${newStartDate}`);
   };
   // get checkOutFromBK day clicked from BKPicker & set it
   const [checkOutFromBK, setCheckOutFromBK] = useState<Date>(new Date());
   const handleEndDay = (endDay: Date) => {
-    setCheckOutFromBK(endDay);
+    let newEndDate = new Date();
+    newEndDate = endDay;
+    setCheckOutFromBK(newEndDate);
   };
   // construction of the DialogRoomRequest2 props for react email
   let bookedDaysMail: Date[] = [];

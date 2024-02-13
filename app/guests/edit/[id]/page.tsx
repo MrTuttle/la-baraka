@@ -25,7 +25,7 @@ const EditGuestPage = async ({ params }: Props) => {
   console.log(` GUEST.RESERVATION DATDE :${guest.reservationDates}`);
 
   return (
-    <div className="mx-4">
+    <div className="mx-4 pt-20">
       <GuestForm guest={guest} />
     </div>
   );
