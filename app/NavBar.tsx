@@ -165,6 +165,9 @@ const AuthStatus = () => {
                     <Link href="/menus">Menus</Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Item>
+                    <Link href="/reservations">Reservations</Link>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item>
                     <Link href="/guests">Guests</Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Item>

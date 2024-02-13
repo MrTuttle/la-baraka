@@ -22,12 +22,15 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<FormValues>();
   const [isSubmitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     console.log(data);
     console.log(typeof data);
     try {
       setSubmitting(true);
       if (resa) await axios.patch("/api/reservations/" + resa.id, data);
+      else await axios.post("/api/reservations", data);
       router.push("/reservations");
       router.refresh();
       console.log(`SUBMIT ON RESA ${resa.id}`);
@@ -35,6 +38,7 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
       setSubmitting(false);
       console.log(`SUBMIT FAILL ON RESA ${resa.id}`);
       console.log(data);
+      setError("An unexpected error occurred.");
     }
   };
   // GET URL IN NEXT JS
@@ -51,34 +55,6 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
   //     // Do something here...
   //   }, [pathname, searchParams]);
   // }
-
-  const displayVacantStatus = (status: string) => {
-    if (status === "VACANT") {
-      // faire quelque chose
-      return true;
-    } else {
-      // faire encore autre chose
-      return false;
-    }
-  };
-  const displayOccupiedStatus = (status: string) => {
-    if (status === "OCCUPIED") {
-      // faire quelque chose
-      return true;
-    } else {
-      // faire encore autre chose
-      return false;
-    }
-  };
-  const displayInprogressStatus = (status: string) => {
-    if (status === "IN_PROGRESS") {
-      // faire quelque chose
-      return true;
-    } else {
-      // faire encore autre chose
-      return false;
-    }
-  };
 
   return (
     <>
@@ -136,24 +112,11 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
           </div> */}
           <div>
             <select {...register("status")}>
-              <option
-                defaultChecked={displayVacantStatus(resa.status)}
-                value="VACANT"
-              >
-                Vacant
-              </option>
-              <option
-                defaultChecked={displayOccupiedStatus(resa.status)}
-                value="OCCUPIED"
-              >
+              <option value="VACANT">Vacant</option>
+              <option defaultChecked={true} value="OCCUPIED">
                 Occupied
               </option>
-              <option
-                defaultChecked={displayInprogressStatus(resa.status)}
-                value="IN_PROGRESS"
-              >
-                in progress
-              </option>
+              <option value="IN_PROGRESS">in progress</option>
             </select>
           </div>
         </div>

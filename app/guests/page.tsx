@@ -59,41 +59,53 @@ const pageGuests = async () => {
                   <span className=" font-bold">{guest.id}</span> |{" "}
                   {guest.firstName} {guest.name}
                 </Text>
+                <Text size="1" className=" sm:w-full lg:w-4/12">
+                  <span className=" font-bold">Tel:</span> {guest.phone}
+                </Text>
+                <Text size="1" className=" sm:w-full lg:w-4/12">
+                  <span className=" font-bold">mail:</span> {guest.email}
+                </Text>
                 {guest.reservationDates.map((booking) => (
-                  <Text key={booking.id} size="1">
-                    {booking.assignedToRoomId === 0 ? (
-                      <p className=" text-red-600">No room assigned</p>
-                    ) : (
-                      <p>room Id : {booking.assignedToRoomId}</p>
-                    )}
-                    <p>
-                      Check in :{" "}
-                      <strong>
-                        {booking.checkIn.toLocaleDateString("fr-FR", {
-                          dateStyle: "full",
-                        })}
-                      </strong>
-                    </p>
-                    <p>
-                      Check out :{" "}
-                      <strong>
-                        {booking.checkOut.toLocaleDateString("fr-FR", {
-                          dateStyle: "full",
-                        })}
-                      </strong>
-                    </p>
-                    {/* {booking.status.valueOf()} */}
-                    <Badge
-                      variant="solid"
-                      radius="full"
-                      color={booking.status === "VACANT" ? "blue" : "orange"}
-                      className="mt-4"
-                    >
-                      {booking.status}
-                    </Badge>
+                  <Text
+                    key={booking.id}
+                    size="1"
+                    className=" rounded-md p-4 shadow border"
+                  >
+                    <Link href={`/reservations/edit/${booking.id}`}>
+                      {booking.assignedToRoomId === 0 ? (
+                        <p className=" text-red-600">No room assigned</p>
+                      ) : (
+                        <p>room Id : {booking.assignedToRoomId}</p>
+                      )}
+                      <p>
+                        Check in :{" "}
+                        <strong>
+                          {booking.checkIn.toLocaleDateString("fr-FR", {
+                            dateStyle: "full",
+                          })}
+                        </strong>
+                      </p>
+                      <p>
+                        Check out :{" "}
+                        <strong>
+                          {booking.checkOut.toLocaleDateString("fr-FR", {
+                            dateStyle: "full",
+                          })}
+                        </strong>
+                      </p>
+                      {/* {booking.status.valueOf()} */}
+                      <Badge
+                        variant="solid"
+                        radius="full"
+                        color={booking.status === "VACANT" ? "blue" : "orange"}
+                        className="mt-4"
+                      >
+                        {booking.status}
+                      </Badge>
 
-                    {/* <button onClick={async () => {}}>Supprimer</button> */}
-                    {/* <DeleteGuest guest={guest.id} /> */}
+                      {/* <button onClick={async () => {}}>Supprimer</button> */}
+                      {/* <DeleteGuest guest={guest.id} /> */}
+                    </Link>
                   </Text>
                 ))}
               </Flex>
