@@ -41,41 +41,53 @@ const pageGuest = async ({ params }: Props) => {
               <span className=" font-bold">{guest?.id}</span> |{" "}
               {guest?.firstName} {guest?.name}
             </Text>
-            {guest?.reservationDates.map((booking) => (
-              <Text key={booking.id} size="1">
-                {booking.assignedToRoomId === 0 ? (
-                  <p className=" text-red-600">No room assigned</p>
-                ) : (
-                  <p>room Id : {booking.assignedToRoomId}</p>
-                )}
-                <p>
-                  Check in :{" "}
-                  <strong>
-                    {booking.checkIn.toLocaleDateString("fr-FR", {
-                      dateStyle: "full",
-                    })}
-                  </strong>
-                </p>
-                <p>
-                  Check out :{" "}
-                  <strong>
-                    {booking.checkOut.toLocaleDateString("fr-FR", {
-                      dateStyle: "full",
-                    })}
-                  </strong>
-                </p>
-                {/* {booking.status.valueOf()} */}
-                <Badge
-                  variant="solid"
-                  radius="full"
-                  color={ColorStatus(booking.status)}
-                  className="mt-4"
-                >
-                  {booking.status}
-                </Badge>
 
-                {/* <button onClick={async () => {}}>Supprimer</button> */}
-                {/* <DeleteGuest guest={guest.id} /> */}
+            {guest?.reservationDates.map((booking) => (
+              <Text
+                key={booking.id}
+                size="1"
+                className=" rounded-md p-4 shadow border"
+              >
+                <Link href={`/reservations/edit/${booking.id}`}>
+                  {booking.assignedToRoomId === 0 ? (
+                    <p className=" text-red-600">No room assigned</p>
+                  ) : (
+                    <p>room Id : {booking.assignedToRoomId}</p>
+                  )}
+                  <p>
+                    Check in :{" "}
+                    <strong>
+                      {booking.checkIn.toLocaleDateString("fr-FR", {
+                        dateStyle: "full",
+                      })}
+                    </strong>
+                  </p>
+                  <p>
+                    Check out :{" "}
+                    <strong>
+                      {booking.checkOut.toLocaleDateString("fr-FR", {
+                        dateStyle: "full",
+                      })}
+                    </strong>
+                  </p>
+                  {/* {booking.status.valueOf()} */}
+                  <Badge
+                    variant="solid"
+                    radius="full"
+                    color={
+                      ColorStatus(booking.status)
+                      // booking.status === "VACANT" ? "grass" : "crimson"
+                      // if (booking.status === "VACANT") {"grass"} else if (boking.status === "OCCUPIED") {"ruby"} else {"orange"}
+                    }
+                    // "tomato" | "red" | "ruby" | "crimson" | "pink" | "plum" | "purple" | "violet" | "iris" | "indigo" | "blue" | "cyan" | "teal" | "jade" | "green" | "grass" | "brown" | "orange" | "sky" | "mint" | "lime" | "yellow" | "amber" | "gold" | "bronze" | "gray"
+                    className="mt-4"
+                  >
+                    {booking.status}
+                  </Badge>
+
+                  {/* <button onClick={async () => {}}>Supprimer</button> */}
+                  {/* <DeleteGuest guest={guest.id} /> */}
+                </Link>
               </Text>
             ))}
           </Flex>

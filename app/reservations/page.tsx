@@ -19,7 +19,11 @@ import DeleteResaButton from "./DeleteResaButton";
 
 // SERVER
 const pageReservations = async () => {
-  const reservations = await prisma.reservation.findMany({});
+  const reservations = await prisma.reservation.findMany({
+    include: {
+      assignedToUserRoom: true,
+    },
+  });
 
   // SERVER END
 
@@ -30,20 +34,6 @@ const pageReservations = async () => {
   // const handleClick = (item: number) => {
   //   DeleteUserRoom(item);
   // };
-
-  const colorStatus = (status: string) => {
-    if (status === "VACANT") {
-      return "grass";
-    }
-    if (status === "OCCUPIED") {
-      return "ruby";
-    }
-    if (status === "IN_PROGRESS") {
-      return "blue";
-    } else {
-      return "gray";
-    }
-  };
 
   return (
     <>
@@ -69,7 +59,11 @@ const pageReservations = async () => {
                   Chambre associée : {resa.assignedToRoomId}
                 </Text>
                 <Text size="1" className=" sm:w-full lg:w-4/12">
-                  Guest associée : {resa.assignedToUserRoomId}
+                  <Link href={`/guests/${resa.assignedToUserRoomId}`}>
+                    Guest associée : n°{resa.assignedToUserRoomId} |{" "}
+                    {resa.assignedToUserRoom.firstName}{" "}
+                    {resa.assignedToUserRoom.name}
+                  </Link>
                 </Text>
               </Flex>
               <Flex direction="row" gap="4" justify="start" wrap="wrap">

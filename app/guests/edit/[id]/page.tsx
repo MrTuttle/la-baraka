@@ -3,6 +3,7 @@ import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import GuestFormSkeleton from "./loading";
+import Link from "next/link";
 
 const GuestForm = dynamic(() => import("@/app/guests/_components/GuestForm"), {
   ssr: false,
@@ -26,6 +27,8 @@ const EditGuestPage = async ({ params }: Props) => {
 
   return (
     <div className="mx-4 pt-20">
+      <Link href="/guests">Back</Link>
+
       <GuestForm guest={guest} />
     </div>
   );

@@ -22,17 +22,3 @@ export const ColorStatus = (status: string) => {
     return "gray";
   }
 };
-
-// const colorStatus = (status: string) => {
-//   if (status === "VACANT") {
-//     return "grass";
-//   }
-//   if (status === "OCCUPIED") {
-//     return "ruby";
-//   }
-//   if (status === "IN_PROGRESS") {
-//     return "blue";
-//   } else {
-//     return "gray";
-//   }
-// };

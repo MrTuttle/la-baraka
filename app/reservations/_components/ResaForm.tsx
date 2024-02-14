@@ -10,7 +10,7 @@ import axios from "axios";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
 import { FormEvent, FormHTMLAttributes, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
 import Form from "@/app/components/rFforms/Form";
@@ -33,7 +33,7 @@ const ResaForm = ({ resa }: { resa: Reservation }) => {
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit: SubmitHandler<FormValues> = handleSubmit(async (data) => {
     try {
       setSubmitting(true);
       if (resa) await axios.patch("/api/reservations/" + resa.id, data);

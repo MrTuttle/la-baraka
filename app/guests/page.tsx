@@ -12,6 +12,7 @@ import Link from "next/link";
 import DeleteGuest from "./DeleteGuestButton";
 import DeleteGuestButton from "./DeleteGuestButton";
 import { ColorStatus } from "../actions/ColorStatus";
+
 // import Vue from "./Vue";
 
 // interface Props {
@@ -57,8 +58,10 @@ const pageGuests = async () => {
               </Flex>
               <Flex direction="row" gap="4" justify="start" wrap="wrap">
                 <Text size="1" className=" sm:w-full lg:w-4/12">
-                  <span className=" font-bold">{guest.id}</span> |{" "}
-                  {guest.firstName} {guest.name}
+                  <Link href={`/guests/${guest.id}`}>
+                    <span className=" font-bold">{guest.id}</span> |{" "}
+                    {guest.firstName} {guest.name}
+                  </Link>
                 </Text>
                 <Text size="1" className=" sm:w-full lg:w-4/12">
                   <span className=" font-bold">Tel:</span> {guest.phone}
