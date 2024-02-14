@@ -8,6 +8,7 @@ import prisma from "@/prisma/client";
 import { Badge, Button, Card, Flex, Section, Text } from "@radix-ui/themes";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import Link from "next/link";
+import { ColorStatus } from "../actions/ColorStatus";
 
 import DeleteResaButton from "./DeleteResaButton";
 // import Vue from "./Vue";
@@ -29,6 +30,20 @@ const pageReservations = async () => {
   // const handleClick = (item: number) => {
   //   DeleteUserRoom(item);
   // };
+
+  const colorStatus = (status: string) => {
+    if (status === "VACANT") {
+      return "grass";
+    }
+    if (status === "OCCUPIED") {
+      return "ruby";
+    }
+    if (status === "IN_PROGRESS") {
+      return "blue";
+    } else {
+      return "gray";
+    }
+  };
 
   return (
     <>
@@ -66,15 +81,15 @@ const pageReservations = async () => {
                   <span className=" font-bold">{resa.id}</span> |{" "}
                   {resa.checkOut.toLocaleString("fr-FR", { dateStyle: "full" })}
                 </Text>
-                <Badge
-                  variant="solid"
-                  radius="full"
-                  color={resa.status === "VACANT" ? "blue" : "orange"}
-                  className="mt-4"
-                >
-                  {resa.status}
-                </Badge>
               </Flex>
+              <Badge
+                variant="solid"
+                radius="full"
+                color={ColorStatus(resa.status)}
+                className="mt-4"
+              >
+                {resa.status}
+              </Badge>
             </Card>
           ))}
         </div>

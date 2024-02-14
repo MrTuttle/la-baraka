@@ -11,6 +11,7 @@ import Link from "next/link";
 
 import DeleteGuest from "./DeleteGuestButton";
 import DeleteGuestButton from "./DeleteGuestButton";
+import { ColorStatus } from "../actions/ColorStatus";
 // import Vue from "./Vue";
 
 // interface Props {
@@ -97,7 +98,12 @@ const pageGuests = async () => {
                       <Badge
                         variant="solid"
                         radius="full"
-                        color={booking.status === "VACANT" ? "blue" : "orange"}
+                        color={
+                          ColorStatus(booking.status)
+                          // booking.status === "VACANT" ? "grass" : "crimson"
+                          // if (booking.status === "VACANT") {"grass"} else if (boking.status === "OCCUPIED") {"ruby"} else {"orange"}
+                        }
+                        // "tomato" | "red" | "ruby" | "crimson" | "pink" | "plum" | "purple" | "violet" | "iris" | "indigo" | "blue" | "cyan" | "teal" | "jade" | "green" | "grass" | "brown" | "orange" | "sky" | "mint" | "lime" | "yellow" | "amber" | "gold" | "bronze" | "gray"
                         className="mt-4"
                       >
                         {booking.status}

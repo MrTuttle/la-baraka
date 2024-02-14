@@ -4,6 +4,7 @@ import { Badge, Button, Card, Flex, Section, Text } from "@radix-ui/themes";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import Link from "next/link";
 import DeleteGuestButton from "../DeleteGuestButton";
+import { ColorStatus } from "@/app/actions/ColorStatus";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -67,7 +68,7 @@ const pageGuest = async ({ params }: Props) => {
                 <Badge
                   variant="solid"
                   radius="full"
-                  color={booking.status === "VACANT" ? "blue" : "orange"}
+                  color={ColorStatus(booking.status)}
                   className="mt-4"
                 >
                   {booking.status}
