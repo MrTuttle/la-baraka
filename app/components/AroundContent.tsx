@@ -13,12 +13,42 @@ import "@/app/components/swiper/DetailRoomSwiperSlide.css";
 
 // import required modules
 import { Navigation, Pagination, EffectCreative } from "swiper/modules";
+import Image from "next/image";
 
 interface ImageProps {
   srcs: string[];
+  cldImage: boolean;
 }
 
-const AroundContent = ({ srcs }: ImageProps) => {
+const AroundContent = ({ srcs, cldImage }: ImageProps) => {
+  const chooseCloudinary = (cldImage: boolean) => {
+    if (cldImage) {
+      return srcs.map((image, index) => (
+        <SwiperSlide key={image} style={{ height: "45svh" }}>
+          <CldImage
+            src={image}
+            width={960}
+            height={600}
+            sizes="100vw"
+            alt={image}
+            className="detailroomswiperslideu"
+          />
+        </SwiperSlide>
+      ));
+    } else {
+      return srcs.map((image, index) => (
+        <SwiperSlide key={image} style={{ height: "45svh" }}>
+          <Image
+            src={image}
+            alt={image}
+            width={960}
+            height={600}
+            className="detailroomswiperslideu"
+          />
+        </SwiperSlide>
+      ));
+    }
+  };
   return (
     <>
       <Swiper
@@ -46,7 +76,8 @@ const AroundContent = ({ srcs }: ImageProps) => {
         className="mySwipper4"
         injectStyles={[]}
       >
-        {srcs.map((image, index) => (
+        {chooseCloudinary(cldImage)}
+        {/* {srcs.map((image, index) => (
           <SwiperSlide key={image} style={{ height: "45svh" }}>
             <CldImage
               src={image}
@@ -57,7 +88,7 @@ const AroundContent = ({ srcs }: ImageProps) => {
               className="detailroomswiperslideu"
             />
           </SwiperSlide>
-        ))}
+        ))} */}
         <div
           slot="container-end"
           className="text-center text-5xl text-gray-400"

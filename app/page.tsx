@@ -58,6 +58,13 @@ const home = () => {
     "zmer0cxrb7t8nbtsvn7e",
     "z8tv410lo0qpmauisovj",
   ];
+  const ListImagesBurkina = [
+    "/burkina/burkina-false1.jpg",
+    "/burkina/burkina-false2.jpg",
+    "/burkina/burkina-false3.jpg",
+    "/burkina/burkina-false4.png",
+    "/burkina/burkina-false5.png",
+  ];
 
   return (
     <>
@@ -101,7 +108,7 @@ const home = () => {
         <Container className="bg-gray-100">
           <Section className="flex flex-col  lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
             <SectionFramer>
-              <h1 className="font-normal text-5xl px-8 lg:px-0">
+              <h1 className="font-normal text-5xl lg:text-9xl px-8 lg:px-0">
                 Au menu <br />
                 Aujourd’hui
               </h1>
@@ -151,12 +158,11 @@ const home = () => {
           imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/cawdvxo81d8uulerrsrf?_a=BAVAExAO0
 "
         />
-
         <Container className="bg-white">
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
-              <h1 className="font-normal text-5xl">
+              <h1 className="font-normal text-5xl lg:text-9xl">
                 Cinq chambres <br />
                 d’hôtes côté rivière
               </h1>
@@ -192,7 +198,7 @@ const home = () => {
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
-              <h1 className="font-normal text-5xl">
+              <h1 className="font-normal text-5xl lg:text-9xl">
                 Envie
                 <br />
                 de nature
@@ -221,7 +227,7 @@ const home = () => {
                 <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
               </SectionFramerRight>
             </div>
-            <AroundContent srcs={ListImages} />
+            <AroundContent srcs={ListImages} cldImage={true} />
           </Section>
         </Container>
         {/* <AroundContent url="kep8qasiqk4crnl18ii3" /> */}
@@ -234,9 +240,9 @@ const home = () => {
             className="absolute w-full left-0 top-[-50%] object-center object-scale-down"
           />
         </div> */}
-        <Container className="bg-white">
+        {/* ACTIVITIES ABBORTED - START */}
+        {/* <Container className="bg-white">
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
-            {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
               <h1 className="font-normal text-5xl">
                 Les
@@ -244,7 +250,7 @@ const home = () => {
                 Barakesqueries
               </h1>
             </SectionFramer>
-            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            This section must be wrapped in a overflow hidden div to keep right width page in mobile
             <div className=" overflow-hidden">
               <SectionFramerRight>
                 <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
@@ -258,7 +264,7 @@ const home = () => {
                 quelques évènements :
               </h3>
             </SectionFramer>
-            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            This section must be wrapped in a overflow hidden div to keep right width page in mobile
             <div className=" overflow-hidden">
               <SectionFramerRight>
                 <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
@@ -267,9 +273,51 @@ const home = () => {
           </Section>
           <EventOverFlowContainer />
         </Container>
-        <div className="h-[500px] my-border-green">
+
+         <div className="h-[500px] my-border-green">
           <SwiperEvent />
         </div>
+
+
+
+        */}
+
+        {/* ACTIVITIES ABBORTED - END */}
+
+        <Container className=" bg-sky-800">
+          <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
+            {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
+            <SectionFramer>
+              <h1 className="font-normal text-5xl lg:text-9xl text-white opacity-80">
+                Cézar
+                <br />
+                une aventure photo
+              </h1>
+            </SectionFramer>
+            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            <div className=" overflow-hidden">
+              <SectionFramerRight>
+                <hr className="h-px bg-white border-0 opacity-50" />
+              </SectionFramerRight>
+            </div>
+
+            <SectionFramer>
+              <p className="font-light text-2xl text-white opacity-90">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Laboriosam, est? Quae vel adipisci provident tempore, nisi,
+                commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
+                possimus consequatur dolores aliquam. Laborum!
+              </p>
+            </SectionFramer>
+            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
+            <div className=" overflow-hidden">
+              <SectionFramerRight>
+                <hr className="h-px bg-white border-0 opacity-50" />
+              </SectionFramerRight>
+            </div>
+            <AroundContent srcs={ListImagesBurkina} cldImage={false} />
+          </Section>
+        </Container>
 
         <div className="mt-80 bg-slate-100">
           <div className="flex justify-center py-32">

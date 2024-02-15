@@ -11,6 +11,8 @@ import Link from "next/link";
 import { ColorStatus } from "../actions/ColorStatus";
 
 import DeleteResaButton from "./DeleteResaButton";
+import ResaFormm from "./_components/ResaFormm";
+import ResaForm from "./_components/ResaForm";
 // import Vue from "./Vue";
 
 // interface Props {
@@ -37,6 +39,9 @@ const pageReservations = async () => {
 
   return (
     <>
+      <div className="py-20 px-4 border">
+        <ResaForm />
+      </div>
       {/* <Vue guests={guests} /> */}
       <Section className="mt-0 pt-0">
         <div className="flex flex-col gap-3 mx-4">

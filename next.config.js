@@ -8,7 +8,9 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "asset.cloudinary.com",
+        hostname: "la-baraka/",
+        port: "3000/",
+        pathname: "/public/**",
       },
     ],
   },
