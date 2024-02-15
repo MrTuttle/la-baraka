@@ -40,6 +40,7 @@ import AroundContent from "./components/AroundContent";
 import { ImageProps, StaticImageData } from "next/image";
 import SwiperEvent from "./components/swiper/SwiperEvent";
 import EventOverFlowContainer from "./components/EventOverFlowContainer";
+import Gallery from "./components/Gallery";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -284,7 +285,7 @@ const home = () => {
 
         {/* ACTIVITIES ABBORTED - END */}
 
-        <Container className=" bg-sky-800">
+        <Container className="bg-yellow-600">
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
