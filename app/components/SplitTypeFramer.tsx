@@ -26,14 +26,14 @@ const SplitTypeFramer = ({ children }: Props) => {
         // pin: true,
         // ideal ratio mobile -90% 80%, -150% 30%
         start: "-80% 67%", // 67% = 1/3 screen height // -80% 80% last compromise mobile/desktop
-        end: "10% 33%", // 33% = 1/3 screen height // -60% 20% last on compromise mobile/desktop
+        end: "10% 50%", // 33% = 1/3 screen height // -60% 20% last on compromise mobile/desktop
         scrub: true, // if true = use scroll, not time for animation
         markers: true,
       },
       opacity: 0, // from 0.2
       stagger: 0.5, // decay animation for multiple instance
-      ease: "sine",
-      duration: 4,
+      ease: "circ.inOut",
+      duration: 4, // 4 to have smooth transition
     });
 
     // console.log("SPLITTAGE : ", splitTypeInstance.chars);
