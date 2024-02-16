@@ -90,10 +90,7 @@ const AroundContent = ({ srcs, cldImage }: ImageProps) => {
             />
           </SwiperSlide>
         ))} */}
-        <div
-          slot="container-end"
-          className="text-center text-5xl text-gray-400"
-        >
+        <div slot="container-end" className="text-center text-5xl opacity-30">
           ...
         </div>
       </Swiper>

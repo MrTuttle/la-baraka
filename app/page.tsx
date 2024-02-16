@@ -320,14 +320,30 @@ const home = () => {
           </Section>
         </Container>
 
-        <div className="mt-80 bg-slate-100">
+        <div className=" bg-slate-700">
           <div className="flex justify-center py-32">
-            <Link href="/dashboard">
+            {/* <Link href="/dashboard">
               <Button>Dashboard</Button>
-            </Link>
+            </Link> */}
           </div>
-          <div className=" opacity-30">
-            <ul className="flex flex-row-reverse gap-8 p-11">
+          <SectionFramer>
+            <div className=" opacity-40 relative border-white prose  text-b h-56 w-56 top-[10remlack] left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]">
+              <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1] text-white">
+                <SiForestry />
+
+                <h1 className=" text-white font-extralight text-5xl">
+                  La Baraka
+                </h1>
+              </div>
+              <p className=" tracking-widest text-center text-xs pt-0 -mt-8 w-[100%] text-white">
+                CHAMBRES D’HÔTES <br /> - RESTAURANT -
+              </p>
+            </div>
+          </SectionFramer>
+          {/* </div> */}
+
+          <div className=" opacity-30 text-white">
+            <ul className="flex justify-center gap-8 p-11">
               <li>La Baraka 2024</li>
               <li>
                 <Link href="/mentions">Mentions légales</Link>
