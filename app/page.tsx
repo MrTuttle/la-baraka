@@ -41,6 +41,7 @@ import { ImageProps, StaticImageData } from "next/image";
 import SwiperEvent from "./components/swiper/SwiperEvent";
 import EventOverFlowContainer from "./components/EventOverFlowContainer";
 import Gallery from "./components/Gallery";
+import LogoFooter from "./components/LogoFooter";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -71,10 +72,11 @@ const home = () => {
     <>
       {/* <div className="fixed h-screen w-full flex flex-col items-center top-0 -z-50 my-border-red"> */}
       {/* <div className="h-screen w-full top-0 my-border-red"> */}
+
       <HeroScrollEffect />
-      <div className=" overflow-hidden">
-        <div className="content-holder">
-          <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto bg-white align-middle">
+      <div className=" overflow-hidden bg-gray-100">
+        <div className="content-holder ">
+          <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto align-middle">
             <div className="">
               <SplitTypeFramer>
                 <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
@@ -190,12 +192,12 @@ const home = () => {
             </div>
           </Section>
         </Container>
-        <div className="overflow-hidden md:overflow-visible bg-white">
+        <div className="overflow-hidden md:overflow-visible bg-white pb-48">
           <SectionFramerRight>
             <SlidePerViewGetIds />
           </SectionFramerRight>
         </div>
-        <Container className="bg-white">
+        <Container className="bg-gray-100">
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
@@ -320,14 +322,14 @@ const home = () => {
           </Section>
         </Container>
 
-        <div className=" bg-slate-700">
-          <div className="flex justify-center py-32">
+        <div className=" bg-slate-700 h-screen">
+          <div className="flex justify-center">
             {/* <Link href="/dashboard">
               <Button>Dashboard</Button>
             </Link> */}
           </div>
-          <SectionFramer>
-            <div className=" opacity-40 relative border-white prose  text-b h-56 w-56 top-[10remlack] left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]">
+          <LogoFooter>
+            <div className=" mt-[15%] xl:mt-64  mb-[15%] xl:mb-40 opacity-40 border-white prose mx-auto  text-b h-56 w-56 border-[1px]">
               <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1] text-white">
                 <SiForestry />
 
@@ -339,11 +341,27 @@ const home = () => {
                 CHAMBRES D’HÔTES <br /> - RESTAURANT -
               </p>
             </div>
-          </SectionFramer>
+          </LogoFooter>
           {/* </div> */}
-
-          <div className=" opacity-30 text-white">
-            <ul className="flex justify-center gap-8 p-11">
+          <div className=" opacity-40 flex flex-col md:flex-row  flex-wrap gap-8 md:gap-16 justify-center px-11 text-white">
+            <ul className="">
+              <li className=" border-b pb-2">Hôtel La Baraka</li>
+              <li className="pt-2">Le Village</li>
+              <li>48110</li>
+              <li> Sainte-Croix-Vallée-Française</li>
+            </ul>
+            <ul>
+              <li className=" border-b pb-2">Ouverture</li>
+              <li className="pt-2">Semaine 9:00 | 15:00</li>
+              <li>Dimanches 9:00 | 15:00</li>
+            </ul>
+            <ul>
+              <li className=" border-b pb-2">Telephone</li>
+              <li className="pt-2">07 49 60 50 68</li>
+            </ul>
+          </div>
+          <div className=" absolute bottom-2 opacity-30 text-white pt-4 w-full">
+            <ul className="flex justify-center gap-8 py-4">
               <li>La Baraka 2024</li>
               <li>
                 <Link href="/mentions">Mentions légales</Link>
