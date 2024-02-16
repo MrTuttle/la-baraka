@@ -76,7 +76,7 @@ Props) => {
   return (
     <button className="flex align-center gap-2 sm:mx-0 text-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
       <MdLocalPhone />
-      <a href="tel:+33749605068">Reserver une table</a>
+      <a href="tel:+33749605068">Reserver</a>
     </button>
     // <Dialog.Root open={open} onOpenChange={setOpen}>
     //   {/* <p>Texte checkout: {checkOut.toDateString()}</p>
