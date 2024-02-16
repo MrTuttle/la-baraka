@@ -133,7 +133,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   return (
     <>
-      <div className="mb-11 w-full lg:w-4/6 mx-auto lg:mt-11 bg-white">
+      <div className="mb-11 w-full lg:w-4/6 mx-auto lg:pt-11 bg-white">
         <DetailRoomSwiperSlide listImages={imagesRoom} />
       </div>
       <Flex
@@ -142,7 +142,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
         align="center"
         className="mx-auto bg-white"
       >
-        <div className="prose">
+        <div className="prose px-8 lg:px-0">
           <p>Chambre n°{room.id}</p>
           <h1>{room.title}</h1>
           <ReactMarkdown>{room.description}</ReactMarkdown>

@@ -2,6 +2,7 @@
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
 import React, { useState } from "react";
 import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomRequest2";
+import DialogRoomRequest3 from "@/app/components/DialogRoomRequest/DialogRoomRequest3";
 import { DateRange } from "react-day-picker";
 
 interface BKDayProps {
@@ -85,15 +86,15 @@ const RoomDetailPageContent = ({
 
   return (
     <>
-      <BKDayPicker
+      {/* <BKDayPicker
         bookedDays={bookedDays}
         bookedDaysRange={bookedDaysRange}
         onStartDay={handleStartDay}
         onEndDay={handleEndDay}
-      />
+      /> */}
       {/* ----------Room detail page content query from BK :--------- */}
 
-      <div className="px-11">
+      {/* <div className="px-11">
         <ul>
           <p className=" uppercase">
             RoomDetailPageContent <br />
@@ -118,9 +119,9 @@ const RoomDetailPageContent = ({
             })}
           </li>
         </ul>
-      </div>
+      </div> */}
       {/* --------- Room detail page content query : -------- */}
-      <div>
+      {/* <div>
         <ul>
           <p>Room detail page content query</p>
           <li>
@@ -158,10 +159,10 @@ const RoomDetailPageContent = ({
             {roomId}
           </li>
         </ul>
-      </div>
+      </div> */}
       {/* ----------FOOTER FIXED----------- */}
       <div
-        className="w-full bg-white h-20 border-t-2
+        className="w-full bg-white h-20 border-t
         fixed left-0 bottom-0
         flex justify-between items-center z-50
         "
@@ -188,7 +189,16 @@ const RoomDetailPageContent = ({
           </p>
           {/* <p>{showMiniRange(checkInFromBK, checkOutFromBK)}</p> */}
         </div>
-        <div className="p-4">
+        <div className="p-4" id="activate-when-dates-will-works">
+          <DialogRoomRequest3
+            checkIn={checkInFromBK}
+            checkOut={checkOutFromBK}
+            bookedDaysToEmail={bookedDaysToEmail}
+            title={title}
+            roomId={roomId}
+          />
+        </div>
+        {/* <div className="p-4" id="activate-when-dates-will-works">
           <DialogRoomRequest2
             checkIn={checkInFromBK}
             checkOut={checkOutFromBK}
@@ -196,25 +206,7 @@ const RoomDetailPageContent = ({
             title={title}
             roomId={roomId}
           />
-
-          {/* <button className=" px-14 bg-red-500 hover:bg-red-600 transition-all p-4 rounded-md text-white">
-            Réserver
-          </button> */}
-          {/* <UserRoomForm
-            title={room.title}
-            roomId={room.id}
-            bookedDaysToEmail={bookedDaysToEmail}
-          /> */}
-          {/* <DialogRoomRequest2
-            checkIn={checkIn}
-            checkOut={checkOut}
-            bookedDaysToEmail={bookedDaysToEmail}
-            title={room.title}
-            roomId={room.id}
-          /> */}
-
-          {/* <SendBookingButton title={room.title} roomId={room.id} /> */}
-        </div>
+        </div> */}
       </div>
     </>
   );
