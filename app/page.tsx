@@ -322,7 +322,7 @@ const home = () => {
           </Section>
         </Container>
 
-        <div className=" bg-slate-700 h-screen">
+        <div className=" bg-slate-700 h-screen pt-1">
           <div className="flex justify-center">
             {/* <Link href="/dashboard">
               <Button>Dashboard</Button>

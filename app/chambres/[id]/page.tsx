@@ -133,35 +133,36 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   return (
     <>
-      <div className="mb-11 w-full lg:w-4/6 mx-auto lg:pt-11 bg-white">
-        <DetailRoomSwiperSlide listImages={imagesRoom} />
-      </div>
-      <Flex
-        direction="column"
-        gap="8"
-        align="center"
-        className="mx-auto bg-white"
-      >
-        <div className="prose px-8 lg:px-0">
-          <p>Chambre n°{room.id}</p>
-          <h1>{room.title}</h1>
-          <ReactMarkdown>{room.description}</ReactMarkdown>
+      <div className="bg-white lg:pt-12">
+        <div className="mb-11 w-full lg:w-4/6 mx-auto">
+          <DetailRoomSwiperSlide listImages={imagesRoom} />
         </div>
+        <Flex
+          direction="column"
+          gap="8"
+          align="center"
+          className="mx-auto bg-white"
+        >
+          <div className="prose px-8 lg:px-0">
+            <p>Chambre n°{room.id}</p>
+            <h1>{room.title}</h1>
+            <ReactMarkdown>{room.description}</ReactMarkdown>
+          </div>
 
-        {/* -------- ACTIVATE CALENDAR COMPONENT -------- */}
-        <RoomDetailPageContent
-          bookedDays={bookedDaysRange}
-          bookedDaysRange={bookedDays}
-          checkIn={checkIn}
-          checkOut={checkOut}
-          bookedDaysToEmail={bookedDaysToEmail}
-          title={room.title}
-          roomId={room.id}
-          roomPrice={room.price}
-        />
-        {/* -------- CALENDAR COMPONENT -------- */}
+          {/* -------- ACTIVATE CALENDAR COMPONENT -------- */}
+          <RoomDetailPageContent
+            bookedDays={bookedDaysRange}
+            bookedDaysRange={bookedDays}
+            checkIn={checkIn}
+            checkOut={checkOut}
+            bookedDaysToEmail={bookedDaysToEmail}
+            title={room.title}
+            roomId={room.id}
+            roomPrice={room.price}
+          />
+          {/* -------- CALENDAR COMPONENT -------- */}
 
-        {/* <Flex direction="column" className="mx-4">
+          {/* <Flex direction="column" className="mx-4">
         <div className="py-4">
         <p>Id: {room.id}</p>
         <p>{room.title}</p>
@@ -169,18 +170,18 @@ const ChambreDetailPage = async ({ params }: Props) => {
         </div>
       </Flex> */}
 
-        <Flex direction="column" align="center" className="p-8">
-          {/* <BKDayPicker
+          <Flex direction="column" align="center" className="p-8">
+            {/* <BKDayPicker
           bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
         /> */}
 
-          {/* <BKDayPicker
+            {/* <BKDayPicker
           bookedDays={bookedDaysRange}
           bookedDaysRange={bookedDays}
         /> */}
-        </Flex>
+          </Flex>
 
-        {/* <div className="pt-10 pb-32">
+          {/* <div className="pt-10 pb-32">
         <DeleteRoomButton roomId={room.id} />
         </div>
         <div className="pt-10 pb-32">
@@ -209,7 +210,8 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
 
           </div> */}
-      </Flex>
+        </Flex>
+      </div>
     </>
   );
 };
