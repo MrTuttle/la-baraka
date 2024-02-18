@@ -27,15 +27,15 @@ const RoomDetailPageContent = ({
   roomId,
   roomPrice,
 }: BKDayProps) => {
-  console.log("x x x x x RoomDetailPageContent x x x x x");
-  console.log(`from page.tsx :, roomId = ${roomId}`);
-  console.log(`from page.tsx :, roomPrice = ${roomPrice}`);
+  // console.log("x x x x x RoomDetailPageContent x x x x x");
+  // console.log(`from page.tsx :, roomId = ${roomId}`);
+  // console.log(`from page.tsx :, roomPrice = ${roomPrice}`);
 
-  console.log(`from page.tsx :, bookedDaysRange = ${bookedDaysRange}`);
-  console.log(`from page.tsx :, bookedDays = ${bookedDays}`);
-  console.log(`from page.tsx :, checkIn = ${checkIn}`);
-  console.log(`from page.tsx :, checkOut = ${checkOut}`);
-  console.log(`from page.tsx :, bookedDaysToEmail = ${bookedDaysToEmail}`);
+  // console.log(`from page.tsx :, bookedDaysRange = ${bookedDaysRange}`);
+  // console.log(`from page.tsx :, bookedDays = ${bookedDays}`);
+  // console.log(`from page.tsx :, checkIn = ${checkIn}`);
+  // console.log(`from page.tsx :, checkOut = ${checkOut}`);
+  // console.log(`from page.tsx :, bookedDaysToEmail = ${bookedDaysToEmail}`);
 
   // HOOK LOGIC TO GET DATES FROM BKPICKER CLICK
   // get checkInFromBK day clicked from BKPicker & set it
@@ -86,12 +86,12 @@ const RoomDetailPageContent = ({
 
   return (
     <>
-      {/* <BKDayPicker
+      <BKDayPicker
         bookedDays={bookedDays}
         bookedDaysRange={bookedDaysRange}
         onStartDay={handleStartDay}
         onEndDay={handleEndDay}
-      /> */}
+      />
       {/* ----------Room detail page content query from BK :--------- */}
 
       {/* <div className="px-11">

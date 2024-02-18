@@ -46,7 +46,7 @@ const BKDayPicker = ({
 
   const handleDayClick: DayClickEventHandler = (day, modifiers) => {
     setBooked(day && modifiers.booked);
-    console.log("HANDLEDAY CLICK", range);
+    // console.log("HANDLEDAY CLICK", range);
   };
   // MESSAGE TO GIVE SELECTED RANGE DAYS
   let footer = <p>Please pick the first day.</p>;
@@ -55,10 +55,10 @@ const BKDayPicker = ({
     if (!range.to) {
       footer = <p>{format(range.from, "PP")}</p>;
       // FIRST DAY CLICKED = RANGE.FROM
-      console.log("first day clicked:", range.from);
+      // console.log("first day clicked:", range.from);
       onStartDay(range.from);
-      console.log("booked:", booked);
-      console.log("START DAY VALUE :", onStartDay);
+      // console.log("booked:", booked);
+      // console.log("START DAY VALUE :", onStartDay);
     } else if (range.to) {
       footer = (
         <p>
@@ -66,12 +66,12 @@ const BKDayPicker = ({
         </p>
       );
       // SECOND DAY CLICKED = RANGE.TO
-      console.log("second day clicked:", range.to);
+      // console.log("second day clicked:", range.to);
       onEndDay(range.to);
     }
   }
-  console.log("BOOKED DAYS FOR BKPICKER");
-  console.log(bookedDays);
+  // console.log("BOOKED DAYS FOR BKPICKER");
+  // console.log(bookedDays);
 
   // console.log("DAY PICKER LOGS:");
   // console.log("booked true / false / undefine : " + booked);

@@ -68,29 +68,92 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
   };
 
   return (
-    <div className=" pt-20 my-border-red">
-      <h1> Resa form</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>N° Chambre</label>
-        <input {...register("assignedToRoomId", { valueAsNumber: true })} />
-        <label>N° Guest</label>
-        <input {...register("assignedToUserRoomId", { valueAsNumber: true })} />
-        <label>In</label>
-        <input {...register("checkIn")} />
-        <label>Out</label>
-        <input {...register("checkOut")} />
-        <div>
-          <select {...register("status")}>
-            <option value="VACANT">Vacant</option>
-            <option defaultChecked={true} value="OCCUPIED">
-              Occupied
-            </option>
-            <option value="IN_PROGRESS">in progress</option>
-          </select>
+    <div className=" pt-20 border px-4">
+      <p className="pb-10">Nouvelle reservation - resa form</p>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
+        <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              N° Chambre
+            </label>
+            <input
+              {...register("assignedToRoomId", { valueAsNumber: true })}
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            />
+            <p className="text-red-500 text-xs italic">
+              Please fill out this field ex: 2024-06-05T00:00:00.000Z
+            </p>
+          </div>
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              N° Guest
+            </label>
+            <input
+              {...register("assignedToUserRoomId", { valueAsNumber: true })}
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-last-name"
+            />
+          </div>
         </div>
-        <div className="flex p-4">
-          <div className="inline transition-all p-2 hover:p-3 border rounded bg-slate-200 hover:bg-slate-400">
-            <input type="submit" />
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Check In
+            </label>
+            <input
+              {...register("checkIn")}
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            />
+          </div>
+          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Check Out
+            </label>
+            <input
+              {...register("checkOut")}
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            />
+          </div>
+          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Etat
+            </label>
+            <div className="relative">
+              <select
+                {...register("status")}
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              >
+                <option value="VACANT">Vacant</option>
+                <option defaultChecked={true} value="OCCUPIED">
+                  Occupied
+                </option>
+                <option value="IN_PROGRESS">in progress</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          {/* <div className="md:flex md:items-center">
+            <div className="md:w-2/3">
+              <button
+                className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                type="button"
+              >
+                Sign Up
+              </button>
+            </div>
+          </div> */}
+          <div className="flex p-4">
+            <div className="shadow bg- bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+              <input type="submit" />
+            </div>
           </div>
         </div>
       </form>
