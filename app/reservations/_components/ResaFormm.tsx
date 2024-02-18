@@ -2,7 +2,13 @@
 import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import {
+  useForm,
+  SubmitHandler,
+  Controller,
+  UseControllerProps,
+  useController,
+} from "react-hook-form";
 
 type FormValues = {
   // firstName?: string;
@@ -18,15 +24,34 @@ type FormValues = {
   assignedToUserRoomId: number;
 };
 
+// function Input(props: UseControllerProps<FormValues>){
+
+//   const {field, fieldState}= useController(props);
+//   return (
+//     <div>
+//       <input {...field} placeholder={props.name} />
+//     </div>
+//   );
+// };
+
 const ResaFormm = ({ resa }: { resa: FormValues }) => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<FormValues>();
   const [isSubmitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
+  // const { control, register, handleSubmit } = useForm<Inputs>({
+  //   defaultValues: {
+  //     exampleDate1: new Date(2022, 8, 1),
+  //     exampleDate2: new Date(2022, 8, 1),
+  //   },
+  // });
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log(data);
-    console.log(typeof data);
+    console.log(`ResaFormm data : ${data}`);
+    console.log(`ResaFormm typeOf data : ${typeof data}`);
+    console.log(`ResaFormm Object.keys(data) : ${Object.keys(data)}`);
+    console.log(`ResaFormm Object.values : ${Object.values(data)}`);
     try {
       setSubmitting(true);
       if (resa) await axios.patch("/api/reservations/" + resa.id, data);
@@ -59,7 +84,7 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
   return (
     <>
       <div>
-        ResaFormm n° {resa.id} - status : {resa.status}
+        ResaFormmm n° {resa.id} - status : {resa.status}
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="my-border-red">
         <div className="my-border-green p-4 flex flex-wrap gap-2">
@@ -88,6 +113,28 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
               placeholder="n° Guest"
               defaultValue={resa.assignedToUserRoomId}
               {...register("assignedToUserRoomId", { valueAsNumber: true })}
+            />
+          </div>
+          <div>
+            <label>CheckIn - try 2024-06-05T00:00:00.000Z :</label>
+            <input {...register("checkIn")} />
+            {/* <Controller control={} /> */}
+          </div>
+          <div>
+            <label>CheckIn - try 2024-06-05T00:00:00.000Z :</label>
+            <input {...register("checkOut")} />
+            {/* <Controller control={} /> */}
+          </div>
+
+          <div>
+            <input
+            // type="datetime-local" // fail with defaultValue={resa.checkIn.toLocaleDateString("fr-FR", { dateStyle: "short",})}
+            // type="date" // fail to display current date placeholder
+            // type="datetime" // display current date default value
+            // placeholder="CheckIn"
+            // defaultValue="2024-01-31T12:33" // display this value
+            // defaultValue={resa.checkIn.toDateString()} // work
+            // {...register("checkIn", { valueAsDate: true })} // axios send a string, we want date
             />
           </div>
           {/* <div>
