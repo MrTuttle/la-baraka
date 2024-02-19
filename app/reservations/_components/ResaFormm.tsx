@@ -34,7 +34,7 @@ type FormValues = {
 //   );
 // };
 
-const ResaFormm = ({ resa }: { resa: FormValues }) => {
+const ResaFormm = ({ resa }: { resa?: FormValues }) => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<FormValues>();
   const [isSubmitting, setSubmitting] = useState(false);
@@ -58,10 +58,10 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
       else await axios.post("/api/reservations", data);
       router.push("/reservations");
       router.refresh();
-      console.log(`SUBMIT ON RESA ${resa.id}`);
+      console.log(`SUBMIT ON RESA ${resa?.id}`);
     } catch (error) {
       setSubmitting(false);
-      console.log(`SUBMIT FAILL ON RESA ${resa.id}`);
+      console.log(`SUBMIT FAILL ON RESA ${resa?.id}`);
       console.log(data);
       setError("An unexpected error occurred.");
     }
@@ -86,10 +86,10 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
   return (
     <>
       <div>
-        ResaFormmm n° {resa.id} - status : {resa.status}
+        ResaForm n° {resa?.id} - status : {resa?.status}
       </div>
       <div className=" pt-20 border px-4">
-        <p className="pb-10"> Resa form : modifier une réservation</p>
+        <p className="pb-10"> Resa form : modifiier une réservation</p>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -97,8 +97,7 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
                 N° Chambre
               </label>
               <input
-                // placeholder="n° chambre"
-                defaultValue={resa.assignedToRoomId}
+                defaultValue={resa?.assignedToRoomId}
                 {...register("assignedToRoomId", { valueAsNumber: true })}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               />
@@ -112,7 +111,7 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
               </label>
               <input
                 placeholder="n° Guest"
-                defaultValue={resa.assignedToUserRoomId}
+                defaultValue={resa?.assignedToUserRoomId}
                 {...register("assignedToUserRoomId", { valueAsNumber: true })}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-last-name"
@@ -126,7 +125,8 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
                 Check In - disabled
               </label>
               <input
-                // {...register("checkIn")}
+                defaultValue={resa?.checkIn.toISOString()}
+                {...register("checkIn")}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
             </div>
@@ -137,7 +137,8 @@ const ResaFormm = ({ resa }: { resa: FormValues }) => {
                 Check Out - disabled
               </label>
               <input
-                // {...register("checkOut")}
+                defaultValue={resa?.checkIn.toISOString()}
+                {...register("checkOut", { valueAsDate: true })}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
             </div>
