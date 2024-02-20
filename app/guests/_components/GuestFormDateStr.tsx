@@ -27,11 +27,11 @@ type Reservation = {
 
 type UserRoom = {
   id: number;
-  firstName: string;
-  name: string;
-  email: string;
-  phone: string;
-  emailVerified: Date;
+  firstName: string | null;
+  name: string | null;
+  email: string | null;
+  phone: string | null;
+  emailVerified: Date | null;
   reservationDates: Reservation[];
 };
 
@@ -45,7 +45,7 @@ type UserRoom = {
 //   );
 // };
 
-const GuestFormDateStr = ({ guest }: { guest?: UserRoom }) => {
+const GuestFormDateStr = ({ guest }: { guest: UserRoom }) => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<UserRoom>();
   const [isSubmitting, setSubmitting] = useState(false);
@@ -81,7 +81,7 @@ const GuestFormDateStr = ({ guest }: { guest?: UserRoom }) => {
   return (
     <>
       <div className=" pt-20 border px-4">
-        <p className="pb-10"> Modifier la réservation n° {guest?.id}</p>
+        <p className="pb-10"> Modifier la réservation n° {guest.id}</p>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -90,7 +90,7 @@ const GuestFormDateStr = ({ guest }: { guest?: UserRoom }) => {
               </label>
               <input
                 placeholder="n° Guest"
-                defaultValue={guest?.firstName}
+                defaultValue={guest.firstName!}
                 {...register("firstName")}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
@@ -101,7 +101,7 @@ const GuestFormDateStr = ({ guest }: { guest?: UserRoom }) => {
               </label>
               <input
                 placeholder="n° Guest"
-                defaultValue={guest?.name}
+                defaultValue={guest.name!}
                 {...register("name")}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
@@ -112,7 +112,7 @@ const GuestFormDateStr = ({ guest }: { guest?: UserRoom }) => {
               </label>
               <input
                 placeholder="n° Guest"
-                defaultValue={guest?.phone}
+                defaultValue={guest.phone!}
                 {...register("phone")}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
@@ -123,7 +123,7 @@ const GuestFormDateStr = ({ guest }: { guest?: UserRoom }) => {
               </label>
               <input
                 placeholder="n° Guest"
-                defaultValue={guest?.email}
+                defaultValue={guest.email!}
                 {...register("email")}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />

@@ -94,12 +94,20 @@ Extérieur
       name: "Russel",
       phone: "(+33) 00 00 00 00 00",
       reservationDates: {
-        create: {
-          assignedToRoomId: 4,
-          checkIn: new Date("2024-04-20T00:00"),
-          checkOut: new Date("2024-04-22T00:00"),
-          status: "OCCUPIED",
-        },
+        create: [
+          {
+            assignedToRoomId: 4,
+            checkIn: new Date("2024-04-20T00:00"),
+            checkOut: new Date("2024-04-22T00:00"),
+            status: "OCCUPIED",
+          },
+          {
+            assignedToRoomId: 4,
+            checkIn: new Date("2024-05-20T00:00"),
+            checkOut: new Date("2024-05-23T00:00"),
+            status: "OCCUPIED",
+          },
+        ],
       },
     },
     include: {
