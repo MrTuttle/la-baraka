@@ -47,48 +47,63 @@ const pageReservations = async () => {
           <h1 className="mx-4">hard Reservations</h1>
 
           {reservations.map((resa, index) => (
-            <Card key={resa.id} className="pb-3" size="4">
-              <Flex gap="4" direction="row" wrap="wrap" className="mb-6">
-                <DeleteResaButton resaId={resa.id} />
-                <Link href={"/reservations/edit/" + resa.id}>
-                  <Flex gap="1">
-                    <HiOutlinePencilSquare />
-                    <Text as="p" size="1">
-                      Modifier
-                    </Text>
-                  </Flex>
-                </Link>
-              </Flex>
-              <Flex direction="column" gap="2" className="pb-4">
-                <Text size="1" className=" sm:w-full lg:w-4/12">
-                  Chambre associée : {resa.assignedToRoomId}
-                </Text>
-                <Text size="1" className=" sm:w-full lg:w-4/12">
-                  <Link href={`/guests/${resa.assignedToUserRoomId}`}>
-                    Guest associée : n°{resa.assignedToUserRoomId} |{" "}
-                    {resa.assignedToUserRoom.firstName}{" "}
-                    {resa.assignedToUserRoom.name}
+            <Card key={resa.id} className="pb-3 max-w-md" size="4">
+              <div className="flex flex-wrap -mx-3 mb-6 justify-between">
+                <div className=" block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Reservation n° {resa.id}
+                </div>
+                <div className="flex gap-4">
+                  <Link href={"/reservations/edit/" + resa.id}>
+                    <div className=" flex gap-1">
+                      <HiOutlinePencilSquare />
+                      <p className=" text-xs">Modifier</p>
+                    </div>
                   </Link>
-                </Text>
+                  <DeleteResaButton resaId={resa.id} />
+                </div>
+              </div>
+
+              <Flex direction="column" gap="2" className="pb-4">
+                <div className=" sm:w-full lg:w-4/12">
+                  <ul>
+                    <li>
+                      <strong>Chambre {resa.assignedToRoomId}</strong>
+                    </li>
+                    <li>
+                      <Link
+                        href={`/guests/${resa.assignedToUserRoomId}`}
+                        className=" text-blue-500 font-medium hover:underline"
+                      >
+                        {resa.assignedToUserRoom.firstName}{" "}
+                        {resa.assignedToUserRoom.name}
+                      </Link>
+                    </li>
+                    <li>
+                      <strong>Check in ← </strong>
+                      {resa.checkIn.toLocaleString("fr-FR", {
+                        dateStyle: "full",
+                      })}
+                    </li>
+                    <li>
+                      <strong>Check out → </strong>
+                      {resa.checkOut.toLocaleString("fr-FR", {
+                        dateStyle: "full",
+                      })}
+                    </li>
+                    <li>
+                      {" "}
+                      <Badge
+                        variant="solid"
+                        radius="full"
+                        color={ColorStatus(resa.status)}
+                        className="mt-4"
+                      >
+                        {resa.status}
+                      </Badge>
+                    </li>
+                  </ul>
+                </div>
               </Flex>
-              <Flex direction="row" gap="4" justify="start" wrap="wrap">
-                <Text size="1" className=" sm:w-full lg:w-4/12">
-                  <span className=" font-bold">{resa.id}</span> |{" "}
-                  {resa.checkIn.toLocaleString("fr-FR", { dateStyle: "full" })}
-                </Text>
-                <Text size="1" className=" sm:w-full lg:w-4/12">
-                  <span className=" font-bold">{resa.id}</span> |{" "}
-                  {resa.checkOut.toLocaleString("fr-FR", { dateStyle: "full" })}
-                </Text>
-              </Flex>
-              <Badge
-                variant="solid"
-                radius="full"
-                color={ColorStatus(resa.status)}
-                className="mt-4"
-              >
-                {resa.status}
-              </Badge>
             </Card>
           ))}
         </div>

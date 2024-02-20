@@ -48,9 +48,9 @@ export const patchUserRoomSchema = z.object({
   phone: z.string().optional(),
   email: z.string().optional(),
   reservationDates: z.object({
-    checkIn: z.date().optional(),
+    checkIn: z.string().optional(),
     // .min(new Date("2024-01-01"), { message: "already passed" }),
-    checkOut: z.date().optional(),
+    checkOut: z.string().optional(),
     // .min(new Date("2024-01-01"), { message: "already passed" }),
     status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
   }),

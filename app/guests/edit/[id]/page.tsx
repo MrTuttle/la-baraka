@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import GuestFormSkeleton from "./loading";
 import Link from "next/link";
+import GuestFormDateStr from "../../_components/GuestFormDateStr";
 
 const GuestForm = dynamic(() => import("@/app/guests/_components/GuestForm"), {
   ssr: false,
@@ -89,7 +90,9 @@ const EditGuestPage = async ({ params }: Props) => {
       <Link href="/guests">Back</Link>
 
       {/* <GuestForm guest={guest} resaArray={resaArray} /> */}
-      <GuestForm guest={guest} />
+      {/* <GuestForm guest={guest} /> */}
+
+      <GuestFormDateStr guest={guest} />
     </div>
   );
 };

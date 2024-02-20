@@ -44,60 +44,76 @@ const pageGuests = async () => {
         <div className="flex flex-col gap-3 mx-4">
           <h1 className="mx-4">hard guests</h1>
           {guests.map((guest, index) => (
-            <Card key={guest.id} className="pb-3" size="4">
-              <Flex gap="4" direction="row" wrap="wrap" className="mb-6">
-                <DeleteGuestButton guestId={guest.id} />
-                <Link href={"/guests/edit/" + guest.id}>
-                  <Flex gap="1">
-                    <HiOutlinePencilSquare />
-                    <Text as="p" size="1">
-                      Modifier
-                    </Text>
-                  </Flex>
-                </Link>
-              </Flex>
-              <Flex direction="row" gap="4" justify="start" wrap="wrap">
-                <Text size="1" className=" sm:w-full lg:w-4/12">
-                  <Link href={`/guests/${guest.id}`}>
-                    <span className=" font-bold">{guest.id}</span> |{" "}
-                    {guest.firstName} {guest.name}
+            <Card key={guest.id} className="pb-3 max-w-md" size="4">
+              <div className="flex flex-wrap -mx-3 mb-6 justify-between">
+                <div className=" block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Guest n° {guest.id}
+                </div>
+                <div className="flex gap-4">
+                  <Link href={"/guest/edit/" + guest.id}>
+                    <div className=" flex gap-1">
+                      <HiOutlinePencilSquare />
+                      <p className=" text-xs">Modifier</p>
+                    </div>
                   </Link>
-                </Text>
-                <Text size="1" className=" sm:w-full lg:w-4/12">
-                  <span className=" font-bold">Tel:</span> {guest.phone}
-                </Text>
-                <Text size="1" className=" sm:w-full lg:w-4/12">
-                  <span className=" font-bold">mail:</span> {guest.email}
-                </Text>
-                {guest.reservationDates.map((booking) => (
-                  <Text
-                    key={booking.id}
-                    size="1"
-                    className=" rounded-md p-4 shadow border"
-                  >
-                    <Link href={`/reservations/edit/${booking.id}`}>
+                  <DeleteGuestButton guestId={guest.id} />
+                </div>
+              </div>
+              <Flex direction="column" gap="2" className="pb-8">
+                <div className=" sm:w-full lg:w-4/12">
+                  <ul>
+                    <li>
+                      <strong>
+                        {guest.firstName} {guest.name}
+                      </strong>
+                    </li>
+                    <li>{guest.phone}</li>
+                    <li>{guest.email}</li>
+                  </ul>
+                </div>
+              </Flex>
+
+              {guest.reservationDates.map((booking) => (
+                <Link
+                  key={booking.id}
+                  href={`/reservations/edit/${booking.id}`}
+                >
+                  <div className="w-full rounded-md py-8 pl-8 pr-8 bg-slate-100 transition-all ease-in-out hover:bg-gray-200 hover:pl-10 mb-2">
+                    <ul
+                      role="list"
+                      className=" divide-y divide-gray-300 text-xs pt-4 [&_*]:py-2"
+                    >
+                      <li>
+                        <strong>Reservation n° {booking.id}</strong>
+                      </li>
+
                       {booking.assignedToRoomId === 0 ? (
-                        <p className=" text-red-600">No room assigned</p>
+                        <li className=" text-red-600">No room assigned</li>
                       ) : (
-                        <p>room Id : {booking.assignedToRoomId}</p>
+                        <li>Chambre {booking.assignedToRoomId}</li>
                       )}
-                      <p>
-                        Check in :{" "}
+                      <li className="">
+                        Check in ←{" "}
                         <strong>
                           {booking.checkIn.toLocaleDateString("fr-FR", {
                             dateStyle: "full",
                           })}
                         </strong>
-                      </p>
-                      <p>
-                        Check out :{" "}
+                      </li>
+                      <li>
+                        Check out →{" "}
                         <strong>
                           {booking.checkOut.toLocaleDateString("fr-FR", {
                             dateStyle: "full",
                           })}
                         </strong>
-                      </p>
+                      </li>
                       {/* {booking.status.valueOf()} */}
+
+                      {/* <button onClick={async () => {}}>Supprimer</button> */}
+                      {/* <DeleteGuest guest={guest.id} /> */}
+                    </ul>
+                    <div className="justify-between flex pt-4 ">
                       <Badge
                         variant="solid"
                         radius="full"
@@ -107,17 +123,19 @@ const pageGuests = async () => {
                           // if (booking.status === "VACANT") {"grass"} else if (boking.status === "OCCUPIED") {"ruby"} else {"orange"}
                         }
                         // "tomato" | "red" | "ruby" | "crimson" | "pink" | "plum" | "purple" | "violet" | "iris" | "indigo" | "blue" | "cyan" | "teal" | "jade" | "green" | "grass" | "brown" | "orange" | "sky" | "mint" | "lime" | "yellow" | "amber" | "gold" | "bronze" | "gray"
-                        className="mt-4"
+                        className=""
                       >
                         {booking.status}
                       </Badge>
 
-                      {/* <button onClick={async () => {}}>Supprimer</button> */}
-                      {/* <DeleteGuest guest={guest.id} /> */}
-                    </Link>
-                  </Text>
-                ))}
-              </Flex>
+                      <div className=" flex gap-1">
+                        <HiOutlinePencilSquare />
+                        <p className=" text-xs">Modifier</p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </Card>
           ))}
         </div>
