@@ -117,5 +117,6 @@ const pageReservations = async () => {
     </>
   );
 };
+export const revalidate = 0;
 
 export default pageReservations;

@@ -126,4 +126,6 @@ const pageGuests = async () => {
   );
 };
 
+export const revalidate = 0;
+
 export default pageGuests;
