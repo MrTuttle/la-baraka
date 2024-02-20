@@ -121,6 +121,8 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Check In
+                <br />
+                <span className="text-[0.5rem]">←</span>
               </label>
               <input
                 defaultValue={resa?.checkIn.toISOString()}
@@ -132,7 +134,8 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
 
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Check Out
+                Check Out <br />
+                <span className="text-[0.5rem]">→</span>
               </label>
               <input
                 defaultValue={resa?.checkOut.toISOString()}
@@ -142,7 +145,7 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
             </div>
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Etat{" "}
+                Etat <br />
                 <span className="text-[0.5rem]">(Actually {resa?.status})</span>
               </label>
               <div className="relative">

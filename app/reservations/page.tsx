@@ -43,11 +43,22 @@ const pageReservations = async () => {
     <>
       {/* <Vue guests={guests} /> */}
       <Section className="mt-0 pt-0">
-        <div className="flex flex-col gap-3 mx-4">
-          <h1 className="mx-4">hard Reservations</h1>
-
+        <div className="sm:w-8/12 lg:w-6/12  mx-auto p-8">
+          <h1 className="text-2xl">Reservation page</h1>
+          <p className=" font-semibold">What should’you do here ?</p>
+          <ul className=" list-disc list-inside py-4">
+            <li>See all reservations</li>
+            <li>Modify a reservation</li>
+            <li>Access to owner’s reservations</li>
+          </ul>
+        </div>
+        <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
           {reservations.map((resa, index) => (
-            <Card key={resa.id} className="pb-3 max-w-md" size="4">
+            // <Card key={resa.id} className="pb-3 max-w-md" size="4">
+            <div
+              key={resa.id}
+              className="pb-3 w-full sm:w-8/12 lg:w-6/12  mx-auto border rounded p-8"
+            >
               <div className="flex flex-wrap -mx-3 mb-6 justify-between">
                 <div className=" block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                   Reservation n° {resa.id}
@@ -63,48 +74,47 @@ const pageReservations = async () => {
                 </div>
               </div>
 
-              <Flex direction="column" gap="2" className="pb-4">
-                <div className=" sm:w-full lg:w-4/12">
-                  <ul>
-                    <li>
-                      <strong>Chambre {resa.assignedToRoomId}</strong>
-                    </li>
-                    <li>
-                      <Link
-                        href={`/guests/${resa.assignedToUserRoomId}`}
-                        className=" text-blue-500 font-medium hover:underline"
-                      >
-                        {resa.assignedToUserRoom.firstName}{" "}
-                        {resa.assignedToUserRoom.name}
-                      </Link>
-                    </li>
-                    <li>
-                      <strong>Check in ← </strong>
-                      {resa.checkIn.toLocaleString("fr-FR", {
-                        dateStyle: "full",
-                      })}
-                    </li>
-                    <li>
-                      <strong>Check out → </strong>
-                      {resa.checkOut.toLocaleString("fr-FR", {
-                        dateStyle: "full",
-                      })}
-                    </li>
-                    <li>
-                      {" "}
-                      <Badge
-                        variant="solid"
-                        radius="full"
-                        color={ColorStatus(resa.status)}
-                        className="mt-4"
-                      >
-                        {resa.status}
-                      </Badge>
-                    </li>
-                  </ul>
-                </div>
-              </Flex>
-            </Card>
+              <div className=" sm:w-full">
+                <ul className="divide-y divide-gray-300 text-xs pt-4 [&_*]:py-2">
+                  <li>
+                    <strong>Chambre {resa.assignedToRoomId}</strong>
+                  </li>
+                  <li>
+                    <Link
+                      href={`/guests/${resa.assignedToUserRoomId}`}
+                      className=" text-blue-500 font-medium hover:underline"
+                    >
+                      {resa.assignedToUserRoom.firstName}{" "}
+                      {resa.assignedToUserRoom.name}
+                    </Link>
+                  </li>
+                  <li>
+                    <strong>Check in ← </strong>
+                    {resa.checkIn.toLocaleString("fr-FR", {
+                      dateStyle: "full",
+                    })}
+                  </li>
+                  <li>
+                    <strong>Check out → </strong>
+                    {resa.checkOut.toLocaleString("fr-FR", {
+                      dateStyle: "full",
+                    })}
+                  </li>
+                  <li>
+                    {" "}
+                    <Badge
+                      variant="solid"
+                      radius="full"
+                      color={ColorStatus(resa.status)}
+                      className="mt-6 mb-2"
+                    >
+                      {resa.status}
+                    </Badge>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            // </Card>
           ))}
         </div>
       </Section>

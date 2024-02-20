@@ -41,10 +41,22 @@ const pageGuests = async () => {
     <>
       {/* <Vue guests={guests} /> */}
       <Section className="mt-0 pt-0">
-        <div className="flex flex-col gap-3 mx-4">
-          <h1 className="mx-4">hard guests</h1>
+        <div className="sm:w-8/12 lg:w-6/12  mx-auto p-8">
+          <h1 className="text-2xl">Guests page</h1>
+          <p className=" font-semibold">What should’you do here ?</p>
+          <ul className=" list-disc list-inside py-4">
+            <li>See all guests and their reservations</li>
+            <li>Modify guests</li>
+            <li>Modify a reservation</li>
+          </ul>
+        </div>
+        <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
           {guests.map((guest, index) => (
-            <Card key={guest.id} className="pb-3 max-w-md" size="4">
+            // <Card key={guest.id} className="pb-3 mx-auto" size="4">
+            <div
+              key={guest.id}
+              className="pb-3 w-full sm:w-8/12 lg:w-6/12  mx-auto border rounded p-8"
+            >
               <div className="flex flex-wrap -mx-3 mb-6 justify-between">
                 <div className=" block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                   Guest n° {guest.id}
@@ -60,7 +72,7 @@ const pageGuests = async () => {
                 </div>
               </div>
               <Flex direction="column" gap="2" className="pb-8">
-                <div className=" sm:w-full lg:w-4/12">
+                <div className=" sm:w-full">
                   <ul>
                     <li>
                       <strong>
@@ -136,7 +148,8 @@ const pageGuests = async () => {
                   </div>
                 </Link>
               ))}
-            </Card>
+            </div>
+            // </Card>
           ))}
         </div>
       </Section>
