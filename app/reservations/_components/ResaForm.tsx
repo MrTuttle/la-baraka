@@ -2,6 +2,8 @@
 import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { Room } from "@prisma/client";
+
 // import * as React from "react";
 
 import {
@@ -124,9 +126,7 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               >
                 <option value="VACANT">Vacant</option>
-                <option defaultChecked={true} value="OCCUPIED">
-                  Occupied
-                </option>
+                <option value="OCCUPIED">Occupied</option>
                 <option value="IN_PROGRESS">in progress</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

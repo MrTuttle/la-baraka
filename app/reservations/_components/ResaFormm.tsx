@@ -9,6 +9,7 @@ import {
   UseControllerProps,
   useController,
 } from "react-hook-form";
+import Spinner from "@/app/components/Spinner";
 
 type FormValues = {
   // firstName?: string;
@@ -85,11 +86,8 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
 
   return (
     <>
-      <div>
-        ResaForm n° {resa?.id} - status : {resa?.status}
-      </div>
       <div className=" pt-20 border px-4">
-        <p className="pb-10"> Resa form : modifiier une réservation</p>
+        <p className="pb-10"> Modifier la réservation n° {resa?.id}</p>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -122,7 +120,7 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
             {/* CHECK IN REACTIVATE */}
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Check In - disabled
+                Check In
               </label>
               <input
                 defaultValue={resa?.checkIn.toISOString()}
@@ -134,7 +132,7 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
 
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Check Out - disabled
+                Check Out
               </label>
               <input
                 defaultValue={resa?.checkIn.toISOString()}
@@ -144,7 +142,8 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
             </div>
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Etat
+                Etat{" "}
+                <span className="text-[0.5rem]">(Actually {resa?.status})</span>
               </label>
               <div className="relative">
                 <select
@@ -152,9 +151,7 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
                   className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 >
                   <option value="VACANT">Vacant</option>
-                  <option defaultChecked={true} value="OCCUPIED">
-                    Occupied
-                  </option>
+                  <option value="OCCUPIED">Occupied</option>
                   <option value="IN_PROGRESS">in progress</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -179,8 +176,12 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
             </div>
           </div> */}
             <div className="flex p-4">
-              <div className="shadow bg- bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                <input type="submit" />
+              <div className=" bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                {/* <input type="submit" /> */}
+                <button disabled={isSubmitting}>
+                  {resa ? "Update" : "Submit New resa"}{" "}
+                  {isSubmitting && <Spinner />}
+                </button>
               </div>
             </div>
           </div>

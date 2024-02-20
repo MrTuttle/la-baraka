@@ -3,7 +3,7 @@
 import React from "react";
 import getUserRooms from "../actions/GetUserRooms";
 import DeleteUserRoom from "../actions/DeleteUserRoom";
-import { Reservation } from "@prisma/client";
+import { Reservation, Room } from "@prisma/client";
 import prisma from "@/prisma/client";
 import { Badge, Button, Card, Flex, Section, Text } from "@radix-ui/themes";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
@@ -26,6 +26,8 @@ const pageReservations = async () => {
       assignedToUserRoom: true,
     },
   });
+  const rooms = await prisma.room.findMany({});
+  const guests = await prisma.userRoom.findMany({});
 
   // SERVER END
 
@@ -39,13 +41,11 @@ const pageReservations = async () => {
 
   return (
     <>
-      <div className="py-20 px-4 border">
-        <ResaForm />
-      </div>
       {/* <Vue guests={guests} /> */}
       <Section className="mt-0 pt-0">
         <div className="flex flex-col gap-3 mx-4">
           <h1 className="mx-4">hard Reservations</h1>
+
           {reservations.map((resa, index) => (
             <Card key={resa.id} className="pb-3" size="4">
               <Flex gap="4" direction="row" wrap="wrap" className="mb-6">
@@ -93,6 +93,27 @@ const pageReservations = async () => {
           ))}
         </div>
       </Section>
+      <div className="py-20 px-4 border">
+        <div className="flex">
+          <ul className="flex mr-11">
+            Chambres :
+            {rooms.map((room, index) => (
+              <li key={room.id} className="px-2">
+                {room.id}
+              </li>
+            ))}
+          </ul>
+          <ul className="flex mr-11">
+            Guests :
+            {guests.map((guest, index) => (
+              <li key={guest.id} className="px-2">
+                {guest.id}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <ResaForm />
+      </div>
     </>
   );
 };

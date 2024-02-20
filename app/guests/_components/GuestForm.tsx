@@ -184,24 +184,16 @@ const GuestForm = ({ guest }: { guest?: UserRoom }) =>
               <label>Check In</label>
               <TextField.Root>
                 <TextField.Input
-                  defaultValue={resa.checkIn.toLocaleString("fr-FR", {
-                    dateStyle: "medium",
-                  })}
-                  placeholder={resa.checkIn.toLocaleString("fr-FR", {
-                    dateStyle: "medium",
-                  })}
+                  defaultValue={resa.checkIn.toISOString()}
+                  placeholder={resa.checkIn.toISOString()}
                   {...register("reservationDates.checkIn")}
                 ></TextField.Input>
               </TextField.Root>
               <label>Check out</label>
               <TextField.Root>
                 <TextField.Input
-                  defaultValue={resa.checkOut.toLocaleString("fr-FR", {
-                    dateStyle: "medium",
-                  })}
-                  placeholder={resa.checkOut.toLocaleString("fr-FR", {
-                    dateStyle: "medium",
-                  })}
+                  defaultValue={resa.checkOut.toISOString()}
+                  placeholder={resa.checkOut.toISOString()}
                   {...register("reservationDates.checkOut")}
                 ></TextField.Input>
               </TextField.Root>
