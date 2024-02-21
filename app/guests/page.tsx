@@ -40,14 +40,14 @@ const pageGuests = async () => {
   return (
     <>
       {/* <Vue guests={guests} /> */}
-      <Section className="mt-0 pt-0">
+      <Section className="mt-0 pt-40">
         <div className="sm:w-8/12 lg:w-6/12  mx-auto p-8">
           <h1 className="text-2xl">Guests page</h1>
           <p className=" font-semibold">What should’you do here ?</p>
           <ul className=" list-disc list-inside py-4">
             <li>See all guests and their reservations</li>
             <li>Modify guests</li>
-            <li>Modify a reservation</li>
+            <li>Access & modify a reservation</li>
           </ul>
         </div>
         <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
@@ -62,7 +62,7 @@ const pageGuests = async () => {
                   Guest n° {guest.id}
                 </div>
                 <div className="flex gap-4">
-                  <Link href={"/guest/edit/" + guest.id}>
+                  <Link href={"/guests/edit/" + guest.id}>
                     <div className=" flex gap-1">
                       <HiOutlinePencilSquare />
                       <p className=" text-xs">Modifier</p>

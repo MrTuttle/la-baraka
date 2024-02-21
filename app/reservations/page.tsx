@@ -42,7 +42,7 @@ const pageReservations = async () => {
   return (
     <>
       {/* <Vue guests={guests} /> */}
-      <Section className="mt-0 pt-0">
+      <Section className="mt-0 pt-40">
         <div className="sm:w-8/12 lg:w-6/12  mx-auto p-8">
           <h1 className="text-2xl">Reservation page</h1>
           <p className=" font-semibold">What should’you do here ?</p>

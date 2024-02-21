@@ -47,13 +47,15 @@ export const patchUserRoomSchema = z.object({
   name: z.string().optional(),
   phone: z.string().optional(),
   email: z.string().optional(),
-  reservationDates: z.object({
-    checkIn: z.string().optional(),
-    // .min(new Date("2024-01-01"), { message: "already passed" }),
-    checkOut: z.string().optional(),
-    // .min(new Date("2024-01-01"), { message: "already passed" }),
-    status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
-  }),
+  reservationDates: z
+    .object({
+      checkIn: z.string().optional(),
+      // .min(new Date("2024-01-01"), { message: "already passed" }),
+      checkOut: z.string().optional(),
+      // .min(new Date("2024-01-01"), { message: "already passed" }),
+      status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]).optional(),
+    })
+    .optional(),
 });
 export const patchRoomSchema = z.object({
   title: z.string().min(1, "Title is required.").max(255).optional(),

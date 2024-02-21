@@ -32,12 +32,12 @@ export async function PATCH(
       reservationDates: {
         // update: {
         // },
-        create: {
-          assignedToRoomId: body.assignedToRoomId,
-          checkIn: body.checkIn,
-          checkOut: body.checkOut,
-          status: body.status,
-        },
+        // create: {
+        //   assignedToRoomId: body.assignedToRoomId,
+        //   checkIn: body.checkIn,
+        //   checkOut: body.checkOut,
+        //   status: body.status,
+        // },
       },
     },
     // include: {

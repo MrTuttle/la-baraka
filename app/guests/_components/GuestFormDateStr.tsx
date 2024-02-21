@@ -10,6 +10,7 @@ import {
   useController,
 } from "react-hook-form";
 import Spinner from "@/app/components/Spinner";
+import { Section } from "@radix-ui/themes";
 
 type Reservation = {
   // firstName?: string;
@@ -80,56 +81,70 @@ const GuestFormDateStr = ({ guest }: { guest: UserRoom }) => {
 
   return (
     <>
-      <div className=" pt-20 border px-4">
-        <p className="pb-10"> Modifier la réservation n° {guest.id}</p>
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Guest First Name
-              </label>
-              <input
-                placeholder="n° Guest"
-                defaultValue={guest.firstName!}
-                {...register("firstName")}
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              />
+      <Section className=" pt-40 px-4">
+        <div className="sm:w-8/12 lg:w-6/12  mx-auto p-8">
+          <h1 className="text-2xl">Guest modification</h1>
+          <p className=" font-semibold">What should’you do here ?</p>
+          <ul className=" list-disc list-inside py-4">
+            <li>Modify an existing guest</li>
+            <li className="text-gray-400">
+              Modify his dates reservations
+              <em className="text-orange-500">(coming soon)</em>
+            </li>
+          </ul>
+        </div>
+        <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-full max-w-lg border rounded px-4 py-8"
+          >
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Guest First Name
+                </label>
+                <input
+                  placeholder="n° Guest"
+                  defaultValue={guest.firstName!}
+                  {...register("firstName")}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                />
+              </div>
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Guest Last Name
+                </label>
+                <input
+                  placeholder="n° Guest"
+                  defaultValue={guest.name!}
+                  {...register("name")}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                />
+              </div>
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Phone
+                </label>
+                <input
+                  placeholder="n° Guest"
+                  defaultValue={guest.phone!}
+                  {...register("phone")}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                />
+              </div>
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Email
+                </label>
+                <input
+                  placeholder="n° Guest"
+                  defaultValue={guest.email!}
+                  {...register("email")}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                />
+              </div>
             </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Guest Last Name
-              </label>
-              <input
-                placeholder="n° Guest"
-                defaultValue={guest.name!}
-                {...register("name")}
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              />
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Phone
-              </label>
-              <input
-                placeholder="n° Guest"
-                defaultValue={guest.phone!}
-                {...register("phone")}
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              />
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Email
-              </label>
-              <input
-                placeholder="n° Guest"
-                defaultValue={guest.email!}
-                {...register("email")}
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              />
-            </div>
-          </div>
-          {guest?.reservationDates.map((resa, index) => (
+            {/* {guest?.reservationDates.map((resa, index) => (
             <div key={resa.id} className="border p-4 w-full">
               <p>Reservation n° : {resa.id}</p>
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -190,18 +205,19 @@ const GuestFormDateStr = ({ guest }: { guest: UserRoom }) => {
                 </div>
               </div>
             </div>
-          ))}
-          <div className="flex p-4 mb-20">
-            <div className=" bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-              {/* <input type="submit" /> */}
-              <button disabled={isSubmitting}>
-                {guest ? "Update" : "Submit New resa"}{" "}
-                {isSubmitting && <Spinner />}
-              </button>
+          ))} */}
+            <div className="flex p-4 mb-20">
+              <div className=" bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                {/* <input type="submit" /> */}
+                <button disabled={isSubmitting}>
+                  {guest ? "Update" : "Submit New resa"}{" "}
+                  {isSubmitting && <Spinner />}
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      </Section>
     </>
   );
 };
