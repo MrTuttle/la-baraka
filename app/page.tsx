@@ -324,7 +324,9 @@ const home = () => {
           </Section>
         </Container>
 
-        <div className=" bg-slate-700 h-screen pt-1">
+        {/* FOOTER */}
+
+        <div className=" bg-slate-700 h-screen pt-1 px-4">
           <div className="flex justify-center">
             {/* <Link href="/dashboard">
               <Button>Dashboard</Button>
@@ -367,7 +369,7 @@ const home = () => {
               <li>Dimanches 9:00 | 15:00</li>
             </ul>
 
-            <ul>
+            <ul className="">
               <li className=" border-b border-gray-500 pb-2">Localisation</li>
 
               <li className="hover:text-gray-300">
@@ -382,7 +384,7 @@ const home = () => {
               <li className="">Coordonnées GPS : 44.179878, 3.742397</li>
             </ul>
           </div>
-          <div className=" absolute bottom-2 opacity-30 text-white pt-4 w-full">
+          <div className=" lg:absolute bottom-2 opacity-30 text-white w-full">
             <ul className="flex justify-center gap-8 py-4">
               <li>La Baraka 2024</li>
               <li>
