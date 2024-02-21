@@ -8,10 +8,12 @@ import Link from "next/link";
 
 const EdditMenuButton = ({ menuId }: { menuId: number }) => {
   return (
-    <Flex align="center" gap="1">
+    <div className="flex gap-1 hover:text-blue-600">
       <HiOutlinePencilSquare />
-      <Link href={`/menus/edit/${menuId}`}>Edit Menu</Link>
-    </Flex>
+      <Link href={`/menus/edit/${menuId}`} className=" text-xs">
+        Edit Menu
+      </Link>
+    </div>
   );
 };
 

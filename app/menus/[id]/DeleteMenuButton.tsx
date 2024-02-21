@@ -20,7 +20,9 @@ const DeleteMenuButton = ({ menuId }: { menuId: number }) => {
       <AlertDialog.Root>
         <AlertDialog.Trigger>
           <Link href="">
-            <Flex gap="1" align="center">
+            {/* <div className="flex gap-1 hover:text-blue-600"> */}
+
+            <Flex gap="1" align="center" className="hover:text-blue-600">
               <HiOutlineTrash />
               <Text as="p" size="1">
                 Delete Menu

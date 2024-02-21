@@ -3,6 +3,7 @@ import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import MenuFormSkeleton from "@/app/menus/_components/MenuFormSkeleton";
+import { Section } from "@radix-ui/themes";
 
 const MenuForm = dynamic(() => import("@/app/menus/_components/MenuForm"), {
   ssr: false,
@@ -21,9 +22,9 @@ const EditMenuPage = async ({ params }: Props) => {
   if (!menu) notFound();
 
   return (
-    <div className="mx-4">
+    <Section className="pt-40 mx-4">
       <MenuForm menu={menu} />
-    </div>
+    </Section>
   );
 };
 
