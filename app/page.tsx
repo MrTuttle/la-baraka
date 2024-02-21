@@ -326,7 +326,7 @@ const home = () => {
 
         {/* FOOTER */}
 
-        <div className=" bg-slate-700 h-screen pt-1 px-4">
+        <div className=" bg-slate-700 min-h-screen pt-1 px-4">
           <div className="flex justify-center">
             {/* <Link href="/dashboard">
               <Button>Dashboard</Button>
@@ -374,7 +374,7 @@ const home = () => {
 
               <li className="hover:text-gray-300">
                 <a
-                  href="http://maps.apple.com/?q=44.17997417613866, 3.7420328899332493"
+                  href="http://maps.apple.com/?q=44.17998, 3.74203"
                   target="_blank"
                   className="pt-2 flex items-center gap-1"
                 >
@@ -384,8 +384,8 @@ const home = () => {
               <li className="">Coordonnées GPS : 44.179878, 3.742397</li>
             </ul>
           </div>
-          <div className=" lg:absolute bottom-2 opacity-30 text-white w-full">
-            <ul className="flex justify-center gap-8 py-4">
+          <div className="flex md:justify-center items-end pt-20 pb-4 md:h-[220px] lg:h-[200px] opacity-30 text-white w-full">
+            <ul className="flex gap-8">
               <li>La Baraka 2024</li>
               <li>
                 <Link href="/mentions">Mentions légales</Link>
