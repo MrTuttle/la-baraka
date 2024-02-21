@@ -1,2 +1,2 @@
-import RoomFormSkeleton from "../../_components/GuestFormSkeleton";
-export default RoomFormSkeleton;
+import GuestFormSkeleton from "../../_components/GuestFormSkeleton";
+export default GuestFormSkeleton;
