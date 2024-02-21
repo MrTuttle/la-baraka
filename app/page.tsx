@@ -23,6 +23,8 @@ import SlidePerViewGetIds from "./components/swiperRooms/SlidePerViewGetIds";
 import CldImageClient from "./components/CldImageClient";
 import { SiForestry } from "react-icons/si";
 import { MdLocalPhone } from "react-icons/md";
+import { HiPhoneArrowDownLeft } from "react-icons/hi2";
+import { HiMapPin } from "react-icons/hi2";
 
 import Background from "./components/Background";
 import DialogRoomRequest from "./components/DialogRoomRequest/DialogRoomRequest";
@@ -343,21 +345,41 @@ const home = () => {
             </div>
           </LogoFooter>
           {/* </div> */}
-          <div className=" opacity-40 flex flex-col md:flex-row  flex-wrap gap-8 md:gap-16 justify-center px-11 text-white">
+          <div className=" text-gray-400 flex flex-col md:flex-row  gap-8 md:gap-16 justify-center px-1">
             <ul className="">
-              <li className=" border-b pb-2">Hôtel La Baraka</li>
+              <li className=" border-b border-gray-500 pb-2">
+                Hôtel La Baraka
+              </li>
               <li className="pt-2">Le Village</li>
               <li>48110</li>
               <li> Sainte-Croix-Vallée-Française</li>
+              <li>France</li>
             </ul>
+
             <ul>
-              <li className=" border-b pb-2">Ouverture</li>
+              <li className=" border-b border-gray-500 pb-2">Ouverture</li>
+              <li className="pt-2 hover:text-gray-300 ">
+                <a href="tel:+33749605068" className="flex items-center gap-1">
+                  <HiPhoneArrowDownLeft /> Tel. 07 49 60 50 68
+                </a>
+              </li>
               <li className="pt-2">Semaine 9:00 | 15:00</li>
               <li>Dimanches 9:00 | 15:00</li>
             </ul>
+
             <ul>
-              <li className=" border-b pb-2">Telephone</li>
-              <li className="pt-2">07 49 60 50 68</li>
+              <li className=" border-b border-gray-500 pb-2">Localisation</li>
+
+              <li className="hover:text-gray-300">
+                <a
+                  href="http://maps.apple.com/?q=44.17997417613866, 3.7420328899332493"
+                  target="_blank"
+                  className="pt-2 flex items-center gap-1"
+                >
+                  <HiMapPin /> Ouvrir dans Apple Plan ou Android
+                </a>
+              </li>
+              <li className="">Coordonnées GPS : 44.179878, 3.742397</li>
             </ul>
           </div>
           <div className=" absolute bottom-2 opacity-30 text-white pt-4 w-full">
