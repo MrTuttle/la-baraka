@@ -45,12 +45,22 @@ const pageGuests = async () => {
           <h1 className="text-2xl">Guests page</h1>
           <p className=" font-semibold">What should’you do here ?</p>
           <ul className=" list-disc list-inside py-4">
+            <li>Create a new guest</li>
             <li>See all guests and their reservations</li>
             <li>Modify guests</li>
             <li>Access & modify a reservation</li>
           </ul>
         </div>
+
         <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
+          <div className="w-full sm:w-8/12 lg:w-6/12  mx-auto border rounded py-8 px-4">
+            <Link
+              href="/guests/new"
+              className="p-2 bg-blue-500 transition-colors ease-in rounded hover:bg-blue-600 text-white font-semibold"
+            >
+              Create New Guest
+            </Link>
+          </div>
           {guests.map((guest, index) => (
             // <Card key={guest.id} className="pb-3 mx-auto" size="4">
             <div
