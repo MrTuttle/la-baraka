@@ -44,6 +44,7 @@ import SwiperEvent from "./components/swiper/SwiperEvent";
 import EventOverFlowContainer from "./components/EventOverFlowContainer";
 import Gallery from "./components/Gallery";
 import LogoFooter from "./components/LogoFooter";
+import FooterSite from "./components/FooterSite";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -325,77 +326,6 @@ const home = () => {
         </Container>
 
         {/* FOOTER */}
-
-        <div className=" bg-slate-700 min-h-screen pt-1 px-4">
-          <div className="flex justify-center">
-            {/* <Link href="/dashboard">
-              <Button>Dashboard</Button>
-            </Link> */}
-          </div>
-          <LogoFooter>
-            <div className=" mt-[15%] xl:mt-64  mb-[15%] xl:mb-40 opacity-40 border-white prose mx-auto  text-b h-56 w-56 border-[1px]">
-              <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1] text-white">
-                <SiForestry />
-
-                <h1 className=" text-white font-extralight text-5xl">
-                  La Baraka
-                </h1>
-              </div>
-              <p className=" tracking-widest text-center text-xs pt-0 -mt-8 w-[100%] text-white">
-                CHAMBRES D’HÔTES <br /> - RESTAURANT -
-              </p>
-            </div>
-          </LogoFooter>
-          {/* </div> */}
-          <div className=" text-gray-400 flex flex-col md:flex-row  gap-8 md:gap-16 justify-center px-1">
-            <ul className="">
-              <li className=" border-b border-gray-500 pb-2">
-                Hôtel La Baraka
-              </li>
-              <li className="pt-2">Le Village</li>
-              <li>48110</li>
-              <li> Sainte-Croix-Vallée-Française</li>
-              <li>France</li>
-            </ul>
-
-            <ul>
-              <li className=" border-b border-gray-500 pb-2">Ouverture</li>
-              <li className="pt-2 hover:text-gray-300 ">
-                <a href="tel:+33749605068" className="flex items-center gap-1">
-                  <HiPhoneArrowDownLeft /> Tel. 07 49 60 50 68
-                </a>
-              </li>
-              <li className="pt-2">Semaine 9:00 | 15:00</li>
-              <li>Dimanches 9:00 | 15:00</li>
-            </ul>
-
-            <ul className="">
-              <li className=" border-b border-gray-500 pb-2">Localisation</li>
-
-              <li className="hover:text-gray-300">
-                <a
-                  href="http://maps.apple.com/?q=44.17998, 3.74203"
-                  target="_blank"
-                  className="pt-2 flex items-center gap-1"
-                >
-                  <HiMapPin /> Ouvrir dans Apple Plan ou Android
-                </a>
-              </li>
-              <li className="">Coordonnées GPS : 44.179878, 3.742397</li>
-            </ul>
-          </div>
-          <div className="flex md:justify-center items-end pt-20 pb-4 md:h-[220px] lg:h-[200px] opacity-30 text-white w-full">
-            <ul className="flex gap-8">
-              <li>La Baraka 2024</li>
-              <li>
-                <Link href="/mentions">Mentions légales</Link>
-              </li>
-              <li>
-                <Link href="/cgv">CGV</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </>
   );
