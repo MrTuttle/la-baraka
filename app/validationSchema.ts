@@ -44,7 +44,8 @@ export const userRoomSchema = z.object({
       assignedToRoomId: z.number().optional(),
       checkIn: z.string(),
       checkOut: z.string(),
-      status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
+      // status: z.string(),
+      // status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
       // status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
     })
     .optional(),

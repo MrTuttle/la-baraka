@@ -47,6 +47,7 @@ const GuestNewForm = () => {
     console.log(`GuestFormDateStr typeOf data : ${typeof data}`);
     console.log(`GuestFormDateStr Object.keys(data) : ${Object.keys(data)}`);
     console.log(`GuestFormDateStr Object.values : ${Object.values(data)}`);
+    console.log(`GuestFormDateStr Object.entries : ${Object.entries(data)}`);
     try {
       setSubmitting(true);
       // if (guest) await axios.patch("/api/guests/" + guest.id, data);

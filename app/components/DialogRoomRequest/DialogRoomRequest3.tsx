@@ -1,5 +1,9 @@
 "use client";
 //app/components/DialogRoomRequest/DialogRoomRequest.tsx
+// ALTERNATIVE TO DIALOGROOMREQUEST2
+// doesn't display DatePicker,
+// doesn't post dates,
+// only send phone call
 
 import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";

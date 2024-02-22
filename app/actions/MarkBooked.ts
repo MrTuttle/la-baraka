@@ -96,24 +96,24 @@ export async function postGuest(
       name: name as string,
       phone: phone as string,
       email: email as string,
-      // reservationDates: {
-      //   create: {
-      //     checkIn: checkIn,
-      //     checkOut: checkOut,
-      //     assignedToRoomId: roomIdInt,
-      //     status: "IN_PROGRESS",
-      //   },
-      // },
+      reservationDates: {
+        create: {
+          checkIn: checkIn,
+          checkOut: checkOut,
+          assignedToRoomId: roomIdInt,
+          status: "IN_PROGRESS",
+        },
+      },
     },
   });
-  await prisma.reservation.create({
-    data: {
-      assignedToRoomId: roomIdInt,
-      assignedToUserRoomId: 1,
-      checkIn: checkIn,
-      checkOut: checkOut,
-    },
-  });
+  // await prisma.reservation.create({
+  //   data: {
+  //     assignedToRoomId: roomIdInt,
+  //     assignedToUserRoomId: 1,
+  //     checkIn: checkIn,
+  //     checkOut: checkOut,
+  //   },
+  // });
   revalidatePath("/");
 
   console.log(

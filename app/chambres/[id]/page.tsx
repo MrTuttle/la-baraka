@@ -149,7 +149,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
             <ReactMarkdown>{room.description}</ReactMarkdown>
           </div>
 
-          {/* -------- ACTIVATE CALENDAR COMPONENT -------- */}
+          {/* -------- ACTIVATE CALENDAR COMPONENT & SEND EMAIL OR PHONE -------- */}
           <RoomDetailPageContent
             bookedDays={bookedDaysRange}
             bookedDaysRange={bookedDays}

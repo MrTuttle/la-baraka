@@ -19,6 +19,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { Spinner } from "./components";
+import { Session } from "next-auth";
 
 const NavBar = () => {
   const currentPath = usePathname();
@@ -73,6 +74,7 @@ const NavLinks = () => {
     { label: "Chambres", href: "/chambres" },
   ];
   return (
+    // <NavLinksLayout links={links} currentPath={currentPath} />
     <ul className="flex space-x-6">
       {links.map((link) => (
         <li key={link.label} className="ml-10">
@@ -91,36 +93,60 @@ const NavLinks = () => {
   );
 };
 
+const NavLinksLayout = (
+  links: {
+    label: string;
+    href: string;
+  }[],
+  currentPath: string
+) => {
+  return (
+    <ul className="flex space-x-6">
+      {links.map((link) => (
+        <li key={link.label} className="ml-10">
+          <Link
+            href={link.href}
+            className={classnames({
+              "nav-link": true,
+              "!text-zinc-900": link.href === currentPath,
+            })}
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
+// just separe layout to have a lighter AuthStatus
+const UnauthenticatedLayout = () => {
+  return (
+    <nav className="fixed w-full px-5 py-3 z-[10] border-white mix-blend-difference">
+      <Container className="mix-blend-difference">
+        <Flex justify="between">
+          <Flex align="center" gap="3">
+            <Link href="/">
+              <p className="font-semibold text-white">
+                <span className="inline-flex items-baseline pe-3">
+                  <SiForestry />
+                </span>
+                La Baraka
+              </p>
+            </Link>
+            {/* <NavLinks /> */}
+          </Flex>
+        </Flex>
+      </Container>
+    </nav>
+  );
+};
+
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
   if (status === "loading") return <Spinner />;
 
-  if (status === "unauthenticated")
-    return (
-      // <Link className="nav-link" href="/api/auth/signin">
-      //   Login
-      // </Link>
-      <nav className="fixed w-full px-5 py-3 z-[10] border-white mix-blend-difference">
-        <Container className="mix-blend-difference">
-          <Flex justify="between">
-            <Flex align="center" gap="3">
-              <Link href="/">
-                <p className="font-semibold text-white">
-                  <span className="inline-flex items-baseline pe-3">
-                    <SiForestry />
-                  </span>
-                  La Baraka
-                </p>
-              </Link>
-              {/* <NavLinks /> */}
-            </Flex>
-          </Flex>
-        </Container>
-      </nav>
-    );
-
-  // <Link href="/api/auth/signout">Log out</Link>;
+  if (status === "unauthenticated") return <UnauthenticatedLayout />;
   return (
     <>
       <nav className="fixed w-full z-[10]">

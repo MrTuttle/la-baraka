@@ -42,10 +42,25 @@ const RoomDetailPageContent = ({
   const [checkInFromBK, setCheckInFromBK] = useState<Date>(new Date());
 
   const handleStartDay = (startDay: Date) => {
-    let newStartDate = new Date();
-    newStartDate = startDay;
+    // let newStartDate = new Date();
+    const newStartDate: Date = startDay;
+    // newStartDate = startDay;
     setCheckInFromBK(newStartDate);
     console.log(`CHECKINFROMBK UPDATED : ${newStartDate}`);
+    console.log(
+      `startDate getTimezoneOffset : ${startDay.getTimezoneOffset()}`
+    );
+    console.log(`startDate toJSON : ${startDay.toJSON()}`);
+    console.log(`startDate toISOStr : ${startDay.toISOString()}`);
+    console.log(`startDate toDateStr : ${startDay.toDateString()}`);
+    console.log(
+      `startDate toLocalDateStr : ${startDay.toLocaleDateString("fr-FR", {
+        dateStyle: "full",
+      })}`
+    );
+    console.log(`startDate toLocalStr : ${startDay.toLocaleString()}`);
+    console.log(`startDate toStr : ${startDay.toString()}`);
+    console.log(`startDate toUTCStr : ${startDay.toUTCString()}`);
   };
   // get checkOutFromBK day clicked from BKPicker & set it
   const [checkOutFromBK, setCheckOutFromBK] = useState<Date>(new Date());
@@ -170,11 +185,13 @@ const RoomDetailPageContent = ({
         <div className="p-4">
           {roomPrice && (
             <p>
-              <strong>{roomPrice} € </strong>par nuits
+              {" "}
+              <strong>{roomPrice} € </strong>par nuits{" "}
+              {checkInFromBK.toISOString()} - 23:00 ?????
             </p>
           )}
-
           <p>
+            {/* LOGIC TO DISPLAY DATES SELECTED IN FOOTER */}
             {checkInFromBK.getTime() > Date.now()
               ? `${checkInFromBK.getDate().toString()} `
               : "  "}
@@ -189,7 +206,10 @@ const RoomDetailPageContent = ({
           </p>
           {/* <p>{showMiniRange(checkInFromBK, checkOutFromBK)}</p> */}
         </div>
-        <div className="p-4" id="activate-when-dates-will-works">
+
+        {/* ---- ACTIVATE TO HAVE PHONE CALL COMPONENT --- */}
+
+        {/* <div className="p-4" id="activate-when-dates-will-works">
           <DialogRoomRequest3
             checkIn={checkInFromBK}
             checkOut={checkOutFromBK}
@@ -197,8 +217,10 @@ const RoomDetailPageContent = ({
             title={title}
             roomId={roomId}
           />
-        </div>
-        {/* <div className="p-4" id="activate-when-dates-will-works">
+        </div> */}
+
+        {/* --- ACTIVATE TO HAVE SEND EMAIL COMPONENT & PUBLISH DATES --- */}
+        <div className="p-4" id="activate-when-dates-will-works">
           <DialogRoomRequest2
             checkIn={checkInFromBK}
             checkOut={checkOutFromBK}
@@ -206,7 +228,7 @@ const RoomDetailPageContent = ({
             title={title}
             roomId={roomId}
           />
-        </div> */}
+        </div>
       </div>
     </>
   );
