@@ -45,6 +45,7 @@ export const userRoomSchema = z.object({
       checkIn: z.string(),
       checkOut: z.string(),
       status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
+      // status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
     })
     .optional(),
 });
