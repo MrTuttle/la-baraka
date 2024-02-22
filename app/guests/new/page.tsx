@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -34,6 +34,11 @@ type Reservation = {
 };
 
 const newGuest = async ({ params }: Props) => {
+  type ExpDivProps = {
+    foo: string;
+    bar: string;
+  } & ComponentPropsWithoutRef<"div">; // ajoute toute les props de <'div'>, <button'>, <'input'> etc...
+
   return (
     <div className="mx-4 pt-20">
       <GuestNewForm />{" "}

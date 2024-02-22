@@ -24,20 +24,26 @@ export const imageSchema = z.object({
   assignedToRoomId: z.number().min(1),
 });
 export const userRoomSchema = z.object({
-  firstName: z.string().min(1, "title is required.").max(255),
+  firstName: z.string().min(1, "First name is required.").max(255),
   name: z
     .string()
-    .min(1, "name is required in userroomshema")
-    .max(255)
+    .min(1, "name is required in userRoomShema")
+    .max(25, "max 25 digits form name")
     .optional()
     .nullable(),
-  phone: z.string().min(10, "phone is required"),
-  email: z.string().min(10, "email is required").optional(),
+  phone: z
+    .string()
+    .min(10, "phone is required in userRoomShema, at least 10 digit "),
+  email: z
+    .string()
+    .min(10, "email is required in userRoomShema")
+    .max(25, "max 25 digit in userRoomSchema")
+    .optional(),
   reservationDates: z
     .object({
-      assignedToRoomId: z.number(),
-      checkIn: z.date(),
-      checkOut: z.date(),
+      assignedToRoomId: z.number().optional(),
+      checkIn: z.string(),
+      checkOut: z.string(),
       status: z.enum(["OCCUPIED", "VACANT", "IN_PROGRESS"]),
     })
     .optional(),
