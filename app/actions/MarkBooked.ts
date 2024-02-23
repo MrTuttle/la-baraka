@@ -36,9 +36,35 @@ export async function postGuest(
   const roomId = formData.get("roomId");
   const checkInData = formData.get("");
 
+  console.log("xxxxxxxx MarkBooked.ts xxxxxxxxxx");
   console.log(
-    `MarkBooked postGuest : track checkIn ${checkIn} - checkOut ${checkOut}`
+    `UTC CheckIn : ${checkIn.toISOString()} VS Local Checkin: ${checkIn}`
   );
+
+  // const to parse dates and rebuild them out UTC format
+  const checkInGyear = checkIn.getFullYear();
+  const checkInGmonth = checkIn.getMonth();
+  const checkInGdate = checkIn.getDate();
+  const checkInGhours = checkIn.getHours();
+
+  const checkOutGyear = checkOut.getFullYear();
+  const checkOutGmonth = checkOut.getMonth();
+  const checkOutGdate = checkOut.getDate();
+  const checkOutGhours = checkOut.getHours();
+
+  // dirty logic to rebuild date in string without UTC statement & create in prisma
+  // model : 2024-03-31T22:00:00.000Z
+  const checkInRebuild: string = `${checkInGyear}-${
+    checkInGmonth + 1 < 10 ? `0${checkInGmonth + 1}` : checkInGmonth + 1
+  }-${
+    checkInGdate < 10 ? `0${checkInGdate}` : checkInGdate
+  }T0${checkInGhours}:00:00.000Z`;
+
+  const checkOutRebuild: string = `${checkOutGyear}-${
+    checkOutGmonth + 1 < 10 ? `0${checkOutGmonth + 1}` : checkOutGmonth + 1
+  }-${
+    checkOutGdate < 10 ? `0${checkOutGdate}` : checkOutGdate
+  }T0${checkOutGhours}:00:00.000Z`;
 
   // const rId = parseInt(phone);
 
@@ -78,17 +104,6 @@ export async function postGuest(
         `,
     });
   }
-  console.log("launch userRoom.create ?");
-  console.log(`MarkBooked postGuest :
-  firstName : ${firstName} - ${typeof firstName},
-  name : ${name} - ${typeof name},
-  phone : ${phone} - ${typeof phone},
-  email : ${email} - ${typeof email},
-  checkIn : ${checkIn} - ${typeof checkIn},
-  checkOut : ${checkOut} - ${typeof checkOut},
-  assignedToRoomId: ${roomId} - ${typeof roomId}
-
-  `);
 
   await prisma.userRoom.create({
     data: {
@@ -98,30 +113,16 @@ export async function postGuest(
       email: email as string,
       reservationDates: {
         create: {
-          checkIn: checkIn,
-          checkOut: checkOut,
+          checkIn: checkInRebuild,
+          checkOut: checkOutRebuild,
           assignedToRoomId: roomIdInt,
           status: "IN_PROGRESS",
         },
       },
     },
   });
-  // await prisma.reservation.create({
-  //   data: {
-  //     assignedToRoomId: roomIdInt,
-  //     assignedToUserRoomId: 1,
-  //     checkIn: checkIn,
-  //     checkOut: checkOut,
-  //   },
-  // });
-  revalidatePath("/");
 
-  console.log(
-    `MarkBooked postGuest : GUEST CREATED (postGuest function) ${firstName}, ${name}, ${phone}, ${email}`
-  );
-  console.log(
-    `MarkBooked postGuest : DATES CREATED (postguestFunction) du ${checkIn} au ${checkOut} chambre ${roomIdInt}`
-  );
+  revalidatePath("/");
 }
 
 export default async function UserRoomForm({

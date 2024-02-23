@@ -124,7 +124,7 @@ const GuestNewForm = () => {
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
             </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Room
               </label>
@@ -135,9 +135,9 @@ const GuestNewForm = () => {
                 })}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
-            </div>
+            </div> */}
 
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            {/* <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Etat{" "}
               </label>
@@ -160,9 +160,9 @@ const GuestNewForm = () => {
                   </svg>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Check In
               </label>
@@ -172,8 +172,8 @@ const GuestNewForm = () => {
                 {...register("reservationDates.checkIn")}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
-            </div>
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            </div> */}
+            {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Check Out
               </label>
@@ -183,7 +183,7 @@ const GuestNewForm = () => {
                 {...register("reservationDates.checkOut")}
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               />
-            </div>
+            </div> */}
           </div>
           {/* {guest?.reservationDates.map((resa, index) => (
             <div key={resa.id} className="border p-4 w-full">

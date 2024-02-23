@@ -67,6 +67,7 @@ const RoomDetailPageContent = ({
   const handleEndDay = (endDay: Date) => {
     let newEndDate = new Date();
     newEndDate = endDay;
+
     setCheckOutFromBK(newEndDate);
   };
   // construction of the DialogRoomRequest2 props for react email
@@ -187,7 +188,6 @@ const RoomDetailPageContent = ({
             <p>
               {" "}
               <strong>{roomPrice} € </strong>par nuits{" "}
-              {checkInFromBK.toISOString()} - 23:00 ?????
             </p>
           )}
           <p>

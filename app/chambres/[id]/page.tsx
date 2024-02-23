@@ -54,35 +54,35 @@ const ChambreDetailPage = async ({ params }: Props) => {
   const bookedDaysRange: Date[] = [];
 
   console.log("xxxxxxxx page.tsx xxxxxxxxxx");
-  console.log(
-    `PRISMA SOURCE date : ${room.reservationDates.map((date) =>
-      date.checkIn.toLocaleDateString("fr-FR")
-    )}`
-  );
+  // console.log(
+  //   `PRISMA SOURCE date : ${room.reservationDates.map((date) =>
+  //     date.checkIn.toLocaleDateString("fr-FR")
+  //   )}`
+  // );
 
   const checksIds = room.reservationDates.map((check) => {
     let id = check.id;
     let checkIn = check.checkIn;
     let checkOut = check.checkOut;
-    console.log("page.tsx GROUP CHECK :", id, checkIn, checkOut);
+    // console.log("page.tsx GROUP CHECK :", id, checkIn, checkOut);
 
     const getDatesInRange = (startDate: Date, endDate: Date) => {
       const date = new Date(startDate.getTime());
       // const dates = [];
-      console.log(`page.tsx DATE getTime: ${date} `);
+      // console.log(`page.tsx DATE getTime: ${date} `);
 
       while (date < endDate) {
         bookedDaysRange.push(new Date(date));
         date.setDate(date.getDate() + 1);
       }
-      console.log(`page.tsx DATE setDate (+1 ): ${date} `);
-      console.log(`page.tsx DATE bokkedDaysRange: ${bookedDaysRange} `);
+      // console.log(`page.tsx DATE setDate (+1 ): ${date} `);
+      // console.log(`page.tsx DATE bokkedDaysRange: ${bookedDaysRange} `);
       return bookedDaysRange;
     };
-    console.log(
-      `DATES IN RANGE FOR RESERVATION ID ${id}: `,
-      getDatesInRange(checkIn, checkOut)
-    );
+    // console.log(
+    //   `DATES IN RANGE FOR RESERVATION ID ${id}: `,
+    //   getDatesInRange(checkIn, checkOut)
+    // );
     getDatesInRange(checkIn, checkOut);
   });
   // console.log("checkids ---- : ", checksIds);
@@ -97,30 +97,30 @@ const ChambreDetailPage = async ({ params }: Props) => {
       bookedDays.push(reservation.checkIn);
       checkIn = reservation.checkIn;
       checkOut = reservation.checkOut;
-      console.log("checkin :", checkIn);
+      // console.log("checkin :", checkIn);
       return checkIn;
     });
   };
   // assignCheckIn();
 
-  console.log("BOOKEDDAYS: ", bookedDays);
-  console.log("BOOKEDDAYS 1", bookedDays[0]);
-  console.log("CHECKIN", checkIn);
+  // console.log("BOOKEDDAYS: ", bookedDays);
+  // console.log("BOOKEDDAYS 1", bookedDays[0]);
+  // console.log("CHECKIN", checkIn);
 
   // logic to stringify dates for react email
   const bookedDaysStringify = () => {
     // let daysInString: string;
-    console.log("bookedDays:", bookedDays);
+    // console.log("bookedDays:", bookedDays);
     const list = bookedDays.map((day) => day.toDateString());
-    console.log("list:", list);
+    // console.log("list:", list);
     let daysInString: string = list.join(" | ");
-    console.log("dayInString:", daysInString);
+    // console.log("dayInString:", daysInString);
 
     return daysInString;
   };
   // bookedDaysStringify();
   const bookedDaysToEmail: string = bookedDaysStringify();
-  console.log("to email :", bookedDaysToEmail);
+  // console.log("to email :", bookedDaysToEmail);
 
   // access to UserRoom
   const DialogRoomRequest = dynamic(
