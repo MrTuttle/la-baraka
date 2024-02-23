@@ -156,12 +156,14 @@ const pageGuests = async () => {
                         <strong>
                           {addHours(booking.checkIn, 2).toUTCString()}
                         </strong>
-                        {" (UTC add2) "}
+                        {" (UTC add 2h) "}
                       </li>
                       <li>
                         Check out →{" "}
-                        <strong>{booking.checkOut.toUTCString()}</strong>
-                        {" (UTC) "}
+                        <strong>
+                          {addHours(booking.checkOut, 2).toUTCString()}
+                        </strong>
+                        {" (UTC add 2h) "}
                       </li>
                       <li className="">
                         Check in ←{" "}
@@ -173,13 +175,7 @@ const pageGuests = async () => {
                         <strong>{`MM ${booking.checkIn.getUTCMonth()} DD ${booking.checkIn.getUTCDay()} HH ${booking.checkIn.getUTCHours()}`}</strong>
                         {" (UTC) "}
                       </li>
-                      <li>
-                        Check in →{" "}
-                        <strong>{`UTC+1 ${
-                          booking.checkIn.toUTCString() + 100
-                        } `}</strong>
-                        {" (UTC) "}
-                      </li>
+
                       {/* {booking.status.valueOf()} */}
 
                       {/* <button onClick={async () => {}}>Supprimer</button> */}
