@@ -114,8 +114,10 @@ export async function postGuest(
       email: email as string,
       reservationDates: {
         create: {
-          checkIn: checkInRebuild,
-          checkOut: checkOutRebuild,
+          // checkIn: checkInRebuild, // rebuild in fixed string
+          // checkOut: checkOutRebuild, // rebuild in fixed string
+          checkIn: checkIn,
+          checkOut: checkOut,
           assignedToRoomId: roomIdInt,
           status: "IN_PROGRESS",
         },
