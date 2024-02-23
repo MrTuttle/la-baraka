@@ -27,7 +27,7 @@ const RoomDetailPageContent = ({
   roomId,
   roomPrice,
 }: BKDayProps) => {
-  // console.log("x x x x x RoomDetailPageContent x x x x x");
+  console.log("x x x x x RoomDetailPageContent x x x x x");
   // console.log(`from page.tsx :, roomId = ${roomId}`);
   // console.log(`from page.tsx :, roomPrice = ${roomPrice}`);
 
@@ -42,25 +42,80 @@ const RoomDetailPageContent = ({
   const [checkInFromBK, setCheckInFromBK] = useState<Date>(new Date());
 
   const handleStartDay = (startDay: Date) => {
+    // ----- Understand UTC (start)----- //
+    // Set variable to current date and time
+    // const now = new Date();
+    // console.log(`NOW new Date() //=> ${now}`); // => Fri Feb 23 2024 10:40:37 GMT+0100 (heure normale d’Europe centrale)
+
+    // Get the current timestamp
+    // now.getTime();
+    // console.log(`TIMESTAMP now.getTime() //=> ${now.getTime()}`); // => 1708681237004
+
+    // Assign the timestamp 0 to a new variable
+    // const epochTime = new Date(0);
+    // console.log(
+    //   `UTC Time (1er Jan 1970 universal time) - new Date(0) //=> ${epochTime}`
+    // );
+    // => Thu Jan 01 1970 01:00:00 GMT+0100 (heure normale d’Europe centrale)
+
+    // three ways to write same date :
+    // Timestamp method
+    // const timeStampMethod = new Date(-6106015800000);
+    // console.log(
+    //   `timeStampMethod - new Date(-6106015800000) //=> ${timeStampMethod} `
+    // );
+
+    // Date string method
+    // const dateStringMethod = new Date("July 4 1776 12:30");
+    // console.log(
+    //   `dateStringMethod - dateStringMethod = new Date("July 4 1776 12:30") //=> ${dateStringMethod}`
+    // );
+
+    // Date and time method
+    // const dateAndTimeStpMethod = new Date(1776, 6, 4, 12, 30, 0, 0);
+    // console.log(
+    //   `dateAndTimeStpMethod = new Date(1776, 6, 4, 12, 30, 0, 0) //=> ${dateAndTimeStpMethod}`
+    // );
+
+    // Assign current time to a variable
+    // const nowTest = new Date();
+
+    // and Print local and UTC timezones
+    // console.log(
+    //   `NOW LOCAL HOUR - nowTest.getHours() // => ${nowTest.getHours()}`
+    // );
+    // console.log(
+    //   `NOW UTC HOUR - nowTest.getUTCHours() // => ${nowTest.getUTCHours()}`
+    // );
+
+    // ----- Understand UTC (end) ----- //
+
+    // ----- BKDayPicker click return start date ----- //
+
     // let newStartDate = new Date();
+    // const newStartDate: Date = new Date(startDay);
     const newStartDate: Date = startDay;
     // newStartDate = startDay;
     setCheckInFromBK(newStartDate);
-    console.log(`CHECKINFROMBK UPDATED : ${newStartDate}`);
+
+    // ----- test it UTC vs Local ------ //
+    console.log(`BKDay Picker click return : ${newStartDate}`);
     console.log(
-      `startDate getTimezoneOffset : ${startDay.getTimezoneOffset()}`
+      `BKDay Picker click return Local Hour : ${newStartDate.getHours()}`
     );
-    console.log(`startDate toJSON : ${startDay.toJSON()}`);
-    console.log(`startDate toISOStr : ${startDay.toISOString()}`);
-    console.log(`startDate toDateStr : ${startDay.toDateString()}`);
     console.log(
-      `startDate toLocalDateStr : ${startDay.toLocaleDateString("fr-FR", {
-        dateStyle: "full",
-      })}`
+      `BKDay Picker click return UTC Hour : ${newStartDate.getUTCHours()}`
     );
-    console.log(`startDate toLocalStr : ${startDay.toLocaleString()}`);
-    console.log(`startDate toStr : ${startDay.toString()}`);
-    console.log(`startDate toUTCStr : ${startDay.toUTCString()}`);
+    console.log(
+      `BKDay Picker click UTC : YYYY:${newStartDate.getUTCFullYear()} - MM:${newStartDate.getUTCMonth()} - DD:${newStartDate.getUTCDate()} -T- HH:${newStartDate.getUTCHours()}`
+    );
+    console.log(
+      `BKDay Picker click LOC : YYYY:${newStartDate.getFullYear()} - MM:${newStartDate.getMonth()} - DD:${newStartDate.getDate()} -T- HH:${newStartDate.getHours()}`
+    );
+    console.log(
+      `const newStartDate | UTC : ${newStartDate.toJSON()} | LOC : ${newStartDate.toISOString()}
+      `
+    );
   };
   // get checkOutFromBK day clicked from BKPicker & set it
   const [checkOutFromBK, setCheckOutFromBK] = useState<Date>(new Date());

@@ -41,17 +41,17 @@ const DialogRoomRequest2 = ({
 Props) => {
   const [checkInFromPage, setCheckInFromPage] = useState<Date>(checkIn);
   const handleClick = (event: React.MouseEvent) => {
-    console.log("CLICK");
-    console.log("currentTarget : ", event.currentTarget);
-    console.log("type :", event.type);
-    console.log("target :", event.target);
-    console.log("STATE DATE ON CLICK :", checkIn);
-    console.log("STATE DATE ON CLICK :", checkInFromPage);
+    // console.log("CLICK");
+    // console.log("currentTarget : ", event.currentTarget);
+    // console.log("type :", event.type);
+    // console.log("target :", event.target);
+    // console.log("STATE DATE ON CLICK :", checkIn);
+    // console.log("STATE DATE ON CLICK :", checkInFromPage);
   };
 
-  console.log("booked days action (date to string):", bookedDaysToEmail);
+  // console.log("booked days action (date to string):", bookedDaysToEmail);
   // console.log("booked day start (date)", bookedDayStart);
-  console.log("booked day start (date)", checkIn);
+  // console.log("booked day start (date)", checkIn);
 
   // if (bookedDaysToEmail) {
   // }
@@ -61,11 +61,11 @@ Props) => {
   // console.log("startDateToDb Type : ", typeof startDateToDb);
 
   const addDates = postGuest.bind(null, checkIn, checkOut);
-  console.log("ADDDATES", addDates.toString());
-  console.log(
-    `checkIn in formdata before to postGuest (state not updated!) ${checkIn} - ${checkOut}`,
-    addDates
-  );
+  // console.log("ADDDATES", addDates.toString());
+  // console.log(
+  //   `checkIn in formdata before to postGuest (state not updated!) ${checkIn} - ${checkOut}`,
+  //   addDates
+  // );
 
   // const router = useRouter();
 

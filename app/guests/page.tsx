@@ -118,17 +118,47 @@ const pageGuests = async () => {
                         Check in ←{" "}
                         <strong>
                           {booking.checkIn.toLocaleDateString("fr-FR", {
-                            dateStyle: "full",
+                            year: "numeric",
+                            month: "short",
+                            day: "2-digit",
+                            hour: "2-digit",
+                            minute: "2-digit",
                           })}
                         </strong>
+                        {" (LOC)"}
                       </li>
                       <li>
                         Check out →{" "}
                         <strong>
                           {booking.checkOut.toLocaleDateString("fr-FR", {
-                            dateStyle: "full",
+                            year: "numeric",
+                            month: "short",
+                            day: "2-digit",
+                            hour: "2-digit",
+                            minute: "2-digit",
                           })}
                         </strong>
+                        {" (LOC)"}
+                      </li>
+                      <li className="">
+                        Check in ←{" "}
+                        <strong>{booking.checkIn.toUTCString()}</strong>
+                        {" (UTC) "}
+                      </li>
+                      <li>
+                        Check out →{" "}
+                        <strong>{booking.checkOut.toUTCString()}</strong>
+                        {" (UTC) "}
+                      </li>
+                      <li className="">
+                        Check in ←{" "}
+                        <strong>{`MM ${booking.checkIn.getMonth()} DD ${booking.checkIn.getDay()} HH ${booking.checkIn.getHours()}`}</strong>
+                        {" (LOC) "}
+                      </li>
+                      <li>
+                        Check in →{" "}
+                        <strong>{`MM ${booking.checkIn.getUTCMonth()} DD ${booking.checkIn.getUTCDay()} HH ${booking.checkIn.getUTCHours()}`}</strong>
+                        {" (UTC) "}
                       </li>
                       {/* {booking.status.valueOf()} */}
 

@@ -37,11 +37,12 @@ export async function postGuest(
   const checkInData = formData.get("");
 
   console.log("xxxxxxxx MarkBooked.ts xxxxxxxxxx");
+
   console.log(
     `UTC CheckIn : ${checkIn.toISOString()} VS Local Checkin: ${checkIn}`
   );
 
-  // const to parse dates and rebuild them out UTC format
+  // const to parse dates and rebuild them in string and fix it out UTC format
   const checkInGyear = checkIn.getFullYear();
   const checkInGmonth = checkIn.getMonth();
   const checkInGdate = checkIn.getDate();
@@ -52,7 +53,7 @@ export async function postGuest(
   const checkOutGdate = checkOut.getDate();
   const checkOutGhours = checkOut.getHours();
 
-  // dirty logic to rebuild date in string without UTC statement & create in prisma
+  // dirty logic to rebuild date in string and fix it in local time without UTC statement & create in prisma
   // model : 2024-03-31T22:00:00.000Z
   const checkInRebuild: string = `${checkInGyear}-${
     checkInGmonth + 1 < 10 ? `0${checkInGmonth + 1}` : checkInGmonth + 1
