@@ -46,7 +46,7 @@ const pageGuests = async () => {
           <p className=" font-semibold">What should’you do here ?</p>
           <ul className=" list-disc list-inside py-4">
             <li>Create a new guest</li>
-            <li>See all guests and their reservations</li>
+            <li>See all guests and their reservations (UTC & LOC)</li>
             <li>Modify guests</li>
             <li>Access & modify a reservation</li>
           </ul>
