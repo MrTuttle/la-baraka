@@ -37,6 +37,17 @@ const pageGuests = async () => {
   //   DeleteUserRoom(item);
   // };
 
+  // function addHours(date: Date, hours: number) {
+  //   date.setHours(date.getHours() + hours);
+
+  //   return date;
+  // }
+
+  const addHours = (date: Date, hours: number) => {
+    date.setHours(date.getHours() + hours);
+    return date;
+  };
+
   return (
     <>
       {/* <Vue guests={guests} /> */}
@@ -142,8 +153,10 @@ const pageGuests = async () => {
                       </li>
                       <li className="">
                         Check in ←{" "}
-                        <strong>{booking.checkIn.toUTCString()}</strong>
-                        {" (UTC) "}
+                        <strong>
+                          {addHours(booking.checkIn, 2).toUTCString()}
+                        </strong>
+                        {" (UTC add2) "}
                       </li>
                       <li>
                         Check out →{" "}
@@ -158,6 +171,13 @@ const pageGuests = async () => {
                       <li>
                         Check in →{" "}
                         <strong>{`MM ${booking.checkIn.getUTCMonth()} DD ${booking.checkIn.getUTCDay()} HH ${booking.checkIn.getUTCHours()}`}</strong>
+                        {" (UTC) "}
+                      </li>
+                      <li>
+                        Check in →{" "}
+                        <strong>{`UTC+1 ${
+                          booking.checkIn.toUTCString() + 100
+                        } `}</strong>
                         {" (UTC) "}
                       </li>
                       {/* {booking.status.valueOf()} */}
