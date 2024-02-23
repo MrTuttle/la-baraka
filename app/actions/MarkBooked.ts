@@ -56,15 +56,15 @@ export async function postGuest(
   // model : 2024-03-31T22:00:00.000Z
   const checkInRebuild: string = `${checkInGyear}-${
     checkInGmonth + 1 < 10 ? `0${checkInGmonth + 1}` : checkInGmonth + 1
-  }-${
-    checkInGdate < 10 ? `0${checkInGdate}` : checkInGdate
-  }T0${checkInGhours}:00:00.000Z`;
+  }-${checkInGdate < 10 ? `0${checkInGdate}` : checkInGdate}T${
+    checkInGhours < 10 ? `0${checkInGhours}` : checkInGhours
+  }:00:00.000Z`;
 
   const checkOutRebuild: string = `${checkOutGyear}-${
     checkOutGmonth + 1 < 10 ? `0${checkOutGmonth + 1}` : checkOutGmonth + 1
-  }-${
-    checkOutGdate < 10 ? `0${checkOutGdate}` : checkOutGdate
-  }T0${checkOutGhours}:00:00.000Z`;
+  }-${checkOutGdate < 10 ? `0${checkOutGdate}` : checkOutGdate}T${
+    checkOutGhours < 10 ? `0${checkOutGhours}` : checkOutGhours
+  }:00:00.000Z`;
 
   // const rId = parseInt(phone);
 
