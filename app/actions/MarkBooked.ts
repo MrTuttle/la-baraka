@@ -54,18 +54,14 @@ export async function postGuest(
   const checkOutGhours = checkOut.getHours();
 
   // dirty logic to rebuild date in string and fix it in local time without UTC statement & create in prisma
-  // model : 2024-03-31T22:00:00.000Z
+  // model : 2024-03-31T22:00:00.000Z --> force T00:00:00.000Z
   const checkInRebuild: string = `${checkInGyear}-${
     checkInGmonth + 1 < 10 ? `0${checkInGmonth + 1}` : checkInGmonth + 1
-  }-${checkInGdate < 10 ? `0${checkInGdate}` : checkInGdate}T${
-    checkInGhours < 10 ? `0${checkInGhours}` : checkInGhours
-  }:00:00.000Z`;
+  }-${checkInGdate < 10 ? `0${checkInGdate}` : checkInGdate}T00:00:00.000Z`;
 
   const checkOutRebuild: string = `${checkOutGyear}-${
     checkOutGmonth + 1 < 10 ? `0${checkOutGmonth + 1}` : checkOutGmonth + 1
-  }-${checkOutGdate < 10 ? `0${checkOutGdate}` : checkOutGdate}T${
-    checkOutGhours < 10 ? `0${checkOutGhours}` : checkOutGhours
-  }:00:00.000Z`;
+  }-${checkOutGdate < 10 ? `0${checkOutGdate}` : checkOutGdate}T00:00:00.000Z`;
 
   // const rId = parseInt(phone);
 
@@ -114,10 +110,10 @@ export async function postGuest(
       email: email as string,
       reservationDates: {
         create: {
-          // checkIn: checkInRebuild, // rebuild in fixed string
-          // checkOut: checkOutRebuild, // rebuild in fixed string
-          checkIn: checkIn,
-          checkOut: checkOut,
+          checkIn: checkInRebuild, // rebuild in fixed string force T00:00:00:000Z
+          checkOut: checkOutRebuild, // rebuild in fixed string force T00:00:00:000Z
+          // checkIn: checkIn, // BK Day Picker give T23:00 or T22:00
+          // checkOut: checkOut, // BK Day Picker give T23:00 or T22:00
           assignedToRoomId: roomIdInt,
           status: "IN_PROGRESS",
         },
