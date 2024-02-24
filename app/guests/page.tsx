@@ -47,6 +47,10 @@ const pageGuests = async () => {
     date.setHours(date.getHours() + hours);
     return date;
   };
+  const minusHours = (date: Date, hours: number) => {
+    date.setHours(date.getHours() - hours);
+    return date;
+  };
 
   return (
     <>
@@ -60,6 +64,13 @@ const pageGuests = async () => {
             <li>See all guests and their reservations (UTC & LOC)</li>
             <li>Modify guests</li>
             <li>Access & modify a reservation</li>
+          </ul>
+          <ul>
+            <li>DATE LOC : {new Date().toLocaleString()}</li>
+            <li>DATE JSON : {new Date().toJSON()}</li>
+            <li>DATE UTC : {new Date().toUTCString()}</li>
+            <li>DATE JSON +1 : {addHours(new Date(), 1).toJSON()}</li>
+            <li>DATE JSON -1 : {minusHours(new Date(), 1).toJSON()}</li>
           </ul>
         </div>
 
@@ -154,26 +165,16 @@ const pageGuests = async () => {
                       <li className="">
                         Check in ←{" "}
                         <strong>
-                          {addHours(booking.checkIn, 2).toUTCString()}
+                          {addHours(booking.checkIn, 1).toUTCString()}
                         </strong>
-                        {" (UTC add 2h) "}
+                        {" (UTC + 1h) "}
                       </li>
                       <li>
                         Check out →{" "}
                         <strong>
-                          {addHours(booking.checkOut, 2).toUTCString()}
+                          {addHours(booking.checkOut, 1).toUTCString()}
                         </strong>
-                        {" (UTC add 2h) "}
-                      </li>
-                      <li className="">
-                        Check in ←{" "}
-                        <strong>{`MM ${booking.checkIn.getMonth()} DD ${booking.checkIn.getDay()} HH ${booking.checkIn.getHours()}`}</strong>
-                        {" (LOC) "}
-                      </li>
-                      <li>
-                        Check in →{" "}
-                        <strong>{`MM ${booking.checkIn.getUTCMonth()} DD ${booking.checkIn.getUTCDay()} HH ${booking.checkIn.getUTCHours()}`}</strong>
-                        {" (UTC) "}
+                        {" (UTC + 1h) "}
                       </li>
 
                       {/* {booking.status.valueOf()} */}
