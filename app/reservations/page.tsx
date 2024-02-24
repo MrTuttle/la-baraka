@@ -13,6 +13,8 @@ import { ColorStatus } from "../actions/ColorStatus";
 import DeleteResaButton from "./DeleteResaButton";
 import ResaFormm from "./_components/ResaFormm";
 import ResaForm from "./_components/ResaForm";
+import { addHours } from "@/app/utilities/hoursOffset";
+
 // import Vue from "./Vue";
 
 // interface Props {
@@ -90,15 +92,17 @@ const pageReservations = async () => {
                   </li>
                   <li>
                     <strong>Check in ← </strong>
-                    {resa.checkIn.toLocaleString("fr-FR", {
+                    {addHours(resa.checkIn, 24).toLocaleDateString("fr-FR", {
                       dateStyle: "full",
-                    })}
+                    })}{" "}
+                    (UTC +24)
                   </li>
                   <li>
                     <strong>Check out → </strong>
-                    {resa.checkOut.toLocaleString("fr-FR", {
+                    {addHours(resa.checkOut, 24).toLocaleDateString("fr-FR", {
                       dateStyle: "full",
-                    })}
+                    })}{" "}
+                    (UTC +24)
                   </li>
                   <li>
                     {" "}

@@ -5,6 +5,7 @@ import { HiOutlinePencilSquare } from "react-icons/hi2";
 import Link from "next/link";
 import DeleteGuestButton from "../DeleteGuestButton";
 import { ColorStatus } from "@/app/actions/ColorStatus";
+import { addHours } from "@/app/utilities/hoursOffset";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -84,20 +85,31 @@ const pageGuest = async ({ params }: Props) => {
                       <li>Chambre {booking.assignedToRoomId}</li>
                     )}
                     <li className="">
-                      Check in ←{" "}
+                      Check inn ←{" "}
                       <strong>
-                        {booking.checkIn.toLocaleDateString("fr-FR", {
+                        {/* {booking.checkIn.toLocaleDateString("fr-FR", {
                           dateStyle: "full",
-                        })}
-                      </strong>
+                        })} */}
+                        {addHours(booking.checkIn, 24).toLocaleDateString(
+                          "fr-FR",
+                          {
+                            dateStyle: "full",
+                          }
+                        )}
+                      </strong>{" "}
+                      (UTC +24)
                     </li>
                     <li>
                       Check out →{" "}
                       <strong>
-                        {booking.checkOut.toLocaleDateString("fr-FR", {
-                          dateStyle: "full",
-                        })}
-                      </strong>
+                        {addHours(booking.checkOut, 24).toLocaleDateString(
+                          "fr-FR",
+                          {
+                            dateStyle: "full",
+                          }
+                        )}
+                      </strong>{" "}
+                      (UTC + 24)
                     </li>
                     {/* {booking.status.valueOf()} */}
 

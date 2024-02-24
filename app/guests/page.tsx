@@ -13,6 +13,7 @@ import DeleteGuest from "./DeleteGuestButton";
 import DeleteGuestButton from "./DeleteGuestButton";
 import { ColorStatus } from "../actions/ColorStatus";
 import ClientTime from "../components/ClientTime";
+import { addHours } from "@/app/utilities/hoursOffset";
 
 // import Vue from "./Vue";
 
@@ -44,14 +45,14 @@ const pageGuests = async () => {
   //   return date;
   // }
 
-  const addHours = (date: Date, hours: number) => {
-    date.setHours(date.getHours() + hours);
-    return date;
-  };
-  const minusHours = (date: Date, hours: number) => {
-    date.setHours(date.getHours() - hours);
-    return date;
-  };
+  // const addHours = (date: Date, hours: number) => {
+  //   date.setHours(date.getHours() + hours);
+  //   return date;
+  // };
+  // const minusHours = (date: Date, hours: number) => {
+  //   date.setHours(date.getHours() - hours);
+  //   return date;
+  // };
   const serverTime = new Date();
 
   return (
@@ -67,7 +68,7 @@ const pageGuests = async () => {
             <li>Modify guests</li>
             <li>Access & modify a reservation</li>
           </ul>
-          <ul>
+          {/* <ul>
             <li>DATE LOC : {new Date().toLocaleString()}</li>
             <li>DATE JSON : {new Date().toJSON()}</li>
             <li>DATE UTC : {new Date().toUTCString()}</li>
@@ -78,7 +79,7 @@ const pageGuests = async () => {
             <li>TIME OFFSET : {serverTime.getTimezoneOffset()}</li>
             <li>{serverTime.setTime(1708811781999 - 60)}</li>
             <li>{serverTime.toJSON()}</li>
-          </ul>
+          </ul> */}
         </div>
 
         <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
@@ -143,7 +144,7 @@ const pageGuests = async () => {
                       ) : (
                         <li>Chambre {booking.assignedToRoomId}</li>
                       )}
-                      <li className="">
+                      {/* <li className="">
                         Check in ←{" "}
                         <strong>
                           {booking.checkIn.toLocaleDateString("fr-FR", {
@@ -168,20 +169,22 @@ const pageGuests = async () => {
                           })}
                         </strong>
                         {" (LOC)"}
-                      </li>
+                      </li> */}
                       <li className="">
                         Check in ←{" "}
                         <strong>
-                          {addHours(booking.checkIn, 1).toUTCString()}
+                          {addHours(booking.checkIn, 24).toUTCString()}
                         </strong>
-                        {" (UTC + 1h) "}
+                        {" (UTC + 24h) "}
+                        {/* must add 24h on online server, nothing in localhost */}
                       </li>
                       <li>
                         Check out →{" "}
                         <strong>
-                          {addHours(booking.checkOut, 1).toUTCString()}
+                          {addHours(booking.checkOut, 24).toUTCString()}
                         </strong>
-                        {" (UTC + 1h) "}
+                        {" (UTC + 24h) "}
+                        {/* must add 24h on online server, nothing in localhost */}
                       </li>
 
                       {/* {booking.status.valueOf()} */}

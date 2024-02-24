@@ -238,12 +238,14 @@ const RoomDetailPageContent = ({
         flex justify-between items-center z-50
         "
       >
+        {/* DISPLAY THIS TO SEE CheckInFromBk RETURN
         <div className="border p-4 ml-4">
           <ul>
             <li>{checkInFromBK.toJSON()}</li>
             <li>{checkInFromBK.toString()}</li>
           </ul>
-        </div>
+        </div> */}
+
         <div className="p-4">
           {roomPrice && (
             <p>
