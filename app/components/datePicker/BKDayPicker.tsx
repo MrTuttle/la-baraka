@@ -8,6 +8,7 @@ import { format, isToday } from "date-fns";
 import { fr } from "date-fns/locale";
 import { useState } from "react";
 import { DateRange, DayPicker, DayClickEventHandler } from "react-day-picker";
+import { es } from "date-fns/locale";
 
 import "react-day-picker/dist/style.css";
 
@@ -127,7 +128,9 @@ const BKDayPicker = ({
         className=" bg-gray-100 rounded-2xl"
       >
         <DayPicker
+          // ISOWeek
           id="test"
+          locale={fr} // import { fr } from "date-fns/locale";
           mode="range" // ability to select a range of days
           selected={range}
           onSelect={setRange}

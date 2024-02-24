@@ -96,13 +96,13 @@ Extérieur
       reservationDates: {
         create: [
           {
-            assignedToRoomId: 4,
+            assignedToRoomId: 1,
             checkIn: new Date("2024-04-20T00:00"),
             checkOut: new Date("2024-04-22T00:00"),
             status: "OCCUPIED",
           },
           {
-            assignedToRoomId: 4,
+            assignedToRoomId: 1,
             checkIn: new Date("2024-05-20T00:00"),
             checkOut: new Date("2024-05-23T00:00"),
             status: "OCCUPIED",
@@ -123,7 +123,7 @@ Extérieur
       phone: "(+33) 00 00 00 00 00",
       reservationDates: {
         create: {
-          assignedToRoomId: 3,
+          assignedToRoomId: 2,
           checkIn: new Date("2024-06-10T00:00"),
           checkOut: new Date("2024-06-13T00:00"),
         },
@@ -142,7 +142,7 @@ Extérieur
       phone: "(+33) 10 20 30 40 50",
       reservationDates: {
         create: {
-          assignedToRoomId: 4,
+          assignedToRoomId: 2,
           checkIn: new Date("2024-04-01T00:00"),
           checkOut: new Date("2024-04-02T00:00"),
         },

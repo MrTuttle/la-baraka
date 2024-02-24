@@ -12,6 +12,7 @@ import Link from "next/link";
 import DeleteGuest from "./DeleteGuestButton";
 import DeleteGuestButton from "./DeleteGuestButton";
 import { ColorStatus } from "../actions/ColorStatus";
+import ClientTime from "../components/ClientTime";
 
 // import Vue from "./Vue";
 
@@ -51,6 +52,7 @@ const pageGuests = async () => {
     date.setHours(date.getHours() - hours);
     return date;
   };
+  const serverTime = new Date();
 
   return (
     <>
@@ -71,6 +73,11 @@ const pageGuests = async () => {
             <li>DATE UTC : {new Date().toUTCString()}</li>
             <li>DATE JSON +1 : {addHours(new Date(), 1).toJSON()}</li>
             <li>DATE JSON -1 : {minusHours(new Date(), 1).toJSON()}</li>
+            <li>Servertime : {serverTime.toJSON()}</li>
+            <li>TIME : {serverTime.getTime()}</li>
+            <li>TIME OFFSET : {serverTime.getTimezoneOffset()}</li>
+            <li>{serverTime.setTime(1708811781999 - 60)}</li>
+            <li>{serverTime.toJSON()}</li>
           </ul>
         </div>
 
