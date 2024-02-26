@@ -169,12 +169,14 @@ const RoomDetailPageContent = ({
 
   return (
     <>
-      <BKDayPicker
-        bookedDays={bookedDays}
-        bookedDaysRange={bookedDaysRange}
-        onStartDay={handleStartDay}
-        onEndDay={handleEndDay}
-      />
+      <div className="mb-20">
+        <BKDayPicker
+          bookedDays={bookedDays}
+          bookedDaysRange={bookedDaysRange}
+          onStartDay={handleStartDay}
+          onEndDay={handleEndDay}
+        />
+      </div>
       {/* ----------Room detail page content query from BK :--------- */}
 
       {/* <div className="px-11">

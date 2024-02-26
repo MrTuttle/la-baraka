@@ -64,9 +64,9 @@ const ChambreDetailPage = async ({ params }: Props) => {
   const checksIds = room.reservationDates.map((check) => {
     let id = check.id;
     // let checkIn = check.checkIn; // without time compensation
-    let checkIn = addHours(check.checkIn, 24);
+    let checkIn = addHours(check.checkIn, 24); // +24h to display online dates in BK picker
     // let checkOut = check.checkOut; // without time compensation
-    let checkOut = addHours(check.checkOut, 24);
+    let checkOut = addHours(check.checkOut, 24); // +24h to display online dates in BK picker
     console.log("page.tsx GROUP CHECK :", id, checkIn, checkOut);
 
     const getDatesInRange = (startDate: Date, endDate: Date) => {
@@ -164,56 +164,6 @@ const ChambreDetailPage = async ({ params }: Props) => {
             roomId={room.id}
             roomPrice={room.price}
           />
-          {/* -------- CALENDAR COMPONENT -------- */}
-
-          {/* <Flex direction="column" className="mx-4">
-        <div className="py-4">
-        <p>Id: {room.id}</p>
-        <p>{room.title}</p>
-        <p>{room.description}</p>
-        </div>
-      </Flex> */}
-
-          <Flex direction="column" align="center" className="p-8">
-            {/* <BKDayPicker
-          bookedDays={[new Date(2023, 11, 20), new Date(2023, 11, 23)]}
-        /> */}
-
-            {/* <BKDayPicker
-          bookedDays={bookedDaysRange}
-          bookedDaysRange={bookedDays}
-        /> */}
-          </Flex>
-
-          {/* <div className="pt-10 pb-32">
-        <DeleteRoomButton roomId={room.id} />
-        </div>
-        <div className="pt-10 pb-32">
-        <p className="pt-4 text-gray-400">
-        <strong>
-        reservation (Bd) : <br />
-        </strong>
-        {room.reservationDates.map((day, index) => (
-          <span key={index}>
-          {day.checkIn.toDateString()}
-          <br />
-          </span>
-          ))}
-          </p>
-          <p>
-          <strong>
-          bookedDay : <br />
-          </strong>
-          {bookedDays.map((day, index) => (
-            <span key={index}>
-            {day.toDateString()}
-            <br />
-            </span>
-            ))}
-            </p>
-
-
-          </div> */}
         </Flex>
       </div>
     </>

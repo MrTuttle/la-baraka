@@ -50,11 +50,24 @@ const BKDayPicker = ({
     // console.log("HANDLEDAY CLICK", range);
   };
   // MESSAGE TO GIVE SELECTED RANGE DAYS
-  let footer = <p>Please pick the first day.</p>;
+  let footer = (
+    <p className="pt-4 pb-2">
+      Selectionnez votre jour d’arrivée
+      <br />
+      puis le jour de départ
+    </p>
+  );
+
   const affiche = () => {};
   if (range?.from) {
     if (!range.to) {
-      footer = <p>{format(range.from, "PP")}</p>;
+      footer = (
+        <p className="pt-4 pb-2">
+          Arrivée : {format(range.from, "PP")}
+          <br />
+          Selectionnez votre jour de départ
+        </p>
+      );
       // FIRST DAY CLICKED = RANGE.FROM
       // console.log("first day clicked:", range.from);
       onStartDay(range.from);
@@ -62,8 +75,10 @@ const BKDayPicker = ({
       // console.log("START DAY VALUE :", onStartDay);
     } else if (range.to) {
       footer = (
-        <p>
-          {format(range.from, "PP")}–{format(range.to, "PP")}
+        <p className="pt-4 pb-2">
+          Arrivée : {format(range.from, "PP", { locale: fr })}
+          <br />
+          Départ :{format(range.to, "PP", { locale: fr })}
         </p>
       );
       // SECOND DAY CLICKED = RANGE.TO
@@ -71,54 +86,6 @@ const BKDayPicker = ({
       onEndDay(range.to);
     }
   }
-  // console.log("BOOKED DAYS FOR BKPICKER");
-  // console.log(bookedDays);
-
-  // console.log("DAY PICKER LOGS:");
-  // console.log("booked true / false / undefine : " + booked);
-  // console.log(
-  //   "bookedDays: " +
-  //     bookedDays +
-  //     "donne les jours booked: true" +
-  //     typeof bookedDays
-  // );
-  // console.log(bookedStyle); // donne le style CSS de l'élément booked
-  // console.log("dernier jour du range :" + range?.to);
-  // console.log("premier jour du range :" + range?.from);
-  // console.log("typeof range :");
-
-  // console.log(typeof range?.to); // le range.to et range.from
-  // console.log("DATE getDay :");
-
-  // console.log(bookedDays[0].getDay());
-  //=> 3 (3ejour, Mercredis)
-  // console.log(bookedDays[0].getFullYear());
-  //=> 2023
-  // console.log(bookedDays[0].getDate());
-  //=> 20
-  // console.log(bookedDays[0].getMonth());
-  //=> 11 (decembbre, ok)
-
-  // console.log("NOUVELLE DATE");
-  // bookedDays.push(new Date(2023, 11, 21));
-  // console.log(bookedDays[2]);
-  // Thu Dec 21 2023 00:00:00 GMT+0100 (heure normale d’Europe centrale)
-
-  // console.log(bookedDays[2].toLocaleDateString());
-  //=> 21/12/2023
-  // console.log(bookedDays[2].toLocaleTimeString());
-  //=> 00:00:00
-  // console.log(bookedDays[2].toDateString());
-  //=> Thu Dec 21 2023
-  // const stringOrNot = bookedDays[2].toLocaleDateString();
-  // console.log(typeof stringOrNot);
-  //=> string
-  // console.log(typeof bookedDays[0].getMonth());
-  //=> number
-  // console.log(typeof bookedDays[0]);
-  //=> object
-  // console.log(typeof bookedDays);
-  //=> object
 
   return (
     <>
@@ -138,7 +105,7 @@ const BKDayPicker = ({
           // locale={fr} // french calendar
           // fromYear={2024} // limits years
           toYear={2025}
-          defaultMonth={defaultMonth} // or new Date(), or new Date(2024, 4)
+          defaultMonth={defaultMonth} // = current month, or new Date(), or new Date(2024, 4)
           fromMonth={defaultMonth}
           // toDate={new Date(2025, 12)}
           showOutsideDays
@@ -148,25 +115,6 @@ const BKDayPicker = ({
           // modifiersStyles={{ booked: bookedStyle }}
           // captionLayout="dropdown"
         />
-        <div className="px-4">
-          <p>E T A T :</p>
-          {booked ? "this day is allready booked" : "try to pick a booked day"}
-          <p>SELECTION :</p>
-          {/* <p>Date d’arrivée : {affiche()}</p> */}
-          {/* <p>Date de départ : {range?.to}</p> */}
-        </div>
-        <div className="p-4">
-          <p>
-            <strong>reservation (props in BKDaypicker):</strong>
-            <br />
-            the get request is in page parent
-          </p>
-          {bookedDays.map((day, index) => (
-            <p key={index}>
-              {day.toLocaleDateString("fr-FR", { dateStyle: "full" })}
-            </p>
-          ))}
-        </div>
       </Flex>
     </>
   );
