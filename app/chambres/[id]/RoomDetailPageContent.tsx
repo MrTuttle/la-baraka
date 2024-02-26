@@ -116,6 +116,18 @@ const RoomDetailPageContent = ({
       `const newStartDate | UTC : ${newStartDate.toJSON()} | LOC : ${newStartDate.toISOString()}
       `
     );
+    console.log(
+      `const bookedDays | UTC : ${bookedDays.map((e) =>
+        e.toUTCString()
+      )} | LOC : ${bookedDays.map((e) => e.toLocaleString())}
+      `
+    );
+    console.log(
+      `const bookedDaysRange | UTC : ${bookedDaysRange.map((e) =>
+        e.toUTCString()
+      )} | LOC : ${bookedDaysRange.map((e) => e.toLocaleString())}
+      `
+    );
   };
   // get checkOutFromBK day clicked from BKPicker & set it
   const [checkOutFromBK, setCheckOutFromBK] = useState<Date>(new Date());

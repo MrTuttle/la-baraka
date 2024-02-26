@@ -18,6 +18,7 @@ import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomReq
 import { getDate } from "date-fns";
 import RoomDetailPageContent from "./RoomDetailPageContent";
 import ReactMarkdown from "react-markdown";
+import { addHours } from "@/app/utilities/hoursOffset";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -62,12 +63,15 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   const checksIds = room.reservationDates.map((check) => {
     let id = check.id;
-    let checkIn = check.checkIn;
-    let checkOut = check.checkOut;
-    // console.log("page.tsx GROUP CHECK :", id, checkIn, checkOut);
+    // let checkIn = check.checkIn; // without time compensation
+    let checkIn = addHours(check.checkIn, 24);
+    // let checkOut = check.checkOut; // without time compensation
+    let checkOut = addHours(check.checkOut, 24);
+    console.log("page.tsx GROUP CHECK :", id, checkIn, checkOut);
 
     const getDatesInRange = (startDate: Date, endDate: Date) => {
       const date = new Date(startDate.getTime());
+
       // const dates = [];
       // console.log(`page.tsx DATE getTime: ${date} `);
 
