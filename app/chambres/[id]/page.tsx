@@ -1,7 +1,7 @@
 // app/issues/[id]/page.tsx
 import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import DeleteRoomButton from "./DeleteRoomButton";
 import GetCldIdList from "@/app/components/GetCldIdList";
 import BKDayPicker from "@/app/components/datePicker/BKDayPicker";
@@ -19,6 +19,7 @@ import { getDate } from "date-fns";
 import RoomDetailPageContent from "./RoomDetailPageContent";
 import ReactMarkdown from "react-markdown";
 import { addHours } from "@/app/utilities/hoursOffset";
+import Loading from "./loading";
 
 interface Props {
   // params id: typed in string, 'cause url are always string
@@ -128,7 +129,8 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   // access to UserRoom
   const DialogRoomRequest = dynamic(
-    () => import("@/app/components/DialogRoomRequest/DialogRoomRequest"),
+    // () => import("@/app/components/DialogRoomRequest/DialogRoomRequest"),
+    () => import("@/app/components/swiper/DetailRoomSwiperSlide"),
     {
       ssr: false,
       loading: () => <RoomFormSkeleton />,

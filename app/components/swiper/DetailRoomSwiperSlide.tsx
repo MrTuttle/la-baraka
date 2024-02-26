@@ -1,7 +1,7 @@
 "use client";
 import { CldImage } from "next-cloudinary";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -15,6 +15,8 @@ import "@/app/components/swiper/DetailRoomSwiperSlide.css";
 import { Navigation, Pagination, EffectCreative } from "swiper/modules";
 
 import { Image, Room } from "@/app/lib/definitions";
+import { Spinner } from "..";
+import SwiperSkeleton from "../swiperRooms/SwiperSkeleton";
 type List = {
   // count: number;
   listImages: Image[];
@@ -52,14 +54,16 @@ const DetailRoomSwiperSlide = ({ listImages }: List) => {
       >
         {listImages.map((image) => (
           <SwiperSlide key={image.id} style={{ height: "45svh" }}>
-            <CldImage
-              src={image.publicId}
-              width={960}
-              height={600}
-              sizes="100vw"
-              alt={image.alt}
-              className="detailroomswiperslideu"
-            />
+            <Suspense fallback={<SwiperSkeleton />}>
+              <CldImage
+                src={image.publicId}
+                width={960}
+                height={600}
+                sizes="100vw"
+                alt={image.alt}
+                className="detailroomswiperslideu"
+              />
+            </Suspense>
           </SwiperSlide>
         ))}
       </Swiper>

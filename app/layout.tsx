@@ -7,6 +7,8 @@ import { Container, Theme } from "@radix-ui/themes";
 import AuthProvider from "./auth/Provider";
 import QueryClientProvider from "./QueryClientProvider";
 import FooterSite from "./components/FooterSite";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +29,9 @@ export default function RootLayout({
           <AuthProvider>
             <Theme>
               <NavBar />
-              <main>{children}</main>
+              <Suspense fallback={<Loading />}>
+                <main>{children}</main>
+              </Suspense>
               <FooterSite />
             </Theme>
           </AuthProvider>

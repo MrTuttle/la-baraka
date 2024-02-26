@@ -24,6 +24,9 @@ import { Image, Room } from "@/app/lib/definitions";
 import { Link } from "@radix-ui/themes";
 import DisplayCld from "../DisplayCld";
 import { getRoomsWithCover } from "@/app/lib/actions";
+import { Suspense } from "react";
+import { Spinner } from "..";
+import SwiperSkeleton from "./SwiperSkeleton";
 
 type List = {
   // count: number;
@@ -66,14 +69,31 @@ const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
               {room.assignedRoom.map(
                 (image) =>
                   image.cover && (
-                    <CldImage
+                    <Suspense
                       key={image.id}
-                      src={image.publicId}
-                      width={960}
-                      height={600}
-                      sizes="100vw"
-                      alt={image.alt}
-                    />
+                      fallback={
+                        // <div className="animate-pulse border w-full h-full bg-slate-200 flex justify-center items-center">
+                        //   <div
+                        //     className="inline-block h-16 w-16 animate-spin rounded-full border-4 border-solid border-white border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        //     role="status"
+                        //   >
+                        //     <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                        //       Loading...
+                        //     </span>
+                        //   </div>
+                        // </div>
+                        <SwiperSkeleton />
+                      }
+                    >
+                      <CldImage
+                        key={image.id}
+                        src={image.publicId}
+                        width={960}
+                        height={600}
+                        sizes="100vw"
+                        alt={image.alt}
+                      />
+                    </Suspense>
                   )
               )}
               <div className=" absolute bottom-10 text-white">

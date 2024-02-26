@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import DialogRoomRequest2 from "@/app/components/DialogRoomRequest/DialogRoomRequest2";
 import DialogRoomRequest3 from "@/app/components/DialogRoomRequest/DialogRoomRequest3";
 import { DateRange } from "react-day-picker";
+import SectionFramerRight from "@/app/components/SectionFramerRight";
+import { AnimatePresence, motion } from "framer-motion";
+import SectionFramerUp from "@/app/components/SectionFramerUp";
 
 interface BKDayProps {
   bookedDaysRange: Date[];
@@ -169,7 +172,8 @@ const RoomDetailPageContent = ({
 
   return (
     <>
-      <div className="mb-20">
+      {/* <SectionFramerRight> */}
+      <div className="mb-20 transition-all ease-in-out">
         <BKDayPicker
           bookedDays={bookedDays}
           bookedDaysRange={bookedDaysRange}
@@ -177,6 +181,7 @@ const RoomDetailPageContent = ({
           onEndDay={handleEndDay}
         />
       </div>
+      {/* </SectionFramerRight> */}
       {/* ----------Room detail page content query from BK :--------- */}
 
       {/* <div className="px-11">
@@ -297,15 +302,15 @@ const RoomDetailPageContent = ({
         </div> */}
 
         {/* --- ACTIVATE TO HAVE SEND EMAIL COMPONENT & PUBLISH DATES --- */}
-        <div className="p-4" id="activate-when-dates-will-works">
-          <DialogRoomRequest2
-            checkIn={checkInFromBK}
-            checkOut={checkOutFromBK}
-            bookedDaysToEmail={bookedDaysToEmail}
-            title={title}
-            roomId={roomId}
-          />
-        </div>
+
+        <div className="p-4" id="activate-when-dates-will-works" />
+        <DialogRoomRequest2
+          checkIn={checkInFromBK}
+          checkOut={checkOutFromBK}
+          bookedDaysToEmail={bookedDaysToEmail}
+          title={title}
+          roomId={roomId}
+        />
       </div>
     </>
   );
