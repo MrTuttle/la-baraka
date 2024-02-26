@@ -45,6 +45,7 @@ import EventOverFlowContainer from "./components/EventOverFlowContainer";
 import Gallery from "./components/Gallery";
 import LogoFooter from "./components/LogoFooter";
 import FooterSite from "./components/FooterSite";
+import SplitTypeXp from "./components/SplitTypeXp";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -80,15 +81,31 @@ const home = () => {
       <div className=" overflow-hidden bg-gray-100">
         <div className="content-holder ">
           <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto align-middle">
-            <div className="">
-              <SplitTypeFramer>
-                <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
-                  La Baraka vous accueille au cœur du village de
-                  Sainte-Croix-Vallée-Française avec ses cinq chambres d’hôtes,
-                  son bar et son restaurant. Baignade à deux pas dans le Gardon
-                  et accès direct au parc national des Cévennes.
+            <div className="overflow-hidden">
+              <SplitTypeXp>
+                <h3 className="font-light text-5xl lg:text-9xl self-center leading-[6rem]">
+                  La Baraka
                 </h3>
-              </SplitTypeFramer>
+              </SplitTypeXp>
+            </div>
+            <div className="overflow-hidden">
+              <SplitTypeXp>
+                <h3 className="font-light text-5xl lg:text-9xl self-center leading-[6rem]">
+                  Vous accueille
+                </h3>
+              </SplitTypeXp>
+            </div>
+          </Section>
+          <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto align-middle">
+            <div className="">
+              {/* <SplitTypeFramer> */}
+              <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
+                La Baraka vous accueille au cœur du village de
+                Sainte-Croix-Vallée-Française avec ses cinq chambres d’hôtes,
+                son bar et son restaurant. Baignade à deux pas dans le Gardon et
+                accès direct au parc national des Cévennes.
+              </h3>
+              {/* </SplitTypeFramer> */}
             </div>
             {/* <div className="mt-11">
               <SectionFramer>
@@ -112,18 +129,26 @@ const home = () => {
 "
         />
         <Container className="bg-gray-100">
-          <Section className="flex flex-col  lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
-            <SectionFramer>
+          <Section className="flex flex-col mt-52  lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
+            <div className="overflow-hidden border py-2">
+              <SplitTypeXp>
+                <h1 className="font-normal text-5xl lg:text-9xl">Au menu</h1>
+              </SplitTypeXp>
+            </div>
+            <div className="overflow-hidden border py-2 pt-0">
+              <SplitTypeXp>
+                <h1 className="font-normal text-5xl lg:text-9xl">
+                  Aujourd’hui
+                </h1>
+              </SplitTypeXp>
+            </div>
+            {/* <SectionFramer>
               <h1 className="font-normal text-5xl lg:text-9xl px-8 lg:px-0">
                 Au menu <br />
                 Aujourd’hui
               </h1>
-            </SectionFramer>
-            {/* <SectionFramer>
-              <h1 className="px-11 lg:px-0 font-normal text-5xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
-              Au menu <br /> aujourd’hui
-              </h1>
             </SectionFramer> */}
+
             <div className="flex mx-8 flex-col items-center lg:flex-row-reverse ">
               <div className="my-11 w-full  md:w-3/6 pl-0 pr-4">
                 <SectionFramerRight>
