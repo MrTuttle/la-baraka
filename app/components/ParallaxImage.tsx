@@ -3,8 +3,12 @@ import "./ParallaxImage.css";
 
 interface ParallaxImageProps {
   imageUrl: string;
+  imgHeight?: string;
 }
-const ParallaxImage: React.FC<ParallaxImageProps> = ({ imageUrl }) => {
+const ParallaxImage: React.FC<ParallaxImageProps> = ({
+  imageUrl,
+  imgHeight,
+}: ParallaxImageProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLDivElement | null>(null);
   const [scrollRatio, setScrollRatio] = useState<number>(0);
@@ -36,7 +40,7 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({ imageUrl }) => {
     <>
       <div
         ref={containerRef}
-        style={{ height: `300px` }}
+        style={{ height: imgHeight }}
         className="parallax-container"
       >
         <div

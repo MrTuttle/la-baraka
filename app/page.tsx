@@ -119,7 +119,8 @@ const home = () => {
           </Section>
         </div>
         <ParallaxImageParent
-          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q4akqqcgqdtuth6qflan?_a=BAVAExAO0
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-wild_ztpprl?_a=BAVAExAO0
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend_mc77u3?_a=BAVAExAO0
 
 "
         />
