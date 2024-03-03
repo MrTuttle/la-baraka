@@ -84,11 +84,21 @@ const home = () => {
           <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto align-middle">
             <div className="">
               <SplitTypeFramer>
-                <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
+                {/* <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
                   La Baraka vous accueille au cœur du village de
                   Sainte-Croix-Vallée-Française avec ses cinq chambres d’hôtes,
                   son bar et son restaurant. Baignade à deux pas dans le Gardon
                   et accès direct au parc national des Cévennes.
+                </h3> */}
+                <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
+                  Située au cœur du charmant village <br />
+                  de Sainte-Croix-Vallée-Française en Lozère, <br />
+                  au pied du Gardon et du Parc National des Cévennes, <br />
+                  La Baraka vous accueille toute l’année <br />
+                  avec ses cinq chambres d’hôtes,
+                  <br />
+                  son bar et son restaurant. <br />
+                  Baignade à deux pas !
                 </h3>
               </SplitTypeFramer>
             </div>
