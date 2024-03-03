@@ -18,17 +18,17 @@ const SplitTypeXp = ({ children }: Props) => {
   useEffect(() => {
     // Initialise SplitType on the heading element
     const splitTypeInstance = new SplitType(ref.current!, {
-      types: "lines",
+      types: "lines,words,chars",
     });
     gsap.from(splitTypeInstance.lines, {
       scrollTrigger: {
         trigger: ref.current,
         // pin: true,
         // ideal ratio mobile -90% 80%, -150% 30%
-        start: "-90% 75%", // 67% = 1/3 screen height // -80% 80% last compromise mobile/desktop
-        end: "10% 50%", // 33% = 1/3 screen height // -60% 20% last on compromise mobile/desktop
+        start: "0 90%", // 67% = 1/3 screen height // -80% 80% last compromise mobile/desktop
+        end: "0 50%", // 33% = 1/3 screen height // -60% 20% last on compromise mobile/desktop
         scrub: true, // if true = use scroll, not time for animation
-        // markers: true,
+        markers: true,
       },
       // opacity: 0, // from 0.2
       y: 200,
@@ -47,7 +47,11 @@ const SplitTypeXp = ({ children }: Props) => {
 
   return (
     <>
-      <div ref={ref} id="splitter">
+      <div
+        ref={ref}
+        id="splitter"
+        className="my-border-green overflow-hidden py-2"
+      >
         {children}
       </div>
     </>

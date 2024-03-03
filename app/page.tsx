@@ -46,6 +46,7 @@ import Gallery from "./components/Gallery";
 import LogoFooter from "./components/LogoFooter";
 import FooterSite from "./components/FooterSite";
 import SplitTypeXp from "./components/SplitTypeXp";
+import SectionFramerCutTypeFx from "./components/SectionFramerCutTypeFx";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -210,6 +211,26 @@ const home = () => {
           </SectionFramerRight>
         </div>
         <Container className="bg-gray-100">
+          <Section className="my-border-red">
+            <div className="border font-normal text-5xl lg:text-9xl text-red-700">
+              <SplitTypeXp>Au menu</SplitTypeXp>
+            </div>
+            <div className="border font-normal text-5xl lg:text-9xl text-red-700">
+              <SplitTypeXp>aujourd’hui</SplitTypeXp>
+            </div>
+          </Section>
+          {/* <Section className="my-border-red">
+            <div className="my-border-green py-2 font-normal text-5xl lg:text-9xl text-red-700">
+              <SectionFramerCutTypeFx>
+                Au menu aujourd’hui sur plusieurs lignes pour tester split types
+              </SectionFramerCutTypeFx>
+            </div>
+            <div className="my-border-green">
+              <SectionFramerCutTypeFx>Au menu</SectionFramerCutTypeFx>
+            </div>
+            <SectionFramerCutTypeFx>aujourd’hui</SectionFramerCutTypeFx>
+            <SectionFramerCutTypeFx>sur plusieurs</SectionFramerCutTypeFx>
+          </Section> */}
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>

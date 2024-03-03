@@ -223,7 +223,8 @@ const HeroScrollEffect = () => {
               </h1>
             </div>
             <p className=" tracking-widest text-center text-xs pt-0 -mt-8 w-[100%]">
-              CHAMBRES D’HÔTES <br /> - RESTAURANT -
+              BAR - RESTAURANT
+              <br /> — CHAMBRES D’HÔTES —
             </p>
           </div>
           {/* </div> */}

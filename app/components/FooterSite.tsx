@@ -20,7 +20,8 @@ const FooterSite = () => {
             <h1 className=" text-white font-extralight text-5xl">La Baraka</h1>
           </div>
           <p className=" tracking-widest text-center text-xs pt-0 -mt-8 w-[100%] text-white">
-            CHAMBRES D’HÔTES <br /> - RESTAURANT -
+            BAR - RESTAURANT
+            <br /> — CHAMBRES D’HÔTES —
           </p>
         </div>
       </LogoFooter>
