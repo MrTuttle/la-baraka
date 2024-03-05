@@ -154,7 +154,7 @@ async function main() {
     where: { id: 4 },
     update: {},
     create: {
-      title: "Chambre Jaune",
+      title: "Chambre 2",
       description: `* 1 à 3 personnes, un grand lit et un petit lit.\n\n * Lavabo dans la chambre\n\n * Salle de Douche et WC sur le palier. \n\n * Vue sur la placette.
 * Plateau de courtoisie.\n\n`,
       price: 50,
@@ -185,6 +185,26 @@ async function main() {
       //     },
       //   ],
       // },
+    },
+  });
+  const chambre3 = await prisma.room.upsert({
+    where: { id: 4 },
+    update: {},
+    create: {
+      title: "Chambre 3",
+      description: `* 1 à 2 personnes, un grand lit. * Lavabo dans la chambre. * Salle de Douche et WC sur le palier.
+* Terrasse vue sur la rivière. * Plateau de courtoisie.`,
+      price: 60,
+
+      assignedRoom: {
+        create: [
+          {
+            publicId: "oqc8zcy0wybr1e8mvu9r",
+            alt: "La Chambre 2",
+            cover: true,
+          },
+        ],
+      },
     },
   });
   const seeImages = await prisma.image.findMany({});
