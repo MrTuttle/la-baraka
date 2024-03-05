@@ -49,19 +49,17 @@ async function main() {
     },
   });
 
-  const chambrebleue = await prisma.room.upsert({
+  const chambre1 = await prisma.room.upsert({
     where: { id: 3 },
     update: {},
     create: {
-      title: "Chambre Blu",
-      description: `Chambre de 14 m² (1er étage)
- 1 lit 140x190 1 lit simple Entrée commune Linge de lit Lit bébé sur demande Plateau de courtoisie Armoire / penderie Bouilloire
-Salle de bains partagée
- Douche Lavabo Linge de toilette
-WC partagé sur le palier séparé de la salle de bains
-Extérieur
- Vue sur la rue Terrasse partagée`,
-      price: 50.99,
+      title: "Chambre 1",
+      description: `* 1 à 2 personnes, un grand lit.
+* Lavabo dans la chambre.
+* Salle de Douche et WC sur le palier.
+* Vue sur la placette.
+* Plateau de courtoisie.`,
+      price: 50,
 
       assignedRoom: {
         create: [
@@ -152,19 +150,20 @@ Extérieur
       reservationDates: true,
     },
   });
-  const chambrejaune = await prisma.room.upsert({
+  const chambre2 = await prisma.room.upsert({
     where: { id: 4 },
     update: {},
     create: {
       title: "Chambre Jaune",
-      description: "3 lits.\n\nSalle de bain.\n\nBalcon.\n\nWifi.",
+      description: `* 1 à 3 personnes, un grand lit et un petit lit.\n\n * Lavabo dans la chambre\n\n * Salle de Douche et WC sur le palier. \n\n * Vue sur la placette.
+* Plateau de courtoisie.\n\n`,
       price: 50,
 
       assignedRoom: {
         create: [
           {
             publicId: "oqc8zcy0wybr1e8mvu9r",
-            alt: "La Chambre Jaune",
+            alt: "La Chambre 2",
             cover: true,
           },
           {
@@ -196,8 +195,8 @@ Extérieur
     menuDuJour,
     menuSalads,
     menuPlats,
-    chambrebleue,
-    chambrejaune,
+    chambre1,
+    chambre2,
     seeImages,
   });
   const seeReservations = await prisma.reservation.findMany({});

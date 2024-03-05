@@ -140,8 +140,7 @@ const home = () => {
             </div> */}
             <SectionFramer>
               <h1 className="font-normal text-5xl lg:text-9xl px-8 lg:px-0">
-                Au menu <br />
-                Aujourd’hui
+                À table !
               </h1>
             </SectionFramer>
 
@@ -190,8 +189,7 @@ const home = () => {
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
               <h1 className="font-normal text-5xl lg:text-9xl">
-                Cinq chambres <br />
-                d’hôtes côté rivière
+                Cinq chambres d’hôtes <br />à deux pas de la rivière
               </h1>
             </SectionFramer>
             {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
@@ -203,9 +201,10 @@ const home = () => {
 
             <SectionFramer>
               <p className="font-light text-2xl">
-                La chambres partir de 50€ la nuit, réservables en ligne ou par
-                téléphone, la haute saison débute à partir du 0/0 jusqu’au 0/0
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Chambres à partir de 50 €, petit dejeuner compris. <br />
+                Connexion internet sécurisée gratuite. <br />
+                Les chambres sont situées au premier étage. <br />
+                Taxe de séjour : 0,70 € par adulte et par nuitée.
               </p>
             </SectionFramer>
             {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
@@ -222,14 +221,14 @@ const home = () => {
           </SectionFramerRight>
         </div>
         <Container className="bg-gray-100">
-          <Section className="my-border-red">
+          {/* <Section className="my-border-red">
             <div className="border font-normal text-5xl lg:text-9xl text-red-700">
               <SplitTypeXp>Au menu</SplitTypeXp>
             </div>
             <div className="border font-normal text-5xl lg:text-9xl text-red-700">
               <SplitTypeXp>aujourd’hui</SplitTypeXp>
             </div>
-          </Section>
+          </Section> */}
           {/* <Section className="my-border-red">
             <div className="my-border-green py-2 font-normal text-5xl lg:text-9xl text-red-700">
               <SectionFramerCutTypeFx>
