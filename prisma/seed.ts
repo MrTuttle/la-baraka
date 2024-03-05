@@ -188,7 +188,7 @@ async function main() {
     },
   });
   const chambre3 = await prisma.room.upsert({
-    where: { id: 4 },
+    where: { id: 5 },
     update: {},
     create: {
       title: "Chambre 3",
@@ -201,6 +201,48 @@ async function main() {
           {
             publicId: "oqc8zcy0wybr1e8mvu9r",
             alt: "La Chambre 2",
+            cover: true,
+          },
+        ],
+      },
+    },
+  });
+  const chambre4 = await prisma.room.upsert({
+    where: { id: 6 },
+    update: {},
+    create: {
+      title: "Chambre 4",
+      description: `* 1 à 2 personnes, un grand lit. * Lavabo dans la chambre.
+* Salle de Douche et WC sur le palier.
+* Côté rivière. * Plateau de courtoisie`,
+      price: 50,
+
+      assignedRoom: {
+        create: [
+          {
+            publicId: "oqc8zcy0wybr1e8mvu9r",
+            alt: "La Chambre 4",
+            cover: true,
+          },
+        ],
+      },
+    },
+  });
+  const chambre5 = await prisma.room.upsert({
+    where: { id: 7 },
+    update: {},
+    create: {
+      title: "Chambre 5",
+      description: `* 1 à 3 personnes, un grand lit et un petit lit.
+* Salle de Douche et WC dans la chambre.
+* Côté rivière. * Plateau de courtoisie.`,
+      price: 50,
+
+      assignedRoom: {
+        create: [
+          {
+            publicId: "oqc8zcy0wybr1e8mvu9r",
+            alt: "La Chambre 5",
             cover: true,
           },
         ],
