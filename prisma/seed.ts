@@ -10,17 +10,58 @@
 // prisma generate && prisma migrate deploy && prisma db seed && next build
 
 import { PrismaClient } from "@prisma/client";
+import { number } from "zod";
 const prisma = new PrismaClient();
 async function main() {
+  const rooms = await prisma.room.findMany();
+
+  // define a cleanup function to delete all rooms and assigned images / resevations before publish the seed
+  console.log(`CLEANUP ROOM LAUNCHED`);
+  const deleteRoomsLoop = async (counter: number) => {
+    for (let index = 1; index <= counter; index++) {
+      // delete images room
+      await prisma.image.deleteMany({
+        where: { assignedToRoomId: index },
+      });
+      // delete reservations romm
+      await prisma.reservation.deleteMany({
+        where: { assignedToRoomId: index },
+      });
+      // finaly delete room
+      await prisma.room.delete({
+        where: { id: index },
+      });
+      console.log(`delete ${index}`);
+    }
+  };
+
+  // launch the cleanup room function with the count of room already in the base
+  const countRooms = await prisma.room.count();
+  console.log(`count : ${countRooms}`);
+  deleteRoomsLoop(countRooms);
+  countRooms === 0
+    ? console.log(`no rooms to clean up `)
+    : console.log(`delete ${countRooms} rooms `);
+  console.log(`CLEANUP ${countRooms} ROOMS`);
+
+  //// end of the cleanup
+
   const clearReservations = await prisma.reservation.deleteMany({});
   const clearImages = await prisma.image.deleteMany({});
-  const clearRooms = await prisma.room.deleteMany({});
+  const clearRooms = await prisma.room.deleteMany();
   const clearMenus = await prisma.menu.deleteMany({});
   const clearUserRooms = await prisma.userRoom.deleteMany({});
+  // clearRooms();
   ////////////////////
+  console.log(`clear rooms count : ${clearRooms.count}`);
+  console.log(
+    `first menu :${prisma.menu.findFirst()} - ${prisma.menu.findFirst({
+      where: { id: 0 },
+    })}`
+  );
 
   const menuDuJour = await prisma.menu.upsert({
-    where: { id: 1 },
+    where: { id: 0 },
     update: {},
     create: {
       title: "Menu du jour",
@@ -29,17 +70,17 @@ async function main() {
     },
   });
   const menuFormule = await prisma.menu.upsert({
-    where: { id: 2 },
+    where: { id: menuDuJour.id + 1 },
     update: {},
     create: {
       title: "Formules",
       description:
-        "Entrée / Plat\n\nOù\n\nPlat / Dessert\n\n (Café boissons et non comprise)",
+        "Entrée / Plat\n\nOù\n\nPlat / Dessert\n\n (Café et boissons non comprise)",
       price: 14.5,
     },
   });
   const menuVendredi = await prisma.menu.upsert({
-    where: { id: 3 },
+    where: { id: menuDuJour.id + 2 },
     update: {},
     create: {
       title: "Vivement Vendredi!",
@@ -50,7 +91,7 @@ async function main() {
   });
   // CHAMBRES //
   const chambre1 = await prisma.room.upsert({
-    where: { id: 0 },
+    where: { id: 1 },
     update: {},
     create: {
       title: "Chambre 1",
@@ -83,12 +124,12 @@ async function main() {
     },
   });
   const chambre2 = await prisma.room.upsert({
-    where: { id: 1 },
+    where: { id: 2 },
     update: {},
     create: {
       title: "Chambre 2",
       description: `* 1 à 3 personnes, un grand lit et un petit lit.\n\n * Lavabo dans la chambre\n\n * Salle de Douche et WC sur le palier. \n\n * Vue sur la placette.
-* Plateau de courtoisie.\n\n`,
+\n\n* Plateau de courtoisie.\n\n`,
       price: 60,
 
       assignedRoom: {
@@ -108,7 +149,7 @@ async function main() {
     },
   });
   const chambre3 = await prisma.room.upsert({
-    where: { id: 2 },
+    where: { id: 3 },
     update: {},
     create: {
       title: "Chambre 3",
@@ -128,7 +169,7 @@ async function main() {
     },
   });
   const chambre4 = await prisma.room.upsert({
-    where: { id: 3 },
+    where: { id: 4 },
     update: {},
     create: {
       title: "Chambre 4",
@@ -149,7 +190,7 @@ async function main() {
     },
   });
   const chambre5 = await prisma.room.upsert({
-    where: { id: 4 },
+    where: { id: 5 },
     update: {},
     create: {
       title: "Chambre 5",
@@ -169,6 +210,28 @@ async function main() {
       },
     },
   });
+  const chambre6 = await prisma.room.upsert({
+    where: { id: 6 },
+    update: {},
+    create: {
+      title: "Chambre de test",
+      description: `* 1 à 3 personnes, un grand lit et un petit lit.
+* Salle de Douche et WC dans la chambre.
+* Côté rivière. * Plateau de courtoisie.`,
+      price: 75.5,
+
+      // assignedRoom: {
+      //   create: [
+      //     {
+      //       publicId: "bsntxwux7lk4dustqhff",
+      //       alt: "La Chambre 6",
+      //       cover: true,
+      //     },
+      //   ],
+      // },
+    },
+  });
+  console.log(`after print : ${rooms.map((e) => e.title + e.id)}`);
 
   //// USERS ROOM
   const userRoomJack = await prisma.userRoom.upsert({
@@ -242,19 +305,28 @@ async function main() {
   console.log(
     `SEED ID CHAMBRES :
     chambre 1 : ${chambre1.id},
-    chambre 2 : ${chambre1.id},
-    chambre 3 : ${chambre1.id},
-    chambre 4 : ${chambre1.id},
-    chambre 5 : ${chambre1.id},
-    chambre 6 : ${chambre1.id},
+    chambre 2 : ${chambre2.id},
+    chambre 3 : ${chambre3.id},
+    chambre 4 : ${chambre4.id},
+    chambre 5 : ${chambre5.id},
+    chambre 6 test : ${chambre6.id},
+
     }`
   );
-  const roomIdDB = await prisma.room.findMany({});
-  roomIdDB.map((chambre) => console.log(`chambre id db : ${chambre.id}`));
+  const deleteRoom6 = await prisma.room.delete({
+    where: { id: 6 },
+  });
+  console.log("prisma delete room 6");
 
-  const seeReservations = await prisma.reservation.findMany({});
-  console.log("reservations :");
-  console.log(seeReservations);
+  const roomIdDB = await prisma.room.findMany({});
+  console.log(
+    `prisma findMany room.id listing  : ${roomIdDB.map((e) => e.id)}`
+  );
+  console.log(`this is really from db if there is no room n°6`);
+
+  // const seeReservations = await prisma.reservation.findMany({});
+  // console.log("reservations :");
+  // console.log(seeReservations);
   ////////////////////
 }
 main()
