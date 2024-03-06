@@ -313,10 +313,6 @@ async function main() {
 
     }`
   );
-  const deleteRoom6 = await prisma.room.delete({
-    where: { id: 6 },
-  });
-  console.log("prisma delete room 6");
 
   const roomIdDB = await prisma.room.findMany({});
   console.log(
