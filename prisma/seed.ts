@@ -46,14 +46,15 @@ async function main() {
 
   //// end of the cleanup
 
-  const clearReservations = await prisma.reservation.deleteMany({});
-  const clearImages = await prisma.image.deleteMany({});
-  const clearRooms = await prisma.room.deleteMany();
-  const clearMenus = await prisma.menu.deleteMany({});
-  const clearUserRooms = await prisma.userRoom.deleteMany({});
+  // const clearReservations = await prisma.reservation.deleteMany({});
+  // const clearImages = await prisma.image.deleteMany({});
+  // const clearRooms = await prisma.room.deleteMany({});
+  // const clearMenus = await prisma.menu.deleteMany({});
+  // const clearUserRooms = await prisma.userRoom.deleteMany({});
+
   // clearRooms();
   ////////////////////
-  console.log(`clear rooms count : ${clearRooms.count}`);
+  // console.log(`clear rooms count : ${clearRooms.count}`);
   console.log(
     `first menu :${prisma.menu.findFirst()} - ${prisma.menu.findFirst({
       where: { id: 0 },
