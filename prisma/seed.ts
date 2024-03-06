@@ -15,37 +15,6 @@ const prisma = new PrismaClient();
 async function main() {
   const rooms = await prisma.room.findMany();
 
-  // define a cleanup function to delete all rooms and assigned images / resevations before publish the seed
-  console.log(`CLEANUP ROOM LAUNCHED`);
-  const deleteRoomsLoop = async (counter: number) => {
-    for (let index = 1; index <= counter; index++) {
-      // delete images room
-      await prisma.image.deleteMany({
-        where: { assignedToRoomId: index },
-      });
-      // delete reservations romm
-      await prisma.reservation.deleteMany({
-        where: { assignedToRoomId: index },
-      });
-      // finaly delete room
-      await prisma.room.delete({
-        where: { id: index },
-      });
-      console.log(`delete ${index}`);
-    }
-  };
-
-  // launch the cleanup room function with the count of room already in the base
-  const countRooms = await prisma.room.count();
-  console.log(`count : ${countRooms}`);
-  deleteRoomsLoop(countRooms);
-  countRooms === 0
-    ? console.log(`no rooms to clean up `)
-    : console.log(`delete ${countRooms} rooms `);
-  console.log(`CLEANUP ${countRooms} ROOMS`);
-
-  //// end of the cleanup
-
   // const clearReservations = await prisma.reservation.deleteMany({});
   // const clearImages = await prisma.image.deleteMany({});
   // const clearRooms = await prisma.room.deleteMany({});
@@ -315,11 +284,45 @@ async function main() {
     }`
   );
 
-  const roomIdDB = await prisma.room.findMany({});
+  const roomIdDBbeforeDelete = await prisma.room.findMany({});
   console.log(
-    `prisma findMany room.id listing  : ${roomIdDB.map((e) => e.id)}`
+    `HOW MANY ROOMS IN DB   : ${roomIdDBbeforeDelete.map((e) => e.id)}`
   );
-  console.log(`this is really from db if there is no room n°6`);
+
+  // DELETEROOMSLOOP START
+  // define a cleanup function to delete all rooms and assigned images / resevations before publish the seed
+  console.log(`CLEANUP ROOM LAUNCHED`);
+  const deleteRoomsLoop = async (counter: number) => {
+    for (let index = 1; index <= counter; index++) {
+      // delete images room
+      await prisma.image.deleteMany({
+        where: { assignedToRoomId: index },
+      });
+      // delete reservations romm
+      await prisma.reservation.deleteMany({
+        where: { assignedToRoomId: index },
+      });
+      // finaly delete room
+      await prisma.room.delete({
+        where: { id: index },
+      });
+      console.log(`delete room n° ${index}`);
+      const roomIdDB = await prisma.room.findMany({});
+      console.log(`HOW MANY ROOMS IN DB   : ${roomIdDB.map((e) => e.id)}`);
+    }
+  };
+
+  // launch the cleanup room function with the count of room already in the base
+  const countRooms = await prisma.room.count();
+  console.log(`count : ${countRooms}`);
+  deleteRoomsLoop(countRooms);
+  countRooms === 0
+    ? console.log(`NO ROOMS TO CLEAN UP `)
+    : console.log(`DELETE ${countRooms} ROOMS`);
+
+  // DELETEROOMSLOOP END
+  const roomIdDB = await prisma.room.findMany({});
+  console.log(`HOW MANY ROOMS IN DB after   : ${roomIdDB.map((e) => e.id)}`);
 
   // const seeReservations = await prisma.reservation.findMany({});
   // console.log("reservations :");
