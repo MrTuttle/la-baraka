@@ -20,29 +20,29 @@ async function main() {
   ////////////////////
 
   const menuDuJour = await prisma.menu.upsert({
-    where: { id: 0 },
-    update: {},
-    create: {
-      title: "Menu du jour",
-      description: "Salade Joseph.\n\nEntrecôte maître d’hotel.\n\nCrumble",
-      price: 15.5,
-    },
-  });
-  const menuSalads = await prisma.menu.upsert({
     where: { id: 1 },
     update: {},
     create: {
-      title: "Entrées",
-      description:
-        "Salade Joseph : salade du jardin, noix, huile d'olive.\n\nSalade Cesar.\n\nSalade Périgourdine.\n\nLyonnaise, Niçoise",
-      price: 7,
+      title: "Menu du jour",
+      description: "Entrée\n\nPlat\n\nDessert",
+      price: 17.5,
     },
   });
-  const menuPlats = await prisma.menu.upsert({
+  const menuFormule = await prisma.menu.upsert({
     where: { id: 2 },
     update: {},
     create: {
-      title: "Plats",
+      title: "Formules",
+      description:
+        "Entrée / Plat\n\nOù\n\nPlat / Dessert\n\n (Café boissons et non comprise)",
+      price: 14.5,
+    },
+  });
+  const menuVendredi = await prisma.menu.upsert({
+    where: { id: 3 },
+    update: {},
+    create: {
+      title: "Vivement Vendredi!",
       description:
         "Tagliatelles Carbonnara 8.5€.\n\nEntrecôte Maître d'Hôtel 12.9€.\n\nFilet de Perche 12.9€.\n\nAccompagnement aux choix :\n\nLégumes de saison, Gratin Dauphinois, Ratatouille",
       price: 0,
@@ -256,10 +256,13 @@ async function main() {
     //   userRoomBob,
     //   userRoomHelen,
     menuDuJour,
-    menuSalads,
-    menuPlats,
+    menuFormule,
+    menuVendredi,
     chambre1,
     chambre2,
+    chambre3,
+    chambre4,
+    chambre5,
     seeImages,
   });
   const seeReservations = await prisma.reservation.findMany({});
