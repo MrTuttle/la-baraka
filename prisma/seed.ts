@@ -48,9 +48,9 @@ async function main() {
       price: 0,
     },
   });
-
+  // CHAMBRES //
   const chambre1 = await prisma.room.upsert({
-    where: { id: 3 },
+    where: { id: 0 },
     update: {},
     create: {
       title: "Chambre 1",
@@ -83,13 +83,13 @@ async function main() {
     },
   });
   const chambre2 = await prisma.room.upsert({
-    where: { id: 4 },
+    where: { id: 1 },
     update: {},
     create: {
       title: "Chambre 2",
       description: `* 1 à 3 personnes, un grand lit et un petit lit.\n\n * Lavabo dans la chambre\n\n * Salle de Douche et WC sur le palier. \n\n * Vue sur la placette.
 * Plateau de courtoisie.\n\n`,
-      price: 50,
+      price: 60,
 
       assignedRoom: {
         create: [
@@ -105,22 +105,10 @@ async function main() {
           },
         ],
       },
-      // reservationDates: {
-      //   create: [
-      //     {
-      //       date: new Date("2023-12-24T00:00"),
-      //       assignedToUserRoomId: 2,
-      //     },
-      //     {
-      //       date: new Date("2023-12-25T00:00"),
-      //       assignedToUserRoomId: 2,
-      //     },
-      //   ],
-      // },
     },
   });
   const chambre3 = await prisma.room.upsert({
-    where: { id: 5 },
+    where: { id: 2 },
     update: {},
     create: {
       title: "Chambre 3",
@@ -140,7 +128,7 @@ async function main() {
     },
   });
   const chambre4 = await prisma.room.upsert({
-    where: { id: 6 },
+    where: { id: 3 },
     update: {},
     create: {
       title: "Chambre 4",
@@ -161,19 +149,19 @@ async function main() {
     },
   });
   const chambre5 = await prisma.room.upsert({
-    where: { id: 7 },
+    where: { id: 4 },
     update: {},
     create: {
       title: "Chambre 5",
       description: `* 1 à 3 personnes, un grand lit et un petit lit.
 * Salle de Douche et WC dans la chambre.
 * Côté rivière. * Plateau de courtoisie.`,
-      price: 50,
+      price: 75,
 
       assignedRoom: {
         create: [
           {
-            publicId: "oqc8zcy0wybr1e8mvu9r",
+            publicId: "bsntxwux7lk4dustqhff",
             alt: "La Chambre 5",
             cover: true,
           },
@@ -251,20 +239,19 @@ async function main() {
   });
 
   const seeImages = await prisma.image.findMany({});
-  console.log({
-    //  userRoomJack,
-    //   userRoomBob,
-    //   userRoomHelen,
-    menuDuJour,
-    menuFormule,
-    menuVendredi,
-    chambre1,
-    chambre2,
-    chambre3,
-    chambre4,
-    chambre5,
-    seeImages,
-  });
+  console.log(
+    `SEED ID CHAMBRES :
+    chambre 1 : ${chambre1.id},
+    chambre 2 : ${chambre1.id},
+    chambre 3 : ${chambre1.id},
+    chambre 4 : ${chambre1.id},
+    chambre 5 : ${chambre1.id},
+    chambre 6 : ${chambre1.id},
+    }`
+  );
+  const roomIdDB = await prisma.room.findMany({});
+  roomIdDB.map((chambre) => console.log(`chambre id db : ${chambre.id}`));
+
   const seeReservations = await prisma.reservation.findMany({});
   console.log("reservations :");
   console.log(seeReservations);
