@@ -1,19 +1,66 @@
 // build command on Vercel hosting :
 // prisma generate && prisma migrate deploy && prisma db seed && next build
+// build with seed
+// prisma generate && prisma migrate deploy && prisma db seed && next build
+
 // if need a rollback :
 // prisma generate && prisma migrate resolve --rolled-back "20240109204344_reservation_constraints" && next build
+
 // DELETE ALL + IDS RESETS (DEV MODE)
 // prisma migrate reset
+
 // (PROD MODE)
-// prisma generate && prisma migrate reset --force && prisma migrate deploy && prisma db seed && next build
+// prisma generate && prisma migrate reset --force && next build
+// must --force for reset in prod mode, reset will pass migrations and seed
+
 // NORMAL COMMAND IN PROD MOD
 // prisma generate && prisma migrate deploy && prisma db seed && next build
+
+// save : prisma generate && prisma migrate reset --force && prisma migrate deploy && prisma db seed && next build
 
 import { PrismaClient } from "@prisma/client";
 import { number } from "zod";
 const prisma = new PrismaClient();
 async function main() {
   const rooms = await prisma.room.findMany();
+  console.log(
+    `HOW MANY ROOMS IN DB after at the start of seed ?   : ${rooms.map(
+      (e) => e.id
+    )}`
+  );
+
+  // DELETEROOMSLOOP START
+  // define a cleanup function to delete all rooms and assigned images / resevations before publish the seed
+  console.log(`CLEANUP ROOM LAUNCHED`);
+  const deleteRoomsLoop = async (counter: number) => {
+    for (let index = 1; index <= counter; index++) {
+      // delete images room
+      await prisma.image.deleteMany({
+        where: { assignedToRoomId: index },
+      });
+      // delete reservations romm
+      await prisma.reservation.deleteMany({
+        where: { assignedToRoomId: index },
+      });
+      // finaly delete room
+      await prisma.room.delete({
+        where: { id: index },
+      });
+      console.log(`delete room n° ${index}`);
+      const roomIdDB = await prisma.room.findMany({});
+      console.log(`HOW MANY ROOMS IN DB   : ${roomIdDB.map((e) => e.id)}`);
+    }
+  };
+
+  // launch the cleanup room function with the count of room already in the base
+  const countRooms = await prisma.room.count();
+  console.log(`count : ${countRooms}`);
+  deleteRoomsLoop(countRooms);
+  countRooms === 0
+    ? console.log(`NO ROOMS TO CLEAN UP `)
+    : console.log(`DELETE ${countRooms} ROOMS`);
+
+  // DELETEROOMSLOOP END
 
   // const clearReservations = await prisma.reservation.deleteMany({});
   // const clearImages = await prisma.image.deleteMany({});
@@ -289,40 +336,12 @@ async function main() {
     `HOW MANY ROOMS IN DB   : ${roomIdDBbeforeDelete.map((e) => e.id)}`
   );
 
-  // DELETEROOMSLOOP START
-  // define a cleanup function to delete all rooms and assigned images / resevations before publish the seed
-  console.log(`CLEANUP ROOM LAUNCHED`);
-  const deleteRoomsLoop = async (counter: number) => {
-    for (let index = 1; index <= counter; index++) {
-      // delete images room
-      await prisma.image.deleteMany({
-        where: { assignedToRoomId: index },
-      });
-      // delete reservations romm
-      await prisma.reservation.deleteMany({
-        where: { assignedToRoomId: index },
-      });
-      // finaly delete room
-      await prisma.room.delete({
-        where: { id: index },
-      });
-      console.log(`delete room n° ${index}`);
-      const roomIdDB = await prisma.room.findMany({});
-      console.log(`HOW MANY ROOMS IN DB   : ${roomIdDB.map((e) => e.id)}`);
-    }
-  };
-
-  // launch the cleanup room function with the count of room already in the base
-  const countRooms = await prisma.room.count();
-  console.log(`count : ${countRooms}`);
-  deleteRoomsLoop(countRooms);
-  countRooms === 0
-    ? console.log(`NO ROOMS TO CLEAN UP `)
-    : console.log(`DELETE ${countRooms} ROOMS`);
-
-  // DELETEROOMSLOOP END
   const roomIdDB = await prisma.room.findMany({});
-  console.log(`HOW MANY ROOMS IN DB after   : ${roomIdDB.map((e) => e.id)}`);
+  console.log(
+    `HOW MANY ROOMS IN DB after at the end of seed ?   : ${roomIdDB.map(
+      (e) => e.id
+    )}`
+  );
 
   // const seeReservations = await prisma.reservation.findMany({});
   // console.log("reservations :");
