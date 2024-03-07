@@ -3,6 +3,7 @@ import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Room } from "@prisma/client";
+import { addHours } from "@/app/utilities/hoursOffset";
 
 // import * as React from "react";
 
@@ -69,8 +70,12 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
     }
   };
 
+  resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
+  resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
+
   return (
     <div className=" pt-20 border px-4">
+      <p>New reservation</p>
       <p>
         CheckOut +24 Hours :{" "}
         {resa?.checkIn.toLocaleDateString("fr-FR", { dateStyle: "full" })}
