@@ -19,6 +19,9 @@
 // NORMAL COMMAND IN PROD MOD -- DON'T CLEAN UP DB
 // prisma generate && prisma migrate deploy && next build
 
+// cleanup db work perfect locally
+// deploy on vercel : ids doesn't restart to 1 - but the app work
+
 import { PrismaClient } from "@prisma/client";
 import { number } from "zod";
 const prisma = new PrismaClient();

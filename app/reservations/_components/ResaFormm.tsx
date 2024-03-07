@@ -10,6 +10,7 @@ import {
   useController,
 } from "react-hook-form";
 import Spinner from "@/app/components/Spinner";
+import { addHours } from "@/app/utilities/hoursOffset";
 
 type FormValues = {
   // firstName?: string;
@@ -88,6 +89,18 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
     <>
       <div className=" pt-20 border px-4">
         <p className="pb-10"> Modifier la réservation n° {resa?.id}</p>
+        <p>
+          CheckIn +24 Hours :{" "}
+          {addHours(resa!.checkIn, 24).toLocaleDateString("fr-FR", {
+            dateStyle: "full",
+          })}
+        </p>
+        <p>
+          CheckOut +24 Hours :{" "}
+          {addHours(resa!.checkOut, 24).toLocaleDateString("fr-FR", {
+            dateStyle: "full",
+          })}
+        </p>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

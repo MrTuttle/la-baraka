@@ -71,6 +71,14 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
 
   return (
     <div className=" pt-20 border px-4">
+      <p>
+        CheckOut +24 Hours :{" "}
+        {resa?.checkIn.toLocaleDateString("fr-FR", { dateStyle: "full" })}
+      </p>
+      <p>
+        CheckOut +24 Hours :{" "}
+        {resa?.checkOut.toLocaleDateString("fr-FR", { dateStyle: "full" })}
+      </p>
       <p className="pb-10">Nouvelle reservation - resa foorm {resa?.id}</p>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
