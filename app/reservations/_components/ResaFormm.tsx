@@ -57,8 +57,8 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
 
     try {
       setSubmitting(true);
-      resa ? addHours(resa.checkIn, 24) : resa!.checkIn;
-      resa ? addHours(resa.checkOut, 24) : resa!.checkOut;
+      // resa ? addHours(resa.checkIn, 24) : resa!.checkIn;
+      // resa ? addHours(resa.checkOut, 24) : resa!.checkOut;
       if (resa) await axios.patch("/api/reservations/" + resa.id, data);
       else await axios.post("/api/reservations", data);
       router.push("/reservations");
