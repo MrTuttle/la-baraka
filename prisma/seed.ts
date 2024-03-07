@@ -25,6 +25,17 @@ const prisma = new PrismaClient();
 
 async function main() {
   const rooms = await prisma.room.findMany();
+  console.log("chambres dans la base avant post :");
+
+  rooms.map((e) => console.log(`chambre n° ${e.id}`));
+  const menusBefore = await prisma.menu.count();
+  const chambresBefore = await prisma.room.count();
+  const guestsBefore = await prisma.userRoom.count();
+  const bookingsBefore = await prisma.reservation.count();
+  const imagesBefore = await prisma.image.count();
+  console.log(
+    `menus before posted in db : ${menusBefore} - rooms before posted in db : ${chambresBefore} - guests before posted in db : ${guestsBefore} - bookings before posted in db : ${bookingsBefore} - images before posted in db : ${imagesBefore}`
+  );
 
   const menuDuJour = await prisma.menu.upsert({
     where: { id: 0 },
