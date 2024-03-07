@@ -57,11 +57,13 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
 
     try {
       setSubmitting(true);
-      console.log(`try resa checkin :${resa!.checkIn}`);
+      // console.log(`try resa checkin :${resa!.checkIn}`);
 
       resa ? addHours(resa.checkIn, -24) : resa!.checkIn;
       resa ? addHours(resa.checkOut, -24) : resa!.checkOut;
-      console.log(`try2 resa checkin :${resa!.checkIn}`);
+      // console.log(`try2 resa checkin :${resa!.checkIn}`);
+      // console.log(`datas checkin : ${data.checkIn}`);
+      // console.log(`datas all : ${data.checkIn.getUTCDate()}`);
 
       if (resa) await axios.patch("/api/reservations/" + resa.id, data);
       else await axios.post("/api/reservations", data);

@@ -3,6 +3,7 @@
 import prisma from "@/prisma/client";
 import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
+import { addHours } from "@/app/utilities/hoursOffset";
 
 /// test
 export async function MarkBooked() {
@@ -63,6 +64,22 @@ export async function postGuest(
     checkOutGmonth + 1 < 10 ? `0${checkOutGmonth + 1}` : checkOutGmonth + 1
   }-${checkOutGdate < 10 ? `0${checkOutGdate}` : checkOutGdate}T00:00:00.000Z`;
 
+  const checkInRebuildShort: string = `${
+    checkInGdate < 10 ? `0${checkInGdate}` : checkInGdate
+  }-${
+    checkInGmonth + 1 < 10 ? `0${checkInGmonth + 1}` : checkInGmonth + 1
+  }-${checkInGyear}`;
+
+  const checkOutRebuildShort: string = `${
+    checkOutGdate < 10 ? `0${checkOutGdate}` : checkOutGdate
+  }-${
+    checkOutGmonth + 1 < 10 ? `0${checkOutGmonth + 1}` : checkOutGmonth + 1
+  }-${checkOutGyear}`;
+
+  // addHours(resa.checkIn, -24);
+  const checkInMail = addHours(checkIn, 24);
+  const checkOutMail = addHours(checkOut, 24);
+
   // const rId = parseInt(phone);
 
   // tricky thing to force passing roomId in assignedRoomId
@@ -96,8 +113,12 @@ export async function postGuest(
       subject: `${firstName} Demande une réservation pour la Baraka (test)"`,
       html: `<p>${firstName} ${name}</p><p>Voudrait que tu rapelle au ${phone}</p>
       <p>email ${email}:</>
-        <p>Pour confirmer la location de la chambre ${title} ${roomId}.</p><p> Aux dates suivantes :</p>
-        <p> du <strong> ${checkIn.toDateString()}</strong> au <strong>${checkOut.toDateString()}</strong>
+        <p>Pour confirmer la location de la chambre ${title}.</p><p> Aux dates suivantes :</p>
+        <p> du <strong> ${checkInMail.toLocaleString("fr-FR", {
+          dateStyle: "full",
+        })}</strong> au <strong>${checkOutMail.toLocaleString("fr-FR", {
+        dateStyle: "full",
+      })}</strong>
         `,
     });
   }

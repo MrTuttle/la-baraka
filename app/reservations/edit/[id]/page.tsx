@@ -24,6 +24,14 @@ const EditReservationPage = async ({ params }: Props) => {
 
   if (!resa) notFound();
 
+  console.log(
+    `RESA SERV : pure ${
+      resa.checkIn
+    } - Get DATE UTC :${resa.checkIn.toLocaleString("fr-FR", {
+      dateStyle: "full",
+    })} `
+  );
+
   return (
     <div className="mx-4 pt-20">
       <h1>EDIT RESA</h1>

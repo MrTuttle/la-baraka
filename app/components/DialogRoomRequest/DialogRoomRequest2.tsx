@@ -37,6 +37,7 @@ const DialogRoomRequest2 = ({
   bookedDaysToEmail,
   checkIn,
   checkOut,
+  title,
 }: // onClick,
 Props) => {
   const [checkInFromPage, setCheckInFromPage] = useState<Date>(checkIn);
@@ -84,12 +85,19 @@ Props) => {
         <Dialog.Overlay className="DialogOverlay" />
         <Dialog.Content className="DialogContent">
           <Dialog.Title className="DialogTitle">
-            Reserver la chambre n°{roomId}
+            Reserver la {title}
           </Dialog.Title>
-          <Dialog.Description className="DialogDescription">
+          <p className=" text-xs font-medium">
+            Du{" "}
+            {checkIn.toLocaleString("fr-FR", {
+              dateStyle: "full",
+            })}{" "}
+            au {checkOut.toLocaleString("fr-FR", { dateStyle: "full" })}
+          </p>
+          <Dialog.Description className="DialogDescription text-xs">
             Nous vous rapellons sous 24 heures pour confirmer votre réservation.
-            Remplissez l’email si vous préférez être contacté par ce moyen.
-            dates : {checkIn.toDateString()} - {checkOut.toDateString()}
+            Remplissez le champ email si vous préférez être contacté par ce
+            moyen.
           </Dialog.Description>
 
           <form
@@ -105,12 +113,23 @@ Props) => {
                   type="number"
                   id="roomId"
                   name="roomId"
+                  hidden
                   // value={checkIn.toDateString()}
                   defaultValue={roomId}
                 />
               </div>
+              <div>
+                <input
+                  type="string"
+                  id="title"
+                  name="title"
+                  hidden
+                  // value={checkIn.toDateString()}
+                  defaultValue={title}
+                />
+              </div>
             </div>
-            <div>
+            {/* <div>
               <label className="block mb-2 text-sm font-medium text-gray-900">
                 {checkIn.toDateString()}
               </label>
@@ -119,9 +138,11 @@ Props) => {
                 type="date"
                 id={"checkIn"}
                 name="CheckIn"
+                value={checkIn.toISOString()}
+                placeholder="Checkin"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               ></input>
-            </div>
+            </div> */}
 
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-900">
@@ -149,7 +170,7 @@ Props) => {
             </div>
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-900">
-                tél.
+                tél. *
               </label>
 
               <input
@@ -177,7 +198,7 @@ Props) => {
             <div>
               <button
                 type="submit"
-                className="my-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className=" cursor-pointer my-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto p-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onClick={handleClick}
               >
                 bouton
