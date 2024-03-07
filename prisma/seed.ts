@@ -21,61 +21,9 @@
 import { PrismaClient } from "@prisma/client";
 import { number } from "zod";
 const prisma = new PrismaClient();
+
 async function main() {
   const rooms = await prisma.room.findMany();
-  console.log(
-    `HOW MANY ROOMS IN DB after at the start of seed ?   : ${rooms.map(
-      (e) => e.id
-    )}`
-  );
-
-  // DELETEROOMSLOOP START
-  // define a cleanup function to delete all rooms and assigned images / resevations before publish the seed
-  console.log(`CLEANUP ROOM LAUNCHED`);
-  const deleteRoomsLoop = async (counter: number) => {
-    for (let index = 1; index <= counter; index++) {
-      // delete images room
-      await prisma.image.deleteMany({
-        where: { assignedToRoomId: index },
-      });
-      // delete reservations romm
-      await prisma.reservation.deleteMany({
-        where: { assignedToRoomId: index },
-      });
-      // finaly delete room
-      await prisma.room.delete({
-        where: { id: index },
-      });
-      console.log(`delete room n° ${index}`);
-      const roomIdDB = await prisma.room.findMany({});
-      console.log(`HOW MANY ROOMS IN DB   : ${roomIdDB.map((e) => e.id)}`);
-    }
-  };
-
-  // launch the cleanup room function with the count of room already in the base
-  const countRooms = await prisma.room.count();
-  console.log(`count : ${countRooms}`);
-  deleteRoomsLoop(countRooms);
-  countRooms === 0
-    ? console.log(`NO ROOMS TO CLEAN UP `)
-    : console.log(`DELETE ${countRooms} ROOMS`);
-
-  // DELETEROOMSLOOP END
-
-  // const clearReservations = await prisma.reservation.deleteMany({});
-  // const clearImages = await prisma.image.deleteMany({});
-  // const clearRooms = await prisma.room.deleteMany({});
-  // const clearMenus = await prisma.menu.deleteMany({});
-  // const clearUserRooms = await prisma.userRoom.deleteMany({});
-
-  // clearRooms();
-  ////////////////////
-  // console.log(`clear rooms count : ${clearRooms.count}`);
-  console.log(
-    `first menu :${prisma.menu.findFirst()} - ${prisma.menu.findFirst({
-      where: { id: 0 },
-    })}`
-  );
 
   const menuDuJour = await prisma.menu.upsert({
     where: { id: 0 },
@@ -318,29 +266,13 @@ async function main() {
     },
   });
 
-  const seeImages = await prisma.image.findMany({});
+  const menus = await prisma.menu.count();
+  const chambres = await prisma.room.count();
+  const guests = await prisma.userRoom.count();
+  const bookings = await prisma.reservation.count();
+  const images = await prisma.image.count();
   console.log(
-    `SEED ID CHAMBRES :
-    chambre 1 : ${chambre1.id},
-    chambre 2 : ${chambre2.id},
-    chambre 3 : ${chambre3.id},
-    chambre 4 : ${chambre4.id},
-    chambre 5 : ${chambre5.id},
-    chambre 6 test : ${chambre6.id},
-
-    }`
-  );
-
-  const roomIdDBbeforeDelete = await prisma.room.findMany({});
-  console.log(
-    `HOW MANY ROOMS IN DB   : ${roomIdDBbeforeDelete.map((e) => e.id)}`
-  );
-
-  const roomIdDB = await prisma.room.findMany({});
-  console.log(
-    `HOW MANY ROOMS IN DB after at the end of seed ?   : ${roomIdDB.map(
-      (e) => e.id
-    )}`
+    `menus posted in db : ${menus} - rooms posted in db : ${chambres} - guets posted in db : ${guests} - bookings posted in db : ${bookings} - images posted in db : ${images}`
   );
 
   // const seeReservations = await prisma.reservation.findMany({});
@@ -348,7 +280,51 @@ async function main() {
   // console.log(seeReservations);
   ////////////////////
 }
-main()
+
+async function howMany() {
+  // this function clear 5 tables if one of theses tables has a count exceed 0
+  // otherwise, launch main() to post seed
+  const menus = await prisma.menu.count();
+  const rooms = await prisma.room.count();
+  const guests = await prisma.userRoom.count();
+  const bookings = await prisma.reservation.count();
+  const images = await prisma.image.count();
+  console.log(
+    `menus already in db : ${menus} - rooms already in db : ${rooms} - guets already in db : ${guests} - bookings already in db : ${bookings} - images already in db : ${images}`
+  );
+  const score: number = menus + rooms + guests + bookings;
+  score
+    ? console.log(`must clean up - score is truthy : ${score}`)
+    : console.log(`db clean - score is not truthy - ${score}`);
+  score
+    ? (await prisma.menu.deleteMany({}),
+      await prisma.image.deleteMany({}),
+      await prisma.reservation.deleteMany({}),
+      await prisma.room.deleteMany({}),
+      await prisma.userRoom.deleteMany({}),
+      console.log("DB was cleaned up - we should now relaunch seed"),
+      main()
+        .then(async () => {
+          await prisma.$disconnect();
+        })
+        .catch(async (e) => {
+          console.error(e);
+          await prisma.$disconnect();
+          process.exit(1);
+        }),
+      console.log("db is clean - main function launched to post the seed"))
+    : (main()
+        .then(async () => {
+          await prisma.$disconnect();
+        })
+        .catch(async (e) => {
+          console.error(e);
+          await prisma.$disconnect();
+          process.exit(1);
+        }),
+      console.log("main function launched to post the seed"));
+}
+howMany()
   .then(async () => {
     await prisma.$disconnect();
   })
