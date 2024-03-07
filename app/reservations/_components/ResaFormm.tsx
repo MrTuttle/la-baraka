@@ -57,8 +57,12 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
 
     try {
       setSubmitting(true);
-      // resa ? addHours(resa.checkIn, 24) : resa!.checkIn;
-      // resa ? addHours(resa.checkOut, 24) : resa!.checkOut;
+      console.log(`try resa checkin :${resa!.checkIn}`);
+
+      resa ? addHours(resa.checkIn, -24) : resa!.checkIn;
+      resa ? addHours(resa.checkOut, -24) : resa!.checkOut;
+      console.log(`try2 resa checkin :${resa!.checkIn}`);
+
       if (resa) await axios.patch("/api/reservations/" + resa.id, data);
       else await axios.post("/api/reservations", data);
       router.push("/reservations");
@@ -93,7 +97,7 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
   return (
     <>
       <div className=" pt-20 border px-4">
-        <p className="pb-10"> Modifier la réservationn n° {resa?.id}</p>
+        <p className="pb-10"> Modifier la réservation n° {resa?.id}</p>
         <p>
           CheckIn +24 Hours :{" "}
           {resa?.checkIn.toLocaleDateString("fr-FR", {
