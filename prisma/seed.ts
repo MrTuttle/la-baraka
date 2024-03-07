@@ -9,14 +9,15 @@
 // DELETE ALL + IDS RESETS (DEV MODE)
 // prisma migrate reset
 
-// (PROD MODE)
+// (PROD MODE) -- ERASE DB
 // prisma generate && prisma migrate reset --force && next build
 // must --force for reset in prod mode, reset will pass migrations and seed
 
-// NORMAL COMMAND IN PROD MOD
+// NORMAL COMMAND IN PROD MOD WITH SEED --- ERASE DB
 // prisma generate && prisma migrate deploy && prisma db seed && next build
 
-// save : prisma generate && prisma migrate reset --force && prisma migrate deploy && prisma db seed && next build
+// NORMAL COMMAND IN PROD MOD -- DON'T CLEAN UP DB
+// prisma generate && prisma migrate deploy && next build
 
 import { PrismaClient } from "@prisma/client";
 import { number } from "zod";
