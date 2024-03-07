@@ -54,13 +54,16 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
     console.log(`ResaFormm typeOf data : ${typeof data}`);
     console.log(`ResaFormm Object.keys(data) : ${Object.keys(data)}`);
     console.log(`ResaFormm Object.values : ${Object.values(data)}`);
+
     try {
       setSubmitting(true);
+      resa ? addHours(resa.checkIn, 24) : resa!.checkIn;
+      resa ? addHours(resa.checkOut, 24) : resa!.checkOut;
       if (resa) await axios.patch("/api/reservations/" + resa.id, data);
       else await axios.post("/api/reservations", data);
       router.push("/reservations");
       router.refresh();
-      console.log(`SUBMIT ON RESA ${resa?.id}`);
+      console.log(`SUBMIT ON RESA ${resa?.id} - checkIn: ${resa?.checkIn}`);
     } catch (error) {
       setSubmitting(false);
       console.log(`SUBMIT FAILL ON RESA ${resa?.id}`);
@@ -84,20 +87,22 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) => {
 
   // }
   // Create a ThemeProvider component to provide the context value to child components
+  resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
+  resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
 
   return (
     <>
       <div className=" pt-20 border px-4">
-        <p className="pb-10"> Modifier la réservation n° {resa?.id}</p>
+        <p className="pb-10"> Modifier la réservationn n° {resa?.id}</p>
         <p>
           CheckIn +24 Hours :{" "}
-          {addHours(resa!.checkIn, 24).toLocaleDateString("fr-FR", {
+          {resa?.checkIn.toLocaleDateString("fr-FR", {
             dateStyle: "full",
           })}
         </p>
         <p>
           CheckOut +24 Hours :{" "}
-          {addHours(resa!.checkOut, 24).toLocaleDateString("fr-FR", {
+          {resa?.checkOut.toLocaleDateString("fr-FR", {
             dateStyle: "full",
           })}
         </p>
