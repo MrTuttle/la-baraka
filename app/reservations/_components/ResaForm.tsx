@@ -1,7 +1,12 @@
 "use client";
 import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, {
+  ChangeEventHandler,
+  useEffect,
+  useState,
+  ChangeEvent,
+} from "react";
 import { Room } from "@prisma/client";
 import { addHours } from "@/app/utilities/hoursOffset";
 
@@ -49,12 +54,34 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
   const [isSubmitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log(`REASA : ${resa}`);
-    console.log(`ResaFormm data : ${data}`);
-    console.log(`ResaFormm typeOf data : ${typeof data}`);
+  const onChange: ChangeEventHandler<FormValues> = (event) => {
+    console.log(`data onChange : ${event.type}`);
+  };
+  //  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //    // Do something
+  //    console.log(``);
+
+  //  };
+
+  const onSubmit: SubmitHandler<FormValues> = async (data, event) => {
+    console.log(`RESA : ${resa}`); //=> its the props, typed form values
+    console.log(`EVENT : ${event}`);
+    console.log(`EVENT type : ${event?.type}`); //=> submit
+    console.log(`EVENT phase : ${event?.eventPhase}`); //=> submit
+
+    console.log(`ResaFormm data : ${typeof data}`);
+    console.log(`ResaFormm typeOf data.checkIn : ${typeof data.checkIn}`); //=> string
+    console.log(
+      `ResaFormm typeOf data.checkIn.valueOff : ${data.checkIn.valueOf()}`
+    ); //=> date
+    console.log(
+      `ResaFormm typeOf data.checkIn.valueOff : ${data.checkOut.valueOf()}`
+    ); //=> date
     console.log(`ResaFormm Object.keys(data) : ${Object.keys(data)}`);
     console.log(`ResaFormm Object.values : ${Object.values(data)}`);
+    console.log(`Resaform data.checkIn : ${data.checkIn}`);
+    console.log(`Resaform data.checkOut : ${data.checkOut}`);
+
     try {
       setSubmitting(true);
       if (resa) await axios.patch("/api/reservations/" + resa.id, data);
@@ -70,20 +97,32 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
     }
   };
 
+  const onError = () => {
+    console.log("WRONG");
+  };
+
   // resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
   // resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
 
   return (
     <div className=" pt-20 border px-4">
       <p className="pb-10">Nouvelle reservation - ResaForm {resa?.id}</p>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
+      <form
+        onSubmit={handleSubmit((data) => {
+          console.log("datas :", data), onError;
+        })}
+        className="w-full max-w-lg"
+      >
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
               N° Chambre
             </label>
             <input
-              {...register("assignedToRoomId", { valueAsNumber: true })}
+              {...register("assignedToRoomId", {
+                required: true,
+                valueAsNumber: true,
+              })}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             />
             <p className="text-red-500 text-xs italic">
@@ -95,7 +134,10 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
               N° Guest
             </label>
             <input
-              {...register("assignedToUserRoomId", { valueAsNumber: true })}
+              {...register("assignedToUserRoomId", {
+                valueAsNumber: true,
+                required: true,
+              })}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-last-name"
             />
@@ -117,6 +159,7 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
               Check Out
             </label>
             <input
+              type="date"
               {...register("checkOut")}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />

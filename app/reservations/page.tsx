@@ -14,6 +14,7 @@ import DeleteResaButton from "./DeleteResaButton";
 import ResaFormm from "./_components/ResaFormm";
 import ResaForm from "./_components/ResaForm";
 import { addHours } from "@/app/utilities/hoursOffset";
+import DisplayListResas from "./_components/DisplayListResas";
 
 // import Vue from "./Vue";
 
@@ -54,76 +55,95 @@ const pageReservations = async () => {
             <li>Access to owner’s reservations</li>
           </ul>
         </div>
-        <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
-          {reservations.map((resa, index) => (
-            // <Card key={resa.id} className="pb-3 max-w-md" size="4">
-            <div
-              key={resa.id}
-              className="pb-3 w-full sm:w-8/12 lg:w-6/12  mx-auto border rounded p-8"
-            >
-              <div className="flex flex-wrap -mx-3 mb-6 justify-between">
-                <div className=" block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                  Reservation n° {resa.id}
-                </div>
-                <div className="flex gap-4">
-                  <Link href={"/reservations/edit/" + resa.id}>
-                    <div className=" flex gap-1">
-                      <HiOutlinePencilSquare />
-                      <p className=" text-xs">Modifier</p>
-                    </div>
-                  </Link>
-                  <DeleteResaButton resaId={resa.id} />
-                </div>
-              </div>
+      </Section>
 
-              <div className=" sm:w-full">
-                <ul className="divide-y divide-gray-300 text-xs pt-4 [&_*]:py-2">
-                  <li>
-                    <strong>Chambre {resa.assignedToRoomId}</strong>
-                  </li>
-                  <li>
-                    <Link
-                      href={`/guests/${resa.assignedToUserRoomId}`}
-                      className=" text-blue-500 font-medium hover:underline"
-                    >
-                      {resa.assignedToUserRoom.firstName}{" "}
-                      {resa.assignedToUserRoom.name}
-                    </Link>
-                  </li>
-                  <li>
-                    <strong>Check in ← </strong>
-                    {addHours(resa.checkIn, 24).toLocaleDateString("fr-FR", {
-                      dateStyle: "full",
-                    })}{" "}
-                    (UTC +24)
-                  </li>
-                  <li>
-                    <strong>Check out → </strong>
-                    {addHours(resa.checkOut, 24).toLocaleDateString("fr-FR", {
-                      dateStyle: "full",
-                    })}{" "}
-                    (UTC +24)
-                  </li>
-                  <li>
-                    {" "}
-                    <Badge
-                      variant="solid"
-                      radius="full"
-                      color={ColorStatus(resa.status)}
-                      className="mt-6 mb-2"
-                    >
-                      {resa.status}
-                    </Badge>
-                  </li>
-                </ul>
+      <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
+        {reservations.map((resa, index) => (
+          // <Card key={resa.id} className="pb-3 max-w-md" size="4">
+          <div
+            key={resa.id}
+            className="pb-3 w-full sm:w-8/12 lg:w-6/12  mx-auto border rounded p-8"
+          >
+            <div className="flex flex-wrap -mx-3 mb-6 justify-between">
+              <div className=" block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                Reservation n° {resa.id}
+              </div>
+              <div className="flex gap-4">
+                <Link href={"/reservations/edit/" + resa.id}>
+                  <div className=" flex gap-1">
+                    <HiOutlinePencilSquare />
+                    <p className=" text-xs">Modifier</p>
+                  </div>
+                </Link>
+                <DeleteResaButton resaId={resa.id} />
               </div>
             </div>
-            // </Card>
-          ))}
+
+            <div className=" sm:w-full">
+              <ul className="divide-y divide-gray-300 text-xs pt-4 [&_*]:py-2">
+                <li>
+                  <strong>Chambre {resa.assignedToRoomId}</strong>
+                </li>
+                <li>
+                  <Link
+                    href={`/guests/${resa.assignedToUserRoomId}`}
+                    className=" text-blue-500 font-medium hover:underline"
+                  >
+                    {resa.assignedToUserRoom.firstName}{" "}
+                    {resa.assignedToUserRoom.name}
+                  </Link>
+                </li>
+                <li>
+                  <strong>Check in ← </strong>
+                  {addHours(resa.checkIn, 24).toLocaleDateString("fr-FR", {
+                    dateStyle: "full",
+                  })}{" "}
+                  (UTC +24)
+                </li>
+                <li>
+                  <strong>Check out → </strong>
+                  {addHours(resa.checkOut, 24).toLocaleDateString("fr-FR", {
+                    dateStyle: "full",
+                  })}{" "}
+                  (UTC +24)
+                </li>
+                <li>
+                  {" "}
+                  <Badge
+                    variant="solid"
+                    radius="full"
+                    color={ColorStatus(resa.status)}
+                    className="mt-6 mb-2"
+                  >
+                    {resa.status}
+                  </Badge>
+                </li>
+              </ul>
+            </div>
+          </div>
+          // </Card>
+        ))}
+      </div>
+      <section className=" py-10 px-10">
+        <div className=" max-w-md mx-auto">
+          <p>REVERVATION WITHOUT TIME COMPENSATION (TO DO)</p>
+          <br />
+          <p>
+            Must DisplayListResas (display resas without time compensation) :
+          </p>
+          <p>
+            write correct typescript to add userRoom & room to reservations
+            props
+          </p>
+          {/* <DisplayListResas reservations={reservations} /> */}
         </div>
-      </Section>
-      <div className="py-20 px-4 border">
-        <div className="flex">
+      </section>
+
+      <div className="mt-4 py-4 px-4 border max-w-md mx-auto">
+        <div className="flex flex-wrap gap-2 py-4">
+          <p>
+            <strong>Pick one of thes values for the form</strong>
+          </p>
           <ul className="flex mr-11">
             Chambres :
             {rooms.map((room, index) => (
