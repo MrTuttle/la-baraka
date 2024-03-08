@@ -70,21 +70,12 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
     }
   };
 
-  resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
-  resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
+  // resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
+  // resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
 
   return (
     <div className=" pt-20 border px-4">
-      <p>New reservation</p>
-      <p>
-        CheckOut +24 Hours :{" "}
-        {resa?.checkIn.toLocaleDateString("fr-FR", { dateStyle: "full" })}
-      </p>
-      <p>
-        CheckOut +24 Hours :{" "}
-        {resa?.checkOut.toLocaleDateString("fr-FR", { dateStyle: "full" })}
-      </p>
-      <p className="pb-10">Nouvelle reservation - resa foorm {resa?.id}</p>
+      <p className="pb-10">Nouvelle reservation - ResaForm {resa?.id}</p>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
