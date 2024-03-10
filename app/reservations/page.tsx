@@ -3,7 +3,7 @@
 import React from "react";
 import getUserRooms from "../actions/GetUserRooms";
 import DeleteUserRoom from "../actions/DeleteUserRoom";
-// import { Reservation, Room } from "@prisma/client";
+import { Reservation, Room, UserRoom } from "@prisma/client";
 import prisma from "@/prisma/client";
 import { Badge, Button, Card, Flex, Section, Text } from "@radix-ui/themes";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
@@ -32,6 +32,15 @@ const pageReservations = async () => {
   });
   const rooms = await prisma.room.findMany({});
   const guests = await prisma.userRoom.findMany({});
+  const createListSelect = (rooms: Room[], guests: UserRoom[]) => {
+    const roomsIds = rooms.map((item, index) => item.id);
+    const listRooms = roomsIds;
+    const guestIds = guests.map((item, index) => item.id);
+    const listGuests = guestIds;
+    return { listRooms, listGuests };
+  };
+  const listSelect = createListSelect(rooms, guests);
+  console.log(`LISTSELECT ${listSelect.listRooms} - ${listSelect.listGuests}`);
 
   // SERVER END
 
@@ -140,28 +149,7 @@ const pageReservations = async () => {
       <DisplayListResas />
 
       <div className="mt-4 py-4 px-4 border max-w-md mx-auto">
-        <div className="flex flex-wrap gap-2 py-4">
-          <p>
-            <strong>Pick one of thes values for the form</strong>
-          </p>
-          <ul className="flex mr-11">
-            Chambres :
-            {rooms.map((room, index) => (
-              <li key={room.id} className="px-2">
-                {room.id}
-              </li>
-            ))}
-          </ul>
-          <ul className="flex mr-11">
-            Guests :
-            {guests.map((guest, index) => (
-              <li key={guest.id} className="px-2">
-                {guest.id}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <ResaForm />
+        <ResaForm listSelect={listSelect} />
       </div>
     </>
   );

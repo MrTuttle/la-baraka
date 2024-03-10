@@ -19,6 +19,7 @@ import {
   UseControllerProps,
   useController,
 } from "react-hook-form";
+import UserRoom from "@/app/types/UserRoom";
 
 // type FormData = {
 //   firstName: string;
@@ -39,8 +40,26 @@ type FormValues = {
   assignedToRoomId: number;
   assignedToUserRoomId: number;
 };
+interface Rooms {
+  id: number;
+  title: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+  price: number;
+}
+interface ResaformProps {
+  listSelect: {
+    listRooms: number[];
+    listGuests: number[];
+  };
+}
 
-export default function ResaForm({ resa }: { resa?: FormValues }) {
+export default function ResaForm({
+  listSelect,
+  listSelect: { listRooms, listGuests },
+}: ResaformProps) {
+  // { resa }: { resa?: FormValues },
   // RHForm tools
   // const {
   //   register,
@@ -65,10 +84,10 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
   //  };
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log(`RESA : ${resa}`); //=> its the props, typed form values
+    // console.log(`RESA : ${resa}`); //=> its the props, typed form values
     // console.log(`EVENT : ${event}`);
-    console.log(`EVENT type : ${event?.type}`); //=> submit
-    console.log(`EVENT phase : ${event?.eventPhase}`); //=> submit
+    // console.log(`EVENT type : ${event?.type}`); //=> submit
+    // console.log(`EVENT phase : ${event?.eventPhase}`); //=> submit
 
     console.log(`ResaFormm data : ${typeof data}`);
     console.log(`ResaFormm typeOf data.checkIn : ${typeof data.checkIn}`); //=> string
@@ -85,8 +104,7 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
 
     try {
       setSubmitting(true);
-      if (resa) await axios.patch("/api/reservations/" + resa.id, data);
-      else await axios.post("/api/reservations", data);
+      await axios.post("/api/reservations", data);
       router.push("/reservations");
       router.refresh();
       console.log(`SUBMIT ON RESA `);
@@ -106,11 +124,62 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
   // resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
 
   return (
-    <div className=" pt-20 border px-4">
-      <p className="pb-10">Nouvelle reservation - ResaForm {resa?.id}</p>
+    <div className=" pt-20 w-full px-4">
+      <p className="pb-10">Nouvelle reservation - ResaForm </p>
+
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              N° Chambre
+            </label>
+            <select
+              {...register("assignedToRoomId", { valueAsNumber: true })}
+              // className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="block w-full appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+            >
+              {listRooms.map((room, index) => (
+                <option key={index}>{room}</option>
+              ))}
+            </select>
+            <div className="pointer-events-none relative -inset-y-9 flex items-center px-2 justify-end">
+              <svg
+                className="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              N° Guest
+            </label>
+            <select
+              {...register("assignedToUserRoomId", {
+                valueAsNumber: true,
+                required: true,
+              })} // className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+            >
+              {listGuests.map((guest, index) => (
+                <option key={index}>{guest}</option>
+              ))}
+            </select>
+            {/* <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"> */}
+
+            <div className="pointer-events-none relative -inset-y-9 flex items-center px-2 justify-end">
+              <svg
+                className="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </div>
+          </div>
+          {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
               N° Chambre
             </label>
@@ -124,8 +193,8 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
             <p className="text-red-500 text-xs italic">
               Please fill out this field ex: 2024-06-05T00:00:00.000Z
             </p>
-          </div>
-          <div className="w-full md:w-1/2 px-3">
+          </div> */}
+          {/* <div className="w-full md:w-1/2 px-3">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
               N° Guest
             </label>
@@ -137,7 +206,7 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-last-name"
             />
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-wrap -mx-3 mb-2">
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -156,6 +225,7 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
             </label>
             <input
               // type="date"
+              placeholder="2024-06-05T00:00:00.000Z"
               {...register("checkOut")}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
