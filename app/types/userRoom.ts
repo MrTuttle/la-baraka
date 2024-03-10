@@ -1,6 +1,9 @@
-type UserRoom = {
-  firstName: string;
-  name: string;
+export default interface UserRoom {
+  id: number;
+  firstName: string | null;
+  name: string | null;
+  email: string | null;
   phone: string;
-  email: string;
-};
+  emailVerified: Date | null;
+  joker: string;
+}

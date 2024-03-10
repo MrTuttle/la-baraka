@@ -57,15 +57,16 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
   const onChange: ChangeEventHandler<FormValues> = (event) => {
     console.log(`data onChange : ${event.type}`);
   };
+
   //  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
   //    // Do something
   //    console.log(``);
 
   //  };
 
-  const onSubmit: SubmitHandler<FormValues> = async (data, event) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     console.log(`RESA : ${resa}`); //=> its the props, typed form values
-    console.log(`EVENT : ${event}`);
+    // console.log(`EVENT : ${event}`);
     console.log(`EVENT type : ${event?.type}`); //=> submit
     console.log(`EVENT phase : ${event?.eventPhase}`); //=> submit
 
@@ -107,12 +108,7 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
   return (
     <div className=" pt-20 border px-4">
       <p className="pb-10">Nouvelle reservation - ResaForm {resa?.id}</p>
-      <form
-        onSubmit={handleSubmit((data) => {
-          console.log("datas :", data), onError;
-        })}
-        className="w-full max-w-lg"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -159,7 +155,7 @@ export default function ResaForm({ resa }: { resa?: FormValues }) {
               Check Out
             </label>
             <input
-              type="date"
+              // type="date"
               {...register("checkOut")}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />

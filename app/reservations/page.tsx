@@ -3,7 +3,7 @@
 import React from "react";
 import getUserRooms from "../actions/GetUserRooms";
 import DeleteUserRoom from "../actions/DeleteUserRoom";
-import { Reservation, Room } from "@prisma/client";
+// import { Reservation, Room } from "@prisma/client";
 import prisma from "@/prisma/client";
 import { Badge, Button, Card, Flex, Section, Text } from "@radix-ui/themes";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
@@ -23,6 +23,7 @@ import DisplayListResas from "./_components/DisplayListResas";
 // }
 
 // SERVER
+
 const pageReservations = async () => {
   const reservations = await prisma.reservation.findMany({
     include: {
@@ -58,6 +59,7 @@ const pageReservations = async () => {
       </Section>
 
       <div className="px-4 flex flex-col gap-3 justify-center flex-wrap">
+        <p className=" text-center">+ 24 h</p>
         {reservations.map((resa, index) => (
           // <Card key={resa.id} className="pb-3 max-w-md" size="4">
           <div
@@ -128,16 +130,14 @@ const pageReservations = async () => {
         <div className=" max-w-md mx-auto">
           <p>REVERVATION WITHOUT TIME COMPENSATION (TO DO)</p>
           <br />
-          <p>
-            Must DisplayListResas (display resas without time compensation) :
-          </p>
+          <p></p>
           <p>
             write correct typescript to add userRoom & room to reservations
             props
           </p>
-          {/* <DisplayListResas reservations={reservations} /> */}
         </div>
       </section>
+      <DisplayListResas />
 
       <div className="mt-4 py-4 px-4 border max-w-md mx-auto">
         <div className="flex flex-wrap gap-2 py-4">
