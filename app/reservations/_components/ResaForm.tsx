@@ -215,7 +215,7 @@ export default function ResaForm({
             </label>
             <input
               placeholder="2024-06-05T00:00:00.000Z"
-              {...register("checkIn")}
+              {...register("checkIn", { required: true })}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
           </div>
@@ -226,7 +226,7 @@ export default function ResaForm({
             <input
               // type="date"
               placeholder="2024-06-05T00:00:00.000Z"
-              {...register("checkOut")}
+              {...register("checkOut", { required: true })}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />
           </div>
