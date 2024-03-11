@@ -40,7 +40,6 @@ const pageReservations = async () => {
     return { listRooms, listGuests };
   };
   const listSelect = createListSelect(rooms, guests);
-  console.log(`LISTSELECT ${listSelect.listRooms} - ${listSelect.listGuests}`);
 
   // SERVER END
 

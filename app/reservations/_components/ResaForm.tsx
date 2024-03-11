@@ -19,7 +19,6 @@ import {
   UseControllerProps,
   useController,
 } from "react-hook-form";
-import UserRoom from "@/app/types/UserRoom";
 
 // type FormData = {
 //   firstName: string;
