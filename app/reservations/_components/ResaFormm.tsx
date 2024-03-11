@@ -124,9 +124,9 @@ const ResaFormm = ({
     //   }, [pathname, searchParams]);
 
     // }
-    // Create a ThemeProvider component to provide the context value to child components
-    resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
-    resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
+    // To do ? Create a ThemeProvider component to provide the context value to child components
+    // resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
+    // resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
 
     // const optionsEtat = [
     //   { label: "Libre", value: "VACANT" },
@@ -151,18 +151,35 @@ const ResaFormm = ({
       <>
         <div className=" pt-20 border px-4">
           <p className="pb-10"> Modifier la réservation n° {resa?.id}</p>
-          <p>
-            CheckIn +24 Hours :{" "}
-            {resa?.checkIn.toLocaleDateString("fr-FR", {
-              dateStyle: "full",
-            })}
-          </p>
-          <p>
-            CheckOut +24 Hours :{" "}
-            {resa?.checkOut.toLocaleDateString("fr-FR", {
-              dateStyle: "full",
-            })}
-          </p>
+          <div className="flex py-4">
+            <div className="border text-xs text-slate-300 p-2 w-1/3">
+              <p>
+                <strong>Component date</strong>
+              </p>
+              <p>toJSON : {new Date().toJSON()}</p>
+              <p>toLocal : {new Date().toLocaleString()}</p>
+            </div>
+            <div className="border text-xs text-slate-300 p-2 w-1/3">
+              <p>
+                <strong>toLocalDateString</strong>
+              </p>
+              <p>
+                CheckIn +2 Hours from UTC :{" "}
+                {resa?.checkIn.toLocaleString("fr-FR")}
+              </p>
+              <p>
+                CheckOut +2 Hours from UTC :{" "}
+                {resa?.checkOut.toLocaleString("fr-FR")}
+              </p>
+            </div>
+            <div className="border text-xs text-slate-300 p-2 w-1/3">
+              <p>
+                <strong>toJSON</strong>
+              </p>
+              <p>CheckIn +24 Hours : {resa?.checkIn.toJSON()}</p>
+              <p>CheckOut +24 Hours : {resa?.checkOut.toJSON()}</p>
+            </div>
+          </div>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
             <div className="flex flex-wrap -mx-3 mb-6">
               {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
