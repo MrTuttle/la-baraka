@@ -55,7 +55,6 @@ interface ResaformProps {
 }
 
 export default function ResaForm({
-  listSelect,
   listSelect: { listRooms, listGuests },
 }: ResaformProps) {
   // { resa }: { resa?: FormValues },

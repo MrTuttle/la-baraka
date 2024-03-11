@@ -26,6 +26,21 @@ type FormValues = {
   assignedToUserRoomId: number;
 };
 
+interface ResaFormValuesProps {
+  listSelect: {
+    listRooms: number[];
+    listGuests: number[];
+    resa: {
+      id: number;
+      checkIn: Date;
+      checkOut: Date;
+      status: "VACANT" | "OCCUPIED" | "IN_PROGRESS";
+      assignedToRoomId: number;
+      assignedToUserRoomId: number;
+    };
+  };
+}
+
 // function Input(props: UseControllerProps<FormValues>){
 
 //   const {field, fieldState}= useController(props);
@@ -47,7 +62,11 @@ type FormValues = {
 //   listRooms: Rooms[];
 // }
 
-const ResaFormm = ({ resa }: { resa?: FormValues }) =>
+const ResaFormm = ({
+  listSelect,
+  listSelect: { listRooms, listGuests, resa },
+}: ResaFormValuesProps) =>
+  // { resa }: { resa?: FormValues }
   // { listRooms }: { listRooms: Rooms[] }
   {
     const router = useRouter();
@@ -72,8 +91,8 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) =>
         setSubmitting(true);
         // console.log(`try resa checkin :${resa!.checkIn}`);
 
-        resa ? addHours(resa.checkIn, -24) : resa!.checkIn;
-        resa ? addHours(resa.checkOut, -24) : resa!.checkOut;
+        // resa ? addHours(resa.checkIn, -24) : resa!.checkIn;
+        // resa ? addHours(resa.checkOut, -24) : resa!.checkOut;
         // console.log(`try2 resa checkin :${resa!.checkIn}`);
         // console.log(`datas checkin : ${data.checkIn}`);
         // console.log(`datas all : ${data.checkIn.getUTCDate()}`);
@@ -109,6 +128,25 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) =>
     resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
     resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
 
+    // const optionsEtat = [
+    //   { label: "Libre", value: "VACANT" },
+    //   { label: "Loué", value: "OCCUPIED" },
+    //   { label: "En attente", value: "ON_PROGRESS" },
+    // ];
+    // const optionsSelect: { label: string; value: string }[];
+    const optionsEtat: { label: string; value: string }[] = [
+      { label: "Libre", value: "VACANT" },
+      { label: "Loué", value: "OCCUPIED" },
+      { label: "En attente", value: "ON_PROGRESS" },
+    ];
+
+    // const optionsEtat = {options:
+    //   { label: "Libre", value: "VACANT" },
+    //   { label: "Loué", value: "OCCUPIED" },
+    //   { label: "En attente", value: "ON_PROGRESS" }
+    // }
+    // ;
+
     return (
       <>
         <div className=" pt-20 border px-4">
@@ -127,7 +165,7 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) =>
           </p>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
             <div className="flex flex-wrap -mx-3 mb-6">
-              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                   N° Chambre
                 </label>
@@ -139,11 +177,59 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) =>
                 <p className="text-red-500 text-xs italic">
                   Please fill out this field ex: 2024-06-05T00:00:00.000Z
                 </p>
+              </div> */}
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  N° Chambre
+                </label>
+                <select
+                  defaultValue={resa?.assignedToRoomId}
+                  {...register("assignedToRoomId", { valueAsNumber: true })}
+                  // className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="block w-full appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+                >
+                  {listRooms.map((room, index) => (
+                    <option key={index}>{room}</option>
+                  ))}
+                </select>
+                <div className="pointer-events-none relative -inset-y-9 flex items-center px-2 justify-end">
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
               </div>
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <select></select>
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  N° Guest
+                </label>
+                <select
+                  {...register("assignedToUserRoomId", {
+                    valueAsNumber: true,
+                    required: true,
+                  })} // className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+                >
+                  {listGuests.map((guest, index) => (
+                    <option key={index}>{guest}</option>
+                  ))}
+                </select>
+                {/* <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"> */}
+
+                <div className="pointer-events-none relative -inset-y-9 flex items-center px-2 justify-end">
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
               </div>
-              <div className="w-full md:w-1/2 px-3">
+              {/* <div className="w-full md:w-1/2 px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                   N° Guest
                 </label>
@@ -154,7 +240,7 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) =>
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="grid-last-name"
                 />
-              </div>
+              </div> */}
             </div>
             <div className="flex flex-wrap -mx-3 mb-2">
               {/* CHECK IN REACTIVATE */}
@@ -192,7 +278,11 @@ const ResaFormm = ({ resa }: { resa?: FormValues }) =>
                 </label>
                 <div className="relative">
                   <select
-                    {...register("status")}
+                    defaultValue={`${resa?.status}`}
+                    // options={optionsEtat.map((e, index) => {
+                    //   e.label, e.value;
+                    // })}
+                    // {...register("status")}
                     className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   >
                     <option value="VACANT">Vacant</option>
