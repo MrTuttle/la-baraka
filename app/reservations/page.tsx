@@ -51,6 +51,7 @@ const pageReservations = async () => {
   // const handleClick = (item: number) => {
   //   DeleteUserRoom(item);
   // };
+  const serverDate = new Date();
 
   return (
     <>
@@ -64,6 +65,18 @@ const pageReservations = async () => {
             <li>Modify a reservation</li>
             <li>Access to owner’s reservations</li>
           </ul>
+          <p className=" text-xs">
+            <strong>toJSON</strong>
+            {serverDate.toJSON()}
+          </p>
+          <p className=" text-xs">
+            <strong>toUTC</strong>
+            {serverDate.toUTCString()}
+          </p>
+          <p className=" text-xs">
+            <strong>toLocal </strong>
+            {serverDate.toLocaleString()}
+          </p>
         </div>
       </Section>
 
@@ -148,7 +161,7 @@ const pageReservations = async () => {
       </section>
       <DisplayListResas />
 
-      <div className="mt-4 py-4 px-4 border max-w-md mx-auto">
+      <div className="mt-4 py-0 px-4 border max-w-md mx-auto">
         <ResaForm listSelect={listSelect} />
       </div>
     </>

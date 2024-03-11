@@ -120,12 +120,25 @@ export default function ResaForm({
     console.log("WRONG");
   };
 
+  const serverDate = new Date();
+
   // resa ? addHours(resa.checkIn, 24) : console.log("no checkin");
   // resa ? addHours(resa.checkOut, 24) : console.log("no checkout");
 
   return (
-    <div className=" pt-20 w-full px-4">
-      <p className="pb-10">Nouvelle reservation - ResaForm </p>
+    <div className=" pt-4 w-full px-4">
+      <div className="py-4">
+        <p className="pb-4">Nouvelle reservation - ResaForm </p>
+        <p className=" text-xs text-slate-400">
+          <strong>toJSON </strong>
+          {serverDate.toJSON()}
+        </p>
+
+        <p className=" text-xs text-slate-400">
+          <strong>toLocal </strong>
+          {serverDate.toLocaleString()}
+        </p>
+      </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
