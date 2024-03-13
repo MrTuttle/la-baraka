@@ -30,7 +30,7 @@ gsap.registerPlugin(ScrollTrigger);
 const HeroScrollEffect = () => {
   const logoRef = useRef(null);
   const logoRefContainer = useRef(null);
-  const bgRef = useRef(null);
+  // const bgRef = useRef(null);
   const bgRefContainer = useRef(null);
 
   // define main who contain several <HTMLElement>(".box")
@@ -116,7 +116,7 @@ const HeroScrollEffect = () => {
         y: 10,
       });
     },
-    { dependencies: [logoRef, logoRefContainer, bgRef, bgRefContainer] }
+    { dependencies: [logoRef, logoRefContainer, bgRefContainer] }
   );
 
   // useGSAP(() => {
@@ -226,8 +226,7 @@ const HeroScrollEffect = () => {
           // aply this to saw size of the centered container my-border-red
           className="z-[2] absolute left-[50%] -translate-x-2/4 top-200 w-[380px] h-screen"
         >
-          <WindowsSizeDetector />
-          <WindowSizeImgRef narrowImg={narrowImg} wideImg={wideImg} />
+          {/* <WindowsSizeDetector /> */}
           <div
             ref={logoRef}
             className="relative border-white prose  text-white h-56 w-56 top-2/4 left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
@@ -251,8 +250,10 @@ const HeroScrollEffect = () => {
             className="box App-header relative w-full h-[130vh] lg:h-[100svh]"
           >
             {/* <Background ref={bgRef} /> */}
-            <Image
-              ref={bgRef}
+            <WindowSizeImgRef narrowImg={narrowImg} wideImg={wideImg} />
+
+            {/* <Image
+              // ref={bgRef}
               alt="Paysage Cevenol"
               src={heroImg}
               placeholder="blur"
@@ -262,7 +263,7 @@ const HeroScrollEffect = () => {
               style={{ objectFit: "cover" }}
               // style={{ height: "150px" }}
               className="box"
-            />
+            /> */}
           </div>
         </div>
       </div>
