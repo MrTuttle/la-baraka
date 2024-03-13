@@ -20,7 +20,7 @@
 // prisma generate && prisma migrate deploy && next build
 
 // cleanup db work perfect locally
-// deploy on vercel : ids doesn't restart to 1 - but the app work
+// deploy on vercel : ids doesn't restart to 1 - but the app work --> thats why I sometimes use migrate reset in prod
 
 import { PrismaClient } from "@prisma/client";
 import { number } from "zod";
@@ -65,7 +65,7 @@ async function main() {
     create: {
       title: "Vivement Vendredi!",
       description:
-        "Tagliatelles Carbonnara 8.5€.\n\nEntrecôte Maître d'Hôtel 12.9€.\n\nFilet de Perche 12.9€.\n\nAccompagnement aux choix :\n\nLégumes de saison, Gratin Dauphinois, Ratatouille",
+        "Chaque vendredi, un menu différent pour découvrir et voyager !",
       price: 0,
     },
   });

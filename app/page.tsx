@@ -245,11 +245,11 @@ const home = () => {
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>
               <h1 className="font-normal text-5xl lg:text-9xl">
-                Envie
+                Nature sauvage
                 <br />
-                de nature
+                convivialité
                 <br />
-                sauvage ?
+                et terroirs
               </h1>
             </SectionFramer>
             {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
@@ -261,10 +261,29 @@ const home = () => {
 
             <SectionFramer>
               <p className="font-light text-2xl">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Laboriosam, est? Quae vel adipisci provident tempore, nisi,
-                commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
-                possimus consequatur dolores aliquam. Laborum!
+                Situé au pied du Parc National, Sainte Croix VF vous convie à
+                rêver le longs de paysages somptueux. Les sites de l’
+                <Link
+                  href="https://www.cevennes-montlozere.com"
+                  className=" font-normal text-blue-500 hover:underline"
+                >
+                  Office du Tourisme Cévennes-Mont Lozère
+                </Link>{" "}
+                et du{" "}
+                <Link
+                  href="https://www.cevennes-parcnational.fr"
+                  className=" font-normal text-blue-500 hover:underline"
+                >
+                  Parc National{" "}
+                </Link>{" "}
+                mettent a disposition les itinéraires et descriptifs des
+                principaux sentiers. Également, de nombreux coins de baignade
+                dans le village et aux alentours. Sainte Croix vous accueillent
+                également avec ses commerces et son fameux marché le dimanche :
+                La boucherie, La Boulangerie, l’Epicurienne et la Biotik, le
+                Globe, la Roulotte, l’Oultre ou vous pourrez trouver foison de
+                produits conçus par les producteurs de la région : plante
+                infuse, Antonin, etc...
               </p>
             </SectionFramer>
             {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}

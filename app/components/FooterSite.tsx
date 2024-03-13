@@ -42,8 +42,12 @@ const FooterSite = () => {
               <HiPhoneArrowDownLeft /> Tel. 07 49 60 50 68
             </a>
           </li>
-          <li className="pt-2">Semaine 9:00 | 15:00</li>
-          <li>Dimanches 9:00 | 15:00</li>
+          <li className="pt-2">La Baraka vous accueille toute l’année :</li>
+          <li>Mardi à Vendredi : 9h-13h30</li>
+          <li>Dimanche : 8h30 - 14h</li>
+          <li>Les soirées du Vendredi : A partir de 18h30</li>
+          <li>Et pendant l’été :</li>
+          <li>Mardi à Dimanche : 8h30-14h et 17h à 21h30</li>
         </ul>
 
         <ul className="">
