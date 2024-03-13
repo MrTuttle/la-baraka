@@ -114,11 +114,12 @@ export async function postGuest(
       html: `<p>${firstName} ${name}</p><p>Voudrait que tu rapelle au ${phone}</p>
       <p>email ${email}:</>
         <p>Pour confirmer la location de la chambre ${title}.</p><p> Aux dates suivantes :</p>
-        <p> du <strong> ${checkInMail.toLocaleString("fr-FR", {
+        <p> du <strong> ${checkInMail.toString()}</strong> au <strong>${checkOutMail.toLocaleString(
+        "fr-FR",
+        {
           dateStyle: "full",
-        })}</strong> au <strong>${checkOutMail.toLocaleString("fr-FR", {
-        dateStyle: "full",
-      })}</strong>
+        }
+      )}</strong>
         `,
     });
   }

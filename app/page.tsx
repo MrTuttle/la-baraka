@@ -90,7 +90,7 @@ const home = () => {
                   son bar et son restaurant. Baignade à deux pas dans le Gardon
                   et accès direct au parc national des Cévennes.
                 </h3> */}
-                <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
+                {/* <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
                   Située au cœur du charmant village <br />
                   de Sainte-Croix-Vallée-Française en Lozère, <br />
                   au pied du Gardon et du Parc National des Cévennes, <br />
@@ -98,6 +98,14 @@ const home = () => {
                   avec ses cinq chambres d’hôtes,
                   <br />
                   son bar et son restaurant. <br />
+                  Baignade à deux pas !
+                </h3> */}
+                <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
+                  Située au cœur du charmant village de Sainte‑Croix
+                  -Vallée‑Française en Lozère, au pied du Gardon et du Parc
+                  National des Cévennes, La Baraka vous accueille toute l’année
+                  avec ses cinq chambres d’hôtes, son bar et son restaurant.{" "}
+                  <br />
                   Baignade à deux pas !
                 </h3>
               </SplitTypeFramer>
@@ -118,19 +126,19 @@ const home = () => {
             </div> */}
           </Section>
         </div>
-        <ParallaxImageParent
+        {/* <ParallaxImageParent
           // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend_mc77u3?_a=BAVAExAO0
           // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-enseigne_lbtlep?_a=BAVAExAO0
           // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-riviere_cleobb?_a=BAVAExAO0
           // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q62jruvczpx3pjtcyhkc?_a=BAVAExAO0
           // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-wild_ztpprl?_a=BAVAExAO0
-          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0
 
 
 "
-        />
+        /> */}
         <Container className="bg-white">
-          <Section className="flex flex-col mt-52  lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
+          <Section className="pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
             {/* <div className="overflow-hidden border py-2">
               <SplitTypeXp>
                 <h1 className="font-normal text-5xl lg:text-9xl">Au menu</h1>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useLayoutEffect } from "react";
 import { SiForestry } from "react-icons/si";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -9,13 +9,21 @@ import paysagestock from "@/public/tourism/AdobeStock_67672065-1920x960-crop-167
 // import autre from "@/public/tourism/IMG_6198.jpg";
 // import autre from "@/public/tourism/IMG_6183.jpg";
 // import autre from "@/public/tourism/IMG_6171.jpg";
-import autre from "@/public/burkina/mordicus-wild.jpg";
+import narrowImg from "@/public/burkina/mordicus-wild.jpg";
+import wideImg from "@/public/burkina/mordicus-extend.jpg";
 
 import Background from "./Background";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Section } from "@radix-ui/themes";
 import SplitTypeFramer from "./SplitTypeFramer";
+import LogoFooter from "./LogoFooter";
+
+import type { StaticImageData } from "next/image";
+// import TrackWindowSize from "./TrackWindowSize";
+// import useWindowSize from "./useWindowSize";
+import WindowsSizeDetector, { useWindowSize } from "./WindowSizeDetector";
+import WindowSizeImgRef from "./WindowSizeImgRef";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -203,6 +211,12 @@ const HeroScrollEffect = () => {
   // element.revert();
   // };
   // }, []);
+  // useWindowSize();
+  // console.log(useWindowSize);
+
+  // const windowSize = useWindowSize();
+  const [heroImg, setHeroImg] = useState(wideImg);
+  // const heroImg: StaticImageData = narrowImg;
 
   return (
     <>
@@ -212,11 +226,11 @@ const HeroScrollEffect = () => {
           // aply this to saw size of the centered container my-border-red
           className="z-[2] absolute left-[50%] -translate-x-2/4 top-200 w-[380px] h-screen"
         >
+          <WindowsSizeDetector />
+          <WindowSizeImgRef narrowImg={narrowImg} wideImg={wideImg} />
           <div
             ref={logoRef}
             className="relative border-white prose  text-white h-56 w-56 top-2/4 left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
-
-            // className="relative border-white prose  text-white h-56 w-56 top-[10rem] left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
           >
             <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1]">
               <SiForestry />
@@ -230,7 +244,6 @@ const HeroScrollEffect = () => {
               <br /> — CHAMBRES D’HÔTES —
             </p>
           </div>
-          {/* </div> */}
         </div>
         <div>
           <div
@@ -241,7 +254,7 @@ const HeroScrollEffect = () => {
             <Image
               ref={bgRef}
               alt="Paysage Cevenol"
-              src={autre}
+              src={heroImg}
               placeholder="blur"
               quality={75}
               fill

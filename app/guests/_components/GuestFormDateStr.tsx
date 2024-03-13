@@ -126,6 +126,7 @@ const GuestFormDateStr = ({ guest }: { guest: UserRoom }) => {
                   Phone
                 </label>
                 <input
+                  type="tel"
                   placeholder="n° Guest"
                   defaultValue={guest.phone!}
                   {...register("phone")}

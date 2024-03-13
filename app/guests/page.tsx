@@ -173,17 +173,17 @@ const pageGuests = async () => {
                       <li className="">
                         Check in ←{" "}
                         <strong>
-                          {addHours(booking.checkIn, 24).toUTCString()}
+                          {addHours(booking.checkIn, 0).toUTCString()}
                         </strong>
-                        {" (UTC + 24h) "}
+                        {" (UTC + 0h) "}
                         {/* must add 24h on online server, nothing in localhost */}
                       </li>
                       <li>
                         Check out →{" "}
                         <strong>
-                          {addHours(booking.checkOut, 24).toUTCString()}
+                          {addHours(booking.checkOut, 0).toUTCString()}
                         </strong>
-                        {" (UTC + 24h) "}
+                        {" (UTC + 0h) "}
                         {/* must add 24h on online server, nothing in localhost */}
                       </li>
 

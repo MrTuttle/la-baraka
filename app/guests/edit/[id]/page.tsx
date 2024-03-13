@@ -85,7 +85,7 @@ const EditGuestPage = async ({ params }: Props) => {
   const reservationPack = guest.reservationDates;
 
   return (
-    <div className="mx-4 pt-20">
+    <div className="mx-4 pt-40">
       <p>{guest.reservationDates.map((date) => date.checkIn.toDateString())}</p>
       <Link href="/guests">Back</Link>
 
