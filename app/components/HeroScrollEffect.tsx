@@ -7,8 +7,9 @@ import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
 import paysage from "@/public/tourism/Cevennes-Denis-Carrascosa.jpg";
 import paysagestock from "@/public/tourism/AdobeStock_67672065-1920x960-crop-1670422244.jpeg";
 // import autre from "@/public/tourism/IMG_6198.jpg";
-import autre from "@/public/tourism/IMG_6183.jpg";
+// import autre from "@/public/tourism/IMG_6183.jpg";
 // import autre from "@/public/tourism/IMG_6171.jpg";
+import autre from "@/public/burkina/mordicus-wild.jpg";
 
 import Background from "./Background";
 import { gsap } from "gsap";
@@ -213,7 +214,9 @@ const HeroScrollEffect = () => {
         >
           <div
             ref={logoRef}
-            className="relative border-white prose  text-white h-56 w-56 top-[10rem] left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
+            className="relative border-white prose  text-white h-56 w-56 top-2/4 left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
+
+            // className="relative border-white prose  text-white h-56 w-56 top-[10rem] left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
           >
             <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1]">
               <SiForestry />

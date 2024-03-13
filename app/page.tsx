@@ -119,12 +119,17 @@ const home = () => {
           </Section>
         </div>
         <ParallaxImageParent
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend_mc77u3?_a=BAVAExAO0
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-enseigne_lbtlep?_a=BAVAExAO0
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-riviere_cleobb?_a=BAVAExAO0
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q62jruvczpx3pjtcyhkc?_a=BAVAExAO0
           // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-wild_ztpprl?_a=BAVAExAO0
-          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend_mc77u3?_a=BAVAExAO0
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0
+
 
 "
         />
-        <Container className="bg-gray-100">
+        <Container className="bg-white">
           <Section className="flex flex-col mt-52  lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="overflow-hidden border py-2">
               <SplitTypeXp>
@@ -181,7 +186,11 @@ const home = () => {
 "
         /> */}
         <ParallaxImageParent
-          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/cawdvxo81d8uulerrsrf?_a=BAVAExAO0
+          //imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/cawdvxo81d8uulerrsrf?_a=BAVAExAO0
+          //imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-riviere_cleobb?_a=BAVAExAO0
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q62jruvczpx3pjtcyhkc?_a=BAVAExAO0
+
+
 "
         />
         <Container className="bg-white">
