@@ -52,7 +52,7 @@ const EditReservationPage = async ({ params }: Props) => {
   const listSelect = createListSelect(rooms, guests, resa);
 
   return (
-    <div className="mx-4 pt-20 w-full md:w-2/3 mx-auto">
+    <div className="pt-20 w-full md:w-2/3 mx-auto">
       <h1>EDIT RESA</h1>
       {/* <ResaForm resa={resa} /> */}
       <ResaFormm listSelect={listSelect} />

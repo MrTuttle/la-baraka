@@ -192,7 +192,7 @@ const ResaFormm = ({
                     // options={optionsEtat.map((e, index) => {
                     //   e.label, e.value;
                     // })}
-                    // {...register("status")}
+                    {...register("status")}
                     className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded focus:outline-none focus:bg-white focus:border-gray-500"
                   >
                     <option value="VACANT">Vacant</option>
@@ -273,7 +273,8 @@ const ResaFormm = ({
                   <span className="text-[0.5rem]">←</span>
                 </label>
                 <input
-                  defaultValue={resa?.checkIn.toLocaleString()}
+                  // type="datetime-local"
+                  defaultValue={resa?.checkIn.toJSON()}
                   // placeholder={resa?.checkIn.toLocaleString("fr-FR", {
                   //   dateStyle: "short",
                   // })}
@@ -290,7 +291,7 @@ const ResaFormm = ({
                 </label>
                 <input
                   defaultValue={resa?.checkOut.toISOString()}
-                  placeholder={resa?.checkOut.toLocaleString()}
+                  // placeholder={resa?.checkOut.toLocaleString()}
                   {...register("checkOut", { valueAsDate: true })}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 />
