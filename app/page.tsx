@@ -127,15 +127,13 @@ const home = () => {
           </Section>
         </div>
         {/* <ParallaxImageParent
-          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend_mc77u3?_a=BAVAExAO0
-          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-enseigne_lbtlep?_a=BAVAExAO0
-          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-riviere_cleobb?_a=BAVAExAO0
-          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q62jruvczpx3pjtcyhkc?_a=BAVAExAO0
-          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-wild_ztpprl?_a=BAVAExAO0
-          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0
-
-
-"
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend_mc77u3?_a=BAVAExAO0"
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-enseigne_lbtlep?_a=BAVAExAO0"
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-riviere_cleobb?_a=BAVAExAO0"
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q62jruvczpx3pjtcyhkc?_a=BAVAExAO0"
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-wild_ztpprl?_a=BAVAExAO0"
+          // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend-left_jgluli?_a=BAVAExAO0"
         /> */}
         <Container className="bg-white">
           <Section className="pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
@@ -151,11 +149,14 @@ const home = () => {
                 </h1>
               </SplitTypeXp>
             </div> */}
-            <SectionFramer>
+            {/* <SectionFramer>
               <h1 className="font-normal text-5xl lg:text-9xl px-8 lg:px-0">
                 À table !
               </h1>
-            </SectionFramer>
+            </SectionFramer> */}
+            <div className="font-normal text-5xl lg:text-9xl">
+              <SplitTypeXp>A table !</SplitTypeXp>
+            </div>
 
             <div className="flex mx-8 flex-col items-center lg:flex-row-reverse ">
               <div className="my-11 w-full  md:w-3/6 pl-0 pr-4">
@@ -238,26 +239,6 @@ const home = () => {
           </SectionFramerRight>
         </div>
         <Container className="bg-gray-100">
-          {/* <Section className="my-border-red">
-            <div className="border font-normal text-5xl lg:text-9xl text-red-700">
-              <SplitTypeXp>Au menu</SplitTypeXp>
-            </div>
-            <div className="border font-normal text-5xl lg:text-9xl text-red-700">
-              <SplitTypeXp>aujourd’hui</SplitTypeXp>
-            </div>
-          </Section> */}
-          {/* <Section className="my-border-red">
-            <div className="my-border-green py-2 font-normal text-5xl lg:text-9xl text-red-700">
-              <SectionFramerCutTypeFx>
-                Au menu aujourd’hui sur plusieurs lignes pour tester split types
-              </SectionFramerCutTypeFx>
-            </div>
-            <div className="my-border-green">
-              <SectionFramerCutTypeFx>Au menu</SectionFramerCutTypeFx>
-            </div>
-            <SectionFramerCutTypeFx>aujourd’hui</SectionFramerCutTypeFx>
-            <SectionFramerCutTypeFx>sur plusieurs</SectionFramerCutTypeFx>
-          </Section> */}
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
             <SectionFramer>

@@ -43,12 +43,9 @@ export default function WindowSizeImgRef({
   };
 
   return (
-    // <div>
-    //   <p>Window Width: {width}</p>
-    //   <p>Window Height: {height}</p>
-    // </div>
     <>
-      <div className="absolute z-50 left-10 bottom-20 bg-red-500 my-border-red w-3/5 p-4">
+      {/* DECOMMENTER CECI POUR AVOIR UN TEMOINS NOM DE FICHIER EMPLOYÉ POUR L'IMAGE */}
+      {/* <div className="absolute z-50 left-10 bottom-20 bg-red-500 my-border-red w-3/5 p-4">
         <p>WINDOW SIZE</p>
 
         <p className="text-xs text-white font-medium">
@@ -60,7 +57,7 @@ export default function WindowSizeImgRef({
             ? `width < md (768px)${narrowImg.src}`
             : `width < lg (1024px)${wideImg.src}`}
         </p>
-      </div>
+      </div> */}
 
       {windowSize.width < 768 ? (
         <Image

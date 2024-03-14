@@ -30,7 +30,7 @@ const SplitTypeXp = ({ children }: Props) => {
         start: "0 90%", // 67% = 1/3 screen height // -80% 80% last compromise mobile/desktop
         end: "0 50%", // 33% = 1/3 screen height // -60% 20% last on compromise mobile/desktop
         scrub: true, // if true = use scroll, not time for animation
-        markers: true,
+        // markers: true,
       },
       // opacity: 0, // from 0.2
       y: 200,
@@ -49,11 +49,7 @@ const SplitTypeXp = ({ children }: Props) => {
 
   return (
     <>
-      <div
-        ref={ref}
-        id="splitter"
-        className="my-border-green overflow-hidden py-2"
-      >
+      <div ref={ref} id="splitter" className="overflow-hidden py-2">
         {children}
       </div>
     </>
