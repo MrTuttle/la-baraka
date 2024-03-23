@@ -61,8 +61,10 @@ export default function WindowSizeImgRef({
 
       {windowSize.width < 768 ? (
         <Image
+          // SERVE narrowImg before 768px wide
+          // SERVE wideImg after 768pw wide
           // ref={bgRef}
-          alt="Mordicus illustration for La Baraka"
+          alt="La Baraka terrasse"
           src={narrowImg}
           placeholder="blur"
           quality={75}
@@ -75,7 +77,7 @@ export default function WindowSizeImgRef({
       ) : (
         <Image
           // ref={bgRef}
-          alt="Mordicus illustration for La Baraka"
+          alt="La Baraka terrasse"
           src={wideImg}
           placeholder="blur"
           quality={75}

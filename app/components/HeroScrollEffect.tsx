@@ -7,7 +7,7 @@ import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
 import paysage from "@/public/tourism/Cevennes-Denis-Carrascosa.jpg";
 import paysagestock from "@/public/tourism/AdobeStock_67672065-1920x960-crop-1670422244.jpeg";
 // import autre from "@/public/tourism/IMG_6198.jpg";
-// import autre from "@/public/tourism/IMG_6183.jpg";
+import autre from "@/public/tourism/IMG_6183.jpg";
 // import autre from "@/public/tourism/IMG_6171.jpg";
 import narrowImg from "@/public/burkina/mordicus-wild.jpg";
 import wideImg from "@/public/burkina/mordicus-extend.jpg";
@@ -250,7 +250,10 @@ const HeroScrollEffect = () => {
             className="box App-header relative w-full h-[130vh] lg:h-[100svh]"
           >
             {/* <Background ref={bgRef} /> */}
-            <WindowSizeImgRef narrowImg={narrowImg} wideImg={wideImg} />
+            {/* MORDICUS IMAGE WITH TWO CROP SIZES IMAGES (wide & narrow) */}
+            {/* <WindowSizeImgRef narrowImg={narrowImg} wideImg={wideImg} /> */}
+            {/* SAME IMAGE DEFORE 768 WIDE AND AFTER 768px wide - same image for wide & narrow */}
+            <WindowSizeImgRef narrowImg={autre} wideImg={autre} />
 
             {/* <Image
               // ref={bgRef}
