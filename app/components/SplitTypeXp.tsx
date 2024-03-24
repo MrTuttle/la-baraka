@@ -7,6 +7,9 @@ import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import SplitType from "split-type";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SectionFramerImg from "./SectionFramerImg";
+import Image from "next/image";
+import atable from "@/public/burkina/mordicus-cadre.jpg";
 
 interface Props {
   children: ReactNode;
@@ -14,6 +17,7 @@ interface Props {
 
 const SplitTypeXp = ({ children }: Props) => {
   const ref = useRef(null);
+  const refImg = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
 

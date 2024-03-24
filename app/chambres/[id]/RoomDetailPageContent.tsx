@@ -173,14 +173,14 @@ const RoomDetailPageContent = ({
   return (
     <>
       {/* <SectionFramerRight> */}
-      <div className="mb-20 transition-all ease-in-out">
+      {/* <div className="mb-20 transition-all ease-in-out">
         <BKDayPicker
           bookedDays={bookedDays}
           bookedDaysRange={bookedDaysRange}
           onStartDay={handleStartDay}
           onEndDay={handleEndDay}
         />
-      </div>
+      </div> */}
       {/* </SectionFramerRight> */}
       {/* ----------Room detail page content query from BK :--------- */}
 
@@ -291,7 +291,7 @@ const RoomDetailPageContent = ({
 
         {/* ---- ACTIVATE TO HAVE PHONE CALL COMPONENT --- */}
 
-        {/* <div className="p-4" id="activate-when-dates-will-works">
+        <div className="p-4" id="activate-when-dates-will-works">
           <DialogRoomRequest3
             checkIn={checkInFromBK}
             checkOut={checkOutFromBK}
@@ -299,18 +299,18 @@ const RoomDetailPageContent = ({
             title={title}
             roomId={roomId}
           />
-        </div> */}
+        </div>
 
         {/* --- ACTIVATE TO HAVE SEND EMAIL COMPONENT & PUBLISH DATES --- */}
 
-        <div className="p-4" id="activate-when-dates-will-works" />
+        {/* <div className="p-4" id="activate-when-dates-will-works" />
         <DialogRoomRequest2
           checkIn={checkInFromBK}
           checkOut={checkOutFromBK}
           bookedDaysToEmail={bookedDaysToEmail}
           title={title}
           roomId={roomId}
-        />
+        /> */}
       </div>
     </>
   );

@@ -36,6 +36,7 @@ import HeroScrollEffect from "./components/HeroScrollEffect";
 
 import Image from "next/image";
 import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
+import atable from "@/public/burkina/mordicus-cadre.jpg";
 import backgroundImage from "@/public/tourism/ste-croix-vf-02.jpg";
 import ParallaxImageParent from "./components/ParallaxImageParent";
 import AroundContent from "./components/AroundContent";
@@ -47,6 +48,8 @@ import LogoFooter from "./components/LogoFooter";
 import FooterSite from "./components/FooterSite";
 import SplitTypeXp from "./components/SplitTypeXp";
 import SectionFramerCutTypeFx from "./components/SectionFramerCutTypeFx";
+import SectionFramerUp from "./components/SectionFramerUp";
+import SectionFramerImg from "./components/SectionFramerImg";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -136,7 +139,7 @@ const home = () => {
           imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend-left_jgluli?_a=BAVAExAO0"
         /> */}
         <Container className="bg-white">
-          <Section className="pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
+          <Section className="border pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
             {/* <div className="overflow-hidden border py-2">
               <SplitTypeXp>
                 <h1 className="font-normal text-5xl lg:text-9xl">Au menu</h1>
@@ -154,10 +157,14 @@ const home = () => {
                 À table !
               </h1>
             </SectionFramer> */}
-            <div className="font-normal text-5xl lg:text-9xl">
+            <div className="font-normal text-5xl lg:text-9xl relative">
               <SplitTypeXp>A table !</SplitTypeXp>
             </div>
-
+            {/* <div className="border relative">
+              <div className=" w-80 absolute -right-10 -top-[10rem]">
+                <Image src={atable} alt="re"></Image>
+              </div>
+            </div> */}
             <div className="flex mx-8 flex-col items-center lg:flex-row-reverse ">
               <div className="my-11 w-full  md:w-3/6 pl-0 pr-4">
                 <SectionFramerRight>
@@ -168,13 +175,20 @@ const home = () => {
                 <SectionFramerRight>
                   <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
                 </SectionFramerRight>
+
                 <SectionFramer>
-                  <p className="bloc lg:w-[75%] text-center sm:text-start font-light text-2xl px-8 lg:px-0">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Laboriosam, est? Quae vel adipisci provident tempore, nisi,
-                    commodi suscipit pariatur perspiciatis beatae modi nam, iste
-                    aut possimus consequatur dolores aliquam. Laborum!
-                  </p>
+                  <div>
+                    <div className=" transition-all w-[14rem] mb-4 mx-auto ">
+                      <Image src={atable} alt="re"></Image>
+                    </div>
+                    <p className="bloc lg:w-[75%] text-center sm:text-start font-light text-2xl px-8 lg:px-0">
+                      Ouvert tous les midis du lundi au jeudi, et seulement le
+                      soir les vendredis, notre équipe vous accueille et vous
+                      mijote une cuisine conviviale au rythme des produits de
+                      saison. Tous les vendredis, une soirée à thème pour vous
+                      faire découvrir de nouvelles saveurs.
+                    </p>
+                  </div>
                 </SectionFramer>
 
                 <SectionFramerRight>
@@ -346,41 +360,6 @@ const home = () => {
         */}
 
         {/* ACTIVITIES ABBORTED - END */}
-
-        <Container className="bg-yellow-600">
-          <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
-            {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
-            <SectionFramer>
-              <h1 className="font-normal text-5xl lg:text-9xl text-white opacity-80">
-                Cézar
-                <br />
-                une aventure photo
-              </h1>
-            </SectionFramer>
-            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
-            <div className=" overflow-hidden">
-              <SectionFramerRight>
-                <hr className="h-px bg-white border-0 opacity-50" />
-              </SectionFramerRight>
-            </div>
-
-            <SectionFramer>
-              <p className="font-light text-2xl text-white opacity-90">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Laboriosam, est? Quae vel adipisci provident tempore, nisi,
-                commodi suscipit pariatur perspiciatis beatae modi nam, iste aut
-                possimus consequatur dolores aliquam. Laborum!
-              </p>
-            </SectionFramer>
-            {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
-            <div className=" overflow-hidden">
-              <SectionFramerRight>
-                <hr className="h-px bg-white border-0 opacity-50" />
-              </SectionFramerRight>
-            </div>
-            <AroundContent srcs={ListImagesBurkina} cldImage={false} />
-          </Section>
-        </Container>
 
         {/* FOOTER */}
       </div>

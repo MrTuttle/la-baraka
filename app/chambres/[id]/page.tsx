@@ -149,7 +149,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
           align="center"
           className="mx-auto bg-white"
         >
-          <div className="prose px-8 lg:px-0">
+          <div className="prose px-8 lg:px-0 mb-10">
             <p>Chambre n°{room.id}</p>
             <h1>{room.title}</h1>
             <ReactMarkdown>{room.description}</ReactMarkdown>
