@@ -141,7 +141,7 @@ const home = () => {
         /> */}
         <div className="bg-white">
           <Section className="pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
-            <div className=" text-center font-normal text-5xl w-[70%] mx-auto  sm:text-start sm:w-full sm:ml-8 lg:text-9xl mb-8">
+            <div className="py-8 text-center font-normal text-5xl w-[70%] mx-auto  sm:text-start sm:w-full sm:ml-8 lg:text-9xl mb-8">
               <TitleCut>A Table !</TitleCut>
             </div>
 
