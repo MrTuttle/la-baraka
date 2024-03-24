@@ -66,34 +66,38 @@ const HeroScrollEffect = () => {
       const descaleDisolveOnScrool = logoRef.current;
       const bgRefcontainerMoveOnScrool = bgRefContainer.current;
       const lgRefcontainerMoveOnScrool = logoRefContainer.current;
-      console.log("bgImage", descaleDisolveOnScrool);
+      // console.log("bgImage", descaleDisolveOnScrool);
 
-      gsap.to([bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool], {
+      // SCROLL TRIGGER ON BG & LOGO CONTAINER
+      gsap.to([bgRefcontainerMoveOnScrool], {
         // onEnter: () => {
         //   gsap.set([bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool], {
         //     height: "100vh",
         //   });
         // },
+        scale: 1.3,
         scrollTrigger: {
-          trigger: [bgRefcontainerMoveOnScrool, lgRefcontainerMoveOnScrool],
-          start: "-0.1% top",
-          end: "center 25%",
+          trigger: [bgRefcontainerMoveOnScrool],
+          start: "top top",
+          end: "100% 25%",
           scrub: true,
           // markers: true,
         },
         height: "75svh",
+        // opacity: 0,
         // ease: "expo.out",
       });
 
       // descale & disolve on scroll -> hero logo
       gsap.to(descaleDisolveOnScrool, {
-        scale: 1.1,
+        scale: 1.3,
         opacity: 0,
+        // x: 300,
         // ease: "expo.out",
         scrollTrigger: {
           trigger: descaleDisolveOnScrool,
-          start: "top top",
-          end: "200% 30%",
+          start: "50% 25%",
+          end: "250% 50%",
           scrub: true,
 
           // markers: true,
@@ -103,18 +107,19 @@ const HeroScrollEffect = () => {
             // launch a tween
             // gsap.to(trigerredItem, { y: -40 });
           },
-          onLeave: () => {
-            // gsap.set(trigerredItem, { rotate: 90 });
-          },
+          onLeave: () => {},
         },
       });
-      gsap.from(logoRef.current, {
-        duration: 3,
-        autoAlpha: 0.1,
-        // delay: 3,
-        ease: "back.out(1.7)",
-        y: 10,
-      });
+
+      // LOGO ON ENTER
+      // gsap.from(logoRef.current, {
+      //   duration: 3,
+      //   // autoAlpha: 0.1,
+      //   // alpha: 0,
+      //   delay: 1,
+      //   ease: "back.out(1.7)",
+      //   y: 10,
+      // });
     },
     { dependencies: [logoRef, logoRefContainer, bgRefContainer] }
   );
@@ -224,15 +229,16 @@ const HeroScrollEffect = () => {
         <div
           ref={logoRefContainer}
           // aply this to saw size of the centered container my-border-red
-          className="z-[2] absolute left-[50%] -translate-x-2/4 top-200 w-[380px] h-screen"
+          className="z-[2] absolute left-[50%] translate-x-[-50%] top-200 w-[380px] h-screen"
         >
           {/* <WindowsSizeDetector /> */}
           <div
             ref={logoRef}
-            className="relative prose  text-white h-56 w-56 top-[25%] left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"
+            className="relative prose backdrop-blur-[5px] bg-lime-600/70  text-white h-56 w-56 top-[25%] left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"
           >
-            <div className="bg-gradient-to-t from-black mix-blend-multiply opacity-30 absolute left-0 prose   h-56 w-56 top-[0%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"></div>
-            <div className="absolute left-0 border-[1px] border-white prose   h-56 w-56 top-[0%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"></div>
+            {/* <div className="bg-gradient-to-t from-black mix-blend-multiply opacity-30 absolute left-0 prose   h-56 w-56 top-[0%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"></div> */}
+            {/* <div className=" backdrop-blur bg-white/10 absolute left-0 prose   h-56 w-56 top-[0%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"></div> */}
+            {/* <div className="absolute left-0 opacity-70 border-[1px] border-white prose   h-56 w-56 top-[0%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"></div> */}
 
             <div className="absolute left-[-25%] flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1]">
               <SiForestry />

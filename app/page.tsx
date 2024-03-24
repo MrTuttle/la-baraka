@@ -91,7 +91,7 @@ const home = () => {
       <div className=" overflow-hidden bg-gray-100">
         <div className="content-holder ">
           <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto align-middle">
-            <div className="">
+            <div className="border pt-20">
               <SplitTypeFramer>
                 {/* <h3 className="font-light text-2xl md:text-[2rem] lg:text-[2.5rem] self-center leading-[3rem] md:leading-[3.7rem] lg:leading-[4.2rem]">
                   La Baraka vous accueille au cœur du village de
