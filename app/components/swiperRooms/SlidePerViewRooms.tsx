@@ -106,6 +106,12 @@ const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
             </Link>
           </SwiperSlide>
         ))}
+        <div
+          slot="container-end"
+          className="text-center text-5xl text-gray-400"
+        >
+          ...
+        </div>
       </Swiper>
       {/* -----------ANCIEN SWIPER ---------------- */}
       {/* <Swiper

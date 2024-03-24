@@ -45,6 +45,7 @@ const SlidePerViewGetIds = async () => {
         pass in swipper images public id & rooms text in one prisa request
       </p> */}
       <SlidePerViewRooms listImages={images} listRooms={rooms} />
+
       {/* <SlidePerViewRooms listImages={rooms} />; */}
     </>
   );
