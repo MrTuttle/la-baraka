@@ -82,8 +82,12 @@ const home = () => {
     <>
       {/* <div className="fixed h-screen w-full flex flex-col items-center top-0 -z-50 my-border-red"> */}
       {/* <div className="h-screen w-full top-0 my-border-red"> */}
-
-      <HeroScrollEffect />
+      {/* <div className="bg-blue-100 h-20 animate-pulse pt-[400px]"></div> */}
+      <div className="bg-gray-100">
+        <div className="animate-appear">
+          <HeroScrollEffect />
+        </div>
+      </div>
       <div className=" overflow-hidden bg-gray-100">
         <div className="content-holder ">
           <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto align-middle">

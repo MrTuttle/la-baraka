@@ -18,9 +18,15 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(-5px)" },
           "50%": { transform: "translateY(5px)" },
         },
+        appear: {
+          "0%": { opacity: "0" },
+          // "50%": { opacity: ".2" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",
+        appear: "appear 4s cubic-bezier(0.4, 0, 0.6, 1)",
       },
     },
   },
