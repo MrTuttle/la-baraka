@@ -98,10 +98,10 @@ const SlidePerViewRooms = ({ listImages, listRooms }: List) => {
               )}
               <div className=" absolute bottom-10 text-white">
                 <p className="my-0">{room.title}</p>
-                {room.price && <p className="my-0">{room.price} €</p>}
+                {/* {room.price && <p className="my-0">{room.price} €</p>}
                 {room.assignedRoom.map((image) =>
                   image.cover ? "cover ok" : "cover false"
-                )}
+                )} */}
               </div>
             </Link>
           </SwiperSlide>

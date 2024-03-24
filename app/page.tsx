@@ -165,7 +165,8 @@ const home = () => {
                   <div
                     id="mordicus"
                     // className="transition-all w-[14rem] sm:w-[15rem] md:w-[18rem] md:pr-[12%] lg:w-[20rem] mb-4 mx-auto rotate-6 "
-                    className="transition-all w-[50%] mx-auto rotate-0 sm:w-full sm:flex-grow sm:rotate-6"
+                    // className="transition-all w-[50%] mx-auto rotate-0 sm:w-full sm:flex-grow sm:rotate-6"
+                    className="w-[50%] mx-auto rotate-0 sm:w-full sm:flex-grow sm:rotate-6"
                   >
                     <Image src={atable} alt="re"></Image>
                   </div>
@@ -244,7 +245,7 @@ const home = () => {
             </div>
           </Section>
         </Container>
-        <div className="overflow-hidden md:overflow-visible bg-white pb-48">
+        <div className="overflow-hidden md:overflow-visible pb-48 bg-white">
           <SectionFramerRight>
             <SlidePerViewGetIds />
           </SectionFramerRight>

@@ -229,19 +229,24 @@ const HeroScrollEffect = () => {
           {/* <WindowsSizeDetector /> */}
           <div
             ref={logoRef}
-            className="relative border-white prose  text-white h-56 w-56 top-2/4 left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4 border-[1px]"
+            className="relative prose  text-white h-56 w-56 top-[25%] left-[22%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"
           >
-            <div className="flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1]">
+            <div className="bg-gradient-to-t from-black mix-blend-multiply opacity-30 absolute left-0 prose   h-56 w-56 top-[0%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"></div>
+            <div className="absolute left-0 border-[1px] border-white prose   h-56 w-56 top-[0%] md:top-1/2 md:left-1/2 md:-translate-x-2/4 md:-translate-y-2/4"></div>
+
+            <div className="absolute left-[-25%] flex flex-col gap-4 items-center text-4xl px-20 pt-5 pb-0 mb-0 leading-[-1]">
               <SiForestry />
 
               <h1 className=" text-white font-extralight text-5xl">
                 La Baraka
               </h1>
             </div>
-            <p className=" tracking-widest text-center text-xs pt-0 -mt-8 w-[100%]">
-              BAR - RESTAURANT
-              <br /> — CHAMBRES D’HÔTES —
-            </p>
+            <div className="absolute w-[100%] h-[100%] left-[0%]">
+              <p className=" tracking-widest text-center text-xs pt-0 mt-[11rem] w-[100%]">
+                BAR - RESTAURANT
+                <br /> — CHAMBRES D’HÔTES —
+              </p>
+            </div>
           </div>
         </div>
         <div>
