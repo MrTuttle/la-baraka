@@ -139,64 +139,41 @@ const home = () => {
           // imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
           imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend-left_jgluli?_a=BAVAExAO0"
         /> */}
-        <Container className="bg-white">
+        <div className="bg-white">
           <Section className="pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
-            {/* <div className="overflow-hidden border py-2">
-              <SplitTypeXp>
-                <h1 className="font-normal text-5xl lg:text-9xl">Au menu</h1>
-              </SplitTypeXp>
-            </div>
-            <div className="overflow-hidden border py-2 pt-0">
-              <SplitTypeXp>
-                <h1 className="font-normal text-5xl lg:text-9xl">
-                  Aujourd’hui
-                </h1>
-              </SplitTypeXp>
-            </div> */}
-            {/* <SectionFramer>
-              <h1 className="font-normal text-5xl lg:text-9xl px-8 lg:px-0">
-                À table !
-              </h1>
-            </SectionFramer> */}
-            <div className="mx-8 font-normal text-5xl lg:text-9xl relative">
+            <div className=" text-center font-normal text-5xl w-[70%] mx-auto  sm:text-start sm:w-full sm:ml-8 lg:text-9xl mb-8">
               <TitleCut>A Table !</TitleCut>
             </div>
-            <SectionFramerRight>
-              <hr className="h-px mx-8 my-8 bg-gray-500 border-0 dark:bg-gray-700" />
-            </SectionFramerRight>
-            {/* <div className="border relative">
-              <div className=" w-80 absolute -right-10 -top-[10rem]">
-                <Image src={atable} alt="re"></Image>
+
+            <div className="flex mx-8 flex-col">
+              <div className="flex flex-col-reverse items-center sm:flex-row gap-8">
+                <SectionFramer>
+                  {/* <p className="border md:w-[75%] text-center sm:text-start font-light text-2xl lg:px-0 sm:bg-blue-100 md:bg-red-100 lg:bg-blue-200 xl:bg-red-200"> */}
+                  <p className="flex-shrink text-center sm:text-start font-light text-2xl lg:px-0 ">
+                    Ouvert tous les midis du lundi au jeudi, et seulement le
+                    soir les vendredis, notre équipe vous accueille et vous
+                    mijote une cuisine conviviale au rythme des produits de
+                    saison. Tous les vendredis, une soirée à thème pour vous
+                    faire découvrir de nouvelles saveurs.
+                  </p>
+                </SectionFramer>
+
+                <SectionFramer>
+                  <div
+                    id="mordicus"
+                    // className="transition-all w-[14rem] sm:w-[15rem] md:w-[18rem] md:pr-[12%] lg:w-[20rem] mb-4 mx-auto rotate-6 "
+                    className="transition-all w-[50%] mx-auto rotate-0 sm:w-full sm:flex-grow sm:rotate-6"
+                  >
+                    <Image src={atable} alt="re"></Image>
+                  </div>
+                </SectionFramer>
               </div>
-            </div> */}
-            <div className="flex mx-8 flex-col items-center lg:flex-row-reverse ">
-              <div className="my-11 w-full  md:w-3/6 pl-0 pr-4">
+              <div className="my-11 w-full sm:w-96 mx-auto lg:w-[50%] pl-0 ">
                 <SectionFramerRight>
                   <CallMenuSwiper />
                 </SectionFramerRight>
               </div>
-              <div>
-                <SectionFramer>
-                  <div>
-                    <div
-                      id="mordicus"
-                      className="transition-all w-[14rem] mb-4 mx-auto lg:mx-0 "
-                    >
-                      <Image src={atable} alt="re"></Image>
-                    </div>
-                    <p className="bloc lg:w-[75%] text-center sm:text-start font-light text-2xl px-8 lg:px-0">
-                      Ouvert tous les midis du lundi au jeudi, et seulement le
-                      soir les vendredis, notre équipe vous accueille et vous
-                      mijote une cuisine conviviale au rythme des produits de
-                      saison. Tous les vendredis, une soirée à thème pour vous
-                      faire découvrir de nouvelles saveurs.
-                    </p>
-                  </div>
-                </SectionFramer>
-
-                <SectionFramerRight>
-                  <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
-                </SectionFramerRight>
+              <div className="w-full flex flex-col items-center gap-3">
                 <SectionFramer>
                   <button className="flex align-baseline gap-2 mx-auto sm:mx-0 text-center mt-11 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all">
                     <MdLocalPhone />
@@ -206,7 +183,7 @@ const home = () => {
               </div>
             </div>
           </Section>
-        </Container>
+        </div>
         {/* <ParallaxImageParent
           imageUrl="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FIMG_6198.19a1d179.jpg&amp;w=3840&amp;q=75
 "
