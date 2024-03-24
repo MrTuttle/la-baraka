@@ -51,6 +51,7 @@ import SectionFramerCutTypeFx from "./components/SectionFramerCutTypeFx";
 import SectionFramerUp from "./components/SectionFramerUp";
 import SectionFramerImg from "./components/SectionFramerImg";
 import TitleCut from "./components/ui/TitleCut";
+import ParallaxSeparator from "./components/ui/ParralaxSeparator";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -141,7 +142,7 @@ const home = () => {
         /> */}
         <div className="bg-white">
           <Section className="pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
-            <div className="py-8 text-center font-normal text-5xl w-[70%] mx-auto  sm:text-start sm:w-full sm:ml-8 lg:text-9xl mb-8">
+            <div className="py-8 mt-8 text-center font-normal text-5xl w-[70%] mx-auto  sm:text-start sm:w-full sm:ml-8 lg:text-9xl mb-8">
               <TitleCut>A Table !</TitleCut>
             </div>
 
@@ -150,11 +151,13 @@ const home = () => {
                 <SectionFramer>
                   {/* <p className="border md:w-[75%] text-center sm:text-start font-light text-2xl lg:px-0 sm:bg-blue-100 md:bg-red-100 lg:bg-blue-200 xl:bg-red-200"> */}
                   <p className="flex-shrink text-center sm:text-start font-light text-2xl lg:px-0 ">
-                    Ouvert tous les midis du lundi au jeudi, et seulement le
-                    soir les vendredis, notre équipe vous accueille et vous
-                    mijote une cuisine conviviale au rythme des produits de
-                    saison. Tous les vendredis, une soirée à thème pour vous
-                    faire découvrir de nouvelles saveurs.
+                    Tous les midis du lundi au jeudi, <br />
+                    notre équipe vous accueille et vous mijote une cuisine
+                    conviviale au rythme des produits de saison. <br />
+                    <br />
+                    Les vendredis soirs, <br />
+                    rendez-vous pour une soirée à thème ou nous vous ferons
+                    découvrir de nouvelles saveurs.
                   </p>
                 </SectionFramer>
 
@@ -188,14 +191,28 @@ const home = () => {
           imageUrl="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FIMG_6198.19a1d179.jpg&amp;w=3840&amp;q=75
 "
         /> */}
-        <ParallaxImageParent
-          //imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/cawdvxo81d8uulerrsrf?_a=BAVAExAO0
-          //imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-riviere_cleobb?_a=BAVAExAO0
-          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q62jruvczpx3pjtcyhkc?_a=BAVAExAO0
+        {/* <ParallaxImageParent
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/cawdvxo81d8uulerrsrf?_a=BAVAExAO0"
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/la-baraka-riviere_cleobb?_a=BAVAExAO0"
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q62jruvczpx3pjtcyhkc?_a=BAVAExAO0"
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/q4akqqcgqdtuth6qflan?_a=BAVAExAO0"
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_500/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
+          q4akqqcgqdtuth6qflan
+        /> */}
 
-
-"
+        <ParallaxSeparator
+          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_1200/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
+          imgHeight={"90vh"}
         />
+        {/* <div>
+          <CldImageClient
+            src={"csdrv58eqmedv1cq4jhx"}
+            alt="gh"
+            width={1200}
+            height={100}
+            sizes="100"
+          />
+        </div> */}
         <Container className="bg-white">
           <Section className=" flex flex-col px-8 lg:px-0 lg:mt-[8rem] gap-11 w-full lg:w-8/12 mx-auto bg-gra align-middle">
             {/* <div className="bg-blue-100 flex flex-col lg:mt-[8rem] w-full lg:w-8/12 mx-auto align-middle"> */}
