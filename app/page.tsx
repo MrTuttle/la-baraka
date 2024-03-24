@@ -50,6 +50,7 @@ import SplitTypeXp from "./components/SplitTypeXp";
 import SectionFramerCutTypeFx from "./components/SectionFramerCutTypeFx";
 import SectionFramerUp from "./components/SectionFramerUp";
 import SectionFramerImg from "./components/SectionFramerImg";
+import TitleCut from "./components/ui/TitleCut";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -139,7 +140,7 @@ const home = () => {
           imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_960/f_auto/q_auto/mordicus-extend-left_jgluli?_a=BAVAExAO0"
         /> */}
         <Container className="bg-white">
-          <Section className="border pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
+          <Section className="pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
             {/* <div className="overflow-hidden border py-2">
               <SplitTypeXp>
                 <h1 className="font-normal text-5xl lg:text-9xl">Au menu</h1>
@@ -157,9 +158,12 @@ const home = () => {
                 À table !
               </h1>
             </SectionFramer> */}
-            <div className="font-normal text-5xl lg:text-9xl relative">
-              <SplitTypeXp>A table !</SplitTypeXp>
+            <div className="mx-8 font-normal text-5xl lg:text-9xl relative">
+              <TitleCut>A Table !</TitleCut>
             </div>
+            <SectionFramerRight>
+              <hr className="h-px mx-8 my-8 bg-gray-500 border-0 dark:bg-gray-700" />
+            </SectionFramerRight>
             {/* <div className="border relative">
               <div className=" w-80 absolute -right-10 -top-[10rem]">
                 <Image src={atable} alt="re"></Image>
@@ -172,13 +176,12 @@ const home = () => {
                 </SectionFramerRight>
               </div>
               <div>
-                <SectionFramerRight>
-                  <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
-                </SectionFramerRight>
-
                 <SectionFramer>
                   <div>
-                    <div className=" transition-all w-[14rem] mb-4 mx-auto ">
+                    <div
+                      id="mordicus"
+                      className="transition-all w-[14rem] mb-4 mx-auto lg:mx-0 "
+                    >
                       <Image src={atable} alt="re"></Image>
                     </div>
                     <p className="bloc lg:w-[75%] text-center sm:text-start font-light text-2xl px-8 lg:px-0">
