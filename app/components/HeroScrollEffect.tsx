@@ -90,14 +90,15 @@ const HeroScrollEffect = () => {
 
       // descale & disolve on scroll -> hero logo
       gsap.to(descaleDisolveOnScrool, {
-        scale: 1.3,
-        opacity: 0,
-        // x: 300,
+        scale: 1.4,
+        // opacity: 0,
+        // y: 200,
         // ease: "expo.out",
         scrollTrigger: {
           trigger: descaleDisolveOnScrool,
-          start: "50% 25%",
+          start: "-10% 25%",
           end: "250% 50%",
+
           scrub: true,
 
           // markers: true,
@@ -225,11 +226,11 @@ const HeroScrollEffect = () => {
 
   return (
     <>
-      <div>
+      <div className="overflow-hidden">
         <div
           ref={logoRefContainer}
           // aply this to saw size of the centered container my-border-red
-          className="z-[2] absolute left-[50%] translate-x-[-50%] top-200 w-[380px] h-screen"
+          className="z-[2] absolute left-[50%] translate-x-[-50%] top-200 w-[372px] sm:w-[380px] h-[100vh]"
         >
           {/* <WindowsSizeDetector /> */}
           <div
