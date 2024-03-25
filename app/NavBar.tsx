@@ -23,6 +23,8 @@ import {
 import { Spinner } from "./components";
 import { Session } from "next-auth";
 
+import useDeviceDetection from "@/app/utilities/useDeviceDetection";
+
 const NavBar = () => {
   const currentPath = usePathname();
   // console.log(currentPath);
@@ -31,6 +33,12 @@ const NavBar = () => {
     { label: "Menus", href: "/menus" },
     { label: "Chambres", href: "/chambres" },
   ];
+
+  // const device = useDeviceDetection();
+
+  // const choseDeviceContent = () => {
+  //   return <p>{device}</p>;
+  // };
 
   return (
     <>

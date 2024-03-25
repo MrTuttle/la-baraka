@@ -2,6 +2,7 @@
 // app/issue/page.tsx
 
 import React, { useRef, useState } from "react";
+import useDeviceDetection from "./utilities/useDeviceDetection";
 import {
   Button,
   Card,
@@ -52,6 +53,7 @@ import SectionFramerUp from "./components/SectionFramerUp";
 import SectionFramerImg from "./components/SectionFramerImg";
 import TitleCut from "./components/ui/TitleCut";
 import ParallaxSeparator from "./components/ui/ParralaxSeparator";
+import DeviceDetection from "./components/outils/DeviceDetection";
 
 const home = () => {
   // const chambresImage = await prisma.image.findMany();
@@ -87,6 +89,9 @@ const home = () => {
         <div className="animate-appear">
           <HeroScrollEffect />
         </div>
+      </div>
+      <div className="bg-gray-300 p-8">
+        <DeviceDetection />
       </div>
       <div className=" overflow-hidden bg-gray-100">
         <div className="content-holder ">
