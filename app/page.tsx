@@ -219,7 +219,7 @@ const home = () => {
           imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_500/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
           q4akqqcgqdtuth6qflan
         /> */}
-        <div className="my-border-green xl:flex flex-col hidden">
+        <div className="xl:flex flex-col hidden">
           <ParallaxSeparator
             imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_2000/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
             imgHeight={"135vh"}

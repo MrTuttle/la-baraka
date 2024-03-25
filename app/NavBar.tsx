@@ -8,6 +8,8 @@ import classnames from "classnames";
 // import {LuHome} from "react-icons/lu";
 // import { LuHome } from "react-icons/lu";
 import { SiForestry } from "react-icons/si";
+
+import { HiPhoneArrowDownLeft, HiMapPin } from "react-icons/hi2";
 import { useSession } from "next-auth/react";
 import {
   Avatar,
@@ -121,21 +123,41 @@ const NavLinksLayout = (
 // just separe layout to have a lighter AuthStatus
 const UnauthenticatedLayout = () => {
   return (
-    <nav className="fixed w-full px-5 py-3 z-[10] border-white mix-blend-difference">
-      <Container className="mix-blend-difference">
-        <Flex justify="between">
-          <Flex align="center" gap="3">
-            <Link href="/">
-              <p className="font-semibold text-white">
-                <span className="inline-flex items-baseline pe-3">
-                  <SiForestry />
-                </span>
-                La Baraka
-              </p>
-            </Link>
-            {/* <NavLinks /> */}
-          </Flex>
-        </Flex>
+    // <nav className="fixed w-full px-5 py-3 z-[10] border-white mix-blend-difference">
+    //  <Container className="mix-blend-difference"> */}
+    <nav className="fixed w-full z-[10]">
+      <Container className="bg-white/90 backdrop-blur-[20px] px-5 py-3">
+        {/* <Flex justify="between"> */}
+        {/* <Flex align="center" gap="3"> */}
+        <div className="flex justify-between items-center w-full">
+          <Link href="/">
+            <p className="font-semibold">
+              <span className="inline-flex items-baseline pe-3">
+                <SiForestry />
+              </span>
+              La Baraka
+            </p>
+          </Link>
+          {/* <NavLinks /> */}
+          <div className="flex flex-row justify-end items-center gap-2">
+            <div className="p-1 rounded-full">
+              <a href="tel:+33749605068" className="">
+                <HiPhoneArrowDownLeft />
+              </a>
+            </div>
+            <div className="p-1 rounded-full">
+              <a
+                href="http://maps.apple.com/?q=44.17998, 3.74203"
+                target="_blank"
+                className=""
+              >
+                <HiMapPin />
+              </a>
+            </div>
+          </div>
+        </div>
+        {/* </Flex> */}
+        {/* </Flex> */}
       </Container>
     </nav>
   );
@@ -150,7 +172,7 @@ const AuthStatus = () => {
   return (
     <>
       <nav className="fixed w-full z-[10]">
-        <Container className="bg-white px-5 py-3 ">
+        <Container className="bg-white/90 backdrop-blur-[20px] px-5 py-3 ">
           <Flex justify="between">
             <Flex align="center" gap="3">
               <Link href="/">
