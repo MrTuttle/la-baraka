@@ -34,12 +34,6 @@ const NavBar = () => {
     { label: "Chambres", href: "/chambres" },
   ];
 
-  // const device = useDeviceDetection();
-
-  // const choseDeviceContent = () => {
-  //   return <p>{device}</p>;
-  // };
-
   return (
     <>
       {/* <nav className="fixed w-full px-5 py-3 z-[10] border-b border-white"> */}
@@ -130,11 +124,16 @@ const NavLinksLayout = (
 };
 // just separe layout to have a lighter AuthStatus
 const UnauthenticatedLayout = () => {
+  const device = useDeviceDetection();
+  const choseDeviceContent = () => {
+    device === "Apple" ? <p>{device}</p> : <p>Android</p>;
+  };
+
   return (
     // <nav className="fixed w-full px-5 py-3 z-[10] border-white mix-blend-difference">
     //  <Container className="mix-blend-difference"> */}
-    <nav className="fixed w-full z-[10]">
-      <Container className="bg-white/90 backdrop-blur-[20px] px-5 py-3">
+    <nav className="fixed w-full z-[50]">
+      <Container className=" bg-white/80 backdrop-blur-[20px] px-5 pt-3 pb-3">
         {/* <Flex justify="between"> */}
         {/* <Flex align="center" gap="3"> */}
         <div className="flex justify-between items-center w-full">
@@ -148,19 +147,30 @@ const UnauthenticatedLayout = () => {
           </Link>
           {/* <NavLinks /> */}
           <div className="flex flex-row justify-end items-center gap-2">
-            <div className="p-1 rounded-full">
+            <div className="flex gap-1 transition-colors ease-in-out hover:text-lime-700">
               <a href="tel:+33749605068" className="">
                 <HiPhoneArrowDownLeft />
               </a>
             </div>
             <div className="p-1 rounded-full">
-              <a
-                href="http://maps.apple.com/?q=44.17998, 3.74203"
-                target="_blank"
-                className=""
-              >
-                <HiMapPin />
-              </a>
+              {device === "Apple" ? (
+                <a
+                  // href="http://maps.apple.com/?q=44.17998, 3.74203"
+                  href="http://maps.apple.com/?q=44.179975, 3.742075"
+                  target="_blank"
+                  className="flex gap-1 transition-colors ease-in-out hover:text-lime-700"
+                >
+                  <HiMapPin /> <span className="text-xs">Apple Plan</span>
+                </a>
+              ) : (
+                <a
+                  href="https://maps.app.goo.gl/zFoWh59cvRwyVJLo7"
+                  target="_blank"
+                  className="flex gap-1 transition-colors ease-in-out hover:text-lime-700"
+                >
+                  <HiMapPin /> <span className="text-xs">Google map</span>
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -174,7 +184,24 @@ const UnauthenticatedLayout = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
-  if (status === "loading") return <Spinner />;
+  if (status === "loading")
+    return (
+      <nav className="fixed w-full z-[10]">
+        <Container className="bg-white/90 backdrop-blur-[20px] px-5 py-3 ">
+          <div className="flex justify-between items-center w-full">
+            <Link href="/">
+              <p className="font-semibold">
+                <span className="inline-flex items-baseline pe-3">
+                  <SiForestry />
+                </span>
+                La Baraka
+              </p>
+            </Link>
+            <Spinner />
+          </div>
+        </Container>
+      </nav>
+    );
 
   if (status === "unauthenticated") return <UnauthenticatedLayout />;
   return (

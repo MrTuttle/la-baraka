@@ -90,9 +90,7 @@ const home = () => {
           <HeroScrollEffect />
         </div>
       </div>
-      <div className="bg-gray-300 p-8">
-        <DeviceDetection />
-      </div>
+
       <div className=" overflow-hidden bg-gray-100">
         <div className="content-holder ">
           <Section className="px-11 lg:px-0 lg:mt-[8rem] lg:min-h-screen flex flex-col w-full lg:w-8/12 mx-auto align-middle">
@@ -336,6 +334,9 @@ const home = () => {
             <AroundContent srcs={ListImages} cldImage={true} />
           </Section>
         </Container>
+        <div className="text-gray-400 text-center text-xs px-20 py-2">
+          <DeviceDetection />
+        </div>
         {/* <AroundContent url="kep8qasiqk4crnl18ii3" /> */}
         {/* <div className="my-border-green h-[25svh] relative overflow-hidden">
           <Image
