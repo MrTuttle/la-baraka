@@ -219,11 +219,18 @@ const home = () => {
           imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_500/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
           q4akqqcgqdtuth6qflan
         /> */}
-
-        <ParallaxSeparator
-          imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_1200/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
-          imgHeight={"90vh"}
-        />
+        <div className="my-border-green xl:flex flex-col hidden">
+          <ParallaxSeparator
+            imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_2000/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
+            imgHeight={"135vh"}
+          />
+        </div>
+        <div className="xl:hidden">
+          <ParallaxSeparator
+            imageUrl="https://res.cloudinary.com/dc8rzbrbr/image/upload/c_limit,w_1200/f_auto/q_auto/jow2nktpofi9tsl4ox8g?_a=BAVAExAO0"
+            imgHeight={"90vh"}
+          />
+        </div>
         {/* <div>
           <CldImageClient
             src={"csdrv58eqmedv1cq4jhx"}
