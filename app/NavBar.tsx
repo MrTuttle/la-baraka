@@ -152,6 +152,7 @@ const UnauthenticatedLayout = () => {
                 <HiPhoneArrowDownLeft />
               </a>
             </div>
+            <p className="text-black/30 px-4"> | </p>
             <div className="p-1 rounded-full">
               {device === "Apple" ? (
                 <a

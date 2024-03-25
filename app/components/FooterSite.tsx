@@ -43,8 +43,8 @@ const FooterSite = () => {
             </a>
           </li>
           <li className="pt-2">La Baraka vous accueille toute l’année :</li>
-          <li>Mardi à Vendredi : 9h-13h30</li>
-          <li>Dimanche : 8h30 - 14h</li>
+          <li>Mardi à jeudi : 9h-13h30</li>
+          {/* <li>Dimanche : 8h30 - 14h</li> */}
           <li>Les soirées du Vendredi : A partir de 18h30</li>
           <li>Et pendant l’été :</li>
           <li>Mardi à Dimanche : 8h30-14h et 17h à 21h30</li>
@@ -53,13 +53,24 @@ const FooterSite = () => {
         <ul className="">
           <li className=" border-b border-gray-500 pb-2">Localisation</li>
 
-          <li className="hover:text-gray-300">
+          <li className="flex flex-row items-baseline gap-3">
+            <p>Ouvrir dans :</p>
             <a
               href="http://maps.apple.com/?q=44.17998, 3.74203"
               target="_blank"
-              className="pt-2 flex items-center gap-1"
+              className="pt-2 flex items-center gap-1 hover:text-gray-300 "
             >
-              <HiMapPin /> Ouvrir dans Apple Plan ou Android
+              <HiMapPin />
+              Apple Plan
+            </a>{" "}
+            |
+            <a
+              href="https://maps.app.goo.gl/zFoWh59cvRwyVJLo7"
+              target="_blank"
+              className="pt-2 flex items-center gap-1 hover:text-gray-300 "
+            >
+              <HiMapPin />
+              Google map
             </a>
           </li>
           <li className="">Coordonnées GPS : 44.179878, 3.742397</li>
