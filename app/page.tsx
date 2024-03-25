@@ -34,6 +34,7 @@ import SectionFramerRight from "./components/SectionFramerRight";
 import SplitTypeFramer from "./components/SplitTypeFramer";
 import SplitType from "split-type";
 import HeroScrollEffect from "./components/HeroScrollEffect";
+import SectionFramerFade from "./components/SectionFramerFade";
 
 import Image from "next/image";
 import terrasse from "@/public/upload/la-baraka-terrasse.jpg";
@@ -163,15 +164,15 @@ const home = () => {
                   </div>
                 </SectionFramer> */}
                 <div className="flex-shrink text-center sm:text-start font-light text-2xl lg:px-0 pt-10  ">
-                  <SectionFramer>
+                  <SectionFramerFade>
                     <p>
                       <strong className="font-medium">Tous les midis,</strong>
                       <br /> du lundi au jeudi, notre équipe vous accueille et
                       vous mijote une cuisine conviviale au rythme des produits
                       de saison. <br />
                     </p>
-                  </SectionFramer>
-                  <SectionFramer>
+                  </SectionFramerFade>
+                  <SectionFramerFade>
                     <p className="pt-4">
                       <strong className="font-medium">
                         Les vendredis soirs,
@@ -180,7 +181,7 @@ const home = () => {
                       rendez-vous pour une soirée à thème ou nous vous ferons
                       découvrir de nouvelles saveurs.
                     </p>
-                  </SectionFramer>
+                  </SectionFramerFade>
                 </div>
 
                 <SectionFramer>
@@ -258,14 +259,14 @@ const home = () => {
               </SectionFramerRight>
             </div>
 
-            <SectionFramer>
+            <SectionFramerFade>
               <p className="font-light text-2xl">
                 Chambres à partir de 50 €, petit dejeuner compris. <br />
                 Connexion internet sécurisée gratuite. <br />
                 Les chambres sont situées au premier étage. <br />
                 Taxe de séjour : 0,70 € par adulte et par nuitée.
               </p>
-            </SectionFramer>
+            </SectionFramerFade>
             {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
             <div className=" overflow-hidden">
               <SectionFramerRight>
@@ -298,7 +299,7 @@ const home = () => {
               </SectionFramerRight>
             </div>
 
-            <SectionFramer>
+            <SectionFramerFade>
               <p className="font-light text-2xl">
                 Situé au pied du Parc National, Sainte Croix VF vous convie à
                 rêver le longs de paysages somptueux. Les sites de l’
@@ -324,7 +325,7 @@ const home = () => {
                 produits conçus par les producteurs de la région : plante
                 infuse, Antonin, etc...
               </p>
-            </SectionFramer>
+            </SectionFramerFade>
             {/* This section must be wrapped in a overflow hidden div to keep right width page in mobile */}
             <div className=" overflow-hidden">
               <SectionFramerRight>
@@ -334,9 +335,7 @@ const home = () => {
             <AroundContent srcs={ListImages} cldImage={true} />
           </Section>
         </Container>
-        <div className="text-gray-400 text-center text-xs px-20 py-2">
-          <DeviceDetection />
-        </div>
+
         {/* <AroundContent url="kep8qasiqk4crnl18ii3" /> */}
         {/* <div className="my-border-green h-[25svh] relative overflow-hidden">
           <Image
