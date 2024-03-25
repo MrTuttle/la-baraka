@@ -12,11 +12,11 @@ const useDeviceDetection = () => {
         /(ipad|tablet|playbook|silk)|(android(?!.*mobile))/g.test(userAgent);
 
       if (isMobile) {
-        setDevice(`Mobile`);
+        setDevice(`Mobile | ${navigator.userAgent}`);
       } else if (isTablet) {
-        setDevice(`Tablet`);
+        setDevice(`Tablet | ${navigator.userAgent}`);
       } else {
-        setDevice(`Desktop ${navigator.userAgent}`);
+        setDevice(`Desktop | ${navigator.userAgent}`);
       }
     };
 
