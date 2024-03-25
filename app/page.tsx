@@ -146,18 +146,24 @@ const home = () => {
         /> */}
         <div className="bg-white">
           <Section className="pt-0 flex flex-col lg:mt-[8rem] min-h-screen w-full lg:w-8/12 mx-auto align-middle">
-            <div className="py-8 mt-8 text-center font-normal text-5xl w-[70%] mx-auto  sm:text-start sm:w-full sm:ml-8 lg:text-9xl mb-8">
-              <TitleCut>A Table !</TitleCut>
-            </div>
+            <SectionFramer>
+              <div className="lg:hidden py-8 pl-8 mt-8 -rotate-2 text-center font-normal bg-yellow-500 text-5xl w-[70%] mx-auto  sm:text-start sm:ml-8 -mb-4">
+                <TitleCut>A Table !</TitleCut>
+              </div>
+            </SectionFramer>
 
             <div className="flex mx-8 flex-col">
-              <div className="flex flex-col-reverse items-center sm:flex-row gap-8">
+              <div className="flex flex-col-reverse items-center sm:flex-row md:gap-20 xl:gap-40">
                 <SectionFramer>
                   {/* <p className="border md:w-[75%] text-center sm:text-start font-light text-2xl lg:px-0 sm:bg-blue-100 md:bg-red-100 lg:bg-blue-200 xl:bg-red-200"> */}
-                  <p className="flex-shrink text-center sm:text-start font-light text-2xl lg:px-0 ">
-                    Tous les midis du lundi au jeudi, <br />
-                    notre équipe vous accueille et vous mijote une cuisine
-                    conviviale au rythme des produits de saison. <br />
+                  <div className=" hidden  lg:flex flex-col justify-center absolute w-[600px] -translate-y-[12rem] bg-yellow-500 h-40 md:mb-10 px-8 -rotate-3">
+                    <TitleCut>A table !</TitleCut>
+                  </div>
+                  <p className="flex-shrink text-center sm:text-start font-light text-2xl lg:px-0 pt-10 ">
+                    Tous les midis
+                    <br /> du lundi au jeudi, notre équipe vous accueille et
+                    vous mijote une cuisine conviviale au rythme des produits de
+                    saison. <br />
                     <br />
                     Les vendredis soirs, <br />
                     rendez-vous pour une soirée à thème ou nous vous ferons
