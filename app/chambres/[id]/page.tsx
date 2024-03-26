@@ -22,9 +22,7 @@ import { addHours } from "@/app/utilities/hoursOffset";
 import Loading from "./loading";
 
 interface Props {
-  // params id: typed in string, 'cause url are always string
   params: { id: string };
-  // bookedDayz: Date[];
 }
 
 const ChambreDetailPage = async ({ params }: Props) => {
