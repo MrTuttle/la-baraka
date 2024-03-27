@@ -66,7 +66,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
     let checkIn = addHours(check.checkIn, 24); // +24h to display online dates in BK picker
     // let checkOut = check.checkOut; // without time compensation
     let checkOut = addHours(check.checkOut, 24); // +24h to display online dates in BK picker
-    console.log("page.tsx GROUP CHECK :", id, checkIn, checkOut);
+    // console.log("page.tsx GROUP CHECK :", id, checkIn, checkOut);
 
     const getDatesInRange = (startDate: Date, endDate: Date) => {
       const date = new Date(startDate.getTime());
@@ -169,5 +169,18 @@ const ChambreDetailPage = async ({ params }: Props) => {
     </>
   );
 };
+
+// BLOC METADATA DYNAMIQUES START
+export async function generateMetadata({ params }: Props) {
+  const room = await prisma.room.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+  return {
+    title:
+      "La Baraka, Bar, Restaurant, Chambres d'Hôtes à Sainte-Croix-Vallée-Française",
+    description: "Details de la chambre " + room?.title,
+  };
+}
+// BLOC METADATA DYNAMIQUE END
 
 export default ChambreDetailPage;
