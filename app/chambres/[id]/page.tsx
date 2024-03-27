@@ -137,7 +137,7 @@ const ChambreDetailPage = async ({ params }: Props) => {
 
   return (
     <>
-      <div className="bg-white lg:pt-12">
+      <div className="bg-white min-h-screen lg:pt-12">
         <div className="mb-11 w-full lg:w-4/6 mx-auto">
           <DetailRoomSwiperSlide listImages={imagesRoom} />
         </div>

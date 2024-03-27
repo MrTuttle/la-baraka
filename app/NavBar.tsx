@@ -132,8 +132,8 @@ const UnauthenticatedLayout = () => {
   return (
     // <nav className="fixed w-full px-5 py-3 z-[10] border-white mix-blend-difference">
     //  <Container className="mix-blend-difference"> */}
-    <nav className="fixed w-full z-[50]">
-      <Container className=" bg-white/80 backdrop-blur-[20px] px-5 pt-3 pb-3">
+    <nav className="fixed w-full z-[50] h-16">
+      <Container className="bg-white/80 backdrop-blur-[20px] px-5 pt-3 pb-3 h-16">
         {/* <Flex justify="between"> */}
         {/* <Flex align="center" gap="3"> */}
         <div className="flex justify-between items-center w-full">
@@ -187,8 +187,8 @@ const AuthStatus = () => {
 
   if (status === "loading")
     return (
-      <nav className="fixed w-full z-[10]">
-        <Container className="bg-white/90 backdrop-blur-[20px] px-5 py-3 ">
+      <nav className="fixed w-full z-[50] h-16">
+        <Container className="bg-white/80 backdrop-blur-[20px] px-5 pt-3 pb-3 h-16">
           <div className="flex justify-between items-center w-full">
             <Link href="/">
               <p className="font-semibold">
@@ -198,7 +198,7 @@ const AuthStatus = () => {
                 La Baraka
               </p>
             </Link>
-            <Spinner />
+            {/* <NavLinks /> */}
           </div>
         </Container>
       </nav>
@@ -207,8 +207,8 @@ const AuthStatus = () => {
   if (status === "unauthenticated") return <UnauthenticatedLayout />;
   return (
     <>
-      <nav className="fixed w-full z-[10]">
-        <Container className="bg-white/90 backdrop-blur-[20px] px-5 py-3 ">
+      <nav className="fixed w-full z-[10] h-16">
+        <Container className="bg-white/90 backdrop-blur-[20px] px-5 py-3 h-16">
           <Flex justify="between">
             <Flex align="center" gap="3">
               <Link href="/">
@@ -226,7 +226,7 @@ const AuthStatus = () => {
                   <Avatar
                     src={session!.user!.image!}
                     fallback="?"
-                    size="2"
+                    size="1"
                     radius="full"
                     className="cursor-pointer"
                     referrerPolicy="no-referrer"
@@ -246,7 +246,9 @@ const AuthStatus = () => {
                     <Link href="/dashboard">dashboard</Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Item>
-                    <Link href="/menus">Menus</Link>
+                    <Link href="/menus">
+                      <strong>Menus</strong>
+                    </Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Item>
                     <Link href="/reservations">Reservations</Link>

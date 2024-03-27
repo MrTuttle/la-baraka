@@ -23,10 +23,16 @@ const config: Config = {
           // "50%": { opacity: ".2" },
           "100%": { opacity: "1" },
         },
+        appearpage: {
+          "0%": { opacity: "0", transform: "translateX(20px)" },
+          // "50%": { opacity: ".2" },
+          "100%": { opacity: "1", transform: "translateX(0px)" },
+        },
       },
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",
         appear: "appear 4s cubic-bezier(0.4, 0, 0.6, 1)",
+        appearpage: "appearpage 0.5s cubic-bezier(0.4, 0, 0.6, 1)",
       },
     },
   },

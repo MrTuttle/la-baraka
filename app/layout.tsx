@@ -31,7 +31,11 @@ export default function RootLayout({
             <Theme>
               <NavBar />
               <Suspense fallback={<Loading />}>
-                <main>{children}</main>
+                <main>
+                  <div className=" min-h-screen animate-appearpage">
+                    {children}
+                  </div>
+                </main>
               </Suspense>
               <FooterSite />
             </Theme>
