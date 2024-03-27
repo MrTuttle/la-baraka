@@ -4,7 +4,59 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <Container className=" w-screen bg-white">
+      <Container className="w-screen bg white prose pl-20 pr-8 py-20">
+        <div className="">
+          <h1>Mentions légales</h1>
+          <h2>La Baraka</h2>
+          <ul className="list-none list-outside hover:list-inside px-0 my-0">
+            <li>
+              <strong>Dénomination sociale :</strong> ???{" "}
+            </li>
+            <li>
+              <strong>Forme juridique : </strong>???
+            </li>
+            <li>
+              <strong>Montant du capital social :</strong>???
+            </li>
+          </ul>
+          <address>
+            <p>
+              <strong>La Baraka</strong>
+              <br />
+              Le Village, 48110 Sainte-Croix-Vallée-Française
+              <br />
+              France
+            </p>
+            <a href="mailto:labaraka.saintecroix@gmail.com">
+              labaraka.saintecroix@gmail.com
+            </a>
+            <br />
+            <a href="tel:+33749605068">tel: 07 49 60 50 68</a>
+          </address>
+          <h2>Mentions relatives à la propriété intellectuelle</h2>
+          <p>
+            <strong>Illustration : ???</strong>
+          </p>
+          <h2>Hébergeur</h2>
+
+          <p>
+            Vercel Inc.
+            <br />
+            440 N Barranca Ave #4133
+            <br />
+            Covina, CA 91723 <br />
+            USA
+          </p>
+          <p>
+            <a href="mailto:privacy@vercel.com" target="_blank">
+              privacy@vercel.com
+            </a>
+            <br />
+            <a href="https://www.vercel.com">https://www.vercel.com</a>
+          </p>
+        </div>
+      </Container>
+      {/* <Container className=" w-screen bg-white">
         <div className="prose w-full pl-20 pr-8 py-20 ">
           <p>
             <strong>ETABLISSEMENT DES SEPT FONTAINES</strong>
@@ -262,7 +314,7 @@ const page = () => {
             navigateur, vos temps d’accès.
           </p>
         </div>
-      </Container>
+      </Container> */}
     </>
   );
 };

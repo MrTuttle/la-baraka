@@ -82,9 +82,9 @@ const FooterSite = () => {
           <li>
             <Link href="/mentions">Mentions légales</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/cgv">CGV</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
